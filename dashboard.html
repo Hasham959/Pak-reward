@@ -1,157 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PakReward Dashboard</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            color: #18202a;
-        }
+<title>Dashboard - PakReward</title>
 
-        header {
-            background: #087443;
-            color: white;
-            padding: 18px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+<style>
 
-        .logo {
-            font-size: 21px;
-            font-weight: bold;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        .logout {
-            background: white;
-            color: #087443;
-            border: none;
-            padding: 9px 15px;
-            border-radius: 7px;
-            cursor: pointer;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #17202a;
+}
 
-        main {
-            max-width: 1100px;
-            margin: auto;
-            padding: 30px 20px;
-        }
 
-        h1 {
-            margin-bottom: 5px;
-        }
+/* HEADER */
 
-        .welcome {
-            color: #68737f;
-            margin-bottom: 30px;
-        }
+header {
+    background: #087443;
+    color: white;
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
+    padding: 16px 6%;
 
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 22px;
-            border: 1px solid #e3e7ec;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-        }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .card p {
-            color: #6d7782;
-            margin: 0 0 8px;
-        }
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+}
 
-        .amount {
-            font-size: 28px;
-            font-weight: bold;
-            color: #087443;
-        }
+.logout {
+    background: white;
+    color: #087443;
 
-        .section {
-            margin-top: 35px;
-        }
+    border: none;
 
-        .plan {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    padding: 9px 15px;
 
-        .badge {
-            background: #e4f4ec;
-            color: #087443;
-            padding: 7px 12px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 13px;
-        }
+    border-radius: 8px;
 
-        .task {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
+    cursor: pointer;
 
-        .task button,
-        .action {
-            background: #087443;
-            color: white;
-            border: none;
-            padding: 11px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+    font-weight: bold;
+}
 
-        .actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
 
-        .action {
-            text-align: center;
-        }
+/* MAIN */
 
-        footer {
-            text-align: center;
-            color: #6d7782;
-            padding: 30px;
-        }
+main {
+    max-width: 1100px;
 
-        @media(max-width: 700px) {
-            .stats {
-                grid-template-columns: 1fr;
-            }
+    margin: auto;
 
-            .task,
-            .plan {
-                display: block;
-            }
+    padding: 35px 20px;
+}
 
-            .task button {
-                margin-top: 15px;
-                width: 100%;
-            }
-        }
-    </style>
+.welcome {
+    color: #68737f;
+
+    margin-top: 5px;
+
+    margin-bottom: 30px;
+}
+
+
+/* STATS */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.card {
+
+    background: white;
+
+    border: 1px solid #e3e7ec;
+
+    border-radius: 16px;
+
+    padding: 23px;
+
+    box-shadow:
+        0 7px 25px rgba(0,0,0,0.05);
+}
+
+.card p {
+
+    color: #6c7783;
+
+    margin-top: 0;
+}
+
+.amount {
+
+    font-size: 29px;
+
+    font-weight: bold;
+
+    color: #087443;
+}
+
+
+/* PLAN */
+
+.section {
+
+    margin-top: 35px;
+}
+
+.plan {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.badge {
+
+    background: #e4f4ec;
+
+    color: #087443;
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+/* TASK */
+
+.task {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.task p {
+
+    margin-bottom: 0;
+}
+
+.btn {
+
+    border: none;
+
+    background: #087443;
+
+    color: white;
+
+    padding: 11px 18px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+/* ACTIONS */
+
+.actions {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 18px;
+}
+
+.action {
+
+    padding: 20px;
+
+    background: white;
+
+    border: 1px solid #e3e7ec;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    color: #087443;
+}
+
+
+/* TRANSACTIONS */
+
+.transaction {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid #eee;
+
+    padding: 15px 0;
+}
+
+.transaction:last-child {
+
+    border-bottom: none;
+}
+
+.green {
+
+    color: #087443;
+
+    font-weight: bold;
+}
+
+
+/* FOOTER */
+
+footer {
+
+    text-align: center;
+
+    padding: 30px;
+
+    color: #6c7783;
+
+    background: white;
+
+    border-top: 1px solid #e4e8ed;
+
+    margin-top: 40px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:750px) {
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+    .task {
+
+        display: block;
+    }
+
+    .task .btn {
+
+        width: 100%;
+
+        margin-top: 15px;
+    }
+
+    .plan {
+
+        display: block;
+    }
+
+    .plan .badge {
+
+        display: inline-block;
+
+        margin-top: 10px;
+    }
+}
+
+</style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -159,8 +309,12 @@
         🇵🇰 PakReward
     </div>
 
-    <button class="logout" onclick="logout()">
+    <button
+        class="logout"
+        onclick="logout()">
+
         Logout
+
     </button>
 
 </header>
@@ -168,217 +322,345 @@
 
 <main>
 
-    <h1>Dashboard</h1>
 
-    <p class="welcome">
-        Welcome to your PakReward account.
-    </p>
+<h1>Dashboard</h1>
+
+<p class="welcome">
+    Welcome to your PakReward account.
+</p>
 
 
-    <div class="stats">
+<!-- STATS -->
 
-        <div class="card">
-            <p>Wallet Balance</p>
-            <div class="amount" id="balance">
-                Rs. 0
-            </div>
-        </div>
+<div class="stats">
 
-        <div class="card">
-            <p>Today's Reward</p>
-            <div class="amount" id="today">
-                Rs. 0
-            </div>
-        </div>
 
-        <div class="card">
-            <p>Total Reward</p>
-            <div class="amount" id="total">
-                Rs. 0
-            </div>
-        </div>
+<div class="card">
+
+    <p>Wallet Balance</p>
+
+    <div
+        class="amount"
+        id="balance">
+
+        Rs. 0
 
     </div>
 
+</div>
 
-    <div class="section">
 
-        <h2>Active Plan</h2>
+<div class="card">
 
-        <div class="card plan">
+    <p>Today's Reward</p>
 
-            <div>
-                <h3 id="planName">
-                    No Active Plan
-                </h3>
+    <div
+        class="amount"
+        id="today">
 
-                <p>
-                    Select a plan to access eligible tasks.
-                </p>
-            </div>
-
-            <span class="badge">
-                DEMO
-            </span>
-
-        </div>
+        Rs. 0
 
     </div>
 
+</div>
 
-    <div class="section">
 
-        <h2>Daily Tasks</h2>
+<div class="card">
 
-        <div class="card task">
+    <p>Total Reward</p>
 
-            <div>
-                <h3>Advertising Demo Task</h3>
+    <div
+        class="amount"
+        id="total">
 
-                <p>
-                    Complete this demo task to test
-                    your reward balance.
-                </p>
-            </div>
-
-            <button onclick="completeTask()">
-                + Rs. 10
-            </button>
-
-        </div>
+        Rs. 0
 
     </div>
 
-
-    <div class="section">
-
-        <h2>Account</h2>
-
-        <div class="actions">
-
-            <button class="action"
-                    onclick="deposit()">
-                📥 Deposit
-            </button>
-
-            <button class="action"
-                    onclick="withdraw()">
-                📤 Withdraw
-            </button>
-
-        </div>
-
-    </div>
+</div>
 
 
-    <div class="section">
+</div>
 
-        <h2>Transaction History</h2>
 
-        <div class="card">
+<!-- PLAN -->
 
-            <p id="history">
-                No transactions yet.
-            </p>
+<div class="section">
 
-        </div>
+<h2>Active Plan</h2>
 
-    </div>
+
+<div class="card plan">
+
+<div>
+
+<h3 id="planName">
+
+No Active Plan
+
+</h3>
+
+<p>
+
+Select a plan to access eligible tasks.
+
+</p>
+
+</div>
+
+
+<span class="badge">
+
+DEMO
+
+</span>
+
+</div>
+
+</div>
+
+
+<!-- TASKS -->
+
+<div class="section">
+
+<h2>Daily Tasks</h2>
+
+
+<div class="card task">
+
+<div>
+
+<h3>
+
+Advertising Task
+
+</h3>
+
+<p>
+
+Complete the demo task to test your reward wallet.
+
+</p>
+
+</div>
+
+
+<button
+    class="btn"
+    onclick="completeTask()">
+
+Complete +Rs. 10
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ACTIONS -->
+
+<div class="section">
+
+<h2>Wallet</h2>
+
+
+<div class="actions">
+
+
+<button
+    class="action"
+    onclick="deposit()">
+
+📥 Deposit
+
+</button>
+
+
+<button
+    class="action"
+    onclick="withdraw()">
+
+📤 Withdraw
+
+</button>
+
+
+</div>
+
+</div>
+
+
+<!-- HISTORY -->
+
+<div class="section">
+
+<h2>Recent Transactions</h2>
+
+
+<div class="card">
+
+<div class="transaction">
+
+<span>
+
+Account Created
+
+</span>
+
+<span>
+
+Rs. 0
+
+</span>
+
+</div>
+
+
+<div
+    class="transaction"
+    id="taskHistory">
+
+<span>
+
+No task completed
+
+</span>
+
+<span>
+
+—
+
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
 
 </main>
 
 
 <footer>
 
-    PakReward © 2026
+PakReward © 2026
 
-    <br>
+<br>
 
-    Demo version — no real money transactions.
+Demo version — no real money transactions.
 
 </footer>
 
 
 <script>
 
+
 let balance = 0;
+
 let today = 0;
+
 let total = 0;
 
 
 function money(amount) {
 
-    return "Rs. " +
-        amount.toLocaleString("en-PK");
+return "Rs. " +
+
+amount.toLocaleString("en-PK");
 
 }
 
 
-function update() {
+function updateWallet() {
 
-    document.getElementById("balance").innerText =
-        money(balance);
+document.getElementById("balance")
+.innerText = money(balance);
 
-    document.getElementById("today").innerText =
-        money(today);
 
-    document.getElementById("total").innerText =
-        money(total);
+document.getElementById("today")
+.innerText = money(today);
+
+
+document.getElementById("total")
+.innerText = money(total);
 
 }
 
 
 function completeTask() {
 
-    balance += 10;
 
-    today += 10;
+balance += 10;
 
-    total += 10;
+today += 10;
 
-    document.getElementById("history").innerText =
-        "Demo Task — +Rs. 10";
+total += 10;
 
-    update();
 
-    alert(
-        "Demo task completed!\n" +
-        "Rs. 10 reward added."
-    );
+document.getElementById("taskHistory")
+.innerHTML =
+
+"<span>Advertising Demo Task</span>" +
+
+"<span class='green'>+Rs. 10</span>";
+
+
+updateWallet();
+
+
+alert(
+
+"Demo task completed!\n\n" +
+
+"Rs. 10 simulated reward added."
+
+);
 
 }
 
 
 function deposit() {
 
-    alert(
-        "Deposit system will be connected later.\n\n" +
-        "This demo does not process real money."
-    );
+alert(
+
+"Deposit system is not connected yet.\n\n" +
+
+"This is only a demo."
+
+);
 
 }
 
 
 function withdraw() {
 
-    alert(
-        "Withdrawal system will be connected later.\n\n" +
-        "This demo does not process real money."
-    );
+alert(
+
+"Withdrawal system is not connected yet.\n\n" +
+
+"This is only a demo."
+
+);
 
 }
 
 
 function logout() {
 
-    window.location.href = "index.html";
+window.location.href = "index.html";
 
 }
 
 
-update();
+updateWallet();
 
 </script>
 
+
 </body>
+
 </html>
