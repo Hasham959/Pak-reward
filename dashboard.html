@@ -616,16 +616,77 @@ document.getElementById("total")
 }
 
 
-function completeTask() {
+function watchAd(adNumber) {
+
+    let plan =
+        localStorage.getItem("selectedPlan");
+
+    let reward = 0;
+
+    if (plan === "Starter") {
+        reward = 10;
+    }
+
+    else if (plan === "Basic") {
+        reward = 50;
+    }
+
+    else if (plan === "Premium") {
+        reward = 100;
+    }
+
+    else {
+        alert("Please select a plan first.");
+        return;
+    }
 
 
-balance += 10;
-
-today += 10;
-
-total += 10;
+    let completed =
+        Number(localStorage.getItem("adsCompleted") || 0);
 
 
+    if (completed >= 5) {
+
+        alert(
+            "Today's 5 ads are already completed."
+        );
+
+        return;
+    }
+
+
+    completed++;
+
+
+    balance += reward;
+    today += reward;
+    total += reward;
+
+
+    localStorage.setItem(
+        "adsCompleted",
+        completed
+    );
+
+
+    document.getElementById(
+        "adsCompleted"
+    ).innerText = completed;
+
+
+    updateWallet();
+
+
+    alert(
+        "Demo Ad " +
+        adNumber +
+        " completed!\n\n" +
+        "+Rs. " +
+        reward +
+        " reward"
+    );
+
+}
 document.getElementById("taskHistory")
 .innerHTML =
 
