@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PakReward - Earn Rewards</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🇵🇰 PakReward</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#plans">Plans</a>
+        <a href="#tasks">Tasks</a>
+        <a href="#how">How It Works</a>
+    </nav>
+
+    <button class="login-btn" onclick="loginDemo()">Login</button>
+</header>
+
+
+<section id="home" class="hero">
+
+    <div class="hero-text">
+        <span class="badge">PAKISTAN • REWARD PLATFORM</span>
+
+        <h1>Complete Tasks.<br>
+        <span>Earn Rewards.</span></h1>
+
+        <p>
+            Complete eligible advertising and online tasks
+            and receive rewards according to platform rules.
+        </p>
+
+        <button class="main-btn" onclick="showPlans()">
+            View Plans
+        </button>
+    </div>
+
+
+    <div class="wallet-card">
+
+        <p>Demo Wallet Balance</p>
+
+        <h2 id="balance">Rs. 0</h2>
+
+        <div class="wallet-row">
+            <span>Today's Reward</span>
+            <strong id="today">Rs. 0</strong>
+        </div>
+
+        <button class="main-btn full"
+                onclick="completeTask()">
+            Complete Demo Task +Rs. 10
+        </button>
+
+    </div>
+
+</section>
+
+
+<section id="plans">
+
+    <h2>Reward Plans</h2>
+
+    <p class="section-text">
+        Plans organize access to eligible tasks.
+        They do not represent guaranteed investment returns.
+    </p>
+
+
+    <div class="plans">
+
+        <div class="plan-card">
+            <h3>Starter</h3>
+            <h4>Rs. 1,000</h4>
+            <p>Basic task access</p>
+
+            <button onclick="selectPlan('Starter',1000)">
+                Select Plan
+            </button>
+        </div>
+
+
+        <div class="plan-card">
+            <h3>Basic</h3>
+            <h4>Rs. 5,000</h4>
+            <p>More eligible tasks</p>
+
+            <button onclick="selectPlan('Basic',5000)">
+                Select Plan
+            </button>
+        </div>
+
+
+        <div class="plan-card featured">
+            <span class="popular">POPULAR</span>
+
+            <h3>Premium</h3>
+            <h4>Rs. 10,000</h4>
+            <p>Higher task limits</p>
+
+            <button onclick="selectPlan('Premium',10000)">
+                Select Plan
+            </button>
+        </div>
+
+
+        <div class="plan-card">
+            <h3>Pro</h3>
+            <h4>Rs. 25,000</h4>
+            <p>Highest task limits</p>
+
+            <button onclick="selectPlan('Pro',25000)">
+                Select Plan
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="tasks">
+
+    <h2>Daily Tasks</h2>
+
+    <div class="task-card">
+
+        <div>
+            <h3>Advertising Task</h3>
+
+            <p>
+                Complete the demo task to test
+                the reward wallet.
+            </p>
+        </div>
+
+        <button class="main-btn"
+                onclick="completeTask()">
+            Complete +Rs. 10
+        </button>
+
+    </div>
+
+</section>
+
+
+<section id="how">
+
+    <h2>How It Works</h2>
+
+    <div class="steps">
+
+        <div>
+            <b>01</b>
+            <h3>Create Account</h3>
+            <p>Register and access your dashboard.</p>
+        </div>
+
+        <div>
+            <b>02</b>
+            <h3>Complete Tasks</h3>
+            <p>Complete eligible advertising tasks.</p>
+        </div>
+
+        <div>
+            <b>03</b>
+            <h3>Receive Rewards</h3>
+            <p>Eligible rewards are added according to platform rules.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <strong>🇵🇰 PakReward</strong>
+
+    <p>
+        Demo website • No investment or guaranteed-return promise
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
