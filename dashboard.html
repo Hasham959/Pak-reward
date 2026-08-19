@@ -657,7 +657,15 @@ window.location.href = "index.html";
 
 
 updateWallet();
+let selectedPlan =
+    localStorage.getItem("selectedPlan");
 
+if (selectedPlan) {
+
+    document.getElementById("planName")
+        .innerText = selectedPlan;
+
+}
 </script>
 
 
