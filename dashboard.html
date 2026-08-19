@@ -664,11 +664,17 @@ updateWallet();
 let selectedPlan =
     localStorage.getItem("selectedPlan");
 
+let planAmount =
+    localStorage.getItem("planAmount");
 
 if (selectedPlan) {
 
-    document.getElementById("planName")
-        .innerText = selectedPlan;
+    document.getElementById("planName").innerText =
+        selectedPlan;
+
+    document.getElementById("planAmount").innerText =
+        "Plan Amount: Rs. " +
+        Number(planAmount).toLocaleString("en-PK");
 
 }
 
