@@ -47,7 +47,8 @@ nav a {
 }
 
 .login-btn {
-    padding: 10px 18px;
+    padding: 8px 12px;
+    margin-left: 5px;
 
     border: 1px solid #087443;
     border-radius: 8px;
@@ -57,7 +58,13 @@ nav a {
 
     cursor: pointer;
     font-weight: bold;
+
+    text-decoration: none;
+    display: inline-block;
+
+    font-size: 13px;
 }
+
 
 
 /* HERO */
