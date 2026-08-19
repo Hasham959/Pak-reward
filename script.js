@@ -36,20 +36,19 @@ function completeTask() {
 
 }
 
-
 function selectPlan(planName, amount) {
+
+    localStorage.setItem("selectedPlan", planName);
+    localStorage.setItem("planAmount", amount);
 
     alert(
         planName +
-        " Plan selected.\n\n" +
-
-        "Amount: " +
-        money(amount) +
-
-        "\n\nThis is a DEMO. " +
-        "No real payment has been processed."
+        " Plan selected!\n\n" +
+        "Demo amount: " +
+        money(amount)
     );
 
+    window.location.href = "dashboard.html";
 }
 
 
