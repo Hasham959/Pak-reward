@@ -1,265 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login - Ham Earn</title>
 
 <style>
-
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f7fb;
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f7fb;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
 }
 
-.login-box {
-    width: 100%;
-    max-width: 430px;
-
-    background: white;
-
-    padding: 32px;
-
-    border-radius: 18px;
-
-    border: 1px solid #e4e8ed;
-
-    box-shadow:
-        0 10px 35px rgba(0,0,0,0.08);
+.login-box{
+    width:100%;
+    max-width:430px;
+    background:white;
+    padding:32px;
+    border-radius:18px;
+    border:1px solid #e4e8ed;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
 }
 
-.logo {
-    text-align: center;
-
-    font-size: 25px;
-
-    font-weight: bold;
-
-    color: #087443;
-
-    margin-bottom: 8px;
+.logo{
+    text-align:center;
+    font-size:27px;
+    font-weight:bold;
+    color:#087443;
+    margin-bottom:8px;
 }
 
-.subtitle {
-    text-align: center;
-
-    color: #697480;
-
-    margin-bottom: 25px;
+.subtitle{
+    text-align:center;
+    color:#697480;
+    margin-bottom:25px;
 }
 
-label {
-    display: block;
-
-    margin-top: 15px;
-    margin-bottom: 6px;
-
-    font-weight: bold;
-
-    font-size: 14px;
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:6px;
+    font-weight:bold;
+    font-size:14px;
 }
 
-input {
-    width: 100%;
-
-    padding: 13px;
-
-    border: 1px solid #d8dde4;
-
-    border-radius: 8px;
-
-    font-size: 15px;
-
-    outline: none;
+input{
+    width:100%;
+    padding:13px;
+    border:1px solid #d8dde4;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
 }
 
-input:focus {
-    border-color: #087443;
+input:focus{
+    border-color:#087443;
 }
 
-.password-row {
-    position: relative;
+.login-submit{
+    width:100%;
+    margin-top:25px;
+    padding:13px;
+    border:none;
+    border-radius:9px;
+    background:#087443;
+    color:white;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
 }
 
-.password-row input {
-    padding-right: 75px;
+.login-submit:hover{
+    background:#065d35;
 }
 
-.show-password {
-    position: absolute;
-
-    right: 10px;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    border: none;
-
-    background: transparent;
-
-    color: #087443;
-
-    font-weight: bold;
-
-    cursor: pointer;
+.error{
+    display:none;
+    margin-top:15px;
+    padding:10px;
+    border-radius:8px;
+    background:#fff1ef;
+    color:#c0392b;
+    font-size:13px;
 }
 
-.login-btn {
-    width: 100%;
-
-    margin-top: 25px;
-
-    padding: 13px;
-
-    border: none;
-
-    border-radius: 9px;
-
-    background: #087443;
-
-    color: white;
-
-    font-weight: bold;
-
-    font-size: 16px;
-
-    cursor: pointer;
+.success{
+    display:none;
+    margin-top:15px;
+    padding:10px;
+    border-radius:8px;
+    background:#eaf7f0;
+    color:#087443;
+    font-size:13px;
 }
 
-.login-btn:hover {
-    opacity: 0.9;
+.register-link{
+    text-align:center;
+    margin-top:20px;
+    color:#697480;
 }
 
-.login-btn:disabled {
-    background: #8aa99a;
-
-    cursor: not-allowed;
+.register-link a{
+    color:#087443;
+    font-weight:bold;
+    text-decoration:none;
 }
 
-.register-link {
-    text-align: center;
-
-    margin-top: 20px;
-
-    color: #697480;
+.home-link{
+    display:block;
+    text-align:center;
+    margin-top:12px;
+    color:#68737f;
+    text-decoration:none;
+    font-size:14px;
 }
 
-.register-link a {
-    color: #087443;
-
-    font-weight: bold;
-
-    text-decoration: none;
+.notice{
+    margin-top:20px;
+    padding:10px;
+    background:#fff8e6;
+    border-radius:8px;
+    color:#806500;
+    font-size:12px;
+    text-align:center;
 }
 
-.home-link {
-    display: block;
-
-    text-align: center;
-
-    margin-top: 12px;
-
-    color: #68737f;
-
-    text-decoration: none;
-
-    font-size: 14px;
+.password-row{
+    position:relative;
 }
 
-.home-link:hover {
-    color: #087443;
+.password-row input{
+    padding-right:75px;
 }
 
-.error {
-    color: #c0392b;
-
-    font-size: 13px;
-
-    margin-top: 10px;
-
-    display: none;
-
-    background: #fff1ef;
-
-    padding: 9px;
-
-    border-radius: 7px;
+.show-password{
+    position:absolute;
+    right:8px;
+    top:7px;
+    height:38px;
+    padding:0 10px;
+    border:none;
+    background:#f0f3f5;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:12px;
+    color:#087443;
+    font-weight:bold;
 }
 
-.success {
-    color: #087443;
+@media(max-width:450px){
 
-    font-size: 13px;
+    .login-box{
+        padding:24px;
+    }
 
-    margin-top: 10px;
-
-    display: none;
-
-    background: #eaf7f0;
-
-    padding: 9px;
-
-    border-radius: 7px;
 }
-
-.notice {
-    margin-top: 18px;
-
-    padding: 10px;
-
-    background: #fff8e6;
-
-    border-radius: 8px;
-
-    color: #806500;
-
-    font-size: 12px;
-
-    text-align: center;
-}
-
 </style>
-
 </head>
-
 
 <body>
 
-
 <div class="login-box">
 
-
     <div class="logo">
-        Ham Earn
+        🇵🇰 Ham Earn
     </div>
-
 
     <div class="subtitle">
         Login to your account
     </div>
 
 
-    <form id="loginForm">
+    <form onsubmit="loginUser(event)">
 
-
-        <label for="email">
+        <label>
             Email
         </label>
 
@@ -272,10 +195,9 @@ input:focus {
         >
 
 
-        <label for="password">
+        <label>
             Password
         </label>
-
 
         <div class="password-row">
 
@@ -290,10 +212,10 @@ input:focus {
             <button
                 type="button"
                 class="show-password"
-                id="showPasswordBtn">
-
+                onclick="togglePassword()"
+                id="showBtn"
+            >
                 Show
-
             </button>
 
         </div>
@@ -313,13 +235,11 @@ input:focus {
 
         <button
             type="submit"
-            class="login-btn"
-            id="loginButton">
-
+            class="login-submit"
+            id="loginButton"
+        >
             Login
-
         </button>
-
 
     </form>
 
@@ -346,23 +266,21 @@ input:focus {
 
     <div class="notice">
 
-        Demo login system.
-        Account data is stored locally in this browser.
+        Demo system — account data is stored
+        locally in this browser.
 
     </div>
-
 
 </div>
 
 
 <script>
 
-
 /* =========================================
-   SHA-256 PASSWORD HASH
+   PASSWORD HASH
 ========================================= */
 
-async function hashPassword(password) {
+async function hashPassword(password){
 
     const data =
         new TextEncoder().encode(password);
@@ -373,26 +291,23 @@ async function hashPassword(password) {
             data
         );
 
-    return Array
-        .from(
-            new Uint8Array(hash)
-        )
-        .map(
-            byte =>
-                byte
-                    .toString(16)
-                    .padStart(2, "0")
-        )
-        .join("");
+    return Array.from(
+        new Uint8Array(hash)
+    )
+    .map(
+        byte =>
+        byte.toString(16).padStart(2,"0")
+    )
+    .join("");
 
 }
 
 
 /* =========================================
-   ERROR MESSAGE
+   SHOW ERROR
 ========================================= */
 
-function showError(message) {
+function showError(message){
 
     const error =
         document.getElementById("error");
@@ -400,23 +315,20 @@ function showError(message) {
     const success =
         document.getElementById("success");
 
-    error.innerText =
-        message;
+    success.style.display="none";
 
-    error.style.display =
-        "block";
+    error.innerText=message;
 
-    success.style.display =
-        "none";
+    error.style.display="block";
 
 }
 
 
 /* =========================================
-   SUCCESS MESSAGE
+   SHOW SUCCESS
 ========================================= */
 
-function showSuccess(message) {
+function showSuccess(message){
 
     const error =
         document.getElementById("error");
@@ -424,14 +336,41 @@ function showSuccess(message) {
     const success =
         document.getElementById("success");
 
-    success.innerText =
-        message;
+    error.style.display="none";
 
-    success.style.display =
-        "block";
+    success.innerText=message;
 
-    error.style.display =
-        "none";
+    success.style.display="block";
+
+}
+
+
+/* =========================================
+   TOGGLE PASSWORD
+========================================= */
+
+function togglePassword(){
+
+    const password =
+        document.getElementById("password");
+
+    const button =
+        document.getElementById("showBtn");
+
+
+    if(password.type==="password"){
+
+        password.type="text";
+
+        button.innerText="Hide";
+
+    }else{
+
+        password.type="password";
+
+        button.innerText="Show";
+
+    }
 
 }
 
@@ -440,47 +379,31 @@ function showSuccess(message) {
    LOGIN
 ========================================= */
 
-async function loginUser(event) {
+async function loginUser(event){
 
     event.preventDefault();
 
 
     const email =
-        document
-            .getElementById("email")
-            .value
-            .trim()
-            .toLowerCase();
+        document.getElementById("email")
+        .value
+        .trim()
+        .toLowerCase();
 
 
     const password =
-        document
-            .getElementById("password")
-            .value;
+        document.getElementById("password")
+        .value;
 
 
     const loginButton =
-        document.getElementById(
-            "loginButton"
-        );
+        document.getElementById("loginButton");
 
 
-    document.getElementById(
-        "error"
-    ).style.display = "none";
-
-
-    document.getElementById(
-        "success"
-    ).style.display = "none";
-
-
-    /* VALIDATION */
-
-    if (!email) {
+    if(!email || !password){
 
         showError(
-            "Please enter your email."
+            "Please enter email and password."
         );
 
         return;
@@ -488,40 +411,26 @@ async function loginUser(event) {
     }
 
 
-    if (!password) {
+    loginButton.disabled=true;
 
-        showError(
-            "Please enter your password."
-        );
-
-        return;
-
-    }
+    loginButton.innerText="Checking...";
 
 
-    loginButton.disabled =
-        true;
-
-    loginButton.innerText =
-        "Checking...";
-
-
-    try {
-
+    try{
 
         /* GET USERS */
 
         let users =
-    JSON.parse(
-        localStorage.getItem(
-            "Ham EarnUsers"
-        ) || "[]"
-    );
+            JSON.parse(
+                localStorage.getItem(
+                    "Ham EarnUsers"
+                ) || "[]"
+            );
 
 
-        if (!Array.isArray(users)) {
+        if(!Array.isArray(users)){
 
-            users = [];
+            users=[];
 
         }
 
@@ -530,66 +439,49 @@ async function loginUser(event) {
 
         const user =
             users.find(
-                item => {
-
-                    const userEmail =
-                        String(
-                            item.email || ""
-                        )
-                        .trim()
-                        .toLowerCase();
-
-                    return (
-                        userEmail === email
-                    );
-
-                }
+                item =>
+                String(item.email || "")
+                .trim()
+                .toLowerCase()
+                === email
             );
 
 
-        /* USER NOT FOUND */
-
-        if (!user) {
+        if(!user){
 
             showError(
-                "No account found with this email. Please create an account first."
+                "No account found with this email."
             );
 
-            loginButton.disabled =
-                false;
+            loginButton.disabled=false;
 
-            loginButton.innerText =
-                "Login";
+            loginButton.innerText="Login";
 
             return;
 
         }
 
 
-        /* HASH PASSWORD */
+        /* HASH ENTERED PASSWORD */
 
         const passwordHash =
-            await hashPassword(
-                password
-            );
+            await hashPassword(password);
 
 
         /* CHECK PASSWORD */
 
-        if (
-            String(user.password || "") !==
-            String(passwordHash)
-        ) {
+        if(
+            String(user.password || "")
+            !== passwordHash
+        ){
 
             showError(
                 "Incorrect password. Please try again."
             );
 
-            loginButton.disabled =
-                false;
+            loginButton.disabled=false;
 
-            loginButton.innerText =
-                "Login";
+            loginButton.innerText="Login";
 
             return;
 
@@ -600,72 +492,39 @@ async function loginUser(event) {
            LOGIN SUCCESS
         ================================= */
 
-
         localStorage.setItem(
             "loggedInUser",
             String(user.id)
         );
 
 
-        localStorage.setItem(
-            "balance",
-            String(
-                user.balance || 0
-            )
-        );
-
-
-        localStorage.setItem(
-            "todayReward",
-            String(
-                user.todayReward || 0
-            )
-        );
-
-
-        localStorage.setItem(
-            "totalReward",
-            String(
-                user.totalReward || 0
-            )
-        );
-
-
         showSuccess(
-            "Login successful! Redirecting..."
+            "Login successful! Opening dashboard..."
         );
 
 
-        loginButton.innerText =
-            "Success";
+        setTimeout(
+            function(){
 
+                window.location.href=
+                    "dashboard.html";
 
-        /* GO TO DASHBOARD */
-
-        setTimeout(function () {
-
-            window.location.href =
-                "dashboard.html";
-
-        }, 800);
-
-
-    } catch (error) {
-
-        console.error(
-            "Login Error:",
-            error
+            },
+            500
         );
+
+
+    }catch(error){
+
+        console.error(error);
 
         showError(
             "Something went wrong. Please try again."
         );
 
-        loginButton.disabled =
-            false;
+        loginButton.disabled=false;
 
-        loginButton.innerText =
-            "Login";
+        loginButton.innerText="Login";
 
     }
 
@@ -673,61 +532,29 @@ async function loginUser(event) {
 
 
 /* =========================================
-   SHOW / HIDE PASSWORD
+   ENTER KEY
 ========================================= */
 
 document
-    .getElementById("showPasswordBtn")
-    .addEventListener(
-        "click",
-        function () {
+.getElementById("password")
+.addEventListener(
+    "keydown",
+    function(event){
 
-            const password =
-                document.getElementById(
-                    "password"
-                );
+        if(event.key==="Enter"){
 
+            event.preventDefault();
 
-            if (
-                password.type ===
-                "password"
-            ) {
-
-                password.type =
-                    "text";
-
-                this.innerText =
-                    "Hide";
-
-            } else {
-
-                password.type =
-                    "password";
-
-                this.innerText =
-                    "Show";
-
-            }
+            document
+            .querySelector("form")
+            .requestSubmit();
 
         }
-    );
 
-
-/* =========================================
-   LOGIN FORM
-========================================= */
-
-document
-    .getElementById("loginForm")
-    .addEventListener(
-        "submit",
-        loginUser
-    );
-
+    }
+);
 
 </script>
 
-
 </body>
-
 </html>
