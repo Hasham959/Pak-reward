@@ -9,7 +9,9 @@
 
 <style>
 
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box
+}
 
 body{
     margin:0;
@@ -17,6 +19,8 @@ body{
     background:#f5f7fb;
     color:#17202a
 }
+
+/* LOGIN */
 
 .login-screen{
     min-height:100vh;
@@ -58,9 +62,9 @@ label{
     font-size:14px
 }
 
-input{
+input,select{
     width:100%;
-    padding:13px;
+    padding:12px;
     border:1px solid #d8dde4;
     border-radius:8px;
     font-size:15px
@@ -89,7 +93,11 @@ input{
     font-size:13px
 }
 
-#adminPanel{display:none}
+#adminPanel{
+    display:none
+}
+
+/* HEADER */
 
 header{
     background:#087443;
@@ -121,11 +129,15 @@ header{
     cursor:pointer
 }
 
+/* CONTAINER */
+
 .container{
-    max-width:1250px;
+    max-width:1300px;
     margin:25px auto;
     padding:0 18px
 }
+
+/* STATS */
 
 .stats{
     display:grid;
@@ -152,6 +164,8 @@ header{
     color:#087443
 }
 
+/* SECTION */
+
 .section{
     background:white;
     margin-top:22px;
@@ -172,6 +186,8 @@ header{
     margin-bottom:15px
 }
 
+/* TABLE */
+
 .table-wrap{
     overflow-x:auto
 }
@@ -179,7 +195,7 @@ header{
 table{
     width:100%;
     border-collapse:collapse;
-    min-width:1050px
+    min-width:1100px
 }
 
 th,td{
@@ -194,27 +210,7 @@ th{
     background:#f5f7fb
 }
 
-.tabs{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    margin-bottom:18px
-}
-
-.tab{
-    background:#eef2f5;
-    color:#17202a;
-    border:none;
-    padding:10px 14px;
-    border-radius:7px;
-    cursor:pointer;
-    font-weight:bold
-}
-
-.tab.active{
-    background:#087443;
-    color:white
-}
+/* BUTTONS */
 
 button{
     cursor:pointer;
@@ -244,6 +240,34 @@ button{
     color:white
 }
 
+.view-btn{
+    background:#eaf7f0;
+    color:#087443;
+    margin-top:5px
+}
+
+/* TABS */
+
+.tabs{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:18px
+}
+
+.tab{
+    background:#eef2f5;
+    color:#17202a;
+    padding:10px 14px
+}
+
+.tab.active{
+    background:#087443;
+    color:white
+}
+
+/* BADGES */
+
 .badge{
     padding:5px 8px;
     border-radius:5px;
@@ -256,17 +280,23 @@ button{
     color:#856404
 }
 
+.approved{
+    background:#eaf7f0;
+    color:#087443
+}
+
+.rejected{
+    background:#fff1ef;
+    color:#c0392b
+}
+
 .empty{
     text-align:center;
     padding:25px;
     color:#697480
 }
 
-.view-btn{
-    background:#eaf7f0;
-    color:#087443;
-    margin-top:5px
-}
+/* DETAILS */
 
 .details{
     line-height:1.7
@@ -282,6 +312,105 @@ button{
     display:block;
     cursor:pointer
 }
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:9999;
+    padding:20px;
+    overflow:auto
+}
+
+.modal-box{
+    background:white;
+    width:100%;
+    max-width:500px;
+    margin:40px auto;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 40px rgba(0,0,0,.2)
+}
+
+.modal-box h2{
+    margin-top:0;
+    color:#087443
+}
+
+.modal-actions{
+    display:flex;
+    gap:10px;
+    margin-top:20px
+}
+
+.modal-actions button{
+    flex:1;
+    padding:12px
+}
+
+.cancel{
+    background:#eee;
+    color:#333
+}
+
+.confirm-add{
+    background:#087443;
+    color:white
+}
+
+.confirm-deduct{
+    background:#c0392b;
+    color:white
+}
+
+/* USER DETAILS */
+
+.user-info{
+    background:#f7f9fb;
+    border-radius:10px;
+    padding:15px;
+    margin-top:10px
+}
+
+.info-row{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:9px 0;
+    border-bottom:1px solid #e5e8ec
+}
+
+.info-row:last-child{
+    border-bottom:none
+}
+
+.info-label{
+    color:#697480
+}
+
+.info-value{
+    font-weight:bold
+}
+
+.history-box{
+    margin-top:18px;
+    max-height:300px;
+    overflow:auto
+}
+
+.history-item{
+    padding:12px;
+    border-bottom:1px solid #eee
+}
+
+.history-item small{
+    color:#777
+}
+
+/* MOBILE */
 
 @media(max-width:800px){
 
@@ -304,6 +433,11 @@ button{
         flex-direction:column;
         text-align:center
     }
+
+    .header-buttons{
+        width:100%;
+        justify-content:center
+    }
 }
 
 </style>
@@ -312,7 +446,7 @@ button{
 <body>
 
 
-<!-- ADMIN LOGIN -->
+<!-- ================= ADMIN LOGIN ================= -->
 
 <div class="login-screen" id="loginScreen">
 
@@ -360,7 +494,7 @@ Admin Login
 </div>
 
 
-<!-- ADMIN PANEL -->
+<!-- ================= ADMIN PANEL ================= -->
 
 <div id="adminPanel">
 
@@ -375,7 +509,7 @@ Admin Login
 <div class="header-buttons">
 
 <button class="header-btn" onclick="goHome()">
-Home
+🏠 Home
 </button>
 
 <button class="header-btn" onclick="logoutAdmin()">
@@ -390,7 +524,7 @@ Logout
 <div class="container">
 
 
-<!-- STATS -->
+<!-- ================= STATS ================= -->
 
 <div class="stats">
 
@@ -410,23 +544,23 @@ Logout
 </div>
 
 <div class="stat">
-<span>Total Balance</span>
+<span>Total User Balance</span>
 <strong id="totalBalance">Rs. 0</strong>
 </div>
 
 </div>
 
 
-<!-- USERS -->
+<!-- ================= USERS ================= -->
 
 <div class="section">
 
-<h2>Accounts & Balances</h2>
+<h2>👥 Accounts & Balance Management</h2>
 
 <input
 class="search"
 id="userSearch"
-placeholder="Search name or email..."
+placeholder="Search user by name or email..."
 oninput="showUsers()"
 >
 
@@ -437,13 +571,16 @@ oninput="showUsers()"
 <thead>
 
 <tr>
+
 <th>ID</th>
 <th>Name</th>
 <th>Email</th>
 <th>Balance</th>
 <th>Today Reward</th>
 <th>Total Reward</th>
-<th>Action</th>
+<th>Balance Management</th>
+<th>Details</th>
+
 </tr>
 
 </thead>
@@ -457,11 +594,11 @@ oninput="showUsers()"
 </div>
 
 
-<!-- REQUESTS -->
+<!-- ================= REQUESTS ================= -->
 
 <div class="section">
 
-<h2>Deposit & Withdrawal Requests</h2>
+<h2>💳 Deposit & Withdrawal Requests</h2>
 
 <div class="tabs">
 
@@ -488,6 +625,7 @@ Pending Withdrawals
 <thead>
 
 <tr>
+
 <th>ID</th>
 <th>User</th>
 <th>Amount</th>
@@ -495,6 +633,7 @@ Pending Withdrawals
 <th>Payment Details</th>
 <th>Status</th>
 <th>Action</th>
+
 </tr>
 
 </thead>
@@ -507,13 +646,102 @@ Pending Withdrawals
 
 </div>
 
+
 </div>
+</div>
+
+
+<!-- ================= BALANCE MODAL ================= -->
+
+<div class="modal" id="balanceModal">
+
+<div class="modal-box">
+
+<h2 id="balanceModalTitle">
+Balance Management
+</h2>
+
+<p>
+User:
+<strong id="balanceUserName"></strong>
+</p>
+
+<p>
+Current Balance:
+<strong id="balanceCurrent">
+Rs. 0
+</strong>
+</p>
+
+<label>Amount</label>
+
+<input
+type="number"
+id="balanceAmount"
+min="1"
+placeholder="Enter amount"
+>
+
+<label>Reason</label>
+
+<input
+type="text"
+id="balanceReason"
+placeholder="Enter reason"
+>
+
+<div class="modal-actions">
+
+<button
+class="cancel"
+onclick="closeModal()"
+>
+Cancel
+</button>
+
+<button
+id="balanceConfirmBtn"
+>
+Confirm
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= USER DETAILS MODAL ================= -->
+
+<div class="modal" id="userDetailsModal">
+
+<div class="modal-box">
+
+<h2>👤 User Details</h2>
+
+<div id="userDetailsContent"></div>
+
+<div class="modal-actions">
+
+<button
+class="cancel"
+onclick="closeUserDetails()"
+>
+Close
+</button>
+
+</div>
+
+</div>
+
 </div>
 
 
 <script>
 
-/* ADMIN LOGIN */
+
+/* ================= ADMIN LOGIN ================= */
 
 const ADMIN_EMAIL="admin@pakreward.com";
 const ADMIN_PASSWORD="Admin123";
@@ -526,7 +754,8 @@ document
 
     const email=
     document.getElementById("adminEmail")
-    .value.trim().toLowerCase();
+    .value.trim()
+    .toLowerCase();
 
     const password=
     document.getElementById("adminPassword").value;
@@ -547,12 +776,13 @@ document
 
         document.getElementById("loginError")
         .style.display="block";
+
     }
 
 });
 
 
-/* SHOW PANEL */
+/* ================= SHOW PANEL ================= */
 
 function showAdminPanel(){
 
@@ -566,7 +796,7 @@ function showAdminPanel(){
 }
 
 
-/* LOGOUT */
+/* ================= LOGOUT ================= */
 
 function logoutAdmin(){
 
@@ -578,7 +808,7 @@ function logoutAdmin(){
 }
 
 
-/* HOME */
+/* ================= HOME ================= */
 
 function goHome(){
 
@@ -586,14 +816,14 @@ function goHome(){
 }
 
 
-/* DATA */
+/* ================= DATA ================= */
 
 let users=[];
 let deposits=[];
 let withdrawals=[];
 
 
-/* MONEY */
+/* ================= MONEY ================= */
 
 function money(value){
 
@@ -603,7 +833,7 @@ function money(value){
 }
 
 
-/* LOAD */
+/* ================= LOAD ================= */
 
 function loadData(){
 
@@ -611,17 +841,23 @@ function loadData(){
 
         users=
         JSON.parse(
-            localStorage.getItem("pakrewardUsers")||"[]"
+            localStorage.getItem(
+                "pakrewardUsers"
+            )||"[]"
         );
 
         deposits=
         JSON.parse(
-            localStorage.getItem("pakrewardDeposits")||"[]"
+            localStorage.getItem(
+                "pakrewardDeposits"
+            )||"[]"
         );
 
         withdrawals=
         JSON.parse(
-            localStorage.getItem("pakrewardWithdrawals")||"[]"
+            localStorage.getItem(
+                "pakrewardWithdrawals"
+            )||"[]"
         );
 
     }catch(e){
@@ -631,17 +867,18 @@ function loadData(){
         withdrawals=[];
     }
 
-    if(!Array.isArray(users))users=[];
-    if(!Array.isArray(deposits))deposits=[];
-    if(!Array.isArray(withdrawals))withdrawals=[];
+    if(!Array.isArray(users)) users=[];
+    if(!Array.isArray(deposits)) deposits=[];
+    if(!Array.isArray(withdrawals)) withdrawals=[];
 
     updateStats();
     showUsers();
     showTransaction("deposits");
+
 }
 
 
-/* SAVE */
+/* ================= SAVE ================= */
 
 function saveData(){
 
@@ -659,216 +896,707 @@ function saveData(){
         "pakrewardWithdrawals",
         JSON.stringify(withdrawals)
     );
+
 }
 
 
-/* STATS */
+/* ================= STATS ================= */
 
 function updateStats(){
 
     let total=0;
 
     users.forEach(user=>{
-        total+=Number(user.balance||0);
+
+        total+=Number(
+            user.balance||0
+        );
+
     });
 
     const pd=
-    deposits.filter(x=>x.status==="pending").length;
+    deposits.filter(
+        x=>x.status==="pending"
+    ).length;
 
     const pw=
-    withdrawals.filter(x=>x.status==="pending").length;
+    withdrawals.filter(
+        x=>x.status==="pending"
+    ).length;
 
-    document.getElementById("totalAccounts").innerText=
-    users.length;
+    document.getElementById(
+        "totalAccounts"
+    ).innerText=users.length;
 
-    document.getElementById("pendingDeposits").innerText=
-    pd;
+    document.getElementById(
+        "pendingDeposits"
+    ).innerText=pd;
 
-    document.getElementById("pendingWithdrawals").innerText=
-    pw;
+    document.getElementById(
+        "pendingWithdrawals"
+    ).innerText=pw;
 
-    document.getElementById("totalBalance").innerText=
-    money(total);
+    document.getElementById(
+        "totalBalance"
+    ).innerText=money(total);
+
 }
 
 
-/* USERS */
+/* ================= USERS ================= */
 
 function showUsers(){
 
     const table=
-    document.getElementById("usersTable");
+    document.getElementById(
+        "usersTable"
+    );
 
     const search=
-    document.getElementById("userSearch")
-    .value.toLowerCase().trim();
+    document.getElementById(
+        "userSearch"
+    )
+    .value
+    .toLowerCase()
+    .trim();
 
     table.innerHTML="";
 
-    const filtered=users.filter(user=>{
+    const filtered=
+    users.filter(user=>{
 
         const name=
-        String(user.name||"").toLowerCase();
+        String(user.name||"")
+        .toLowerCase();
 
         const email=
-        String(user.email||"").toLowerCase();
+        String(user.email||"")
+        .toLowerCase();
 
         return(
             name.includes(search)||
             email.includes(search)
         );
+
     });
+
 
     if(!filtered.length){
 
         table.innerHTML=`
+
         <tr>
-        <td colspan="7" class="empty">
+
+        <td
+        colspan="8"
+        class="empty"
+        >
+
         No accounts found.
+
         </td>
-        </tr>`;
+
+        </tr>
+
+        `;
 
         return;
     }
 
+
     filtered.forEach(user=>{
 
-        const row=document.createElement("tr");
+        const row=
+        document.createElement("tr");
+
 
         row.innerHTML=`
 
-        <td>${safe(user.id||"-")}</td>
+        <td>
+        ${safe(user.id||"-")}
+        </td>
 
-        <td>${safe(user.name||"User")}</td>
+        <td>
+        <strong>
+        ${safe(user.name||"User")}
+        </strong>
+        </td>
 
-        <td>${safe(user.email||"-")}</td>
+        <td>
+        ${safe(user.email||"-")}
+        </td>
 
-        <td>${money(user.balance)}</td>
+        <td>
+        <strong>
+        ${money(user.balance)}
+        </strong>
+        </td>
 
-        <td>${money(user.todayReward)}</td>
+        <td>
+        ${money(user.todayReward)}
+        </td>
 
-        <td>${money(user.totalReward)}</td>
+        <td>
+        ${money(user.totalReward)}
+        </td>
 
         <td>
 
         <button
         class="add"
-        onclick="addBalance('${js(user.id)}')">
-        +10
+        onclick="openBalanceModal('${js(user.id)}','add')"
+        >
+        + Add
         </button>
 
         <button
         class="deduct"
-        onclick="deductBalance('${js(user.id)}')">
-        -10
+        onclick="openBalanceModal('${js(user.id)}','deduct')"
+        >
+        - Deduct
         </button>
 
-        </td>`;
+        </td>
+
+        <td>
+
+        <button
+        class="view-btn"
+        onclick="viewUser('${js(user.id)}')"
+        >
+        View Details
+        </button>
+
+        </td>
+
+        `;
 
         table.appendChild(row);
+
     });
+
 }
 
 
-/* FIND USER */
+/* ================= FIND USER ================= */
 
 function findUser(id){
 
     return users.find(
-        user=>String(user.id)===String(id)
+        user=>
+        String(user.id)===String(id)
     );
+
 }
 
 
-/* ADD */
+/* ================= BALANCE MODAL ================= */
 
-function addBalance(id){
+let selectedBalanceUser=null;
+let balanceAction="add";
+
+
+function openBalanceModal(id,action){
 
     const user=findUser(id);
 
     if(!user)return;
 
-    user.balance=
-    Number(user.balance||0)+10;
+    selectedBalanceUser=user;
+    balanceAction=action;
 
-    user.totalReward=
-    Number(user.totalReward||0)+10;
+    document.getElementById(
+        "balanceUserName"
+    ).innerText=
+    user.name||"User";
 
-    saveData();
-    loadData();
+    document.getElementById(
+        "balanceCurrent"
+    ).innerText=
+    money(user.balance);
 
-    alert("Rs. 10 added to balance.");
-}
+    document.getElementById(
+        "balanceAmount"
+    ).value="";
+
+    document.getElementById(
+        "balanceReason"
+    ).value="";
 
 
-/* DEDUCT */
+    const title=
+    document.getElementById(
+        "balanceModalTitle"
+    );
 
-function deductBalance(id){
+    const button=
+    document.getElementById(
+        "balanceConfirmBtn"
+    );
 
-    const user=findUser(id);
 
-    if(!user)return;
+    if(action==="add"){
 
-    if(Number(user.balance||0)<10){
+        title.innerText=
+        "➕ Add Balance";
 
-        alert("Balance is less than Rs. 10.");
-        return;
+        button.innerText=
+        "Add Balance";
+
+        button.className=
+        "confirm-add";
+
+    }else{
+
+        title.innerText=
+        "➖ Deduct Balance";
+
+        button.innerText=
+        "Deduct Balance";
+
+        button.className=
+        "confirm-deduct";
+
     }
 
-    user.balance=
-    Number(user.balance||0)-10;
 
-    saveData();
-    loadData();
+    document.getElementById(
+        "balanceModal"
+    ).style.display="block";
 
-    alert("Rs. 10 deducted.");
 }
 
 
-/* TRANSACTION TABLE */
+function closeModal(){
+
+    document.getElementById(
+        "balanceModal"
+    ).style.display="none";
+
+    selectedBalanceUser=null;
+
+}
+
+
+/* ================= CONFIRM BALANCE ================= */
+
+document
+.getElementById(
+    "balanceConfirmBtn"
+)
+.addEventListener(
+    "click",
+    function(){
+
+        if(!selectedBalanceUser)return;
+
+
+        const amount=
+        Number(
+            document.getElementById(
+                "balanceAmount"
+            ).value
+        );
+
+        const reason=
+        document.getElementById(
+            "balanceReason"
+        )
+        .value
+        .trim();
+
+
+        if(!amount||amount<=0){
+
+            alert(
+                "Please enter a valid amount."
+            );
+
+            return;
+        }
+
+
+        if(!reason){
+
+            alert(
+                "Please enter a reason."
+            );
+
+            return;
+        }
+
+
+        const user=
+        selectedBalanceUser;
+
+
+        if(balanceAction==="add"){
+
+            user.balance=
+            Number(user.balance||0)+
+            amount;
+
+        }else{
+
+            if(
+                Number(user.balance||0)
+                <amount
+            ){
+
+                alert(
+                    "User balance is not enough."
+                );
+
+                return;
+            }
+
+            user.balance=
+            Number(user.balance||0)-
+            amount;
+
+        }
+
+
+        /* BALANCE HISTORY */
+
+        let history=
+        JSON.parse(
+            localStorage.getItem(
+                "balanceHistory_"+user.id
+            )||"[]"
+        );
+
+        if(!Array.isArray(history))
+            history=[];
+
+
+        history.unshift({
+
+            id:Date.now(),
+
+            type:
+            balanceAction==="add"
+            ?"Admin Added"
+            :"Admin Deducted",
+
+            amount:amount,
+
+            reason:reason,
+
+            date:
+            new Date()
+            .toLocaleString()
+
+        });
+
+
+        history=
+        history.slice(0,100);
+
+
+        localStorage.setItem(
+            "balanceHistory_"+user.id,
+            JSON.stringify(history)
+        );
+
+
+        /* TRANSACTION */
+
+        let transactions=
+        JSON.parse(
+            localStorage.getItem(
+                "transactions_"+user.id
+            )||"[]"
+        );
+
+        if(!Array.isArray(transactions))
+            transactions=[];
+
+
+        transactions.unshift({
+
+            title:
+            balanceAction==="add"
+            ?"Admin Balance Added"
+            :"Admin Balance Deducted",
+
+            amount:amount,
+
+            date:
+            new Date()
+            .toLocaleString(),
+
+            reason:reason,
+
+            type:"admin"
+
+        });
+
+
+        localStorage.setItem(
+            "transactions_"+user.id,
+            JSON.stringify(
+                transactions.slice(0,20)
+            )
+        );
+
+
+        saveData();
+
+        closeModal();
+
+        loadData();
+
+
+        alert(
+
+            balanceAction==="add"
+            ?money(amount)+
+              " added successfully."
+            :money(amount)+
+              " deducted successfully."
+
+        );
+
+    }
+);
+
+
+/* ================= USER DETAILS ================= */
+
+function viewUser(id){
+
+    const user=findUser(id);
+
+    if(!user)return;
+
+
+    let history=
+    JSON.parse(
+        localStorage.getItem(
+            "balanceHistory_"+user.id
+        )||"[]"
+    );
+
+    if(!Array.isArray(history))
+        history=[];
+
+
+    let historyHTML="";
+
+
+    if(!history.length){
+
+        historyHTML=`
+
+        <div class="empty">
+        No admin balance history.
+        </div>
+
+        `;
+
+    }else{
+
+        history.forEach(item=>{
+
+            const positive=
+            item.type==="Admin Added";
+
+
+            historyHTML+=`
+
+            <div class="history-item">
+
+            <strong>
+            ${positive?"➕":"➖"}
+            ${safe(item.type)}
+            </strong>
+
+            <strong>
+            ${money(item.amount)}
+            </strong>
+
+            <br>
+
+            <span>
+            Reason:
+            ${safe(item.reason)}
+            </span>
+
+            <br>
+
+            <small>
+            ${safe(item.date)}
+            </small>
+
+            </div>
+
+            `;
+
+        });
+
+    }
+
+
+    document.getElementById(
+        "userDetailsContent"
+    ).innerHTML=`
+
+    <div class="user-info">
+
+        <div class="info-row">
+        <span class="info-label">User ID</span>
+        <span class="info-value">
+        ${safe(user.id||"-")}
+        </span>
+        </div>
+
+        <div class="info-row">
+        <span class="info-label">Name</span>
+        <span class="info-value">
+        ${safe(user.name||"User")}
+        </span>
+        </div>
+
+        <div class="info-row">
+        <span class="info-label">Email</span>
+        <span class="info-value">
+        ${safe(user.email||"-")}
+        </span>
+        </div>
+
+        <div class="info-row">
+        <span class="info-label">Current Balance</span>
+        <span class="info-value">
+        ${money(user.balance)}
+        </span>
+        </div>
+
+        <div class="info-row">
+        <span class="info-label">Today's Reward</span>
+        <span class="info-value">
+        ${money(user.todayReward)}
+        </span>
+        </div>
+
+        <div class="info-row">
+        <span class="info-label">Total Reward</span>
+        <span class="info-value">
+        ${money(user.totalReward)}
+        </span>
+        </div>
+
+        <div class="info-row">
+        <span class="info-label">Active Plan</span>
+        <span class="info-value">
+        ${safe(user.selectedPlan||"No Plan")}
+        </span>
+        </div>
+
+    </div>
+
+
+    <h3>
+    Balance Management History
+    </h3>
+
+    <div class="history-box">
+
+    ${historyHTML}
+
+    </div>
+
+    `;
+
+
+    document.getElementById(
+        "userDetailsModal"
+    ).style.display="block";
+
+}
+
+
+function closeUserDetails(){
+
+    document.getElementById(
+        "userDetailsModal"
+    ).style.display="none";
+
+}
+
+
+/* ================= TRANSACTION TABLE ================= */
 
 function showTransaction(type,button){
 
     if(button){
 
-        document.querySelectorAll(".tab")
+        document
+        .querySelectorAll(".tab")
         .forEach(tab=>{
-            tab.classList.remove("active");
+            tab.classList.remove(
+                "active"
+            );
         });
 
         button.classList.add("active");
+
     }
+
 
     const data=
     type==="deposits"
     ?deposits
     :withdrawals;
 
+
     const table=
-    document.getElementById("transactionTable");
+    document.getElementById(
+        "transactionTable"
+    );
 
     table.innerHTML="";
 
+
     const pending=
-    data.filter(item=>item.status==="pending");
+    data.filter(
+        item=>item.status==="pending"
+    );
+
 
     if(!pending.length){
 
         table.innerHTML=`
+
         <tr>
-        <td colspan="7" class="empty">
+
+        <td
+        colspan="7"
+        class="empty"
+        >
+
         No pending ${type}.
+
         </td>
-        </tr>`;
+
+        </tr>
+
+        `;
 
         return;
     }
 
+
     pending.forEach(item=>{
 
-        const row=document.createElement("tr");
+        const row=
+        document.createElement("tr");
+
 
         let details="";
+
+
+        /* DEPOSIT DETAILS */
 
         if(type==="deposits"){
 
@@ -876,27 +1604,49 @@ function showTransaction(type,button){
 
             <div class="details">
 
-            <strong>Method:</strong>
-            ${safe(item.method||"-")}<br>
+            <strong>
+            Method:
+            </strong>
 
-            <strong>Transaction ID:</strong>
-            ${safe(item.transactionId||"-")}<br>
+            ${safe(item.method||"-")}
+
+            <br>
+
+            <strong>
+            Transaction ID:
+            </strong>
+
+            ${safe(
+                item.transactionId||"-"
+            )}
+
+            <br>
 
             ${
                 item.screenshot
+
                 ?
+
                 `<img
                 class="screenshot"
                 src="${item.screenshot}"
                 onclick="viewScreenshot(this.src)"
-                title="Click to view"
-                >`
+                >
+                `
+
                 :
+
                 "No screenshot"
             }
 
-            </div>`;
+            </div>
+
+            `;
+
         }
+
+
+        /* WITHDRAW DETAILS */
 
         else{
 
@@ -904,25 +1654,54 @@ function showTransaction(type,button){
 
             <div class="details">
 
-            <strong>Method:</strong>
-            ${safe(item.method||"-")}<br>
+            <strong>
+            Method:
+            </strong>
+
+            ${safe(item.method||"-")}
+
+            <br>
 
             ${
                 item.bank
+
                 ?
-                `<strong>Bank:</strong>
-                ${safe(item.bank)}<br>`
+
+                `<strong>
+                Bank:
+                </strong>
+
+                ${safe(item.bank)}
+
+                <br>`
+
                 :""
             }
 
-            <strong>Account Title:</strong>
-            ${safe(item.accountTitle||"-")}<br>
+            <strong>
+            Account Title:
+            </strong>
 
-            <strong>Account:</strong>
-            ${safe(item.account||"-")}<br>
+            ${safe(
+                item.accountTitle||"-"
+            )}
 
-            </div>`;
+            <br>
+
+            <strong>
+            Account:
+            </strong>
+
+            ${safe(
+                item.account||"-"
+            )}
+
+            </div>
+
+            `;
+
         }
+
 
         row.innerHTML=`
 
@@ -931,12 +1710,27 @@ function showTransaction(type,button){
         </td>
 
         <td>
-        <strong>${safe(item.userName||"User")}</strong><br>
-        <small>${safe(item.email||"-")}</small>
+
+        <strong>
+        ${safe(
+            item.userName||"User"
+        )}
+        </strong>
+
+        <br>
+
+        <small>
+        ${safe(item.email||"-")}
+        </small>
+
         </td>
 
         <td>
-        <strong>${money(item.amount)}</strong>
+
+        <strong>
+        ${money(item.amount)}
+        </strong>
+
         </td>
 
         <td>
@@ -948,33 +1742,50 @@ function showTransaction(type,button){
         </td>
 
         <td>
+
         <span class="badge pending">
         Pending
         </span>
+
         </td>
 
         <td>
 
         <button
         class="approve"
-        onclick="approveTransaction('${js(item.id)}','${type}')">
+        onclick=
+        "approveTransaction(
+        '${js(item.id)}',
+        '${type}'
+        )"
+        >
         Approve
         </button>
 
         <button
         class="reject"
-        onclick="rejectTransaction('${js(item.id)}','${type}')">
+        onclick=
+        "rejectTransaction(
+        '${js(item.id)}',
+        '${type}'
+        )"
+        >
         Reject
         </button>
 
-        </td>`;
+        </td>
+
+        `;
+
 
         table.appendChild(row);
+
     });
+
 }
 
 
-/* APPROVE */
+/* ================= APPROVE ================= */
 
 function approveTransaction(id,type){
 
@@ -983,21 +1794,32 @@ function approveTransaction(id,type){
     ?deposits
     :withdrawals;
 
+
     const item=
     list.find(
-        x=>String(x.id)===String(id)
+        x=>
+        String(x.id)===
+        String(id)
     );
+
 
     if(!item)return;
 
+
     const user=
     users.find(
-        u=>String(u.id)===String(item.userId)
+        u=>
+        String(u.id)===
+        String(item.userId)
     );
+
 
     if(!user){
 
-        alert("User account not found.");
+        alert(
+            "User account not found."
+        );
+
         return;
     }
 
@@ -1009,22 +1831,39 @@ function approveTransaction(id,type){
         user.balance=
         Number(user.balance||0)+
         Number(item.amount||0);
+
+
+        /* Deposit transaction */
+
+        addUserTransaction(
+            user.id,
+            "Deposit Approved",
+            item.amount
+        );
+
     }
 
 
     /*
        WITHDRAWAL
 
-       Dashboard already reserved the amount
-       when request was created.
+       Amount was already reserved
+       when user submitted request.
 
-       Therefore DO NOT deduct again.
+       DO NOT deduct again.
     */
 
     if(type==="withdrawals"){
 
         item.approvedAmount=
         Number(item.amount||0);
+
+        addUserTransaction(
+            user.id,
+            "Withdrawal Approved",
+            item.amount
+        );
+
     }
 
 
@@ -1033,14 +1872,19 @@ function approveTransaction(id,type){
     item.approvedDate=
     new Date().toLocaleString();
 
+
     saveData();
     loadData();
 
-    alert("Transaction approved successfully.");
+
+    alert(
+        "Transaction approved successfully."
+    );
+
 }
 
 
-/* REJECT */
+/* ================= REJECT ================= */
 
 function rejectTransaction(id,type){
 
@@ -1049,32 +1893,50 @@ function rejectTransaction(id,type){
     ?deposits
     :withdrawals;
 
+
     const item=
     list.find(
-        x=>String(x.id)===String(id)
+        x=>
+        String(x.id)===
+        String(id)
     );
+
 
     if(!item)return;
 
 
     /*
-       If withdrawal was rejected,
-       return reserved amount to user.
+       Withdrawal amount was reserved
+       from user balance.
+
+       Return it if rejected.
     */
 
     if(type==="withdrawals"){
 
         const user=
         users.find(
-            u=>String(u.id)===String(item.userId)
+            u=>
+            String(u.id)===
+            String(item.userId)
         );
+
 
         if(user){
 
             user.balance=
             Number(user.balance||0)+
             Number(item.amount||0);
+
+
+            addUserTransaction(
+                user.id,
+                "Withdrawal Rejected - Amount Returned",
+                item.amount
+            );
+
         }
+
     }
 
 
@@ -1083,27 +1945,89 @@ function rejectTransaction(id,type){
     item.rejectedDate=
     new Date().toLocaleString();
 
+
     saveData();
     loadData();
 
-    alert("Transaction rejected.");
+
+    alert(
+        "Transaction rejected."
+    );
+
 }
 
 
-/* SCREENSHOT VIEW */
+/* ================= USER TRANSACTION ================= */
+
+function addUserTransaction(
+    userId,
+    title,
+    amount
+){
+
+    let transactions=
+    JSON.parse(
+        localStorage.getItem(
+            "transactions_"+userId
+        )||"[]"
+    );
+
+
+    if(!Array.isArray(transactions))
+        transactions=[];
+
+
+    transactions.unshift({
+
+        title:title,
+
+        amount:Number(amount||0),
+
+        date:
+        new Date()
+        .toLocaleString()
+
+    });
+
+
+    localStorage.setItem(
+
+        "transactions_"+userId,
+
+        JSON.stringify(
+            transactions.slice(0,20)
+        )
+
+    );
+
+}
+
+
+/* ================= SCREENSHOT ================= */
 
 function viewScreenshot(src){
 
     const win=
-    window.open("","_blank");
+    window.open(
+        "",
+        "_blank"
+    );
+
 
     if(win){
 
         win.document.write(`
+
         <html>
+
         <head>
-        <title>Transaction Screenshot</title>
+
+        <title>
+        Transaction Screenshot
+        </title>
+
         <style>
+
         body{
             margin:0;
             background:#111;
@@ -1112,25 +2036,35 @@ function viewScreenshot(src){
             align-items:center;
             min-height:100vh
         }
+
         img{
             max-width:95%;
             max-height:95vh;
             object-fit:contain
         }
+
         </style>
+
         </head>
+
         <body>
+
         <img src="${src}">
+
         </body>
+
         </html>
+
         `);
 
         win.document.close();
+
     }
+
 }
 
 
-/* SECURITY */
+/* ================= SECURITY ================= */
 
 function safe(value){
 
@@ -1140,6 +2074,7 @@ function safe(value){
     .replace(/>/g,"&gt;")
     .replace(/"/g,"&quot;")
     .replace(/'/g,"&#039;");
+
 }
 
 
@@ -1148,10 +2083,11 @@ function js(value){
     return String(value??"")
     .replace(/\\/g,"\\\\")
     .replace(/'/g,"\\'");
+
 }
 
 
-/* ADMIN SESSION */
+/* ================= ADMIN SESSION ================= */
 
 if(
     localStorage.getItem(
@@ -1160,6 +2096,7 @@ if(
 ){
 
     showAdminPanel();
+
 }
 
 </script>
