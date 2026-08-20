@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -20,7 +19,6 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #f5f7fb;
-
     min-height: 100vh;
 
     display: flex;
@@ -150,6 +148,7 @@ input:focus {
 
 .login-btn:disabled {
     background: #8aa99a;
+
     cursor: not-allowed;
 }
 
@@ -252,13 +251,16 @@ input:focus {
     </div>
 
 
-    <form onsubmit="loginUser(event)">
+    <!-- LOGIN FORM -->
+
+    <form id="loginForm">
 
 
-        <label>
+        <!-- EMAIL -->
+
+        <label for="email">
             Email
         </label>
-
 
         <input
             type="email"
@@ -269,7 +271,9 @@ input:focus {
         >
 
 
-        <label>
+        <!-- PASSWORD -->
+
+        <label for="password">
             Password
         </label>
 
@@ -288,7 +292,7 @@ input:focus {
             <button
                 type="button"
                 class="show-password"
-                onclick="togglePassword()">
+                id="showPasswordBtn">
 
                 Show
 
@@ -297,17 +301,23 @@ input:focus {
         </div>
 
 
+        <!-- ERROR -->
+
         <div
             class="error"
             id="error">
         </div>
 
 
+        <!-- SUCCESS -->
+
         <div
             class="success"
             id="success">
         </div>
 
+
+        <!-- LOGIN BUTTON -->
 
         <button
             type="submit"
@@ -322,6 +332,8 @@ input:focus {
     </form>
 
 
+    <!-- REGISTER -->
+
     <div class="register-link">
 
         Don't have an account?
@@ -332,6 +344,8 @@ input:focus {
 
     </div>
 
+
+    <!-- HOME -->
 
     <a
         href="index.html"
@@ -356,9 +370,9 @@ input:focus {
 <script>
 
 
-/* =========================
-   HASH PASSWORD
-========================= */
+/* =========================================
+   SHA-256 PASSWORD HASH
+========================================= */
 
 async function hashPassword(password) {
 
@@ -373,54 +387,74 @@ async function hashPassword(password) {
         );
 
 
-    return Array.from(
-        new Uint8Array(hash)
-    )
-    .map(
-        byte =>
-        byte.toString(16)
-            .padStart(2, "0")
-    )
-    .join("");
+    return Array
+        .from(
+            new Uint8Array(hash)
+        )
+        .map(
+            byte =>
+                byte
+                    .toString(16)
+                    .padStart(2, "0")
+        )
+        .join("");
 
 }
 
 
-/* =========================
-   SHOW ERROR
-========================= */
+/* =========================================
+   ERROR MESSAGE
+========================================= */
 
 function showError(message) {
 
     const error =
         document.getElementById("error");
 
-    error.innerText = message;
+    const success =
+        document.getElementById("success");
 
-    error.style.display = "block";
+
+    error.innerText =
+        message;
+
+    error.style.display =
+        "block";
+
+    success.style.display =
+        "none";
 
 }
 
 
-/* =========================
-   SHOW SUCCESS
-========================= */
+/* =========================================
+   SUCCESS MESSAGE
+========================================= */
 
 function showSuccess(message) {
+
+    const error =
+        document.getElementById("error");
 
     const success =
         document.getElementById("success");
 
-    success.innerText = message;
 
-    success.style.display = "block";
+    success.innerText =
+        message;
+
+    success.style.display =
+        "block";
+
+    error.style.display =
+        "none";
 
 }
 
 
-/* =========================
-   LOGIN USER
-========================= */
+/* =========================================
+   LOGIN
+========================================= */
 
 async function loginUser(event) {
 
@@ -428,57 +462,43 @@ async function loginUser(event) {
 
 
     const email =
-        document.getElementById("email")
-        .value
-        .trim()
-        .toLowerCase();
+        document
+            .getElementById("email")
+            .value
+            .trim()
+            .toLowerCase();
 
 
     const password =
-        document.getElementById("password")
-        .value;
-
-
-    const error =
-        document.getElementById("error");
-
-
-    const success =
-        document.getElementById("success");
+        document
+            .getElementById("password")
+            .value;
 
 
     const loginButton =
-        document.getElementById("loginButton");
-
-
-    error.style.display = "none";
-
-    success.style.display = "none";
-
-
-    /* Get users */
-
-    let users =
-        JSON.parse(
-            localStorage.getItem(
-                "pakrewardUsers"
-            ) || "[]"
+        document.getElementById(
+            "loginButton"
         );
 
 
-    /* Check account */
+    /* Clear old messages */
 
-    const user =
-        users.find(
-            item =>
-            item.email === email
-        );
+    document.getElementById(
+        "error"
+    ).style.display = "none";
 
 
-    if (!user) {
+    document.getElementById(
+        "success"
+    ).style.display = "none";
+
+
+    /* Validate */
+
+    if (!email) {
 
         showError(
-            "No account found with this email."
+            "Please enter your email."
         );
 
         return;
@@ -486,20 +506,10 @@ async function loginUser(event) {
     }
 
 
-    /* Hash password */
-
-    const passwordHash =
-        await hashPassword(password);
-
-
-    /* Check password */
-
-    if (
-        user.password !== passwordHash
-    ) {
+    if (!password) {
 
         showError(
-            "Incorrect password. Please try again."
+            "Please enter your password."
         );
 
         return;
@@ -507,108 +517,158 @@ async function loginUser(event) {
     }
 
 
-    /* Save login session */
+    /* Button loading */
 
-    localStorage.setItem(
-        "loggedInUser",
-        String(user.id)
-    );
-
-
-    /* Save current user values */
-
-    localStorage.setItem(
-        "balance",
-        String(user.balance || 0)
-    );
-
-
-    localStorage.setItem(
-        "todayReward",
-        String(user.todayReward || 0)
-    );
-
-
-    localStorage.setItem(
-        "totalReward",
-        String(user.totalReward || 0)
-    );
-
-
-    localStorage.setItem(
-        "selectedPlan",
-        user.selectedPlan || ""
-    );
-
-
-    localStorage.setItem(
-        "planAmount",
-        String(user.planAmount || 0)
-    );
-
-
-    localStorage.setItem(
-        "adsCompleted",
-        String(user.adsCompleted || 0)
-    );
-
-
-    showSuccess(
-        "Login successful! Opening dashboard..."
-    );
-
-
-    loginButton.disabled = true;
+    loginButton.disabled =
+        true;
 
     loginButton.innerText =
-        "Opening Dashboard...";
+        "Checking...";
 
 
-    setTimeout(function() {
-
-        window.location.href =
-            "dashboard.html";
-
-    }, 700);
-
-}
+    try {
 
 
-/* =========================
-   SHOW / HIDE PASSWORD
-========================= */
+        /* =================================
+           GET USERS
+        ================================= */
 
-function togglePassword() {
-
-    const password =
-        document.getElementById("password");
-
-
-    const button =
-        document.querySelector(".show-password");
+        let users =
+            JSON.parse(
+                localStorage.getItem(
+                    "pakrewardUsers"
+                ) || "[]"
+            );
 
 
-    if (password.type === "password") {
+        /* Make sure users is an array */
 
-        password.type = "text";
+        if (!Array.isArray(users)) {
 
-        button.innerText = "Hide";
+            users = [];
 
-    }
-
-    else {
-
-        password.type = "password";
-
-        button.innerText = "Show";
-
-    }
-
-}
-
-</script>
+        }
 
 
-</body>
+        /* =================================
+           FIND USER
+        ================================= */
 
-</html>
+        const user =
+            users.find(
+                item => {
+
+                    const userEmail =
+                        String(
+                            item.email || ""
+                        )
+                        .trim()
+                        .toLowerCase();
+
+
+                    return (
+                        userEmail === email
+                    );
+
+                }
+            );
+
+
+        /* USER NOT FOUND */
+
+        if (!user) {
+
+            showError(
+                "No account found with this email. Please create an account first."
+            );
+
+
+            loginButton.disabled =
+                false;
+
+            loginButton.innerText =
+                "Login";
+
+
+            return;
+
+        }
+
+
+        /* =================================
+           HASH PASSWORD
+        ================================= */
+
+        const passwordHash =
+            await hashPassword(
+                password
+            );
+
+
+        /* =================================
+           CHECK PASSWORD
+        ================================= */
+
+        if (
+            String(user.password || "") !==
+            String(passwordHash)
+        ) {
+
+            showError(
+                "Incorrect password. Please try again."
+            );
+
+
+            loginButton.disabled =
+                false;
+
+            loginButton.innerText =
+                "Login";
+
+
+            return;
+
+        }
+
+
+        /* =================================
+           LOGIN SUCCESS
+        ================================= */
+
+
+        /*
+           Save logged-in user ID
+        */
+
+        localStorage.setItem(
+            "loggedInUser",
+            String(user.id)
+        );
+
+
+        /*
+           Save user values
+        */
+
+        localStorage.setItem(
+            "balance",
+            String(
+                user.balance || 0
+            )
+        );
+
+
+        localStorage.setItem(
+            "todayReward",
+            String(
+                user.todayReward || 0
+            )
+        );
+
+
+        localStorage.setItem(
+            "totalReward",
+            String(
+                user.totalReward || 0
+            )
+        );
