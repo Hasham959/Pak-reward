@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard - PakReward</title>
+<title>Dashboard - Ham Earn</title>
 
 <style>
 *{box-sizing:border-box}
@@ -460,7 +460,7 @@ footer{
 <header>
 
 <div class="logo">
-🇵🇰 PakReward
+🇵🇰 Ham Earn
 </div>
 
 <div class="header-buttons">
@@ -660,7 +660,7 @@ Watch Ad
 
 <footer>
 
-PakReward © 2026
+Ham Earn © 2026
 <br>
 Demo version — no real money transactions.
 
@@ -1201,7 +1201,7 @@ if(!loggedInUserId){
 
 let users =
 JSON.parse(
-    localStorage.getItem("pakrewardUsers") || "[]"
+    localStorage.getItem("Ham EarnUsers") || "[]"
 );
 
 
@@ -1336,7 +1336,7 @@ function saveUser(){
 
 
     localStorage.setItem(
-        "pakrewardUsers",
+        "Ham EarnUsers",
         JSON.stringify(users)
     );
 
@@ -1833,7 +1833,7 @@ function submitDeposit(){
         let deposits =
         JSON.parse(
             localStorage.getItem(
-                "pakrewardDeposits"
+                "Ham EarnDeposits"
             ) || "[]"
         );
 
@@ -1906,7 +1906,7 @@ function submitDeposit(){
 
 
         localStorage.setItem(
-            "pakrewardDeposits",
+            "Ham EarnDeposits",
             JSON.stringify(deposits)
         );
 
@@ -2459,7 +2459,7 @@ function submitWithdraw(){
     let withdrawals =
     JSON.parse(
         localStorage.getItem(
-            "pakrewardWithdrawals"
+            "Ham EarnWithdrawals"
         ) || "[]"
     );
 
@@ -2508,7 +2508,7 @@ function submitWithdraw(){
 
 
     localStorage.setItem(
-        "pakrewardWithdrawals",
+        "Ham EarnWithdrawals",
         JSON.stringify(withdrawals)
     );
 
@@ -2594,7 +2594,7 @@ function showRequestHistory(){
     let deposits =
     JSON.parse(
         localStorage.getItem(
-            "pakrewardDeposits"
+            "Ham EarnDeposits"
         ) || "[]"
     );
 
@@ -2602,7 +2602,7 @@ function showRequestHistory(){
     let withdrawals =
     JSON.parse(
         localStorage.getItem(
-            "pakrewardWithdrawals"
+            "Ham EarnWithdrawals"
         ) || "[]"
     );
 
