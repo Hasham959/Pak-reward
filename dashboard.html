@@ -110,54 +110,9 @@ main{
     font-weight:bold
 }
 
-.plans{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px
-}
-
-.plan-card{
-    background:white;
-    border:1px solid #e3e7ec;
-    border-radius:15px;
-    padding:20px;
-    position:relative
-}
-
-.plan-card h3{margin-top:0}
-
-.plan-card h4{
-    color:#087443;
-    font-size:21px
-}
-
-.plan-card p{
-    color:#68737f;
-    font-size:14px
-}
-
-.plan-card button,
-.btn{
-    width:100%;
-    border:none;
-    background:#087443;
-    color:white;
-    padding:10px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold
-}
-
-.popular{
-    position:absolute;
-    top:10px;
-    right:10px;
-    background:#e4f4ec;
-    color:#087443;
-    padding:5px 8px;
-    border-radius:10px;
-    font-size:10px;
-    font-weight:bold
+.no-plan{
+    background:#fff3cd;
+    color:#856404
 }
 
 .transaction{
@@ -173,8 +128,13 @@ main{
 }
 
 .btn{
-    width:auto;
-    padding:10px 15px
+    border:none;
+    background:#087443;
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold
 }
 
 .btn:disabled{
@@ -277,8 +237,8 @@ footer{
 .modal-box{
     background:white;
     width:100%;
-    max-width:550px;
-    margin:30px auto;
+    max-width:600px;
+    margin:20px auto;
     padding:25px;
     border-radius:16px
 }
@@ -306,6 +266,124 @@ footer{
     border:1px solid #d5dce3;
     border-radius:8px;
     font-size:14px
+}
+
+/* PLAN SELECTOR */
+
+.plan-title{
+    font-weight:bold;
+    margin-bottom:10px
+}
+
+.deposit-plans{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-bottom:18px
+}
+
+.deposit-plan{
+    background:white;
+    border:2px solid #dfe5e9;
+    border-radius:10px;
+    padding:13px;
+    cursor:pointer;
+    text-align:left;
+    transition:.2s
+}
+
+.deposit-plan:hover{
+    border-color:#087443
+}
+
+.deposit-plan.selected{
+    border-color:#087443;
+    background:#eaf7f0
+}
+
+.deposit-plan h3{
+    margin:0 0 5px;
+    color:#087443;
+    font-size:16px
+}
+
+.deposit-plan strong{
+    font-size:18px
+}
+
+.deposit-plan small{
+    display:block;
+    color:#68737f;
+    margin-top:5px
+}
+
+.selected-plan-box{
+    display:none;
+    background:#eaf7f0;
+    border:1px solid #b9dfca;
+    border-radius:10px;
+    padding:12px;
+    margin-bottom:15px;
+    color:#087443;
+    font-weight:bold
+}
+
+/* PAYMENT DETAILS */
+
+.payment-details{
+    display:none;
+    background:#eaf7f0;
+    border:1px solid #b9dfca;
+    border-radius:12px;
+    padding:15px;
+    margin:10px 0 18px
+}
+
+.payment-details h3{
+    margin:0 0 10px;
+    color:#087443;
+    font-size:16px
+}
+
+.payment-line{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:7px 0;
+    border-bottom:1px solid #cfe8d9;
+    font-size:14px
+}
+
+.payment-line:last-child{
+    border-bottom:none
+}
+
+.payment-value{
+    font-weight:bold;
+    color:#17202a;
+    text-align:right;
+    word-break:break-word
+}
+
+.copy-btn{
+    background:#087443;
+    color:white;
+    border:none;
+    border-radius:6px;
+    padding:5px 8px;
+    cursor:pointer;
+    font-size:11px;
+    margin-left:5px
+}
+
+.notice{
+    background:#fff8e6;
+    color:#705c00;
+    border:1px solid #f0df9a;
+    border-radius:8px;
+    padding:10px;
+    font-size:12px;
+    margin-top:10px
 }
 
 .form-actions{
@@ -339,67 +417,17 @@ footer{
     margin-top:5px
 }
 
-/* PAYMENT DETAILS */
-
-.payment-details{
-    display:none;
-    background:#eaf7f0;
-    border:1px solid #b9dfca;
-    border-radius:12px;
-    padding:15px;
-    margin:10px 0 18px;
-}
-
-.payment-details h3{
-    margin:0 0 10px;
-    color:#087443;
-    font-size:16px;
-}
-
-.payment-line{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    padding:7px 0;
-    border-bottom:1px solid #cfe8d9;
-    font-size:14px;
-}
-
-.payment-line:last-child{
-    border-bottom:none;
-}
-
-.payment-value{
-    font-weight:bold;
-    color:#17202a;
-    text-align:right;
-    word-break:break-word;
-}
-
-.copy-btn{
-    background:#087443;
-    color:white;
-    border:none;
-    border-radius:6px;
-    padding:5px 8px;
-    cursor:pointer;
-    font-size:11px;
-    margin-left:5px;
-}
-
-.notice{
-    background:#fff8e6;
-    color:#705c00;
-    border:1px solid #f0df9a;
-    border-radius:8px;
-    padding:10px;
-    font-size:12px;
-    margin-top:10px;
+.info-box{
+    background:#f5f7fb;
+    border-radius:10px;
+    padding:12px;
+    margin-bottom:15px;
+    font-size:13px;
+    color:#68737f
 }
 
 @media(max-width:850px){
     .stats{grid-template-columns:1fr}
-    .plans{grid-template-columns:1fr 1fr}
 }
 
 @media(max-width:700px){
@@ -416,8 +444,11 @@ footer{
         flex-direction:column
     }
 
-    .plans,
     .actions{
+        grid-template-columns:1fr
+    }
+
+    .deposit-plans{
         grid-template-columns:1fr
     }
 }
@@ -427,40 +458,58 @@ footer{
 <body>
 
 <header>
-    <div class="logo">🇵🇰 PakReward</div>
 
-    <div class="header-buttons">
-        <a href="index.html" class="home-btn">🏠 Home</a>
-        <button class="logout" onclick="logout()">Logout</button>
-    </div>
+<div class="logo">
+🇵🇰 PakReward
+</div>
+
+<div class="header-buttons">
+
+<a href="index.html" class="home-btn">
+🏠 Home
+</a>
+
+<button class="logout" onclick="logout()">
+Logout
+</button>
+
+</div>
+
 </header>
+
 
 <main>
 
 <h1>Dashboard</h1>
 
 <p class="welcome">
-    Welcome, <strong id="userName">User</strong> 👋
+Welcome, <strong id="userName">User</strong> 👋
 </p>
+
+
+<!-- STATS -->
 
 <div class="stats">
 
-    <div class="card">
-        <p>Wallet Balance</p>
-        <div class="amount" id="balance">Rs. 0</div>
-    </div>
+<div class="card">
+<p>Wallet Balance</p>
+<div class="amount" id="balance">Rs. 0</div>
+</div>
 
-    <div class="card">
-        <p>Today's Reward</p>
-        <div class="amount" id="today">Rs. 0</div>
-    </div>
+<div class="card">
+<p>Today's Reward</p>
+<div class="amount" id="today">Rs. 0</div>
+</div>
 
-    <div class="card">
-        <p>Total Reward</p>
-        <div class="amount" id="total">Rs. 0</div>
-    </div>
+<div class="card">
+<p>Total Reward</p>
+<div class="amount" id="total">Rs. 0</div>
+</div>
 
 </div>
+
+
+<!-- ACTIVE PLAN -->
 
 <div class="section">
 
@@ -469,53 +518,27 @@ footer{
 <div class="card plan">
 
 <div>
-<h3 id="planName">No Active Plan</h3>
-<p id="planAmount">Please select a plan below.</p>
+
+<h3 id="planName">
+No Active Plan
+</h3>
+
+<p id="planAmount">
+Please make a deposit and select a plan.
+</p>
+
 </div>
 
-<span class="badge" id="planStatus">NO PLAN</span>
+<span class="badge no-plan" id="planStatus">
+NO PLAN
+</span>
 
-</div>
-
-</div>
-
-<div class="section">
-
-<h2>Reward Plans</h2>
-
-<div class="plans">
-
-<div class="plan-card">
-<h3>Starter</h3>
-<h4>Rs. 1,000</h4>
-<p>Basic task access</p>
-<button onclick="selectPlan('Starter',1000)">Select Plan</button>
-</div>
-
-<div class="plan-card">
-<h3>Basic</h3>
-<h4>Rs. 5,000</h4>
-<p>More eligible tasks</p>
-<button onclick="selectPlan('Basic',5000)">Select Plan</button>
-</div>
-
-<div class="plan-card">
-<span class="popular">POPULAR</span>
-<h3>Premium</h3>
-<h4>Rs. 10,000</h4>
-<p>Higher task limits</p>
-<button onclick="selectPlan('Premium',10000)">Select Plan</button>
-</div>
-
-<div class="plan-card">
-<h3>Pro</h3>
-<h4>Rs. 25,000</h4>
-<p>Highest task limits</p>
-<button onclick="selectPlan('Pro',25000)">Select Plan</button>
 </div>
 
 </div>
-</div>
+
+
+<!-- DAILY ADS -->
 
 <div class="section">
 
@@ -523,38 +546,58 @@ footer{
 
 <div class="card">
 
+<div class="info-box" id="adNotice">
+Please select and activate a plan before watching ads.
+</div>
+
 <p>
 Today's Ads:
-<strong><span id="adsCompleted">0</span>/5</strong>
+<strong>
+<span id="adsCompleted">0</span>/5
+</strong>
 </p>
 
 <div class="transaction">
 <span>Ad 1</span>
-<button class="btn" onclick="watchAd(1)" id="ad1">Watch Ad</button>
+<button class="btn" onclick="watchAd(1)" id="ad1">
+Watch Ad
+</button>
 </div>
 
 <div class="transaction">
 <span>Ad 2</span>
-<button class="btn" onclick="watchAd(2)" id="ad2">Watch Ad</button>
+<button class="btn" onclick="watchAd(2)" id="ad2">
+Watch Ad
+</button>
 </div>
 
 <div class="transaction">
 <span>Ad 3</span>
-<button class="btn" onclick="watchAd(3)" id="ad3">Watch Ad</button>
+<button class="btn" onclick="watchAd(3)" id="ad3">
+Watch Ad
+</button>
 </div>
 
 <div class="transaction">
 <span>Ad 4</span>
-<button class="btn" onclick="watchAd(4)" id="ad4">Watch Ad</button>
+<button class="btn" onclick="watchAd(4)" id="ad4">
+Watch Ad
+</button>
 </div>
 
 <div class="transaction">
 <span>Ad 5</span>
-<button class="btn" onclick="watchAd(5)" id="ad5">Watch Ad</button>
+<button class="btn" onclick="watchAd(5)" id="ad5">
+Watch Ad
+</button>
 </div>
 
 </div>
+
 </div>
+
+
+<!-- WALLET -->
 
 <div class="section">
 
@@ -563,7 +606,7 @@ Today's Ads:
 <div class="actions">
 
 <button class="action" onclick="openDeposit()">
-📥 Deposit
+📥 Deposit & Select Plan
 </button>
 
 <button class="action" onclick="openWithdraw()">
@@ -573,6 +616,9 @@ Today's Ads:
 </div>
 
 </div>
+
+
+<!-- HISTORY -->
 
 <div class="section">
 
@@ -595,7 +641,11 @@ Today's Ads:
 </div>
 
 </div>
+
 </div>
+
+
+<!-- TRANSACTIONS -->
 
 <div class="section">
 
@@ -607,59 +657,218 @@ Today's Ads:
 
 </main>
 
+
 <footer>
+
 PakReward © 2026
 <br>
 Demo version — no real money transactions.
+
 </footer>
 
 
-<!-- DEPOSIT MODAL -->
+<!-- =========================
+     DEPOSIT MODAL
+========================= -->
 
 <div class="modal" id="depositModal">
 
 <div class="modal-box">
 
-<h2>📥 Deposit Request</h2>
+<h2>📥 Deposit & Select Plan</h2>
 
-<div class="form-group">
-<label>Deposit Amount</label>
-<input type="number" id="depositAmount" min="1" placeholder="Enter amount">
+<div class="info-box">
+First select your plan. The plan amount will automatically be selected as your deposit amount.
+Your plan will become active only after admin approval.
 </div>
 
-<div class="form-group">
-<label>Payment Method</label>
 
-<select id="depositMethod" onchange="showDepositDetails()">
-<option value="">Select Method</option>
-<option value="Easypaisa">Easypaisa</option>
-<option value="JazzCash">JazzCash</option>
-<option value="Bank">Bank</option>
+<!-- PLANS -->
+
+<div class="plan-title">
+Select Your Plan
+</div>
+
+<div class="deposit-plans">
+
+
+<button
+type="button"
+class="deposit-plan"
+id="depositPlanStarter"
+onclick="selectDepositPlan('Starter',1000)"
+>
+
+<h3>Starter</h3>
+
+<strong>Rs. 1,000</strong>
+
+<small>
+Basic task access
+</small>
+
+</button>
+
+
+<button
+type="button"
+class="deposit-plan"
+id="depositPlanBasic"
+onclick="selectDepositPlan('Basic',5000)"
+>
+
+<h3>Basic</h3>
+
+<strong>Rs. 5,000</strong>
+
+<small>
+More eligible tasks
+</small>
+
+</button>
+
+
+<button
+type="button"
+class="deposit-plan"
+id="depositPlanPremium"
+onclick="selectDepositPlan('Premium',10000)"
+>
+
+<h3>Premium</h3>
+
+<strong>Rs. 10,000</strong>
+
+<small>
+Higher task limits
+</small>
+
+</button>
+
+
+<button
+type="button"
+class="deposit-plan"
+id="depositPlanPro"
+onclick="selectDepositPlan('Pro',25000)"
+>
+
+<h3>Pro</h3>
+
+<strong>Rs. 25,000</strong>
+
+<small>
+Highest task limits
+</small>
+
+</button>
+
+</div>
+
+
+<div
+class="selected-plan-box"
+id="selectedPlanBox">
+</div>
+
+
+<!-- AMOUNT -->
+
+<div class="form-group">
+
+<label>
+Deposit Amount
+</label>
+
+<input
+type="number"
+id="depositAmount"
+min="1"
+placeholder="Select a plan first"
+readonly
+>
+
+</div>
+
+
+<!-- PAYMENT METHOD -->
+
+<div class="form-group">
+
+<label>
+Payment Method
+</label>
+
+<select
+id="depositMethod"
+onchange="showDepositDetails()">
+
+<option value="">
+Select Method
+</option>
+
+<option value="Easypaisa">
+Easypaisa
+</option>
+
+<option value="JazzCash">
+JazzCash
+</option>
+
+<option value="Bank">
+Bank
+</option>
+
 </select>
+
 </div>
 
 
 <!-- EASYPAISA -->
 
-<div class="payment-details" id="easypaisaDetails">
+<div
+class="payment-details"
+id="easypaisaDetails">
 
-<h3>💚 Easypaisa Payment Details</h3>
+<h3>
+💚 Easypaisa Payment Details
+</h3>
 
 <div class="payment-line">
-<span>Account Name</span>
-<span class="payment-value">Hasham</span>
+
+<span>
+Account Name
+</span>
+
+<span class="payment-value">
+Hasham
+</span>
+
 </div>
 
 <div class="payment-line">
-<span>Mobile Number</span>
-<span class="payment-value">
-0307-9226104
-<button class="copy-btn" onclick="copyNumber('0307-9226104')">Copy</button>
+
+<span>
+Mobile Number
 </span>
+
+<span class="payment-value">
+
+0307-9226104
+
+<button
+class="copy-btn"
+onclick="copyNumber('0307-9226104')">
+Copy
+</button>
+
+</span>
+
 </div>
 
 <div class="notice">
-Please send your deposit to the above Easypaisa number and enter the Transaction ID below.
+Send exactly the selected plan amount to the above Easypaisa number.
+Then enter your Transaction ID and screenshot below.
 </div>
 
 </div>
@@ -667,25 +876,49 @@ Please send your deposit to the above Easypaisa number and enter the Transaction
 
 <!-- JAZZCASH -->
 
-<div class="payment-details" id="jazzcashDetails">
+<div
+class="payment-details"
+id="jazzcashDetails">
 
-<h3>❤️ JazzCash Payment Details</h3>
+<h3>
+❤️ JazzCash Payment Details
+</h3>
 
 <div class="payment-line">
-<span>Account Name</span>
-<span class="payment-value">Hasham</span>
+
+<span>
+Account Name
+</span>
+
+<span class="payment-value">
+Hasham
+</span>
+
 </div>
 
 <div class="payment-line">
-<span>Mobile Number</span>
-<span class="payment-value">
-0301-3590069
-<button class="copy-btn" onclick="copyNumber('0301-3590069')">Copy</button>
+
+<span>
+Mobile Number
 </span>
+
+<span class="payment-value">
+
+0301-3590069
+
+<button
+class="copy-btn"
+onclick="copyNumber('0301-3590069')">
+Copy
+</button>
+
+</span>
+
 </div>
 
 <div class="notice">
-Please send your deposit to the above JazzCash number and enter the Transaction ID below.
+Send exactly the selected plan amount to the above JazzCash number.
+Then enter your Transaction ID and screenshot below.
 </div>
 
 </div>
@@ -693,135 +926,305 @@ Please send your deposit to the above JazzCash number and enter the Transaction 
 
 <!-- BANK -->
 
-<div class="payment-details" id="bankDetails">
+<div
+class="payment-details"
+id="bankDetails">
 
-<h3>🏦 Bank Payment Details</h3>
-
-<div class="payment-line">
-<span>Bank Name</span>
-<span class="payment-value">MCB Bank Limited</span>
-</div>
-
-<div class="payment-line">
-<span>Account Title</span>
-<span class="payment-value">Hasham</span>
-</div>
+<h3>
+🏦 MCB Bank Payment Details
+</h3>
 
 <div class="payment-line">
-<span>Account Number</span>
-<span class="payment-value">
-1414121311009347
-<button class="copy-btn" onclick="copyNumber('1414121311009347')">Copy</button>
+
+<span>
+Bank Name
 </span>
+
+<span class="payment-value">
+MCB Bank Limited
+</span>
+
+</div>
+
+<div class="payment-line">
+
+<span>
+Account Title
+</span>
+
+<span class="payment-value">
+Hasham
+</span>
+
+</div>
+
+<div class="payment-line">
+
+<span>
+Account Number
+</span>
+
+<span class="payment-value">
+
+1414121311009347
+
+<button
+class="copy-btn"
+onclick="copyNumber('1414121311009347')">
+Copy
+</button>
+
+</span>
+
 </div>
 
 <div class="notice">
-Please transfer the deposit to the above MCB account and enter the Transaction ID below.
+Transfer exactly the selected plan amount to the above MCB account.
+Then enter your Transaction ID and screenshot below.
 </div>
 
 </div>
 
 
-<div class="form-group">
-<label>Transaction ID</label>
-<input type="text" id="depositTransactionId" placeholder="Enter Transaction ID">
-</div>
+<!-- TRANSACTION ID -->
 
 <div class="form-group">
-<label>Transaction Screenshot</label>
-<input type="file" id="depositScreenshot" accept="image/*">
-<div class="file-note">Maximum recommended size: 2 MB</div>
+
+<label>
+Transaction ID
+</label>
+
+<input
+type="text"
+id="depositTransactionId"
+placeholder="Enter Transaction ID"
+>
+
 </div>
+
+
+<!-- SCREENSHOT -->
+
+<div class="form-group">
+
+<label>
+Transaction Screenshot
+</label>
+
+<input
+type="file"
+id="depositScreenshot"
+accept="image/*"
+>
+
+<div class="file-note">
+Maximum recommended size: 2 MB
+</div>
+
+</div>
+
 
 <div class="form-actions">
-<button class="cancel-btn" onclick="closeModal('depositModal')">Cancel</button>
-<button class="submit-btn" onclick="submitDeposit()">Submit Deposit</button>
+
+<button
+class="cancel-btn"
+onclick="closeModal('depositModal')">
+
+Cancel
+
+</button>
+
+<button
+class="submit-btn"
+onclick="submitDeposit()">
+
+Submit Deposit
+
+</button>
+
 </div>
 
 </div>
+
 </div>
 
 
-<!-- WITHDRAW MODAL -->
+<!-- =========================
+     WITHDRAW MODAL
+========================= -->
 
 <div class="modal" id="withdrawModal">
 
 <div class="modal-box">
 
-<h2>📤 Withdrawal Request</h2>
+<h2>
+📤 Withdrawal Request
+</h2>
 
 <div class="form-group">
-<label>Amount</label>
-<input type="number" id="withdrawAmount" min="1" placeholder="Enter withdrawal amount">
+
+<label>
+Amount
+</label>
+
+<input
+type="number"
+id="withdrawAmount"
+min="1"
+placeholder="Enter withdrawal amount"
+>
+
 </div>
 
-<div class="form-group">
-<label>Withdrawal Method</label>
 
-<select id="withdrawMethod" onchange="changeWithdrawMethod()">
-<option value="">Select Method</option>
-<option value="Bank">Bank</option>
-<option value="Easypaisa">Easypaisa</option>
-<option value="JazzCash">JazzCash</option>
+<div class="form-group">
+
+<label>
+Withdrawal Method
+</label>
+
+<select
+id="withdrawMethod"
+onchange="changeWithdrawMethod()">
+
+<option value="">
+Select Method
+</option>
+
+<option value="Bank">
+Bank
+</option>
+
+<option value="Easypaisa">
+Easypaisa
+</option>
+
+<option value="JazzCash">
+JazzCash
+</option>
+
 </select>
+
 </div>
 
-<div class="form-group" id="bankGroup" style="display:none">
 
-<label>Bank Name</label>
+<div
+class="form-group"
+id="bankGroup"
+style="display:none">
+
+<label>
+Bank Name
+</label>
 
 <select id="withdrawBank">
-<option value="">Select Bank</option>
+
+<option value="">
+Select Bank
+</option>
+
 </select>
 
 </div>
 
-<div class="form-group">
-<label>Account Title</label>
-<input type="text" id="withdrawTitle" placeholder="Account holder name">
-</div>
 
 <div class="form-group">
-<label id="accountNumberLabel">Account Number / IBAN</label>
-<input type="text" id="withdrawAccount" placeholder="Enter account number">
+
+<label>
+Account Title
+</label>
+
+<input
+type="text"
+id="withdrawTitle"
+placeholder="Account holder name"
+>
+
 </div>
+
+
+<div class="form-group">
+
+<label id="accountNumberLabel">
+Account Number / IBAN
+</label>
+
+<input
+type="text"
+id="withdrawAccount"
+placeholder="Enter account number"
+>
+
+</div>
+
 
 <div class="form-actions">
-<button class="cancel-btn" onclick="closeModal('withdrawModal')">Cancel</button>
-<button class="submit-btn" onclick="submitWithdraw()">Submit Withdrawal</button>
+
+<button
+class="cancel-btn"
+onclick="closeModal('withdrawModal')">
+
+Cancel
+
+</button>
+
+<button
+class="submit-btn"
+onclick="submitWithdraw()">
+
+Submit Withdrawal
+
+</button>
+
 </div>
 
 </div>
+
 </div>
 
 
 <script>
 
-/* LOGIN */
+/* =========================================
+   LOGIN CHECK
+========================================= */
 
 const loggedInUserId =
 localStorage.getItem("loggedInUser");
 
 if(!loggedInUserId){
+
     window.location.href="login.html";
+
 }
 
+
 let users =
-JSON.parse(localStorage.getItem("pakrewardUsers") || "[]");
+JSON.parse(
+    localStorage.getItem("pakrewardUsers") || "[]"
+);
+
 
 let currentUser =
-users.find(user =>
-String(user.id) === String(loggedInUserId)
+users.find(
+    user =>
+    String(user.id) ===
+    String(loggedInUserId)
 );
+
 
 if(!currentUser){
 
     localStorage.removeItem("loggedInUser");
+
     window.location.href="login.html";
+
 }
 
 
-/* BANK LIST */
+/* =========================================
+   BANK LIST
+========================================= */
 
 const pakistanBanks = [
 
@@ -847,7 +1250,6 @@ const pakistanBanks = [
 "First Women Bank Limited",
 "The Bank of Khyber",
 "The Bank of Punjab",
-"Askari Islamic",
 "Al Baraka Bank Pakistan",
 "Samba Bank Limited",
 "Khushhali Microfinance Bank",
@@ -856,277 +1258,930 @@ const pakistanBanks = [
 "FINCA Microfinance Bank",
 "NRSP Microfinance Bank",
 "U Microfinance Bank"
+
 ];
+
 
 const bankSelect =
 document.getElementById("withdrawBank");
 
+
 pakistanBanks.forEach(bank=>{
-    const option=document.createElement("option");
+
+    const option =
+    document.createElement("option");
+
     option.value=bank;
+
     option.textContent=bank;
+
     bankSelect.appendChild(option);
+
 });
 
 
-/* DAILY RESET */
+/* =========================================
+   DAILY RESET
+========================================= */
 
-const todayDate=new Date().toDateString();
+const todayDate =
+new Date().toDateString();
 
-if(currentUser.adsDate!==todayDate){
+
+if(currentUser.adsDate !== todayDate){
 
     currentUser.adsCompleted=0;
+
     currentUser.todayReward=0;
+
     currentUser.adsDate=todayDate;
 
     saveUser();
+
 }
 
 
-/* MONEY */
+/* =========================================
+   MONEY
+========================================= */
 
 function money(amount){
+
     return "Rs. "+
-    Number(amount||0).toLocaleString("en-PK");
+    Number(amount||0)
+    .toLocaleString("en-PK");
+
 }
 
 
-/* SAVE USER */
+/* =========================================
+   SAVE USER
+========================================= */
 
 function saveUser(){
 
-    const index=users.findIndex(
-        user=>String(user.id)===String(currentUser.id)
+    const index =
+    users.findIndex(
+        user =>
+        String(user.id) ===
+        String(currentUser.id)
     );
 
-    if(index!==-1){
+
+    if(index !== -1){
+
         users[index]=currentUser;
+
     }
+
 
     localStorage.setItem(
         "pakrewardUsers",
         JSON.stringify(users)
     );
+
 }
 
 
-/* DASHBOARD */
+/* =========================================
+   DASHBOARD
+========================================= */
 
 function updateDashboard(){
 
-    document.getElementById("userName").innerText=
-    currentUser.name||"User";
+    document.getElementById("userName")
+    .innerText =
+    currentUser.name || "User";
 
-    document.getElementById("balance").innerText=
+
+    document.getElementById("balance")
+    .innerText =
     money(currentUser.balance);
 
-    document.getElementById("today").innerText=
+
+    document.getElementById("today")
+    .innerText =
     money(currentUser.todayReward);
 
-    document.getElementById("total").innerText=
+
+    document.getElementById("total")
+    .innerText =
     money(currentUser.totalReward);
 
-    document.getElementById("adsCompleted").innerText=
-    currentUser.adsCompleted||0;
+
+    document.getElementById("adsCompleted")
+    .innerText =
+    currentUser.adsCompleted || 0;
+
 
     if(currentUser.selectedPlan){
 
-        document.getElementById("planName").innerText=
+        document.getElementById("planName")
+        .innerText =
         currentUser.selectedPlan;
 
-        document.getElementById("planAmount").innerText=
-        "Plan Amount: "+money(currentUser.planAmount);
 
-        document.getElementById("planStatus").innerText="ACTIVE";
+        document.getElementById("planAmount")
+        .innerText =
+        "Plan Amount: "+
+        money(currentUser.planAmount);
+
+
+        document.getElementById("planStatus")
+        .innerText =
+        "ACTIVE";
+
+
+        document.getElementById("planStatus")
+        .className =
+        "badge";
+
+
+        document.getElementById("adNotice")
+        .innerText =
+        "Your plan is active. You can complete today's eligible ads.";
 
     }else{
 
-        document.getElementById("planName").innerText=
+        document.getElementById("planName")
+        .innerText =
         "No Active Plan";
 
-        document.getElementById("planAmount").innerText=
-        "Please select a plan below.";
 
-        document.getElementById("planStatus").innerText=
+        document.getElementById("planAmount")
+        .innerText =
+        "Make a deposit and select a plan.";
+
+
+        document.getElementById("planStatus")
+        .innerText =
         "NO PLAN";
+
+
+        document.getElementById("planStatus")
+        .className =
+        "badge no-plan";
+
+
+        document.getElementById("adNotice")
+        .innerText =
+        "Please make a deposit and get your selected plan approved by Admin before watching ads.";
+
     }
 
+
     updateAdButtons();
+
 }
 
 
-/* PLAN */
+/* =========================================
+   DEPOSIT PLAN SELECT
+========================================= */
 
-function selectPlan(planName,amount){
+let selectedDepositPlan="";
+let selectedDepositAmount=0;
 
-    const balance=Number(currentUser.balance||0);
+
+function selectDepositPlan(planName,amount){
+
+    selectedDepositPlan=planName;
+
+    selectedDepositAmount=amount;
+
+
+    document.getElementById("depositAmount")
+    .value=amount;
+
+
+    const buttons=[
+        "Starter",
+        "Basic",
+        "Premium",
+        "Pro"
+    ];
+
+
+    buttons.forEach(plan=>{
+
+        const button =
+        document.getElementById(
+            "depositPlan"+plan
+        );
+
+
+        if(button){
+
+            button.classList.remove("selected");
+
+        }
+
+    });
+
+
+    const selectedButton =
+    document.getElementById(
+        "depositPlan"+planName
+    );
+
+
+    if(selectedButton){
+
+        selectedButton.classList.add(
+            "selected"
+        );
+
+    }
+
+
+    const box =
+    document.getElementById(
+        "selectedPlanBox"
+    );
+
+
+    box.style.display="block";
+
+
+    box.innerText =
+    "Selected Plan: "+
+    planName+
+    " — "+
+    money(amount);
+
+}
+
+
+/* =========================================
+   OPEN DEPOSIT
+========================================= */
+
+function openDeposit(){
 
     if(currentUser.selectedPlan){
 
         alert(
             "You already have an active "+
-            currentUser.selectedPlan+" plan."
+            currentUser.selectedPlan+
+            " plan."
         );
 
         return;
+
     }
 
-    if(balance<amount){
 
-        alert(
-            "Insufficient balance!\n\n"+
-            "Plan Amount: "+money(amount)+
-            "\nYour Balance: "+money(balance)
-        );
+    selectedDepositPlan="";
 
-        return;
-    }
+    selectedDepositAmount=0;
 
-    if(!confirm(
-        "Purchase "+planName+
-        " Plan for "+money(amount)+"?"
-    )) return;
 
-    currentUser.balance=balance-amount;
-    currentUser.selectedPlan=planName;
-    currentUser.planAmount=amount;
+    document.getElementById(
+        "depositModal"
+    ).style.display="block";
 
-    saveUser();
 
-    addTransaction(
-        "Purchased "+planName+" Plan",
-        amount
-    );
+    resetDepositForm();
 
-    updateDashboard();
-
-    alert("Plan purchased successfully.");
 }
 
 
-/* ADS */
+/* =========================================
+   RESET DEPOSIT
+========================================= */
+
+function resetDepositForm(){
+
+    document.getElementById(
+        "depositAmount"
+    ).value="";
+
+
+    document.getElementById(
+        "depositMethod"
+    ).value="";
+
+
+    document.getElementById(
+        "depositTransactionId"
+    ).value="";
+
+
+    document.getElementById(
+        "depositScreenshot"
+    ).value="";
+
+
+    document.getElementById(
+        "selectedPlanBox"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "easypaisaDetails"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "jazzcashDetails"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "bankDetails"
+    ).style.display="none";
+
+
+    [
+        "Starter",
+        "Basic",
+        "Premium",
+        "Pro"
+    ].forEach(plan=>{
+
+        const button =
+        document.getElementById(
+            "depositPlan"+plan
+        );
+
+        if(button){
+
+            button.classList.remove(
+                "selected"
+            );
+
+        }
+
+    });
+
+}
+
+
+/* =========================================
+   PAYMENT DETAILS
+========================================= */
+
+function showDepositDetails(){
+
+    const method =
+    document.getElementById(
+        "depositMethod"
+    ).value;
+
+
+    document.getElementById(
+        "easypaisaDetails"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "jazzcashDetails"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "bankDetails"
+    ).style.display="none";
+
+
+    if(method==="Easypaisa"){
+
+        document.getElementById(
+            "easypaisaDetails"
+        ).style.display="block";
+
+    }
+
+
+    if(method==="JazzCash"){
+
+        document.getElementById(
+            "jazzcashDetails"
+        ).style.display="block";
+
+    }
+
+
+    if(method==="Bank"){
+
+        document.getElementById(
+            "bankDetails"
+        ).style.display="block";
+
+    }
+
+}
+
+
+/* =========================================
+   COPY
+========================================= */
+
+function copyNumber(number){
+
+    if(navigator.clipboard){
+
+        navigator.clipboard
+        .writeText(number)
+        .then(()=>{
+
+            alert(
+                "Copied: "+number
+            );
+
+        })
+        .catch(()=>{
+
+            alert(
+                "Please copy manually: "+
+                number
+            );
+
+        });
+
+    }else{
+
+        alert(
+            "Please copy manually: "+
+            number
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   SUBMIT DEPOSIT
+========================================= */
+
+function submitDeposit(){
+
+    const amount =
+    Number(
+        document.getElementById(
+            "depositAmount"
+        ).value
+    );
+
+
+    const method =
+    document.getElementById(
+        "depositMethod"
+    ).value;
+
+
+    const transactionId =
+    document.getElementById(
+        "depositTransactionId"
+    ).value.trim();
+
+
+    const file =
+    document.getElementById(
+        "depositScreenshot"
+    ).files[0];
+
+
+    /* PLAN */
+
+    if(!selectedDepositPlan){
+
+        alert(
+            "Please select a plan first."
+        );
+
+        return;
+
+    }
+
+
+    /* AMOUNT */
+
+    if(
+        !amount ||
+        amount !== selectedDepositAmount
+    ){
+
+        alert(
+            "Deposit amount must be "+
+            money(selectedDepositAmount)+
+            " for the selected plan."
+        );
+
+        return;
+
+    }
+
+
+    /* METHOD */
+
+    if(!method){
+
+        alert(
+            "Please select payment method."
+        );
+
+        return;
+
+    }
+
+
+    /* TRANSACTION */
+
+    if(!transactionId){
+
+        alert(
+            "Please enter Transaction ID."
+        );
+
+        return;
+
+    }
+
+
+    /* SCREENSHOT */
+
+    if(!file){
+
+        alert(
+            "Please upload transaction screenshot."
+        );
+
+        return;
+
+    }
+
+
+    if(file.size > 2*1024*1024){
+
+        alert(
+            "Screenshot should be less than 2 MB."
+        );
+
+        return;
+
+    }
+
+
+    const reader =
+    new FileReader();
+
+
+    reader.onload=function(e){
+
+        let deposits =
+        JSON.parse(
+            localStorage.getItem(
+                "pakrewardDeposits"
+            ) || "[]"
+        );
+
+
+        if(!Array.isArray(deposits)){
+
+            deposits=[];
+
+        }
+
+
+        /* CHECK DUPLICATE TRANSACTION ID */
+
+        const duplicate =
+        deposits.find(
+            item =>
+            String(item.transactionId)
+            .toLowerCase()
+            ===
+            String(transactionId)
+            .toLowerCase()
+        );
+
+
+        if(duplicate){
+
+            alert(
+                "This Transaction ID has already been submitted."
+            );
+
+            return;
+
+        }
+
+
+        deposits.push({
+
+            id:Date.now(),
+
+            userId:currentUser.id,
+
+            userName:
+            currentUser.name || "User",
+
+            email:
+            currentUser.email || "",
+
+            amount:amount,
+
+            method:method,
+
+            transactionId:
+            transactionId,
+
+            screenshot:
+            e.target.result,
+
+            selectedPlan:
+            selectedDepositPlan,
+
+            planAmount:
+            selectedDepositAmount,
+
+            status:"pending",
+
+            date:
+            new Date().toLocaleString()
+
+        });
+
+
+        localStorage.setItem(
+            "pakrewardDeposits",
+            JSON.stringify(deposits)
+        );
+
+
+        addTransaction(
+            "Deposit Request - "+
+            selectedDepositPlan+
+            " - Pending",
+            amount
+        );
+
+
+        closeModal(
+            "depositModal"
+        );
+
+
+        resetDepositForm();
+
+
+        showRequestHistory();
+
+
+        alert(
+            "Deposit request submitted successfully.\n\n"+
+            "Plan: "+
+            selectedDepositPlan+
+            "\nAmount: "+
+            money(amount)+
+            "\nTransaction ID: "+
+            transactionId+
+            "\nStatus: Pending\n\n"+
+            "Admin approval is required before your plan becomes active."
+        );
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* =========================================
+   ADS
+========================================= */
 
 function watchAd(adNumber){
 
     if(!currentUser.selectedPlan){
 
-        alert("Please select a plan first.");
+        alert(
+            "Your plan is not active yet.\n\n"+
+            "Please deposit, select a plan and wait for Admin approval."
+        );
+
         return;
+
     }
 
-    let completed=
-    Number(currentUser.adsCompleted||0);
+
+    let completed =
+    Number(
+        currentUser.adsCompleted || 0
+    );
+
 
     if(completed>=5){
 
-        alert("Today's 5 ads are already completed.");
+        alert(
+            "Today's 5 ads are already completed."
+        );
+
         return;
+
     }
+
 
     let reward=10;
 
-    if(currentUser.selectedPlan==="Basic") reward=50;
-    if(currentUser.selectedPlan==="Premium") reward=100;
-    if(currentUser.selectedPlan==="Pro") reward=200;
+
+    if(
+        currentUser.selectedPlan==="Basic"
+    ){
+
+        reward=50;
+
+    }
+
+
+    if(
+        currentUser.selectedPlan==="Premium"
+    ){
+
+        reward=100;
+
+    }
+
+
+    if(
+        currentUser.selectedPlan==="Pro"
+    ){
+
+        reward=200;
+
+    }
+
 
     completed++;
 
-    currentUser.adsCompleted=completed;
+
+    currentUser.adsCompleted=
+    completed;
+
 
     currentUser.balance=
-    Number(currentUser.balance||0)+reward;
+    Number(currentUser.balance||0)
+    +reward;
+
 
     currentUser.todayReward=
-    Number(currentUser.todayReward||0)+reward;
+    Number(currentUser.todayReward||0)
+    +reward;
+
 
     currentUser.totalReward=
-    Number(currentUser.totalReward||0)+reward;
+    Number(currentUser.totalReward||0)
+    +reward;
+
 
     saveUser();
+
 
     addTransaction(
         "Advertising Ad "+adNumber,
         reward
     );
 
+
     updateDashboard();
 
+
     alert(
-        "Ad "+adNumber+
+        "Ad "+
+        adNumber+
         " completed!\n\n+"+
-        money(reward)+" reward added."
+        money(reward)+
+        " reward added."
     );
+
 }
 
 
-/* AD BUTTONS */
+/* =========================================
+   AD BUTTONS
+========================================= */
 
 function updateAdButtons(){
 
-    const completed=
-    Number(currentUser.adsCompleted||0);
+    const completed =
+    Number(
+        currentUser.adsCompleted||0
+    );
 
-    for(let i=1;i<=5;i++){
 
-        const button=
-        document.getElementById("ad"+i);
+    for(
+        let i=1;
+        i<=5;
+        i++
+    ){
+
+        const button =
+        document.getElementById(
+            "ad"+i
+        );
+
 
         if(!button) continue;
 
+
+        if(!currentUser.selectedPlan){
+
+            button.innerText=
+            "Plan Required";
+
+            button.disabled=true;
+
+            continue;
+
+        }
+
+
         if(i<=completed){
 
-            button.innerText="Completed";
+            button.innerText=
+            "Completed";
+
             button.disabled=true;
 
         }else{
 
-            button.innerText="Watch Ad";
+            button.innerText=
+            "Watch Ad";
+
             button.disabled=false;
 
         }
+
     }
+
 }
 
 
-/* TRANSACTIONS */
+/* =========================================
+   TRANSACTIONS
+========================================= */
 
-function addTransaction(title,amount){
+function addTransaction(
+    title,
+    amount
+){
 
-    let transactions=
+    let transactions =
     JSON.parse(
         localStorage.getItem(
-            "transactions_"+currentUser.id
-        )||"[]"
+            "transactions_"+
+            currentUser.id
+        ) || "[]"
     );
 
+
     transactions.unshift({
+
         title:title,
+
         amount:amount,
-        date:new Date().toLocaleString()
+
+        date:
+        new Date().toLocaleString()
+
     });
 
-    transactions=transactions.slice(0,20);
+
+    transactions =
+    transactions.slice(0,20);
+
 
     localStorage.setItem(
-        "transactions_"+currentUser.id,
+        "transactions_"+
+        currentUser.id,
         JSON.stringify(transactions)
     );
 
+
     showTransactions();
+
 }
 
 
 function showTransactions(){
 
-    const container=
-    document.getElementById("transactionList");
+    const container =
+    document.getElementById(
+        "transactionList"
+    );
 
-    let transactions=
+
+    let transactions =
     JSON.parse(
         localStorage.getItem(
-            "transactions_"+currentUser.id
-        )||"[]"
+            "transactions_"+
+            currentUser.id
+        ) || "[]"
     );
+
 
     if(!transactions.length){
 
@@ -1137,487 +2192,605 @@ function showTransactions(){
         </div>`;
 
         return;
+
     }
+
 
     container.innerHTML="";
 
+
     transactions.forEach(t=>{
 
-        const row=document.createElement("div");
+        const row =
+        document.createElement("div");
 
-        row.className="transaction";
+
+        row.className=
+        "transaction";
+
 
         row.innerHTML=`
+
         <span>
-            ${escapeHtml(t.title)}
-            <small style="display:block;color:#888;margin-top:4px">
-            ${escapeHtml(t.date)}
-            </small>
+
+        ${escapeHtml(t.title)}
+
+        <small
+        style="
+        display:block;
+        color:#888;
+        margin-top:4px
+        ">
+
+        ${escapeHtml(t.date)}
+
+        </small>
+
         </span>
 
         <span class="green">
-            +${money(t.amount)}
-        </span>`;
+
+        +${money(t.amount)}
+
+        </span>
+
+        `;
+
 
         container.appendChild(row);
+
     });
+
 }
 
 
-/* MODALS */
+/* =========================================
+   MODALS
+========================================= */
 
-function openDeposit(){
+function closeModal(id){
 
-    document.getElementById("depositModal").style.display="block";
+    document.getElementById(id)
+    .style.display="none";
+
 }
 
 
 function openWithdraw(){
 
-    if(Number(currentUser.balance||0)<=0){
-
-        alert("Your wallet balance is Rs. 0.");
-        return;
-    }
-
-    document.getElementById("withdrawModal").style.display="block";
-}
-
-
-function closeModal(id){
-
-    document.getElementById(id).style.display="none";
-}
-
-
-/* DEPOSIT PAYMENT DETAILS */
-
-function showDepositDetails(){
-
-    const method =
-    document.getElementById("depositMethod").value;
-
-    document.getElementById("easypaisaDetails").style.display="none";
-    document.getElementById("jazzcashDetails").style.display="none";
-    document.getElementById("bankDetails").style.display="none";
-
-    if(method==="Easypaisa"){
-
-        document.getElementById("easypaisaDetails").style.display="block";
-
-    }
-
-    if(method==="JazzCash"){
-
-        document.getElementById("jazzcashDetails").style.display="block";
-
-    }
-
-    if(method==="Bank"){
-
-        document.getElementById("bankDetails").style.display="block";
-
-    }
-}
-
-
-/* COPY NUMBER */
-
-function copyNumber(number){
-
-    navigator.clipboard.writeText(number)
-    .then(()=>{
-
-        alert("Number copied: "+number);
-
-    })
-    .catch(()=>{
-
-        alert("Please copy manually: "+number);
-
-    });
-}
-
-
-/* DEPOSIT */
-
-function submitDeposit(){
-
-    const amount=
-    Number(document.getElementById("depositAmount").value);
-
-    const method=
-    document.getElementById("depositMethod").value;
-
-    const transactionId=
-    document.getElementById("depositTransactionId").value.trim();
-
-    const file=
-    document.getElementById("depositScreenshot").files[0];
-
-    if(!amount||amount<=0){
-
-        alert("Please enter a valid deposit amount.");
-        return;
-    }
-
-    if(!method){
-
-        alert("Please select payment method.");
-        return;
-    }
-
-    if(!transactionId){
-
-        alert("Please enter Transaction ID.");
-        return;
-    }
-
-    if(!file){
-
-        alert("Please upload transaction screenshot.");
-        return;
-    }
-
-    if(file.size>2*1024*1024){
-
-        alert("Screenshot should be less than 2 MB.");
-        return;
-    }
-
-    const reader=new FileReader();
-
-    reader.onload=function(e){
-
-        let deposits=
-        JSON.parse(
-            localStorage.getItem("pakrewardDeposits")||"[]"
-        );
-
-        if(!Array.isArray(deposits)) deposits=[];
-
-        deposits.push({
-
-            id:Date.now(),
-
-            userId:currentUser.id,
-
-            userName:currentUser.name||"User",
-
-            email:currentUser.email||"",
-
-            amount:amount,
-
-            method:method,
-
-            transactionId:transactionId,
-
-            screenshot:e.target.result,
-
-            status:"pending",
-
-            date:new Date().toLocaleString()
-
-        });
-
-        localStorage.setItem(
-            "pakrewardDeposits",
-            JSON.stringify(deposits)
-        );
-
-        addTransaction(
-            "Deposit Request - Pending",
-            amount
-        );
-
-        closeModal("depositModal");
-
-        document.getElementById("depositAmount").value="";
-        document.getElementById("depositMethod").value="";
-        document.getElementById("depositTransactionId").value="";
-        document.getElementById("depositScreenshot").value="";
-
-        showDepositDetails();
-
-        showRequestHistory();
+    if(
+        Number(
+            currentUser.balance||0
+        )<=0
+    ){
 
         alert(
-            "Deposit request submitted successfully.\n\n"+
-            "Transaction ID: "+transactionId+
-            "\nStatus: Pending\n\n"+
-            "Admin approval is required."
+            "Your wallet balance is Rs. 0."
         );
-    };
 
-    reader.readAsDataURL(file);
+        return;
+
+    }
+
+
+    document.getElementById(
+        "withdrawModal"
+    ).style.display="block";
+
 }
 
 
-/* WITHDRAW METHOD */
+/* =========================================
+   WITHDRAW METHOD
+========================================= */
 
 function changeWithdrawMethod(){
 
-    const method=
-    document.getElementById("withdrawMethod").value;
+    const method =
+    document.getElementById(
+        "withdrawMethod"
+    ).value;
 
-    const bankGroup=
-    document.getElementById("bankGroup");
 
-    const label=
-    document.getElementById("accountNumberLabel");
+    const bankGroup =
+    document.getElementById(
+        "bankGroup"
+    );
 
-    const input=
-    document.getElementById("withdrawAccount");
+
+    const label =
+    document.getElementById(
+        "accountNumberLabel"
+    );
+
+
+    const input =
+    document.getElementById(
+        "withdrawAccount"
+    );
+
 
     if(method==="Bank"){
 
-        bankGroup.style.display="block";
+        bankGroup.style.display=
+        "block";
 
-        label.innerText="Account Number / IBAN";
-        input.placeholder="Enter account number or IBAN";
+
+        label.innerText=
+        "Account Number / IBAN";
+
+
+        input.placeholder=
+        "Enter account number or IBAN";
 
     }else{
 
-        bankGroup.style.display="none";
+        bankGroup.style.display=
+        "none";
 
-        label.innerText="Mobile Account Number";
+
+        label.innerText=
+        "Mobile Account Number";
+
 
         input.placeholder=
         "Enter Easypaisa/JazzCash number";
+
     }
+
 }
 
 
-/* WITHDRAW */
+/* =========================================
+   WITHDRAW
+========================================= */
 
 function submitWithdraw(){
 
-    const balance=
-    Number(currentUser.balance||0);
+    const balance =
+    Number(
+        currentUser.balance||0
+    );
 
-    const amount=
-    Number(document.getElementById("withdrawAmount").value);
 
-    const method=
-    document.getElementById("withdrawMethod").value;
+    const amount =
+    Number(
+        document.getElementById(
+            "withdrawAmount"
+        ).value
+    );
 
-    const bank=
-    document.getElementById("withdrawBank").value;
 
-    const title=
-    document.getElementById("withdrawTitle").value.trim();
+    const method =
+    document.getElementById(
+        "withdrawMethod"
+    ).value;
 
-    const account=
-    document.getElementById("withdrawAccount").value.trim();
 
-    if(!amount||amount<=0){
+    const bank =
+    document.getElementById(
+        "withdrawBank"
+    ).value;
 
-        alert("Please enter a valid withdrawal amount.");
+
+    const title =
+    document.getElementById(
+        "withdrawTitle"
+    ).value.trim();
+
+
+    const account =
+    document.getElementById(
+        "withdrawAccount"
+    ).value.trim();
+
+
+    if(!amount || amount<=0){
+
+        alert(
+            "Please enter a valid withdrawal amount."
+        );
+
         return;
+
     }
+
 
     if(amount>balance){
 
         alert(
             "Insufficient balance!\n\n"+
-            "Available Balance: "+money(balance)
+            "Available Balance: "+
+            money(balance)
         );
 
         return;
+
     }
+
 
     if(!method){
 
-        alert("Please select withdrawal method.");
+        alert(
+            "Please select withdrawal method."
+        );
+
         return;
+
     }
 
-    if(method==="Bank"&&!bank){
 
-        alert("Please select your bank.");
+    if(
+        method==="Bank" &&
+        !bank
+    ){
+
+        alert(
+            "Please select your bank."
+        );
+
         return;
+
     }
+
 
     if(!title){
 
-        alert("Please enter Account Title.");
+        alert(
+            "Please enter Account Title."
+        );
+
         return;
+
     }
+
 
     if(!account){
 
-        alert("Please enter account number.");
+        alert(
+            "Please enter account number."
+        );
+
         return;
+
     }
 
-    let withdrawals=
+
+    let withdrawals =
     JSON.parse(
-        localStorage.getItem("pakrewardWithdrawals")||"[]"
+        localStorage.getItem(
+            "pakrewardWithdrawals"
+        ) || "[]"
     );
 
-    if(!Array.isArray(withdrawals)) withdrawals=[];
+
+    if(!Array.isArray(withdrawals)){
+
+        withdrawals=[];
+
+    }
+
 
     withdrawals.push({
 
         id:Date.now(),
 
-        userId:currentUser.id,
+        userId:
+        currentUser.id,
 
-        userName:currentUser.name||"User",
+        userName:
+        currentUser.name||"User",
 
-        email:currentUser.email||"",
+        email:
+        currentUser.email||"",
 
         amount:amount,
 
         method:method,
 
-        bank:method==="Bank"?bank:"",
+        bank:
+        method==="Bank"
+        ?bank
+        :"",
 
-        accountTitle:title,
+        accountTitle:
+        title,
 
-        account:account,
+        account:
+        account,
 
         status:"pending",
 
-        date:new Date().toLocaleString()
+        date:
+        new Date().toLocaleString()
 
     });
+
 
     localStorage.setItem(
         "pakrewardWithdrawals",
         JSON.stringify(withdrawals)
     );
 
-    currentUser.balance=balance-amount;
+
+    currentUser.balance =
+    balance-amount;
+
 
     saveUser();
+
 
     addTransaction(
         "Withdrawal Request - Pending",
         amount
     );
 
-    closeModal("withdrawModal");
 
-    document.getElementById("withdrawAmount").value="";
-    document.getElementById("withdrawMethod").value="";
-    document.getElementById("withdrawBank").value="";
-    document.getElementById("withdrawTitle").value="";
-    document.getElementById("withdrawAccount").value="";
+    closeModal(
+        "withdrawModal"
+    );
 
-    document.getElementById("bankGroup").style.display="none";
+
+    document.getElementById(
+        "withdrawAmount"
+    ).value="";
+
+
+    document.getElementById(
+        "withdrawMethod"
+    ).value="";
+
+
+    document.getElementById(
+        "withdrawBank"
+    ).value="";
+
+
+    document.getElementById(
+        "withdrawTitle"
+    ).value="";
+
+
+    document.getElementById(
+        "withdrawAccount"
+    ).value="";
+
+
+    document.getElementById(
+        "bankGroup"
+    ).style.display="none";
+
 
     showRequestHistory();
+
     updateDashboard();
+
 
     alert(
         "Withdrawal request submitted successfully.\n\n"+
-        "Amount: "+money(amount)+
-        "\nMethod: "+method+
+        "Amount: "+
+        money(amount)+
+        "\nMethod: "+
+        method+
         "\nStatus: Pending\n\n"+
         "Admin approval is required."
     );
+
 }
 
 
-/* REQUEST HISTORY */
+/* =========================================
+   REQUEST HISTORY
+========================================= */
 
 function showRequestHistory(){
 
-    const container=
-    document.getElementById("requestHistory");
+    const container =
+    document.getElementById(
+        "requestHistory"
+    );
 
-    let deposits=
+
+    let deposits =
     JSON.parse(
-        localStorage.getItem("pakrewardDeposits")||"[]"
+        localStorage.getItem(
+            "pakrewardDeposits"
+        ) || "[]"
     );
 
-    let withdrawals=
+
+    let withdrawals =
     JSON.parse(
-        localStorage.getItem("pakrewardWithdrawals")||"[]"
+        localStorage.getItem(
+            "pakrewardWithdrawals"
+        ) || "[]"
     );
 
-    if(!Array.isArray(deposits)) deposits=[];
-    if(!Array.isArray(withdrawals)) withdrawals=[];
 
-    deposits=deposits.filter(
-        x=>String(x.userId)===String(currentUser.id)
+    if(!Array.isArray(deposits))
+        deposits=[];
+
+
+    if(!Array.isArray(withdrawals))
+        withdrawals=[];
+
+
+    deposits =
+    deposits.filter(
+        x =>
+        String(x.userId) ===
+        String(currentUser.id)
     );
 
-    withdrawals=withdrawals.filter(
-        x=>String(x.userId)===String(currentUser.id)
+
+    withdrawals =
+    withdrawals.filter(
+        x =>
+        String(x.userId) ===
+        String(currentUser.id)
     );
+
 
     const all=[
 
-        ...deposits.map(x=>({...x,type:"Deposit"})),
+        ...deposits.map(
+            x=>({
+                ...x,
+                type:"Deposit"
+            })
+        ),
 
-        ...withdrawals.map(x=>({...x,type:"Withdrawal"}))
+        ...withdrawals.map(
+            x=>({
+                ...x,
+                type:"Withdrawal"
+            })
+        )
 
     ];
 
-    all.sort((a,b)=>Number(b.id)-Number(a.id));
+
+    all.sort(
+        (a,b)=>
+        Number(b.id)-
+        Number(a.id)
+    );
+
 
     if(!all.length){
 
         container.innerHTML=`
+
         <div class="history-empty">
+
         No deposit or withdrawal requests yet.
+
         </div>`;
 
         return;
+
     }
+
 
     container.innerHTML="";
 
+
     all.forEach(request=>{
 
-        let cls="status-pending";
-        let status="Pending";
+        let cls=
+        "status-pending";
 
-        if(request.status==="approved"){
-            cls="status-approved";
-            status="Approved";
+        let status=
+        "Pending";
+
+
+        if(
+            request.status==="approved"
+        ){
+
+            cls=
+            "status-approved";
+
+            status=
+            "Approved";
+
         }
 
-        if(request.status==="rejected"){
-            cls="status-rejected";
-            status="Rejected";
+
+        if(
+            request.status==="rejected"
+        ){
+
+            cls=
+            "status-rejected";
+
+            status=
+            "Rejected";
+
         }
 
-        const row=document.createElement("div");
 
-        row.className="history-row";
+        const row =
+        document.createElement("div");
+
+
+        row.className=
+        "history-row";
+
 
         row.innerHTML=`
-        <span>${request.type}</span>
-        <strong>${money(request.amount)}</strong>
-        <span>${escapeHtml(request.method||"-")}</span>
+
         <span>
-            <span class="status ${cls}">
-            ${status}
-            </span>
+        ${request.type}
+        ${
+            request.selectedPlan
+            ?
+            `<small style="display:block;color:#68737f">
+            ${escapeHtml(request.selectedPlan)}
+            </small>`
+            :
+            ""
+        }
         </span>
-        <small>${escapeHtml(request.date||"-")}</small>`;
+
+        <strong>
+        ${money(request.amount)}
+        </strong>
+
+        <span>
+        ${escapeHtml(
+            request.method||"-"
+        )}
+        </span>
+
+        <span>
+
+        <span
+        class="status ${cls}">
+
+        ${status}
+
+        </span>
+
+        </span>
+
+        <small>
+        ${escapeHtml(
+            request.date||"-"
+        )}
+        </small>
+
+        `;
+
 
         container.appendChild(row);
+
     });
+
 }
 
 
-/* LOGOUT */
+/* =========================================
+   LOGOUT
+========================================= */
 
 function logout(){
 
     saveUser();
 
-    localStorage.removeItem("loggedInUser");
+    localStorage.removeItem(
+        "loggedInUser"
+    );
 
-    window.location.href="login.html";
+    window.location.href=
+    "login.html";
+
 }
 
 
-/* ESCAPE */
+/* =========================================
+   ESCAPE HTML
+========================================= */
 
 function escapeHtml(value){
 
@@ -1627,14 +2800,20 @@ function escapeHtml(value){
     .replace(/>/g,"&gt;")
     .replace(/"/g,"&quot;")
     .replace(/'/g,"&#039;");
+
 }
 
 
-/* START */
+/* =========================================
+   START
+========================================= */
 
 saveUser();
+
 updateDashboard();
+
 showTransactions();
+
 showRequestHistory();
 
 </script>
