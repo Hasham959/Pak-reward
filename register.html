@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Register - PakReward</title>
+
 
 <style>
 
@@ -12,21 +17,32 @@
     box-sizing: border-box;
 }
 
+
 body {
+
     margin: 0;
+
     font-family: Arial, sans-serif;
+
     background: #f5f7fb;
 
     min-height: 100vh;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
+    padding: 20px;
+
 }
+
 
 .register-box {
 
     width: 100%;
+
     max-width: 430px;
 
     background: white;
@@ -35,10 +51,13 @@ body {
 
     border-radius: 18px;
 
-    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.08);
 
     border: 1px solid #e4e8ed;
+
 }
+
 
 .logo {
 
@@ -51,7 +70,9 @@ body {
     color: #087443;
 
     margin-bottom: 8px;
+
 }
+
 
 .subtitle {
 
@@ -60,7 +81,9 @@ body {
     color: #697480;
 
     margin-bottom: 25px;
+
 }
+
 
 label {
 
@@ -73,7 +96,9 @@ label {
     font-weight: bold;
 
     font-size: 14px;
+
 }
+
 
 input {
 
@@ -88,12 +113,16 @@ input {
     font-size: 15px;
 
     outline: none;
+
 }
+
 
 input:focus {
 
     border-color: #087443;
+
 }
+
 
 .register-btn {
 
@@ -116,12 +145,16 @@ input:focus {
     font-size: 16px;
 
     cursor: pointer;
+
 }
+
 
 .register-btn:hover {
 
     opacity: 0.9;
+
 }
+
 
 .login-link {
 
@@ -130,7 +163,9 @@ input:focus {
     margin-top: 20px;
 
     color: #697480;
+
 }
+
 
 .login-link a {
 
@@ -139,7 +174,9 @@ input:focus {
     font-weight: bold;
 
     text-decoration: none;
+
 }
+
 
 .notice {
 
@@ -156,137 +193,465 @@ input:focus {
     font-size: 12px;
 
     text-align: center;
+
 }
 
+
+.error {
+
+    color: #c0392b;
+
+    font-size: 13px;
+
+    margin-top: 8px;
+
+    display: none;
+
+}
+
+
 </style>
+
 </head>
 
 
 <body>
 
+
 <div class="register-box">
+
 
     <div class="logo">
         🇵🇰 PakReward
     </div>
+
 
     <div class="subtitle">
         Create your account
     </div>
 
 
-    <form onsubmit="registerDemo(event)">
 
-        <label>Full Name</label>
+    <form onsubmit="registerUser(event)">
+
+
+        <label>
+            Full Name
+        </label>
+
 
         <input
             type="text"
             id="name"
             placeholder="Enter your full name"
+            autocomplete="name"
             required
         >
 
 
-        <label>Mobile Number</label>
+
+        <label>
+            Mobile Number
+        </label>
+
 
         <input
             type="tel"
             id="mobile"
             placeholder="03XXXXXXXXX"
+            autocomplete="tel"
+            pattern="03[0-9]{9}"
+            title="Enter a valid Pakistani mobile number, e.g. 03001234567"
             required
         >
 
 
-        <label>Email</label>
+
+        <label>
+            Email
+        </label>
+
 
         <input
             type="email"
             id="email"
             placeholder="Enter your email"
+            autocomplete="email"
             required
         >
 
 
-        <label>Password</label>
+
+        <label>
+            Password
+        </label>
+
 
         <input
             type="password"
             id="password"
             placeholder="Create password"
+            autocomplete="new-password"
+            minlength="6"
             required
         >
 
 
-        <label>Confirm Password</label>
+
+        <label>
+            Confirm Password
+        </label>
+
 
         <input
             type="password"
             id="confirmPassword"
             placeholder="Confirm password"
+            autocomplete="new-password"
+            minlength="6"
             required
         >
 
 
+        <div
+            class="error"
+            id="error">
+        </div>
+
+
+
         <button
             type="submit"
-            class="register-btn"
-        >
+            class="register-btn">
+
             Create Account
+
         </button>
 
+
     </form>
+
 
 
     <div class="login-link">
 
         Already have an account?
 
-        <a href="index.html">
+        <a href="login.html">
             Login
         </a>
 
     </div>
 
 
+
     <div class="notice">
 
-        Demo registration only.
-        No real account or payment is created yet.
+        Demo registration system.
+        Data is stored locally in this browser.
 
     </div>
+
 
 </div>
 
 
+
 <script>
 
-function registerDemo(event) {
+
+/* =========================
+   HASH PASSWORD
+========================= */
+
+async function hashPassword(password) {
+
+    const data =
+        new TextEncoder()
+            .encode(password);
+
+
+    const hash =
+        await crypto.subtle.digest(
+            "SHA-256",
+            data
+        );
+
+
+    return Array.from(
+        new Uint8Array(hash)
+    )
+    .map(
+        byte =>
+        byte.toString(16)
+            .padStart(2, "0")
+    )
+    .join("");
+
+}
+
+
+
+/* =========================
+   SHOW ERROR
+========================= */
+
+function showError(message) {
+
+    const error =
+        document.getElementById(
+            "error"
+        );
+
+
+    error.innerText =
+        message;
+
+
+    error.style.display =
+        "block";
+
+}
+
+
+
+/* =========================
+   REGISTER USER
+========================= */
+
+async function registerUser(event) {
 
     event.preventDefault();
 
 
-    let name =
-        document.getElementById("name").value;
+    const name =
+        document.getElementById(
+            "name"
+        ).value.trim();
 
-    let password =
-        document.getElementById("password").value;
 
-    let confirmPassword =
-        document.getElementById("confirmPassword").value;
+    const mobile =
+        document.getElementById(
+            "mobile"
+        ).value.trim();
 
+
+    const email =
+        document.getElementById(
+            "email"
+        ).value.trim()
+        .toLowerCase();
+
+
+    const password =
+        document.getElementById(
+            "password"
+        ).value;
+
+
+    const confirmPassword =
+        document.getElementById(
+            "confirmPassword"
+        ).value;
+
+
+    /* Password Check */
 
     if (password !== confirmPassword) {
 
-        alert("Passwords do not match.");
+        showError(
+            "Passwords do not match."
+        );
 
         return;
 
     }
 
 
+    /* Password Length */
+
+    if (password.length < 6) {
+
+        showError(
+            "Password must contain at least 6 characters."
+        );
+
+        return;
+
+    }
+
+
+    /* Get Existing Users */
+
+    let users =
+        JSON.parse(
+            localStorage.getItem(
+                "pakrewardUsers"
+            ) || "[]"
+        );
+
+
+    /* Duplicate Email */
+
+    const existingUser =
+        users.find(
+            user =>
+            user.email === email
+        );
+
+
+    if (existingUser) {
+
+        showError(
+            "An account with this email already exists."
+        );
+
+        return;
+
+    }
+
+
+    /* Duplicate Mobile */
+
+    const existingMobile =
+        users.find(
+            user =>
+            user.mobile === mobile
+        );
+
+
+    if (existingMobile) {
+
+        showError(
+            "This mobile number is already registered."
+        );
+
+        return;
+
+    }
+
+
+    /* Hash Password */
+
+    const passwordHash =
+        await hashPassword(
+            password
+        );
+
+
+    /* Create User */
+
+    const newUser = {
+
+        id:
+            Date.now(),
+
+        name:
+            name,
+
+        mobile:
+            mobile,
+
+        email:
+            email,
+
+        password:
+            passwordHash,
+
+        balance:
+            0,
+
+        todayReward:
+            0,
+
+        totalReward:
+            0,
+
+        selectedPlan:
+            "",
+
+        planAmount:
+            0,
+
+        adsCompleted:
+            0,
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    /* Save User */
+
+    users.push(
+        newUser
+    );
+
+
+    localStorage.setItem(
+        "pakrewardUsers",
+        JSON.stringify(users)
+    );
+
+
+    /* Login Session */
+
+    localStorage.setItem(
+        "loggedInUser",
+        String(newUser.id)
+    );
+
+
+    /* Reset Dashboard Values */
+
+    localStorage.setItem(
+        "balance",
+        "0"
+    );
+
+
+    localStorage.setItem(
+        "todayReward",
+        "0"
+    );
+
+
+    localStorage.setItem(
+        "totalReward",
+        "0"
+    );
+
+
+    localStorage.setItem(
+        "selectedPlan",
+        ""
+    );
+
+
+    localStorage.setItem(
+        "planAmount",
+        "0"
+    );
+
+
+    localStorage.setItem(
+        "adsCompleted",
+        "0"
+    );
+
+
+    localStorage.setItem(
+        "transactions",
+        "[]"
+    );
+
+
     alert(
         "Registration successful!\n\n" +
-        "Welcome " + name + "!"
+        "Welcome, " +
+        name +
+        "!"
     );
 
 
@@ -297,5 +662,7 @@ function registerDemo(event) {
 
 </script>
 
+
 </body>
+
 </html>
