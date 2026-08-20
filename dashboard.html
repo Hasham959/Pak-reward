@@ -4,13 +4,274 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Dashboard - PakReward</title>
 
-/* REQUEST HISTORY */
+<style>
+
+/* ================================
+   RESET
+================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #17202a;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+header {
+    background: #087443;
+    color: white;
+    padding: 16px 6%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.home-btn,
+.logout {
+    padding: 9px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.home-btn {
+    background: white;
+    color: #087443;
+}
+
+.logout {
+    border: none;
+    background: #eaf7f0;
+    color: #087443;
+}
+
+
+/* ================================
+   MAIN
+================================ */
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 35px 20px;
+}
+
+.welcome {
+    color: #68737f;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+
+/* ================================
+   STATS
+================================ */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #e3e7ec;
+    border-radius: 16px;
+    padding: 23px;
+
+    box-shadow: 0 7px 25px rgba(0,0,0,0.05);
+}
+
+.card p {
+    color: #6c7783;
+    margin-top: 0;
+}
+
+.amount {
+    font-size: 29px;
+    font-weight: bold;
+    color: #087443;
+}
+
+
+/* ================================
+   SECTIONS
+================================ */
+
+.section {
+    margin-top: 35px;
+}
+
+
+/* ================================
+   ACTIVE PLAN
+================================ */
+
+.plan {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.badge {
+    background: #e4f4ec;
+    color: #087443;
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* ================================
+   PLANS
+================================ */
+
+.plans {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.plan-card {
+    background: white;
+    border: 1px solid #e3e7ec;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+}
+
+.plan-card h3 {
+    margin-top: 0;
+}
+
+.plan-card h4 {
+    color: #087443;
+    font-size: 21px;
+}
+
+.plan-card p {
+    color: #68737f;
+    font-size: 14px;
+}
+
+.plan-card button {
+    width: 100%;
+    border: none;
+    background: #087443;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.plan-card button:hover {
+    opacity: .9;
+}
+
+.popular {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e4f4ec;
+    color: #087443;
+    padding: 5px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+
+/* ================================
+   TRANSACTIONS / ADS
+================================ */
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.transaction:last-child {
+    border-bottom: none;
+}
+
+.btn {
+    border: none;
+    background: #087443;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+}
+
+.green {
+    color: #087443;
+    font-weight: bold;
+}
+
+
+/* ================================
+   WALLET
+================================ */
+
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.action {
+    padding: 20px;
+    background: white;
+    border: 1px solid #e3e7ec;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #087443;
+}
+
+
+/* ================================
+   REQUEST HISTORY
+================================ */
 
 .history-table {
     width: 100%;
@@ -65,6 +326,37 @@
     padding: 20px;
 }
 
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #6c7783;
+    background: white;
+    border-top: 1px solid #e4e8ed;
+    margin-top: 40px;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width: 850px) {
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .plans {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
 @media(max-width: 700px) {
 
     .history-row {
@@ -75,324 +367,6 @@
 
     .history-head {
         display: none;
-    }
-
-}
-      
-<style>
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f7fb;
-    color: #17202a;
-}
-
-
-/* HEADER */
-
-header {
-    background: #087443;
-    color: white;
-    padding: 16px 6%;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 15px;
-}
-
-.logo {
-    font-size: 21px;
-    font-weight: bold;
-}
-
-.header-buttons {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-.home-btn,
-.logout {
-    padding: 9px 15px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.home-btn {
-    background: white;
-    color: #087443;
-}
-
-.logout {
-    border: none;
-    background: #eaf7f0;
-    color: #087443;
-}
-
-
-/* MAIN */
-
-main {
-    max-width: 1100px;
-    margin: auto;
-    padding: 35px 20px;
-}
-
-.welcome {
-    color: #68737f;
-    margin-top: 5px;
-    margin-bottom: 30px;
-}
-
-
-/* STATS */
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-}
-
-.card {
-    background: white;
-    border: 1px solid #e3e7ec;
-    border-radius: 16px;
-    padding: 23px;
-
-    box-shadow:
-        0 7px 25px rgba(0,0,0,0.05);
-}
-
-.card p {
-    color: #6c7783;
-    margin-top: 0;
-}
-
-.amount {
-    font-size: 29px;
-    font-weight: bold;
-    color: #087443;
-}
-
-
-/* SECTIONS */
-
-.section {
-    margin-top: 35px;
-}
-
-
-/* PLAN */
-
-.plan {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.badge {
-    background: #e4f4ec;
-    color: #087443;
-
-    padding: 7px 13px;
-
-    border-radius: 20px;
-
-    font-size: 12px;
-
-    font-weight: bold;
-}
-
-
-/* PLANS */
-
-.plans {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 15px;
-}
-
-.plan-card {
-    background: white;
-
-    border: 1px solid #e3e7ec;
-
-    border-radius: 15px;
-
-    padding: 20px;
-
-    position: relative;
-}
-
-.plan-card h3 {
-    margin-top: 0;
-}
-
-.plan-card h4 {
-    color: #087443;
-    font-size: 21px;
-}
-
-.plan-card p {
-    color: #68737f;
-    font-size: 14px;
-}
-
-.plan-card button {
-    width: 100%;
-
-    border: none;
-
-    background: #087443;
-
-    color: white;
-
-    padding: 10px;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    font-weight: bold;
-}
-
-.plan-card button:hover {
-    opacity: .9;
-}
-
-.popular {
-    position: absolute;
-
-    top: 10px;
-    right: 10px;
-
-    background: #e4f4ec;
-
-    color: #087443;
-
-    padding: 5px 8px;
-
-    border-radius: 10px;
-
-    font-size: 10px;
-
-    font-weight: bold;
-}
-
-
-/* ADS */
-
-.transaction {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    border-bottom: 1px solid #eee;
-
-    padding: 15px 0;
-}
-
-.transaction:last-child {
-    border-bottom: none;
-}
-
-.btn {
-    border: none;
-
-    background: #087443;
-
-    color: white;
-
-    padding: 10px 15px;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    font-weight: bold;
-}
-
-.btn:disabled {
-    background: #aaa;
-    cursor: not-allowed;
-}
-
-.green {
-    color: #087443;
-    font-weight: bold;
-}
-
-
-/* WALLET */
-
-.actions {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 18px;
-}
-
-.action {
-    padding: 20px;
-
-    background: white;
-
-    border: 1px solid #e3e7ec;
-
-    border-radius: 15px;
-
-    cursor: pointer;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    color: #087443;
-}
-
-
-/* FOOTER */
-
-footer {
-    text-align: center;
-
-    padding: 30px;
-
-    color: #6c7783;
-
-    background: white;
-
-    border-top: 1px solid #e4e8ed;
-
-    margin-top: 40px;
-}
-
-
-/* MOBILE */
-
-@media(max-width: 850px) {
-
-    .stats {
-        grid-template-columns: 1fr;
-    }
-
-    .plans {
-        grid-template-columns: 1fr 1fr;
     }
 
 }
@@ -425,29 +399,24 @@ footer {
 <body>
 
 
+<!-- ================================
+     HEADER
+================================ -->
+
 <header>
 
     <div class="logo">
         🇵🇰 PakReward
     </div>
 
-
     <div class="header-buttons">
 
-        <a href="index.html"
-           class="home-btn">
-
+        <a href="index.html" class="home-btn">
             🏠 Home
-
         </a>
 
-
-        <button
-            class="logout"
-            onclick="logout()">
-
+        <button class="logout" onclick="logout()">
             Logout
-
         </button>
 
     </div>
@@ -455,80 +424,54 @@ footer {
 </header>
 
 
-
 <main>
 
 
-<h1>
-    Dashboard
-</h1>
-
+<h1>Dashboard</h1>
 
 <p class="welcome">
 
     Welcome,
-    <strong id="userName">
-        User
-    </strong>
+    <strong id="userName">User</strong>
     👋
 
 </p>
 
 
-
-<!-- STATS -->
+<!-- ================================
+     STATS
+================================ -->
 
 <div class="stats">
 
-
     <div class="card">
 
-        <p>
-            Wallet Balance
-        </p>
+        <p>Wallet Balance</p>
 
-        <div
-            class="amount"
-            id="balance">
-
+        <div class="amount" id="balance">
             Rs. 0
-
         </div>
 
     </div>
 
 
-
     <div class="card">
 
-        <p>
-            Today's Reward
-        </p>
+        <p>Today's Reward</p>
 
-        <div
-            class="amount"
-            id="today">
-
+        <div class="amount" id="today">
             Rs. 0
-
         </div>
 
     </div>
 
 
-
     <div class="card">
 
-        <p>
-            Total Reward
-        </p>
+        <p>Total Reward</p>
 
-        <div
-            class="amount"
-            id="total">
-
+        <div class="amount" id="total">
             Rs. 0
-
         </div>
 
     </div>
@@ -536,18 +479,15 @@ footer {
 </div>
 
 
-
-<!-- ACTIVE PLAN -->
+<!-- ================================
+     ACTIVE PLAN
+================================ -->
 
 <div class="section">
 
-    <h2>
-        Active Plan
-    </h2>
-
+    <h2>Active Plan</h2>
 
     <div class="card plan">
-
 
         <div>
 
@@ -555,20 +495,14 @@ footer {
                 No Active Plan
             </h3>
 
-
             <p id="planAmount">
                 Please select a plan below.
             </p>
 
         </div>
 
-
-        <span
-            class="badge"
-            id="planStatus">
-
+        <span class="badge" id="planStatus">
             NO PLAN
-
         </span>
 
     </div>
@@ -576,74 +510,46 @@ footer {
 </div>
 
 
-
-<!-- PLANS -->
+<!-- ================================
+     REWARD PLANS
+================================ -->
 
 <div class="section">
 
-    <h2>
-        Reward Plans
-    </h2>
-
+    <h2>Reward Plans</h2>
 
     <div class="plans">
 
 
-        <!-- STARTER -->
-
         <div class="plan-card">
 
-            <h3>
-                Starter
-            </h3>
+            <h3>Starter</h3>
 
-            <h4>
-                Rs. 1,000
-            </h4>
+            <h4>Rs. 1,000</h4>
 
-            <p>
-                Basic task access
-            </p>
+            <p>Basic task access</p>
 
-            <button
-                onclick="selectPlan('Starter',1000)">
-
+            <button onclick="selectPlan('Starter',1000)">
                 Select Plan
-
             </button>
 
         </div>
 
 
-
-        <!-- BASIC -->
-
         <div class="plan-card">
 
-            <h3>
-                Basic
-            </h3>
+            <h3>Basic</h3>
 
-            <h4>
-                Rs. 5,000
-            </h4>
+            <h4>Rs. 5,000</h4>
 
-            <p>
-                More eligible tasks
-            </p>
+            <p>More eligible tasks</p>
 
-            <button
-                onclick="selectPlan('Basic',5000)">
-
+            <button onclick="selectPlan('Basic',5000)">
                 Select Plan
-
             </button>
 
         </div>
 
-
-
-        <!-- PREMIUM -->
 
         <div class="plan-card">
 
@@ -651,49 +557,130 @@ footer {
                 POPULAR
             </span>
 
-            <h3>
-                Premium
-            </h3>
+            <h3>Premium</h3>
 
-            <h4>
-                Rs. 10,000
-            </h4>
+            <h4>Rs. 10,000</h4>
 
-            <p>
-                Higher task limits
-            </p>
+            <p>Higher task limits</p>
 
-            <button
-                onclick="selectPlan('Premium',10000)">
-
+            <button onclick="selectPlan('Premium',10000)">
                 Select Plan
-
             </button>
 
         </div>
 
-
-
-        <!-- PRO -->
 
         <div class="plan-card">
 
-            <h3>
-                Pro
-            </h3>
+            <h3>Pro</h3>
 
-            <h4>
-                Rs. 25,000
-            </h4>
+            <h4>Rs. 25,000</h4>
 
-            <p>
-                Highest task limits
-            </p>
+            <p>Highest task limits</p>
+
+            <button onclick="selectPlan('Pro',25000)">
+                Select Plan
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================================
+     DAILY ADS
+================================ -->
+
+<div class="section">
+
+    <h2>Daily Ads</h2>
+
+    <div class="card">
+
+        <p>
+            Today's Ads:
+            <strong>
+                <span id="adsCompleted">0</span>/5
+            </strong>
+        </p>
+
+
+        <div class="transaction">
+
+            <span>Ad 1</span>
 
             <button
-                onclick="selectPlan('Pro',25000)">
+                class="btn"
+                onclick="watchAd(1)"
+                id="ad1">
 
-                Select Plan
+                Watch Ad
+
+            </button>
+
+        </div>
+
+
+        <div class="transaction">
+
+            <span>Ad 2</span>
+
+            <button
+                class="btn"
+                onclick="watchAd(2)"
+                id="ad2">
+
+                Watch Ad
+
+            </button>
+
+        </div>
+
+
+        <div class="transaction">
+
+            <span>Ad 3</span>
+
+            <button
+                class="btn"
+                onclick="watchAd(3)"
+                id="ad3">
+
+                Watch Ad
+
+            </button>
+
+        </div>
+
+
+        <div class="transaction">
+
+            <span>Ad 4</span>
+
+            <button
+                class="btn"
+                onclick="watchAd(4)"
+                id="ad4">
+
+                Watch Ad
+
+            </button>
+
+        </div>
+
+
+        <div class="transaction">
+
+            <span>Ad 5</span>
+
+            <button
+                class="btn"
+                onclick="watchAd(5)"
+                id="ad5">
+
+                Watch Ad
 
             </button>
 
@@ -704,177 +691,36 @@ footer {
 </div>
 
 
-
-<!-- DAILY ADS -->
-
-<div class="section">
-
-    <h2>
-        Daily Ads
-    </h2>
-
-
-    <div class="card">
-
-
-        <p>
-
-            Today's Ads:
-            <strong>
-                <span id="adsCompleted">
-                    0
-                </span>/5
-            </strong>
-
-        </p>
-
-
-        <div id="adsList">
-
-
-            <div class="transaction">
-
-                <span>
-                    Ad 1
-                </span>
-
-                <button
-                    class="btn"
-                    onclick="watchAd(1)"
-                    id="ad1">
-
-                    Watch Ad
-
-                </button>
-
-            </div>
-
-
-
-            <div class="transaction">
-
-                <span>
-                    Ad 2
-                </span>
-
-                <button
-                    class="btn"
-                    onclick="watchAd(2)"
-                    id="ad2">
-
-                    Watch Ad
-
-                </button>
-
-            </div>
-
-
-
-            <div class="transaction">
-
-                <span>
-                    Ad 3
-                </span>
-
-                <button
-                    class="btn"
-                    onclick="watchAd(3)"
-                    id="ad3">
-
-                    Watch Ad
-
-                </button>
-
-            </div>
-
-
-
-            <div class="transaction">
-
-                <span>
-                    Ad 4
-                </span>
-
-                <button
-                    class="btn"
-                    onclick="watchAd(4)"
-                    id="ad4">
-
-                    Watch Ad
-
-                </button>
-
-            </div>
-
-
-
-            <div class="transaction">
-
-                <span>
-                    Ad 5
-                </span>
-
-                <button
-                    class="btn"
-                    onclick="watchAd(5)"
-                    id="ad5">
-
-                    Watch Ad
-
-                </button>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- WALLET -->
+<!-- ================================
+     WALLET
+================================ -->
 
 <div class="section">
 
-    <h2>
-        Wallet
-    </h2>
-
+    <h2>Wallet</h2>
 
     <div class="actions">
 
-
-        <button
-            class="action"
-            onclick="deposit()">
-
+        <button class="action" onclick="deposit()">
             📥 Deposit
-
         </button>
 
-
-        <button
-            class="action"
-            onclick="withdraw()">
-
+        <button class="action" onclick="withdraw()">
             📤 Withdraw
-
         </button>
-
 
     </div>
 
 </div>
 
-<!-- DEPOSIT & WITHDRAWAL HISTORY -->
+
+<!-- ================================
+     DEPOSIT / WITHDRAWAL HISTORY
+================================ -->
 
 <div class="section">
 
-    <h2>
-        Deposit & Withdrawal History
-    </h2>
+    <h2>Deposit & Withdrawal History</h2>
 
     <div class="card">
 
@@ -882,25 +728,11 @@ footer {
 
             <div class="history-row history-head">
 
-                <span>
-                    Type
-                </span>
-
-                <span>
-                    Amount
-                </span>
-
-                <span>
-                    Method
-                </span>
-
-                <span>
-                    Status
-                </span>
-
-                <span>
-                    Date
-                </span>
+                <span>Type</span>
+                <span>Amount</span>
+                <span>Method</span>
+                <span>Status</span>
+                <span>Date</span>
 
             </div>
 
@@ -918,27 +750,22 @@ footer {
 
 </div>
 
-<!-- TRANSACTIONS -->
+
+<!-- ================================
+     RECENT TRANSACTIONS
+================================ -->
 
 <div class="section">
 
-    <h2>
-        Recent Transactions
-    </h2>
+    <h2>Recent Transactions</h2>
 
-
-    <div class="card"
-         id="transactionList">
+    <div class="card" id="transactionList">
 
         <div class="transaction">
 
-            <span>
-                Account Created
-            </span>
+            <span>Account Created</span>
 
-            <span>
-                Rs. 0
-            </span>
+            <span>Rs. 0</span>
 
         </div>
 
@@ -946,30 +773,8 @@ footer {
 
 </div>
 
- <!-- DEPOSIT & WITHDRAWAL HISTORY -->
-
-<div class="section">
-
-    <h2>
-        Deposit & Withdrawal History
-    </h2>
-
-    <div class="card">
-
-        <div id="requestHistory">
-
-            <div class="history-empty">
-                No deposit or withdrawal requests yet.
-            </div>
-
-        </div>
-
-    </div>
-
-</div>     
 
 </main>
-
 
 
 <footer>
@@ -983,7 +788,6 @@ footer {
 </footer>
 
 
-
 <script>
 
 
@@ -992,18 +796,14 @@ footer {
 ================================= */
 
 const loggedInUserId =
-    localStorage.getItem(
-        "loggedInUser"
-    );
+    localStorage.getItem("loggedInUser");
 
 
 if (!loggedInUserId) {
 
-    window.location.href =
-        "login.html";
+    window.location.href = "login.html";
 
 }
-
 
 
 /* =================================
@@ -1012,14 +812,12 @@ if (!loggedInUserId) {
 
 let users =
     JSON.parse(
-        localStorage.getItem(
-            "pakrewardUsers"
-        ) || "[]"
+        localStorage.getItem("pakrewardUsers") || "[]"
     );
 
 
 /* =================================
-   FIND CURRENT USER
+   CURRENT USER
 ================================= */
 
 let currentUser =
@@ -1032,15 +830,11 @@ let currentUser =
 
 if (!currentUser) {
 
-    localStorage.removeItem(
-        "loggedInUser"
-    );
+    localStorage.removeItem("loggedInUser");
 
-    window.location.href =
-        "login.html";
+    window.location.href = "login.html";
 
 }
-
 
 
 /* =================================
@@ -1064,9 +858,8 @@ if (currentUser.adsDate !== todayDate) {
 }
 
 
-
 /* =================================
-   FORMAT MONEY
+   MONEY FORMAT
 ================================= */
 
 function money(amount) {
@@ -1078,9 +871,8 @@ function money(amount) {
 }
 
 
-
 /* =================================
-   SAVE CURRENT USER
+   SAVE USER
 ================================= */
 
 function saveUser() {
@@ -1095,8 +887,7 @@ function saveUser() {
 
     if (index !== -1) {
 
-        users[index] =
-            currentUser;
+        users[index] = currentUser;
 
     }
 
@@ -1106,46 +897,7 @@ function saveUser() {
         JSON.stringify(users)
     );
 
-
-    /* Keep current session values */
-
-    localStorage.setItem(
-        "balance",
-        String(currentUser.balance || 0)
-    );
-
-
-    localStorage.setItem(
-        "todayReward",
-        String(currentUser.todayReward || 0)
-    );
-
-
-    localStorage.setItem(
-        "totalReward",
-        String(currentUser.totalReward || 0)
-    );
-
-
-    localStorage.setItem(
-        "selectedPlan",
-        currentUser.selectedPlan || ""
-    );
-
-
-    localStorage.setItem(
-        "planAmount",
-        String(currentUser.planAmount || 0)
-    );
-
-
-    localStorage.setItem(
-        "adsCompleted",
-        String(currentUser.adsCompleted || 0)
-    );
-
 }
-
 
 
 /* =================================
@@ -1154,79 +906,49 @@ function saveUser() {
 
 function updateDashboard() {
 
-
-    document.getElementById(
-        "userName"
-    ).innerText =
-        currentUser.name;
+    document.getElementById("userName").innerText =
+        currentUser.name || "User";
 
 
-    document.getElementById(
-        "balance"
-    ).innerText =
+    document.getElementById("balance").innerText =
         money(currentUser.balance);
 
 
-    document.getElementById(
-        "today"
-    ).innerText =
+    document.getElementById("today").innerText =
         money(currentUser.todayReward);
 
 
-    document.getElementById(
-        "total"
-    ).innerText =
+    document.getElementById("total").innerText =
         money(currentUser.totalReward);
 
 
-    document.getElementById(
-        "adsCompleted"
-    ).innerText =
+    document.getElementById("adsCompleted").innerText =
         currentUser.adsCompleted || 0;
 
 
-
-    /* PLAN */
-
     if (currentUser.selectedPlan) {
 
-        document.getElementById(
-            "planName"
-        ).innerText =
+        document.getElementById("planName").innerText =
             currentUser.selectedPlan;
 
-
-        document.getElementById(
-            "planAmount"
-        ).innerText =
+        document.getElementById("planAmount").innerText =
             "Plan Amount: " +
             money(currentUser.planAmount);
 
-
-        document.getElementById(
-            "planStatus"
-        ).innerText =
+        document.getElementById("planStatus").innerText =
             "ACTIVE";
 
     }
 
     else {
 
-        document.getElementById(
-            "planName"
-        ).innerText =
+        document.getElementById("planName").innerText =
             "No Active Plan";
 
-
-        document.getElementById(
-            "planAmount"
-        ).innerText =
+        document.getElementById("planAmount").innerText =
             "Please select a plan below.";
 
-
-        document.getElementById(
-            "planStatus"
-        ).innerText =
+        document.getElementById("planStatus").innerText =
             "NO PLAN";
 
     }
@@ -1237,17 +959,9 @@ function updateDashboard() {
 }
 
 
-
 /* =================================
    SELECT PLAN
 ================================= */
-
-function selectPlan(
-    planName,
-    amount
-) {
-
-    /* Already selected plan */
 
 function selectPlan(planName, amount) {
 
@@ -1255,7 +969,18 @@ function selectPlan(planName, amount) {
         Number(currentUser.balance || 0);
 
 
-    /* Check balance */
+    if (currentUser.selectedPlan) {
+
+        alert(
+            "You already have an active " +
+            currentUser.selectedPlan +
+            " plan."
+        );
+
+        return;
+
+    }
+
 
     if (balance < amount) {
 
@@ -1264,14 +989,14 @@ function selectPlan(planName, amount) {
             "Plan Amount: " +
             money(amount) +
             "\nYour Balance: " +
-            money(balance)
+            money(balance) +
+            "\n\nPlease deposit funds first."
         );
 
         return;
+
     }
 
-
-    /* Confirm purchase */
 
     const confirmPlan =
         confirm(
@@ -1295,16 +1020,8 @@ function selectPlan(planName, amount) {
     }
 
 
-    /* Deduct amount */
-
     currentUser.balance =
         balance - amount;
-
-
-    /*
-       Keep latest selected plan
-       for dashboard display
-    */
 
     currentUser.selectedPlan =
         planName;
@@ -1313,20 +1030,14 @@ function selectPlan(planName, amount) {
         amount;
 
 
-    /* Save */
-
     saveUser();
 
-
-    /* Transaction */
 
     addTransaction(
         "Purchased " + planName + " Plan",
         amount
     );
 
-
-    /* Update */
 
     updateDashboard();
 
@@ -1345,118 +1056,11 @@ function selectPlan(planName, amount) {
 }
 
 
-    /* Check wallet balance */
-
-    const balance =
-        Number(
-            currentUser.balance || 0
-        );
-
-
-    if (balance < amount) {
-
-        alert(
-            "Insufficient balance!\n\n" +
-
-            "Plan Amount: " +
-            money(amount) +
-
-            "\nYour Balance: " +
-            money(balance) +
-
-            "\n\nPlease deposit funds first."
-        );
-
-        return;
-
-    }
-
-
-    /* Confirm purchase */
-
-    const confirmPlan =
-        confirm(
-
-            "Select " +
-            planName +
-            " Plan?\n\n" +
-
-            "Plan Amount: " +
-            money(amount) +
-
-            "\nCurrent Balance: " +
-            money(balance) +
-
-            "\n\nAfter selection your balance will be: " +
-            money(balance - amount)
-
-        );
-
-
-    if (!confirmPlan) {
-
-        return;
-
-    }
-
-
-    /* Deduct plan amount */
-
-    currentUser.balance =
-        balance - amount;
-
-
-    /* Save selected plan */
-
-    currentUser.selectedPlan =
-        planName;
-
-
-    currentUser.planAmount =
-        amount;
-
-
-    /* Save user */
-
-    saveUser();
-
-
-    /* Add transaction */
-
-    addTransaction(
-        "Plan Selected - " + planName,
-        amount
-    );
-
-
-    /* Update dashboard */
-
-    updateDashboard();
-
-
-    alert(
-
-        planName +
-        " plan selected successfully!\n\n" +
-
-        "Plan Amount: " +
-        money(amount) +
-
-        "\nRemaining Balance: " +
-        money(currentUser.balance)
-
-    );
-
-}
-
-
-
 /* =================================
    WATCH AD
 ================================= */
 
 function watchAd(adNumber) {
-
 
     if (!currentUser.selectedPlan) {
 
@@ -1470,9 +1074,7 @@ function watchAd(adNumber) {
 
 
     let completed =
-        Number(
-            currentUser.adsCompleted || 0
-        );
+        Number(currentUser.adsCompleted || 0);
 
 
     if (completed >= 5) {
@@ -1486,44 +1088,28 @@ function watchAd(adNumber) {
     }
 
 
-    /*
-       Demo reward rates
-    */
-
     let reward = 10;
 
 
-    if (
-        currentUser.selectedPlan ===
-        "Starter"
-    ) {
+    if (currentUser.selectedPlan === "Starter") {
 
         reward = 10;
 
     }
 
-    else if (
-        currentUser.selectedPlan ===
-        "Basic"
-    ) {
+    else if (currentUser.selectedPlan === "Basic") {
 
         reward = 50;
 
     }
 
-    else if (
-        currentUser.selectedPlan ===
-        "Premium"
-    ) {
+    else if (currentUser.selectedPlan === "Premium") {
 
         reward = 100;
 
     }
 
-    else if (
-        currentUser.selectedPlan ===
-        "Pro"
-    ) {
+    else if (currentUser.selectedPlan === "Pro") {
 
         reward = 200;
 
@@ -1538,18 +1124,15 @@ function watchAd(adNumber) {
 
 
     currentUser.balance =
-        Number(currentUser.balance || 0)
-        + reward;
+        Number(currentUser.balance || 0) + reward;
 
 
     currentUser.todayReward =
-        Number(currentUser.todayReward || 0)
-        + reward;
+        Number(currentUser.todayReward || 0) + reward;
 
 
     currentUser.totalReward =
-        Number(currentUser.totalReward || 0)
-        + reward;
+        Number(currentUser.totalReward || 0) + reward;
 
 
     currentUser.adsDate =
@@ -1558,27 +1141,25 @@ function watchAd(adNumber) {
 
     saveUser();
 
-    updateDashboard();
-
 
     addTransaction(
-        "Advertising Ad " +
-        adNumber,
+        "Advertising Ad " + adNumber,
         reward
     );
+
+
+    updateDashboard();
 
 
     alert(
         "Ad " +
         adNumber +
-        " completed!\n\n" +
-        "+" +
+        " completed!\n\n+" +
         money(reward) +
         " reward added."
     );
 
 }
-
 
 
 /* =================================
@@ -1587,23 +1168,14 @@ function watchAd(adNumber) {
 
 function updateAdButtons() {
 
-
     const completed =
-        Number(
-            currentUser.adsCompleted || 0
-        );
+        Number(currentUser.adsCompleted || 0);
 
 
-    for (
-        let i = 1;
-        i <= 5;
-        i++
-    ) {
+    for (let i = 1; i <= 5; i++) {
 
         const button =
-            document.getElementById(
-                "ad" + i
-            );
+            document.getElementById("ad" + i);
 
 
         if (!button) {
@@ -1636,57 +1208,40 @@ function updateAdButtons() {
 }
 
 
-
 /* =================================
-   TRANSACTION
+   ADD TRANSACTION
 ================================= */
 
-function addTransaction(
-    title,
-    reward
-) {
-
+function addTransaction(title, amount) {
 
     let transactions =
         JSON.parse(
             localStorage.getItem(
-                "transactions_" +
-                currentUser.id
+                "transactions_" + currentUser.id
             ) || "[]"
         );
 
 
     transactions.unshift({
 
-        title:
-            title,
+        title: title,
 
-        amount:
-            reward,
+        amount: amount,
 
-        date:
-            new Date().toLocaleString()
+        date: new Date().toLocaleString()
 
     });
 
 
-    /* Keep last 20 */
-
     transactions =
-        transactions.slice(
-            0,
-            20
-        );
+        transactions.slice(0, 20);
 
 
     localStorage.setItem(
 
-        "transactions_" +
-        currentUser.id,
+        "transactions_" + currentUser.id,
 
-        JSON.stringify(
-            transactions
-        )
+        JSON.stringify(transactions)
 
     );
 
@@ -1696,32 +1251,30 @@ function addTransaction(
 }
 
 
-
 /* =================================
    SHOW TRANSACTIONS
 ================================= */
 
 function showTransactions() {
 
-
     const container =
-        document.getElementById(
-            "transactionList"
-        );
+        document.getElementById("transactionList");
+
+
+    if (!container) {
+        return;
+    }
 
 
     let transactions =
         JSON.parse(
             localStorage.getItem(
-                "transactions_" +
-                currentUser.id
+                "transactions_" + currentUser.id
             ) || "[]"
         );
 
 
-    if (
-        transactions.length === 0
-    ) {
+    if (transactions.length === 0) {
 
         container.innerHTML = `
 
@@ -1747,56 +1300,48 @@ function showTransactions() {
     container.innerHTML = "";
 
 
-    transactions.forEach(
-        transaction => {
+    transactions.forEach(transaction => {
 
-            const row =
-                document.createElement(
-                    "div"
-                );
+        const row =
+            document.createElement("div");
 
 
-            row.className =
-                "transaction";
+        row.className =
+            "transaction";
 
 
-            row.innerHTML = `
+        row.innerHTML = `
 
-                <span>
+            <span>
 
-                    ${transaction.title}
+                ${transaction.title}
 
-                    <small style="
-                        display:block;
-                        color:#888;
-                        margin-top:4px;
-                    ">
+                <small style="
+                    display:block;
+                    color:#888;
+                    margin-top:4px;
+                ">
 
-                        ${transaction.date}
+                    ${transaction.date}
 
-                    </small>
+                </small>
 
-                </span>
+            </span>
+
+            <span class="green">
+
+                +${money(transaction.amount)}
+
+            </span>
+
+        `;
 
 
-                <span class="green">
+        container.appendChild(row);
 
-                    +${money(transaction.amount)}
-
-                </span>
-
-            `;
-
-
-            container.appendChild(
-                row
-            );
-
-        }
-    );
+    });
 
 }
-
 
 
 /* =================================
@@ -1805,34 +1350,36 @@ function showTransactions() {
 
 function deposit() {
 
-    const amount = prompt(
-        "Enter Deposit Amount (Rs.):"
-    );
+    const amount =
+        prompt("Enter Deposit Amount (Rs.):");
+
 
     if (amount === null) {
         return;
     }
 
+
     const depositAmount =
         Number(amount);
 
-    if (
-        !depositAmount ||
-        depositAmount <= 0
-    ) {
+
+    if (!depositAmount || depositAmount <= 0) {
 
         alert(
             "Please enter a valid deposit amount."
         );
 
         return;
+
     }
 
 
-    const method = prompt(
-        "Enter Payment Method:\n\n" +
-        "Example: Easypaisa / JazzCash / Bank"
-    );
+    const method =
+        prompt(
+            "Enter Payment Method:\n\n" +
+            "Example: Easypaisa / JazzCash / Bank"
+        );
+
 
     if (!method) {
 
@@ -1841,12 +1388,15 @@ function deposit() {
         );
 
         return;
+
     }
 
 
-    const account = prompt(
-        "Enter Account Number / Transaction ID:"
-    );
+    const account =
+        prompt(
+            "Enter Account Number / Transaction ID:"
+        );
+
 
     if (!account) {
 
@@ -1855,10 +1405,9 @@ function deposit() {
         );
 
         return;
+
     }
 
-
-    /* GET EXISTING DEPOSITS */
 
     let deposits =
         JSON.parse(
@@ -1869,20 +1418,15 @@ function deposit() {
 
 
     if (!Array.isArray(deposits)) {
-
         deposits = [];
-
     }
 
-
-    /* CREATE REQUEST */
 
     const request = {
 
         id: Date.now(),
 
-        userId:
-            currentUser.id,
+        userId: currentUser.id,
 
         userName:
             currentUser.name || "User",
@@ -1911,20 +1455,11 @@ function deposit() {
     deposits.push(request);
 
 
-    /* SAVE REQUEST */
-
     localStorage.setItem(
-
         "pakrewardDeposits",
-
-        JSON.stringify(
-            deposits
-        )
-
+        JSON.stringify(deposits)
     );
 
-
-    /* ADD TRANSACTION */
 
     addTransaction(
         "Deposit Request - Pending",
@@ -1932,12 +1467,14 @@ function deposit() {
     );
 
 
-    alert(
+    showRequestHistory();
 
+
+    alert(
         "Deposit request submitted successfully!\n\n" +
 
-        "Amount: Rs. " +
-        depositAmount.toLocaleString("en-PK") +
+        "Amount: " +
+        money(depositAmount) +
 
         "\nMethod: " +
         method +
@@ -1945,11 +1482,9 @@ function deposit() {
         "\nStatus: Pending\n\n" +
 
         "Admin approval is required."
-
     );
 
 }
-
 
 
 /* =================================
@@ -1962,8 +1497,6 @@ function withdraw() {
         Number(currentUser.balance || 0);
 
 
-    /* Check balance */
-
     if (balance <= 0) {
 
         alert(
@@ -1971,10 +1504,9 @@ function withdraw() {
         );
 
         return;
+
     }
 
-
-    /* Amount */
 
     const amount =
         prompt(
@@ -2003,14 +1535,11 @@ function withdraw() {
         );
 
         return;
+
     }
 
 
-    /* Balance check */
-
-    if (
-        withdrawalAmount > balance
-    ) {
+    if (withdrawalAmount > balance) {
 
         alert(
             "Insufficient balance!\n\n" +
@@ -2019,10 +1548,9 @@ function withdraw() {
         );
 
         return;
+
     }
 
-
-    /* Payment Method */
 
     const method =
         prompt(
@@ -2040,10 +1568,9 @@ function withdraw() {
         );
 
         return;
+
     }
 
-
-    /* Account */
 
     const account =
         prompt(
@@ -2058,10 +1585,9 @@ function withdraw() {
         );
 
         return;
+
     }
 
-
-    /* Get existing withdrawals */
 
     let withdrawals =
         JSON.parse(
@@ -2072,21 +1598,15 @@ function withdraw() {
 
 
     if (!Array.isArray(withdrawals)) {
-
         withdrawals = [];
-
     }
 
 
-    /* Create withdrawal request */
-
     const request = {
 
-        id:
-            Date.now(),
+        id: Date.now(),
 
-        userId:
-            currentUser.id,
+        userId: currentUser.id,
 
         userName:
             currentUser.name || "User",
@@ -2115,20 +1635,23 @@ function withdraw() {
     withdrawals.push(request);
 
 
-    /* Save request */
-
     localStorage.setItem(
-
         "pakrewardWithdrawals",
-
-        JSON.stringify(
-            withdrawals
-        )
-
+        JSON.stringify(withdrawals)
     );
 
 
-    /* Add transaction */
+    /*
+       Reserve withdrawal amount
+       until admin approval.
+    */
+
+    currentUser.balance =
+        balance - withdrawalAmount;
+
+
+    saveUser();
+
 
     addTransaction(
         "Withdrawal Request - Pending",
@@ -2136,8 +1659,13 @@ function withdraw() {
     );
 
 
-    alert(
+    showRequestHistory();
 
+
+    updateDashboard();
+
+
+    alert(
         "Withdrawal request submitted successfully!\n\n" +
 
         "Amount: " +
@@ -2149,11 +1677,193 @@ function withdraw() {
         "\nStatus: Pending\n\n" +
 
         "Admin approval is required."
-
     );
 
 }
 
+
+/* =================================
+   SHOW REQUEST HISTORY
+================================= */
+
+function showRequestHistory() {
+
+    const container =
+        document.getElementById(
+            "requestHistory"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    let deposits =
+        JSON.parse(
+            localStorage.getItem(
+                "pakrewardDeposits"
+            ) || "[]"
+        );
+
+
+    let withdrawals =
+        JSON.parse(
+            localStorage.getItem(
+                "pakrewardWithdrawals"
+            ) || "[]"
+        );
+
+
+    if (!Array.isArray(deposits)) {
+        deposits = [];
+    }
+
+
+    if (!Array.isArray(withdrawals)) {
+        withdrawals = [];
+    }
+
+
+    deposits =
+        deposits.filter(
+            item =>
+            String(item.userId) ===
+            String(currentUser.id)
+        );
+
+
+    withdrawals =
+        withdrawals.filter(
+            item =>
+            String(item.userId) ===
+            String(currentUser.id)
+        );
+
+
+    const allRequests = [
+
+        ...deposits.map(item => ({
+            ...item,
+            type: "Deposit"
+        })),
+
+        ...withdrawals.map(item => ({
+            ...item,
+            type: "Withdrawal"
+        }))
+
+    ];
+
+
+    allRequests.sort(
+        (a, b) =>
+            Number(b.id) -
+            Number(a.id)
+    );
+
+
+    if (allRequests.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="history-empty">
+
+                No deposit or withdrawal requests yet.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    allRequests.forEach(request => {
+
+        let statusClass =
+            "status-pending";
+
+        let statusText =
+            "Pending";
+
+
+        if (
+            String(request.status).toLowerCase() ===
+            "approved"
+        ) {
+
+            statusClass =
+                "status-approved";
+
+            statusText =
+                "Approved";
+
+        }
+
+
+        else if (
+            String(request.status).toLowerCase() ===
+            "rejected"
+        ) {
+
+            statusClass =
+                "status-rejected";
+
+            statusText =
+                "Rejected";
+
+        }
+
+
+        const row =
+            document.createElement("div");
+
+
+        row.className =
+            "history-row";
+
+
+        row.innerHTML = `
+
+            <span>
+                ${request.type}
+            </span>
+
+            <strong>
+                ${money(request.amount)}
+            </strong>
+
+            <span>
+                ${request.method || "-"}
+            </span>
+
+            <span>
+
+                <span class="status ${statusClass}">
+
+                    ${statusText}
+
+                </span>
+
+            </span>
+
+            <small>
+                ${request.date || "-"}
+            </small>
+
+        `;
+
+
+        container.appendChild(row);
+
+    });
+
+}
 
 
 /* =================================
@@ -2161,12 +1871,6 @@ function withdraw() {
 ================================= */
 
 function logout() {
-
-
-    /*
-       Save latest user data
-       before logout
-    */
 
     saveUser();
 
@@ -2176,17 +1880,10 @@ function logout() {
     );
 
 
-    /*
-       Don't delete user account.
-       Only remove login session.
-    */
-
-
     window.location.href =
         "login.html";
 
 }
-
 
 
 /* =================================
@@ -2199,10 +1896,10 @@ updateDashboard();
 
 showTransactions();
 
+showRequestHistory();
+
 
 </script>
 
-
 </body>
-
 </html>
