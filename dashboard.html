@@ -1111,17 +1111,100 @@ function selectPlan(
 
     /* Already selected plan */
 
-    if (currentUser.selectedPlan) {
+function selectPlan(planName, amount) {
+
+    const balance =
+        Number(currentUser.balance || 0);
+
+
+    /* Check balance */
+
+    if (balance < amount) {
 
         alert(
-            "You already have the " +
-            currentUser.selectedPlan +
-            " plan."
+            "Insufficient balance!\n\n" +
+            "Plan Amount: " +
+            money(amount) +
+            "\nYour Balance: " +
+            money(balance)
         );
 
         return;
-
     }
+
+
+    /* Confirm purchase */
+
+    const confirmPlan =
+        confirm(
+            "Purchase " +
+            planName +
+            " Plan?\n\n" +
+
+            "Amount: " +
+            money(amount) +
+
+            "\nCurrent Balance: " +
+            money(balance) +
+
+            "\nRemaining Balance: " +
+            money(balance - amount)
+        );
+
+
+    if (!confirmPlan) {
+        return;
+    }
+
+
+    /* Deduct amount */
+
+    currentUser.balance =
+        balance - amount;
+
+
+    /*
+       Keep latest selected plan
+       for dashboard display
+    */
+
+    currentUser.selectedPlan =
+        planName;
+
+    currentUser.planAmount =
+        amount;
+
+
+    /* Save */
+
+    saveUser();
+
+
+    /* Transaction */
+
+    addTransaction(
+        "Purchased " + planName + " Plan",
+        amount
+    );
+
+
+    /* Update */
+
+    updateDashboard();
+
+
+    alert(
+        planName +
+        " Plan purchased successfully!\n\n" +
+
+        "Deducted: " +
+        money(amount) +
+
+        "\nRemaining Balance: " +
+        money(currentUser.balance)
+    );
+
+}
 
 
     /* Check wallet balance */
