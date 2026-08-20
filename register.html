@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register - PakReward</title>
+<title>Register - Ham Earn</title>
 
 <style>
 *{box-sizing:border-box}
@@ -124,7 +124,7 @@ input:focus{
 
 <div class="register-box">
 
-<div class="logo">🇵🇰 PakReward</div>
+<div class="logo">Ham Earn</div>
 
 <div class="subtitle">Create your account</div>
 
@@ -314,7 +314,7 @@ async function registerUser(event){
     let users=
     JSON.parse(
         localStorage.getItem(
-            "pakrewardUsers"
+            "Ham EarnUsers"
         )||"[]"
     );
 
@@ -497,7 +497,7 @@ async function registerUser(event){
 
 
     localStorage.setItem(
-        "pakrewardUsers",
+        "Ham EarnUsers",
         JSON.stringify(users)
     );
 
