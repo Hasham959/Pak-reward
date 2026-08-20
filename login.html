@@ -1,206 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login - PakReward</title>
+<meta charset="UTF-8">
 
-    <style>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-        * {
-            box-sizing: border-box;
-        }
+<title>Login - PakReward</title>
 
-        body {
-            margin: 0;
 
-            font-family: Arial, sans-serif;
+<style>
 
-            background: #f5f7fb;
+* {
+    box-sizing: border-box;
+}
 
-            min-height: 100vh;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+body {
 
-        .login-box {
-            width: 100%;
-            max-width: 400px;
+    margin: 0;
 
-            background: white;
+    font-family: Arial, sans-serif;
 
-            padding: 32px;
+    background: #f5f7fb;
 
-            border-radius: 18px;
+    min-height: 100vh;
 
-            border: 1px solid #e4e8ed;
+    display: flex;
 
-            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
-        }
+    align-items: center;
 
-        .logo {
-            text-align: center;
+    justify-content: center;
 
-            font-size: 25px;
+    padding: 20px;
 
-            font-weight: bold;
+}
 
-            color: #087443;
 
-            margin-bottom: 8px;
-        }
+.login-box {
 
-        .subtitle {
-            text-align: center;
+    width: 100%;
 
-            color: #697480;
+    max-width: 430px;
 
-            margin-bottom: 25px;
-        }
+    background: white;
 
-        label {
-            display: block;
+    padding: 32px;
 
-            margin-top: 15px;
+    border-radius: 18px;
 
-            margin-bottom: 6px;
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.08);
 
-            font-weight: bold;
+    border: 1px solid #e4e8ed;
 
-            font-size: 14px;
-        }
+}
 
-        input {
-            width: 100%;
 
-            padding: 13px;
+.logo {
 
-            border: 1px solid #d8dde4;
+    text-align: center;
 
-            border-radius: 8px;
+    font-size: 25px;
 
-            font-size: 15px;
+    font-weight: bold;
 
-            outline: none;
-        }
+    color: #087443;
 
-        input:focus {
-            border-color: #087443;
-        }
+    margin-bottom: 8px;
 
-        button {
-            width: 100%;
+}
 
-            margin-top: 25px;
 
-            padding: 13px;
+.subtitle {
 
-            border: none;
+    text-align: center;
 
-            border-radius: 9px;
+    color: #697480;
 
-            background: #087443;
+    margin-bottom: 25px;
 
-            color: white;
+}
 
-            font-weight: bold;
 
-            font-size: 16px;
+label {
 
-            cursor: pointer;
-        }
+    display: block;
 
-        .register {
-            text-align: center;
+    margin-top: 15px;
 
-            margin-top: 20px;
+    margin-bottom: 6px;
 
-            color: #697480;
-        }
+    font-weight: bold;
 
-        .register a {
-            color: #087443;
+    font-size: 14px;
 
-            font-weight: bold;
+}
 
-            text-decoration: none;
-        }
 
-    </style>
+input {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #d8dde4;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    outline: none;
+
+}
+
+
+input:focus {
+
+    border-color: #087443;
+
+}
+
+
+.login-btn {
+
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #087443;
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+}
+
+
+.login-btn:hover {
+
+    opacity: 0.9;
+
+}
+
+
+.register-link {
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    color: #697480;
+
+}
+
+
+.register-link a {
+
+    color: #087443;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+}
+
+
+.error {
+
+    color: #c0392b;
+
+    background: #fdecea;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    margin-top: 15px;
+
+    display: none;
+
+    text-align: center;
+
+}
+
+
+.notice {
+
+    margin-top: 18px;
+
+    padding: 10px;
+
+    background: #fff8e6;
+
+    border-radius: 8px;
+
+    color: #806500;
+
+    font-size: 12px;
+
+    text-align: center;
+
+}
+
+</style>
 
 </head>
 
+
 <body>
 
+
 <div class="login-box">
+
 
     <div class="logo">
         🇵🇰 PakReward
     </div>
+
 
     <div class="subtitle">
         Login to your account
     </div>
 
 
-    <form onsubmit="login(event)">
+
+    <form onsubmit="loginUser(event)">
+
 
         <label>
-            Email or Mobile Number
+            Email
         </label>
 
+
         <input
-            type="text"
-            id="username"
-            placeholder="Enter email or mobile"
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            autocomplete="email"
             required
         >
+
 
 
         <label>
             Password
         </label>
 
+
         <input
             type="password"
             id="password"
-            placeholder="Enter password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
             required
         >
 
 
-        <button type="submit">
+
+        <div
+            class="error"
+            id="error">
+        </div>
+
+
+
+        <button
+            type="submit"
+            class="login-btn">
+
             Login
+
         </button>
+
 
     </form>
 
 
-    <div class="register">
+
+    <div class="register-link">
 
         Don't have an account?
 
         <a href="register.html">
-            Register
+            Create Account
         </a>
 
     </div>
 
+
+
+    <div class="notice">
+
+        Demo login system.
+        Account data is stored locally in this browser.
+
+    </div>
+
+
 </div>
+
 
 
 <script>
 
-function login(event) {
+
+/* =========================
+   HASH PASSWORD
+========================= */
+
+async function hashPassword(password) {
+
+    const data =
+        new TextEncoder()
+            .encode(password);
+
+
+    const hash =
+        await crypto.subtle.digest(
+            "SHA-256",
+            data
+        );
+
+
+    return Array.from(
+        new Uint8Array(hash)
+    )
+    .map(
+        byte =>
+        byte.toString(16)
+            .padStart(2, "0")
+    )
+    .join("");
+
+}
+
+
+
+/* =========================
+   SHOW ERROR
+========================= */
+
+function showError(message) {
+
+    const error =
+        document.getElementById(
+            "error"
+        );
+
+
+    error.innerText =
+        message;
+
+
+    error.style.display =
+        "block";
+
+}
+
+
+
+/* =========================
+   LOGIN USER
+========================= */
+
+async function loginUser(event) {
 
     event.preventDefault();
 
-    alert(
-        "Demo login successful!"
+
+    const email =
+        document.getElementById(
+            "email"
+        ).value.trim()
+        .toLowerCase();
+
+
+    const password =
+        document.getElementById(
+            "password"
+        ).value;
+
+
+    const users =
+        JSON.parse(
+            localStorage.getItem(
+                "pakrewardUsers"
+            ) || "[]"
+        );
+
+
+    /* Find User */
+
+    const user =
+        users.find(
+            account =>
+            account.email === email
+        );
+
+
+    if (!user) {
+
+        showError(
+            "No account found with this email."
+        );
+
+        return;
+
+    }
+
+
+    /* Hash Entered Password */
+
+    const passwordHash =
+        await hashPassword(
+            password
+        );
+
+
+    /* Check Password */
+
+    if (
+        passwordHash !==
+        user.password
+    ) {
+
+        showError(
+            "Incorrect password."
+        );
+
+        return;
+
+    }
+
+
+    /* Create Login Session */
+
+    localStorage.setItem(
+        "loggedInUser",
+        String(user.id)
     );
+
+
+    /* Load User Data */
+
+    localStorage.setItem(
+        "balance",
+        String(user.balance || 0)
+    );
+
+
+    localStorage.setItem(
+        "todayReward",
+        String(user.todayReward || 0)
+    );
+
+
+    localStorage.setItem(
+        "totalReward",
+        String(user.totalReward || 0)
+    );
+
+
+    localStorage.setItem(
+        "selectedPlan",
+        user.selectedPlan || ""
+    );
+
+
+    localStorage.setItem(
+        "planAmount",
+        String(user.planAmount || 0)
+    );
+
+
+    localStorage.setItem(
+        "adsCompleted",
+        String(user.adsCompleted || 0)
+    );
+
+
+    /* Login Success */
+
+    alert(
+        "Login successful!\n\n" +
+        "Welcome back, " +
+        user.name +
+        "!"
+    );
+
 
     window.location.href =
         "dashboard.html";
@@ -209,5 +511,7 @@ function login(event) {
 
 </script>
 
+
 </body>
+
 </html>
