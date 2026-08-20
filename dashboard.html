@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Dashboard - PakReward</title>
 
@@ -19,15 +23,19 @@ body {
     color: #17202a;
 }
 
+
 /* HEADER */
 
 header {
     background: #087443;
     color: white;
     padding: 16px 6%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    gap: 15px;
 }
 
 .logo {
@@ -37,29 +45,30 @@ header {
 
 .header-buttons {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
 }
 
 .home-btn,
 .logout {
-    text-decoration: none;
-    border: none;
     padding: 9px 15px;
     border-radius: 8px;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .home-btn {
-    background: #ffffff;
+    background: white;
     color: #087443;
 }
 
 .logout {
-    background: #ffffff;
+    border: none;
+    background: #eaf7f0;
     color: #087443;
 }
+
 
 /* MAIN */
 
@@ -75,6 +84,7 @@ main {
     margin-bottom: 30px;
 }
 
+
 /* STATS */
 
 .stats {
@@ -88,7 +98,9 @@ main {
     border: 1px solid #e3e7ec;
     border-radius: 16px;
     padding: 23px;
-    box-shadow: 0 7px 25px rgba(0,0,0,0.05);
+
+    box-shadow:
+        0 7px 25px rgba(0,0,0,0.05);
 }
 
 .card p {
@@ -102,11 +114,13 @@ main {
     color: #087443;
 }
 
+
 /* SECTIONS */
 
 .section {
     margin-top: 35px;
 }
+
 
 /* PLAN */
 
@@ -119,41 +133,107 @@ main {
 .badge {
     background: #e4f4ec;
     color: #087443;
+
     padding: 7px 13px;
+
     border-radius: 20px;
+
     font-size: 12px;
+
     font-weight: bold;
 }
 
-/* ADS */
 
-.ads-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
+/* PLANS */
+
+.plans {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
 }
 
-.progress {
-    background: #e9edf1;
-    height: 9px;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-bottom: 20px;
+.plan-card {
+    background: white;
+
+    border: 1px solid #e3e7ec;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    position: relative;
 }
 
-.progress-bar {
-    height: 100%;
-    width: 0%;
+.plan-card h3 {
+    margin-top: 0;
+}
+
+.plan-card h4 {
+    color: #087443;
+    font-size: 21px;
+}
+
+.plan-card p {
+    color: #68737f;
+    font-size: 14px;
+}
+
+.plan-card button {
+    width: 100%;
+
+    border: none;
+
     background: #087443;
-    transition: 0.3s;
+
+    color: white;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
 }
+
+.plan-card button:hover {
+    opacity: .9;
+}
+
+.popular {
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    background: #e4f4ec;
+
+    color: #087443;
+
+    padding: 5px 8px;
+
+    border-radius: 10px;
+
+    font-size: 10px;
+
+    font-weight: bold;
+}
+
+
+/* ADS */
 
 .transaction {
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     border-bottom: 1px solid #eee;
+
     padding: 15px 0;
 }
 
@@ -161,23 +241,20 @@ main {
     border-bottom: none;
 }
 
-.green {
-    color: #087443;
-    font-weight: bold;
-}
-
 .btn {
     border: none;
-    background: #087443;
-    color: white;
-    padding: 10px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-}
 
-.btn:hover {
-    opacity: 0.9;
+    background: #087443;
+
+    color: white;
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
 }
 
 .btn:disabled {
@@ -185,73 +262,80 @@ main {
     cursor: not-allowed;
 }
 
-/* ACTIONS */
+.green {
+    color: #087443;
+    font-weight: bold;
+}
+
+
+/* WALLET */
 
 .actions {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 18px;
 }
 
 .action {
     padding: 20px;
+
     background: white;
+
     border: 1px solid #e3e7ec;
+
     border-radius: 15px;
+
     cursor: pointer;
+
     font-size: 16px;
+
     font-weight: bold;
+
     color: #087443;
 }
 
-.action:hover {
-    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-}
 
 /* FOOTER */
 
 footer {
     text-align: center;
+
     padding: 30px;
+
     color: #6c7783;
+
     background: white;
+
     border-top: 1px solid #e4e8ed;
+
     margin-top: 40px;
 }
 
+
 /* MOBILE */
 
-@media(max-width:750px) {
-
-    header {
-        padding: 14px 20px;
-    }
-
-    .logo {
-        font-size: 18px;
-    }
-
-    .header-buttons {
-        gap: 5px;
-    }
-
-    .home-btn,
-    .logout {
-        padding: 8px 10px;
-        font-size: 12px;
-    }
+@media(max-width: 850px) {
 
     .stats {
         grid-template-columns: 1fr;
     }
 
-    .plan {
-        display: block;
+    .plans {
+        grid-template-columns: 1fr 1fr;
     }
 
-    .plan .badge {
-        display: inline-block;
-        margin-top: 10px;
+}
+
+@media(max-width: 600px) {
+
+    header {
+        flex-direction: column;
+    }
+
+    .plans {
+        grid-template-columns: 1fr;
     }
 
     .actions {
@@ -262,16 +346,15 @@ footer {
         gap: 10px;
     }
 
-    .btn {
-        padding: 9px 12px;
-        font-size: 12px;
-    }
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -279,14 +362,23 @@ footer {
         🇵🇰 PakReward
     </div>
 
+
     <div class="header-buttons">
 
-        <a href="index.html" class="home-btn">
+        <a href="index.html"
+           class="home-btn">
+
             🏠 Home
+
         </a>
 
-        <button class="logout" onclick="logout()">
+
+        <button
+            class="logout"
+            onclick="logout()">
+
             Logout
+
         </button>
 
     </div>
@@ -294,47 +386,80 @@ footer {
 </header>
 
 
+
 <main>
 
-<h1>Dashboard</h1>
+
+<h1>
+    Dashboard
+</h1>
+
 
 <p class="welcome">
-    Welcome to your PakReward account.
+
+    Welcome,
+    <strong id="userName">
+        User
+    </strong>
+    👋
+
 </p>
+
 
 
 <!-- STATS -->
 
 <div class="stats">
 
+
     <div class="card">
 
-        <p>Wallet Balance</p>
+        <p>
+            Wallet Balance
+        </p>
 
-        <div class="amount" id="balance">
+        <div
+            class="amount"
+            id="balance">
+
             Rs. 0
+
         </div>
 
     </div>
 
 
+
     <div class="card">
 
-        <p>Today's Reward</p>
+        <p>
+            Today's Reward
+        </p>
 
-        <div class="amount" id="today">
+        <div
+            class="amount"
+            id="today">
+
             Rs. 0
+
         </div>
 
     </div>
 
 
+
     <div class="card">
 
-        <p>Total Reward</p>
+        <p>
+            Total Reward
+        </p>
 
-        <div class="amount" id="total">
+        <div
+            class="amount"
+            id="total">
+
             Rs. 0
+
         </div>
 
     </div>
@@ -342,13 +467,18 @@ footer {
 </div>
 
 
+
 <!-- ACTIVE PLAN -->
 
 <div class="section">
 
-    <h2>Active Plan</h2>
+    <h2>
+        Active Plan
+    </h2>
+
 
     <div class="card plan">
+
 
         <div>
 
@@ -356,14 +486,20 @@ footer {
                 No Active Plan
             </h3>
 
+
             <p id="planAmount">
-                No plan selected
+                Please select a plan below.
             </p>
 
         </div>
 
-        <span class="badge" id="planStatus">
-            INACTIVE
+
+        <span
+            class="badge"
+            id="planStatus">
+
+            NO PLAN
+
         </span>
 
     </div>
@@ -371,45 +507,167 @@ footer {
 </div>
 
 
+
+<!-- PLANS -->
+
+<div class="section">
+
+    <h2>
+        Reward Plans
+    </h2>
+
+
+    <div class="plans">
+
+
+        <!-- STARTER -->
+
+        <div class="plan-card">
+
+            <h3>
+                Starter
+            </h3>
+
+            <h4>
+                Rs. 1,000
+            </h4>
+
+            <p>
+                Basic task access
+            </p>
+
+            <button
+                onclick="selectPlan('Starter',1000)">
+
+                Select Plan
+
+            </button>
+
+        </div>
+
+
+
+        <!-- BASIC -->
+
+        <div class="plan-card">
+
+            <h3>
+                Basic
+            </h3>
+
+            <h4>
+                Rs. 5,000
+            </h4>
+
+            <p>
+                More eligible tasks
+            </p>
+
+            <button
+                onclick="selectPlan('Basic',5000)">
+
+                Select Plan
+
+            </button>
+
+        </div>
+
+
+
+        <!-- PREMIUM -->
+
+        <div class="plan-card">
+
+            <span class="popular">
+                POPULAR
+            </span>
+
+            <h3>
+                Premium
+            </h3>
+
+            <h4>
+                Rs. 10,000
+            </h4>
+
+            <p>
+                Higher task limits
+            </p>
+
+            <button
+                onclick="selectPlan('Premium',10000)">
+
+                Select Plan
+
+            </button>
+
+        </div>
+
+
+
+        <!-- PRO -->
+
+        <div class="plan-card">
+
+            <h3>
+                Pro
+            </h3>
+
+            <h4>
+                Rs. 25,000
+            </h4>
+
+            <p>
+                Highest task limits
+            </p>
+
+            <button
+                onclick="selectPlan('Pro',25000)">
+
+                Select Plan
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
 <!-- DAILY ADS -->
 
 <div class="section">
 
-    <h2>Daily Ads</h2>
+    <h2>
+        Daily Ads
+    </h2>
+
 
     <div class="card">
 
-        <div class="ads-header">
 
-            <p>
-                Today's Ads:
-                <strong>
-                    <span id="adsCompleted">0</span>/5
-                </strong>
-            </p>
+        <p>
 
-            <strong id="rewardPerAd">
-                Rs. 0 / Ad
+            Today's Ads:
+            <strong>
+                <span id="adsCompleted">
+                    0
+                </span>/5
             </strong>
 
-        </div>
-
-
-        <div class="progress">
-
-            <div
-                class="progress-bar"
-                id="progressBar">
-            </div>
-
-        </div>
+        </p>
 
 
         <div id="adsList">
 
+
             <div class="transaction">
 
-                <span>Ad 1</span>
+                <span>
+                    Ad 1
+                </span>
 
                 <button
                     class="btn"
@@ -423,9 +681,12 @@ footer {
             </div>
 
 
+
             <div class="transaction">
 
-                <span>Ad 2</span>
+                <span>
+                    Ad 2
+                </span>
 
                 <button
                     class="btn"
@@ -439,9 +700,12 @@ footer {
             </div>
 
 
+
             <div class="transaction">
 
-                <span>Ad 3</span>
+                <span>
+                    Ad 3
+                </span>
 
                 <button
                     class="btn"
@@ -455,9 +719,12 @@ footer {
             </div>
 
 
+
             <div class="transaction">
 
-                <span>Ad 4</span>
+                <span>
+                    Ad 4
+                </span>
 
                 <button
                     class="btn"
@@ -471,9 +738,12 @@ footer {
             </div>
 
 
+
             <div class="transaction">
 
-                <span>Ad 5</span>
+                <span>
+                    Ad 5
+                </span>
 
                 <button
                     class="btn"
@@ -486,6 +756,7 @@ footer {
 
             </div>
 
+
         </div>
 
     </div>
@@ -493,13 +764,18 @@ footer {
 </div>
 
 
+
 <!-- WALLET -->
 
 <div class="section">
 
-    <h2>Wallet</h2>
+    <h2>
+        Wallet
+    </h2>
+
 
     <div class="actions">
+
 
         <button
             class="action"
@@ -518,18 +794,24 @@ footer {
 
         </button>
 
+
     </div>
 
 </div>
 
 
-<!-- TRANSACTION HISTORY -->
+
+<!-- TRANSACTIONS -->
 
 <div class="section">
 
-    <h2>Recent Transactions</h2>
+    <h2>
+        Recent Transactions
+    </h2>
 
-    <div class="card">
+
+    <div class="card"
+         id="transactionList">
 
         <div class="transaction">
 
@@ -543,28 +825,13 @@ footer {
 
         </div>
 
-
-        <div id="taskHistory">
-
-            <div class="transaction">
-
-                <span>
-                    No task completed
-                </span>
-
-                <span>
-                    —
-                </span>
-
-            </div>
-
-        </div>
-
     </div>
 
 </div>
 
+
 </main>
+
 
 
 <footer>
@@ -578,157 +845,230 @@ footer {
 </footer>
 
 
+
 <script>
 
-/* =========================
-   DATA
-========================= */
 
-let balance = Number(
-    localStorage.getItem("balance") || 0
-);
+/* =================================
+   LOGIN PROTECTION
+================================= */
 
-let today = Number(
-    localStorage.getItem("todayReward") || 0
-);
-
-let total = Number(
-    localStorage.getItem("totalReward") || 0
-);
+const loggedInUserId =
+    localStorage.getItem(
+        "loggedInUser"
+    );
 
 
-/* =========================
-   MONEY FORMAT
-========================= */
+if (!loggedInUserId) {
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+
+/* =================================
+   GET USERS
+================================= */
+
+let users =
+    JSON.parse(
+        localStorage.getItem(
+            "pakrewardUsers"
+        ) || "[]"
+    );
+
+
+/* =================================
+   FIND CURRENT USER
+================================= */
+
+let currentUser =
+    users.find(
+        user =>
+        String(user.id) ===
+        String(loggedInUserId)
+    );
+
+
+if (!currentUser) {
+
+    localStorage.removeItem(
+        "loggedInUser"
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+
+/* =================================
+   DAILY RESET
+================================= */
+
+const todayDate =
+    new Date().toDateString();
+
+
+if (currentUser.adsDate !== todayDate) {
+
+    currentUser.adsCompleted = 0;
+
+    currentUser.todayReward = 0;
+
+    currentUser.adsDate = todayDate;
+
+    saveUser();
+
+}
+
+
+
+/* =================================
+   FORMAT MONEY
+================================= */
 
 function money(amount) {
 
     return "Rs. " +
-        Number(amount).toLocaleString("en-PK");
+        Number(amount || 0)
+        .toLocaleString("en-PK");
 
 }
 
 
-/* =========================
-   SAVE DATA
-========================= */
 
-function saveData() {
+/* =================================
+   SAVE CURRENT USER
+================================= */
+
+function saveUser() {
+
+    const index =
+        users.findIndex(
+            user =>
+            String(user.id) ===
+            String(currentUser.id)
+        );
+
+
+    if (index !== -1) {
+
+        users[index] =
+            currentUser;
+
+    }
+
+
+    localStorage.setItem(
+        "pakrewardUsers",
+        JSON.stringify(users)
+    );
+
+
+    /* Keep current session values */
 
     localStorage.setItem(
         "balance",
-        balance
+        String(currentUser.balance || 0)
     );
+
 
     localStorage.setItem(
         "todayReward",
-        today
+        String(currentUser.todayReward || 0)
     );
+
 
     localStorage.setItem(
         "totalReward",
-        total
+        String(currentUser.totalReward || 0)
+    );
+
+
+    localStorage.setItem(
+        "selectedPlan",
+        currentUser.selectedPlan || ""
+    );
+
+
+    localStorage.setItem(
+        "planAmount",
+        String(currentUser.planAmount || 0)
+    );
+
+
+    localStorage.setItem(
+        "adsCompleted",
+        String(currentUser.adsCompleted || 0)
     );
 
 }
 
 
-/* =========================
-   UPDATE WALLET
-========================= */
 
-function updateWallet() {
+/* =================================
+   UPDATE DASHBOARD
+================================= */
+
+function updateDashboard() {
+
+
+    document.getElementById(
+        "userName"
+    ).innerText =
+        currentUser.name;
+
 
     document.getElementById(
         "balance"
-    ).innerText = money(balance);
+    ).innerText =
+        money(currentUser.balance);
 
 
     document.getElementById(
         "today"
-    ).innerText = money(today);
+    ).innerText =
+        money(currentUser.todayReward);
 
 
     document.getElementById(
         "total"
-    ).innerText = money(total);
-
-}
-
-
-/* =========================
-   PLAN REWARD
-========================= */
-
-function getReward() {
-
-    let plan =
-        localStorage.getItem("selectedPlan");
+    ).innerText =
+        money(currentUser.totalReward);
 
 
-    if (plan === "Starter") {
-
-        return 10;
-
-    }
-
-
-    if (plan === "Basic") {
-
-        return 50;
-
-    }
+    document.getElementById(
+        "adsCompleted"
+    ).innerText =
+        currentUser.adsCompleted || 0;
 
 
-    if (plan === "Premium") {
 
-        return 100;
+    /* PLAN */
 
-    }
-
-
-    return 0;
-
-}
-
-
-/* =========================
-   SHOW PLAN
-========================= */
-
-function showPlan() {
-
-    let selectedPlan =
-        localStorage.getItem("selectedPlan");
-
-    let planAmount =
-        localStorage.getItem("planAmount");
-
-
-    if (selectedPlan) {
+    if (currentUser.selectedPlan) {
 
         document.getElementById(
             "planName"
-        ).innerText = selectedPlan;
+        ).innerText =
+            currentUser.selectedPlan;
 
 
         document.getElementById(
             "planAmount"
         ).innerText =
             "Plan Amount: " +
-            money(Number(planAmount || 0));
+            money(currentUser.planAmount);
 
 
         document.getElementById(
             "planStatus"
-        ).innerText = "ACTIVE";
-
-
-        document.getElementById(
-            "rewardPerAd"
         ).innerText =
-            money(getReward()) +
-            " / Ad";
+            "ACTIVE";
 
     }
 
@@ -743,38 +1083,84 @@ function showPlan() {
         document.getElementById(
             "planAmount"
         ).innerText =
-            "No plan selected";
+            "Please select a plan below.";
 
 
         document.getElementById(
             "planStatus"
         ).innerText =
-            "INACTIVE";
-
-
-        document.getElementById(
-            "rewardPerAd"
-        ).innerText =
-            "Rs. 0 / Ad";
+            "NO PLAN";
 
     }
+
+
+    updateAdButtons();
 
 }
 
 
-/* =========================
+
+/* =================================
+   SELECT PLAN
+================================= */
+
+function selectPlan(
+    planName,
+    amount
+) {
+
+
+    if (currentUser.selectedPlan) {
+
+        const change =
+            confirm(
+                "You already have the " +
+                currentUser.selectedPlan +
+                " plan.\n\n" +
+                "Do you want to change your plan?"
+            );
+
+
+        if (!change) {
+            return;
+        }
+
+    }
+
+
+    currentUser.selectedPlan =
+        planName;
+
+
+    currentUser.planAmount =
+        amount;
+
+
+    saveUser();
+
+    updateDashboard();
+
+
+    alert(
+        planName +
+        " plan selected successfully!"
+    );
+
+}
+
+
+
+/* =================================
    WATCH AD
-========================= */
+================================= */
 
 function watchAd(adNumber) {
 
-    let reward = getReward();
 
-
-    if (reward <= 0) {
+    if (!currentUser.selectedPlan) {
 
         alert(
-            "Please select an active plan first."
+            "Please select a plan first."
         );
 
         return;
@@ -784,9 +1170,7 @@ function watchAd(adNumber) {
 
     let completed =
         Number(
-            localStorage.getItem(
-                "adsCompleted"
-            ) || 0
+            currentUser.adsCompleted || 0
         );
 
 
@@ -801,74 +1185,112 @@ function watchAd(adNumber) {
     }
 
 
+    /*
+       Demo reward rates
+    */
+
+    let reward = 10;
+
+
+    if (
+        currentUser.selectedPlan ===
+        "Starter"
+    ) {
+
+        reward = 10;
+
+    }
+
+    else if (
+        currentUser.selectedPlan ===
+        "Basic"
+    ) {
+
+        reward = 50;
+
+    }
+
+    else if (
+        currentUser.selectedPlan ===
+        "Premium"
+    ) {
+
+        reward = 100;
+
+    }
+
+    else if (
+        currentUser.selectedPlan ===
+        "Pro"
+    ) {
+
+        reward = 200;
+
+    }
+
+
     completed++;
 
 
-    balance += reward;
-
-    today += reward;
-
-    total += reward;
+    currentUser.adsCompleted =
+        completed;
 
 
-    localStorage.setItem(
-        "adsCompleted",
-        completed
-    );
+    currentUser.balance =
+        Number(currentUser.balance || 0)
+        + reward;
 
 
-    saveData();
+    currentUser.todayReward =
+        Number(currentUser.todayReward || 0)
+        + reward;
 
-    updateWallet();
 
-    updateAds();
+    currentUser.totalReward =
+        Number(currentUser.totalReward || 0)
+        + reward;
+
+
+    currentUser.adsDate =
+        todayDate;
+
+
+    saveUser();
+
+    updateDashboard();
 
 
     addTransaction(
-        "Advertising Demo Ad " + adNumber,
+        "Advertising Ad " +
+        adNumber,
         reward
     );
 
 
     alert(
-        "Demo Ad " +
+        "Ad " +
         adNumber +
         " completed!\n\n" +
         "+" +
         money(reward) +
-        " reward"
+        " reward added."
     );
 
 }
 
 
-/* =========================
-   UPDATE ADS
-========================= */
 
-function updateAds() {
+/* =================================
+   AD BUTTON STATUS
+================================= */
 
-    let completed =
+function updateAdButtons() {
+
+
+    const completed =
         Number(
-            localStorage.getItem(
-                "adsCompleted"
-            ) || 0
+            currentUser.adsCompleted || 0
         );
-
-
-    document.getElementById(
-        "adsCompleted"
-    ).innerText = completed;
-
-
-    let percentage =
-        (completed / 5) * 100;
-
-
-    document.getElementById(
-        "progressBar"
-    ).style.width =
-        percentage + "%";
 
 
     for (
@@ -877,27 +1299,34 @@ function updateAds() {
         i++
     ) {
 
-        let button =
+        const button =
             document.getElementById(
                 "ad" + i
             );
 
 
+        if (!button) {
+            continue;
+        }
+
+
         if (i <= completed) {
 
-            button.disabled = true;
-
             button.innerText =
-                "Completed ✓";
+                "Completed";
+
+            button.disabled =
+                true;
 
         }
 
         else {
 
-            button.disabled = false;
-
             button.innerText =
                 "Watch Ad";
+
+            button.disabled =
+                false;
 
         }
 
@@ -906,28 +1335,33 @@ function updateAds() {
 }
 
 
-/* =========================
-   TRANSACTION HISTORY
-========================= */
+
+/* =================================
+   TRANSACTION
+================================= */
 
 function addTransaction(
     title,
-    amount
+    reward
 ) {
 
-    let history =
+
+    let transactions =
         JSON.parse(
             localStorage.getItem(
-                "transactions"
+                "transactions_" +
+                currentUser.id
             ) || "[]"
         );
 
 
-    history.unshift({
+    transactions.unshift({
 
-        title: title,
+        title:
+            title,
 
-        amount: amount,
+        amount:
+            reward,
 
         date:
             new Date().toLocaleString()
@@ -935,13 +1369,24 @@ function addTransaction(
     });
 
 
-    history =
-        history.slice(0, 10);
+    /* Keep last 20 */
+
+    transactions =
+        transactions.slice(
+            0,
+            20
+        );
 
 
     localStorage.setItem(
-        "transactions",
-        JSON.stringify(history)
+
+        "transactions_" +
+        currentUser.id,
+
+        JSON.stringify(
+            transactions
+        )
+
     );
 
 
@@ -950,29 +1395,47 @@ function addTransaction(
 }
 
 
+
+/* =================================
+   SHOW TRANSACTIONS
+================================= */
+
 function showTransactions() {
 
-    let history =
+
+    const container =
+        document.getElementById(
+            "transactionList"
+        );
+
+
+    let transactions =
         JSON.parse(
             localStorage.getItem(
-                "transactions"
+                "transactions_" +
+                currentUser.id
             ) || "[]"
         );
 
 
-    let container =
-        document.getElementById(
-            "taskHistory"
-        );
-
-
-    if (history.length === 0) {
+    if (
+        transactions.length === 0
+    ) {
 
         container.innerHTML = `
+
             <div class="transaction">
-                <span>No task completed</span>
-                <span>—</span>
+
+                <span>
+                    Account Created
+                </span>
+
+                <span>
+                    Rs. 0
+                </span>
+
             </div>
+
         `;
 
         return;
@@ -983,10 +1446,10 @@ function showTransactions() {
     container.innerHTML = "";
 
 
-    history.forEach(
-        function(item) {
+    transactions.forEach(
+        transaction => {
 
-            let row =
+            const row =
                 document.createElement(
                     "div"
                 );
@@ -999,24 +1462,34 @@ function showTransactions() {
             row.innerHTML = `
 
                 <span>
-                    ${item.title}
+
+                    ${transaction.title}
+
                     <small style="
                         display:block;
-                        color:#8a949e;
+                        color:#888;
                         margin-top:4px;
                     ">
-                        ${item.date}
+
+                        ${transaction.date}
+
                     </small>
+
                 </span>
 
+
                 <span class="green">
-                    +${money(item.amount)}
+
+                    +${money(transaction.amount)}
+
                 </span>
 
             `;
 
 
-            container.appendChild(row);
+            container.appendChild(
+                row
+            );
 
         }
     );
@@ -1024,27 +1497,35 @@ function showTransactions() {
 }
 
 
-/* =========================
+
+/* =================================
    DEPOSIT
-========================= */
+================================= */
 
 function deposit() {
 
     alert(
+
         "Deposit system is not connected yet.\n\n" +
-        "This is currently a demo version."
+
+        "This is currently a demo."
+
     );
 
 }
 
 
-/* =========================
+
+/* =================================
    WITHDRAW
-========================= */
+================================= */
 
 function withdraw() {
 
-    if (balance <= 0) {
+    if (
+        Number(currentUser.balance || 0)
+        <= 0
+    ) {
 
         alert(
             "Your wallet balance is Rs. 0."
@@ -1056,86 +1537,64 @@ function withdraw() {
 
 
     alert(
+
         "Withdrawal system is not connected yet.\n\n" +
-        "Available Balance: " +
-        money(balance)
+
+        "This is currently a demo."
+
     );
 
 }
 
 
-/* =========================
+
+/* =================================
    LOGOUT
-========================= */
+================================= */
 
 function logout() {
 
+
+    /*
+       Save latest user data
+       before logout
+    */
+
+    saveUser();
+
+
+    localStorage.removeItem(
+        "loggedInUser"
+    );
+
+
+    /*
+       Don't delete user account.
+       Only remove login session.
+    */
+
+
     window.location.href =
-        "index.html";
+        "login.html";
 
 }
 
 
-/* =========================
-   DAILY RESET
-========================= */
 
-function checkDailyReset() {
+/* =================================
+   START DASHBOARD
+================================= */
 
-    let todayDate =
-        new Date().toDateString();
+saveUser();
 
-
-    let savedDate =
-        localStorage.getItem(
-            "adsDate"
-        );
-
-
-    if (savedDate !== todayDate) {
-
-        localStorage.setItem(
-            "adsDate",
-            todayDate
-        );
-
-
-        localStorage.setItem(
-            "adsCompleted",
-            "0"
-        );
-
-
-        localStorage.setItem(
-            "todayReward",
-            "0"
-        );
-
-
-        today = 0;
-
-        saveData();
-
-    }
-
-}
-
-
-/* =========================
-   INITIALIZE
-========================= */
-
-checkDailyReset();
-
-showPlan();
-
-updateWallet();
-
-updateAds();
+updateDashboard();
 
 showTransactions();
 
+
 </script>
 
+
 </body>
+
 </html>
