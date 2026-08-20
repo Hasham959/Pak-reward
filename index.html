@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ham Earn - Reward Platform</title>
+<title>Ham Earn - Earn Rewards</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
 }
 
 body{
@@ -28,8 +26,8 @@ body{
 
 header{
     background:#087443;
-    color:#fff;
-    padding:16px 6%;
+    color:white;
+    padding:18px 30px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -44,17 +42,13 @@ header{
 
 nav{
     display:flex;
-    gap:22px;
+    gap:20px;
 }
 
 nav a{
-    color:#fff;
+    color:white;
     text-decoration:none;
     font-weight:bold;
-}
-
-nav a:hover{
-    text-decoration:underline;
 }
 
 .header-buttons{
@@ -64,20 +58,22 @@ nav a:hover{
 }
 
 .header-btn{
-    background:#fff;
+    background:white;
     color:#087443;
     padding:9px 14px;
-    border-radius:8px;
+    border-radius:7px;
     text-decoration:none;
     font-weight:bold;
+    border:none;
+    cursor:pointer;
 }
 
 /* HERO */
 
 .hero{
     max-width:1200px;
-    margin:auto;
-    padding:75px 25px;
+    margin:0 auto;
+    padding:70px 25px;
     display:grid;
     grid-template-columns:1.2fr .8fr;
     gap:45px;
@@ -88,7 +84,7 @@ nav a:hover{
     display:inline-block;
     background:#eaf7f0;
     color:#087443;
-    padding:7px 13px;
+    padding:7px 12px;
     border-radius:20px;
     font-size:13px;
     font-weight:bold;
@@ -113,23 +109,23 @@ nav a:hover{
 .main-btn{
     margin-top:22px;
     padding:13px 20px;
-    border:0;
-    border-radius:8px;
     background:#087443;
-    color:#fff;
-    font-size:15px;
+    color:white;
+    border:none;
+    border-radius:8px;
     font-weight:bold;
     cursor:pointer;
+    font-size:15px;
 }
 
 .main-btn:hover{
-    background:#065d35;
+    opacity:.9;
 }
 
 /* WALLET */
 
 .wallet-card{
-    background:#fff;
+    background:white;
     padding:28px;
     border-radius:18px;
     border:1px solid #e1e6eb;
@@ -165,7 +161,7 @@ nav a:hover{
 
 section:not(.hero){
     max-width:1200px;
-    margin:auto;
+    margin:0 auto;
     padding:55px 25px;
 }
 
@@ -187,15 +183,16 @@ section h2{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:18px;
+    margin-top:30px;
 }
 
 .plan-card{
-    position:relative;
-    background:#fff;
+    background:white;
     border:1px solid #e1e6eb;
     border-radius:14px;
     padding:25px;
     text-align:center;
+    position:relative;
 }
 
 .plan-card h3{
@@ -216,16 +213,12 @@ section h2{
     width:100%;
     margin-top:18px;
     padding:11px;
-    border:0;
+    border:none;
     border-radius:7px;
     background:#087443;
-    color:#fff;
+    color:white;
     font-weight:bold;
     cursor:pointer;
-}
-
-.plan-card button:hover{
-    background:#065d35;
 }
 
 .featured{
@@ -238,17 +231,17 @@ section h2{
     left:50%;
     transform:translateX(-50%);
     background:#087443;
-    color:#fff;
-    padding:4px 11px;
+    color:white;
+    padding:4px 10px;
     border-radius:15px;
     font-size:11px;
     font-weight:bold;
 }
 
-/* TASK */
+/* TASKS */
 
 .task-card{
-    background:#fff;
+    background:white;
     border:1px solid #e1e6eb;
     border-radius:14px;
     padding:22px;
@@ -268,10 +261,11 @@ section h2{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:20px;
+    margin-top:30px;
 }
 
 .steps div{
-    background:#fff;
+    background:white;
     border:1px solid #e1e6eb;
     border-radius:14px;
     padding:25px;
@@ -290,22 +284,16 @@ section h2{
     color:#697480;
 }
 
-/* NOTICE */
+/* LOGIN NOTICE */
 
-.notice{
-    max-width:1200px;
-    margin:0 auto 20px;
-    padding:0 25px;
-}
-
-.notice-box{
-    background:#fff8e6;
-    border:1px solid #f0df9a;
-    color:#705c00;
-    border-radius:10px;
-    padding:14px;
+.login-notice{
+    display:none;
+    margin-top:15px;
+    background:#fff3cd;
+    color:#856404;
+    padding:12px;
+    border-radius:8px;
     text-align:center;
-    font-size:13px;
 }
 
 /* FOOTER */
@@ -315,7 +303,7 @@ footer{
     padding:30px;
     text-align:center;
     background:#17202a;
-    color:#fff;
+    color:white;
 }
 
 footer p{
@@ -334,6 +322,7 @@ footer p{
     .plans{
         grid-template-columns:repeat(2,1fr);
     }
+
 }
 
 @media(max-width:600px){
@@ -374,13 +363,16 @@ footer p{
         flex-direction:column;
         align-items:flex-start;
     }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
+
+<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -389,10 +381,15 @@ footer p{
     </div>
 
     <nav>
+
         <a href="#home">Home</a>
+
         <a href="#plans">Plans</a>
+
         <a href="#tasks">Tasks</a>
+
         <a href="#how">How It Works</a>
+
     </nav>
 
     <div class="header-buttons">
@@ -414,14 +411,14 @@ footer p{
 </header>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section id="home" class="hero">
 
     <div>
 
         <span class="badge">
-            🇵🇰 PAKISTAN • REWARD PLATFORM
+            PAKISTAN • REWARD PLATFORM
         </span>
 
         <h1>
@@ -437,16 +434,25 @@ footer p{
 
         <button
             class="main-btn"
-            onclick="goToPlans()">
+            onclick="showPlans()">
 
             View Plans
 
         </button>
 
+        <div
+            class="login-notice"
+            id="loginNotice">
+
+            Please login or register first
+            to use your reward wallet.
+
+        </div>
+
     </div>
 
 
-    <!-- WALLET -->
+    <!-- ================= WALLET ================= -->
 
     <div class="wallet-card">
 
@@ -472,7 +478,7 @@ footer p{
 
         <button
             class="main-btn full"
-            onclick="startTask()">
+            onclick="completeTask()">
 
             Complete Demo Task +Rs. 10
 
@@ -483,19 +489,7 @@ footer p{
 </section>
 
 
-<!-- NOTICE -->
-
-<div class="notice">
-
-    <div class="notice-box">
-        Demo platform. Rewards shown here are for demonstration
-        and are not guaranteed income or investment returns.
-    </div>
-
-</div>
-
-
-<!-- PLANS -->
+<!-- ================= PLANS ================= -->
 
 <section id="plans">
 
@@ -504,7 +498,8 @@ footer p{
     </h2>
 
     <p class="section-text">
-        Select a plan to view the available task options.
+        Plans organize access to eligible tasks.
+        They do not represent guaranteed investment returns.
     </p>
 
     <div class="plans">
@@ -614,7 +609,7 @@ footer p{
 </section>
 
 
-<!-- TASKS -->
+<!-- ================= TASKS ================= -->
 
 <section id="tasks">
 
@@ -623,7 +618,7 @@ footer p{
     </h2>
 
     <p class="section-text">
-        Complete eligible tasks through your account dashboard.
+        Complete available demo tasks and check your wallet.
     </p>
 
     <div class="task-card">
@@ -635,15 +630,15 @@ footer p{
             </h3>
 
             <p>
-                Login to your account to complete
-                available tasks.
+                Complete the demo task
+                to test the reward wallet.
             </p>
 
         </div>
 
         <button
             class="main-btn"
-            onclick="startTask()">
+            onclick="completeTask()">
 
             Complete +Rs. 10
 
@@ -654,7 +649,7 @@ footer p{
 </section>
 
 
-<!-- HOW IT WORKS -->
+<!-- ================= HOW ================= -->
 
 <section id="how">
 
@@ -673,7 +668,8 @@ footer p{
             </h3>
 
             <p>
-                Register your Ham Earn account.
+                Register and access
+                your dashboard.
             </p>
 
         </div>
@@ -684,12 +680,12 @@ footer p{
             <b>02</b>
 
             <h3>
-                Select Plan
+                Complete Tasks
             </h3>
 
             <p>
-                Choose an available plan and submit
-                your request.
+                Complete eligible
+                advertising tasks.
             </p>
 
         </div>
@@ -700,12 +696,12 @@ footer p{
             <b>03</b>
 
             <h3>
-                Complete Tasks
+                Receive Rewards
             </h3>
 
             <p>
-                Complete eligible tasks after
-                account approval.
+                Eligible rewards are added
+                according to platform rules.
             </p>
 
         </div>
@@ -715,7 +711,7 @@ footer p{
 </section>
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -724,7 +720,8 @@ footer p{
     </strong>
 
     <p>
-        Demo website • No guaranteed-return promise
+        Demo website • No investment
+        or guaranteed-return promise
     </p>
 
 </footer>
@@ -732,64 +729,86 @@ footer p{
 
 <script>
 
-/* =========================================
-   HAM EARN HOME SYSTEM
-========================================= */
+/* =====================================================
+   HAM EARN - MAIN WEBSITE SYSTEM
+===================================================== */
+
+
+/* ================= STORAGE KEYS ================= */
 
 const USERS_KEY = "Ham EarnUsers";
 const CURRENT_USER_KEY = "Ham EarnCurrentUser";
+const SELECTED_PLAN_KEY = "Ham EarnSelectedPlan";
+const PLAN_AMOUNT_KEY = "Ham EarnPlanAmount";
 
 
-/* =========================================
-   GET USERS
-========================================= */
+/* ================= CURRENT USER ID ================= */
+
+let currentUserId =
+    localStorage.getItem(CURRENT_USER_KEY);
+
+
+/* ================= GET USERS ================= */
 
 function getUsers(){
 
     try{
 
-        const users =
+        const data =
             JSON.parse(
                 localStorage.getItem(USERS_KEY) || "[]"
             );
 
-        return Array.isArray(users)
-            ? users
-            : [];
+        return Array.isArray(data) ? data : [];
 
     }catch(error){
 
         return [];
 
     }
+
 }
 
 
-/* =========================================
-   GET CURRENT USER
-========================================= */
+/* ================= SAVE USERS ================= */
+
+function saveUsers(users){
+
+    localStorage.setItem(
+        USERS_KEY,
+        JSON.stringify(users)
+    );
+
+}
+
+
+/* ================= CURRENT USER ================= */
 
 function getCurrentUser(){
 
-    const id =
-        localStorage.getItem(CURRENT_USER_KEY);
+    if(!currentUserId){
 
-    if(!id){
         return null;
+
     }
+
 
     const users = getUsers();
 
+
     return users.find(
+
         user =>
-        String(user.id) === String(id)
+
+        String(user.id) ===
+        String(currentUserId)
+
     ) || null;
+
 }
 
 
-/* =========================================
-   MONEY
-========================================= */
+/* ================= MONEY ================= */
 
 function money(amount){
 
@@ -800,14 +819,13 @@ function money(amount){
 }
 
 
-/* =========================================
-   UPDATE WALLET
-========================================= */
+/* ================= UPDATE WALLET ================= */
 
 function updateWallet(){
 
     const user =
         getCurrentUser();
+
 
     if(!user){
 
@@ -818,11 +836,14 @@ function updateWallet(){
             .innerText = "Rs. 0";
 
         return;
+
     }
+
 
     document.getElementById("balance")
         .innerText =
         money(user.balance);
+
 
     document.getElementById("today")
         .innerText =
@@ -831,41 +852,181 @@ function updateWallet(){
 }
 
 
-/* =========================================
-   DEMO TASK
-========================================= */
+/* ================= LOGIN CHECK ================= */
 
-function startTask(){
+function requireLogin(){
 
     const user =
         getCurrentUser();
 
+
     if(!user){
 
+        document.getElementById(
+            "loginNotice"
+        ).style.display = "block";
+
+
         alert(
-            "Please login first to complete tasks."
+            "Please login or register first."
         );
+
+
+        return false;
+
+    }
+
+
+    document.getElementById(
+        "loginNotice"
+    ).style.display = "none";
+
+
+    return true;
+
+}
+
+
+/* ================= COMPLETE TASK ================= */
+
+function completeTask(){
+
+    if(!requireLogin()){
 
         window.location.href =
             "login.html";
 
         return;
+
     }
 
-    /*
-       Send logged-in user to dashboard.
-       Daily ads are controlled there.
-    */
 
-    window.location.href =
-        "dashboard.html";
+    const users =
+        getUsers();
+
+
+    const user =
+        users.find(
+
+            u =>
+            String(u.id) ===
+            String(currentUserId)
+
+        );
+
+
+    if(!user){
+
+        alert(
+            "User account not found."
+        );
+
+        return;
+
+    }
+
+
+    /* Make sure values are numbers */
+
+    user.balance =
+        Number(user.balance || 0);
+
+
+    user.todayReward =
+        Number(user.todayReward || 0);
+
+
+    user.totalReward =
+        Number(user.totalReward || 0);
+
+
+    /* Add demo reward */
+
+    user.balance += 10;
+
+    user.todayReward += 10;
+
+    user.totalReward += 10;
+
+
+    /* Save */
+
+    saveUsers(users);
+
+
+    /* Transaction history */
+
+    let transactions = [];
+
+    try{
+
+        transactions =
+            JSON.parse(
+
+                localStorage.getItem(
+                    "transactions_" + user.id
+                ) || "[]"
+
+            );
+
+    }catch(error){
+
+        transactions = [];
+
+    }
+
+
+    if(!Array.isArray(transactions)){
+
+        transactions = [];
+
+    }
+
+
+    transactions.unshift({
+
+        title:
+            "Demo Task Reward",
+
+        amount:
+            10,
+
+        date:
+            new Date().toLocaleString(),
+
+        type:
+            "reward"
+
+    });
+
+
+    localStorage.setItem(
+
+        "transactions_" + user.id,
+
+        JSON.stringify(
+            transactions.slice(0,20)
+        )
+
+    );
+
+
+    /* Update screen */
+
+    updateWallet();
+
+
+    alert(
+
+        "Demo task completed!\n\n" +
+        "+Rs. 10 reward added."
+
+    );
 
 }
 
 
-/* =========================================
-   SELECT PLAN
-========================================= */
+/* ================= SELECT PLAN ================= */
 
 function selectPlan(
     planName,
@@ -875,48 +1036,95 @@ function selectPlan(
     const user =
         getCurrentUser();
 
+
     /*
-       Save selected plan temporarily.
+       If not logged in,
+       remember selected plan.
     */
-
-    localStorage.setItem(
-        "Ham EarnSelectedPlan",
-        planName
-    );
-
-    localStorage.setItem(
-        "Ham EarnPlanAmount",
-        String(amount)
-    );
-
 
     if(!user){
 
-        alert(
-            "Please login or create an account first."
+        localStorage.setItem(
+            SELECTED_PLAN_KEY,
+            planName
         );
+
+
+        localStorage.setItem(
+            PLAN_AMOUNT_KEY,
+            amount
+        );
+
+
+        alert(
+            "Please login or register first."
+        );
+
 
         window.location.href =
             "login.html";
 
         return;
+
     }
 
 
-    /*
-       User is logged in.
-       Do not activate plan directly.
-       Dashboard will handle deposit request
-       and admin approval.
-    */
+    const users =
+        getUsers();
+
+
+    const currentUser =
+        users.find(
+
+            u =>
+            String(u.id) ===
+            String(currentUserId)
+
+        );
+
+
+    if(!currentUser){
+
+        alert(
+            "User account not found."
+        );
+
+        return;
+
+    }
+
+
+    currentUser.selectedPlan =
+        planName;
+
+
+    currentUser.planAmount =
+        Number(amount);
+
+
+    saveUsers(users);
+
+
+    localStorage.setItem(
+        SELECTED_PLAN_KEY,
+        planName
+    );
+
+
+    localStorage.setItem(
+        PLAN_AMOUNT_KEY,
+        amount
+    );
+
 
     alert(
+
         planName +
-        " plan selected.\n\n" +
-        "Amount: " +
-        money(amount) +
-        "\n\n" +
-        "Please submit the deposit request from your dashboard."
+        " Plan selected!\n\n" +
+
+        "Plan Amount: " +
+        money(amount)
+
     );
 
 
@@ -926,39 +1134,82 @@ function selectPlan(
 }
 
 
-/* =========================================
-   SHOW PLANS
-========================================= */
+/* ================= SHOW PLANS ================= */
 
-function goToPlans(){
+function showPlans(){
 
-    document.getElementById("plans")
-        .scrollIntoView({
-            behavior:"smooth"
+    const plans =
+        document.getElementById("plans");
+
+
+    if(plans){
+
+        plans.scrollIntoView({
+
+            behavior:"smooth",
+
+            block:"start"
+
         });
+
+    }
 
 }
 
 
-/* =========================================
-   STORAGE UPDATE
-========================================= */
+/* ================= LOGOUT SAFETY ================= */
+
+function checkCurrentUser(){
+
+    currentUserId =
+        localStorage.getItem(
+            CURRENT_USER_KEY
+        );
+
+
+    updateWallet();
+
+}
+
+
+/* ================= STORAGE EVENT ================= */
 
 window.addEventListener(
+
     "storage",
+
     function(){
 
-        updateWallet();
+        checkCurrentUser();
 
     }
+
 );
 
 
-/* =========================================
-   INITIAL LOAD
-========================================= */
+/* ================= PAGE VISIBILITY ================= */
 
-updateWallet();
+document.addEventListener(
+
+    "visibilitychange",
+
+    function(){
+
+        if(!document.hidden){
+
+            checkCurrentUser();
+
+        }
+
+    }
+
+);
+
+
+/* ================= INITIAL LOAD ================= */
+
+checkCurrentUser();
+
 
 </script>
 
