@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -7,7 +6,7 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-   content="width=device-width, initial-scale=1.0">
+      content="width=device-width, initial-scale=1.0">
 
 <title>Login - PakReward</title>
 
@@ -32,7 +31,6 @@ body {
 }
 
 .login-box {
-
     width: 100%;
     max-width: 430px;
 
@@ -49,7 +47,6 @@ body {
 }
 
 .logo {
-
     text-align: center;
 
     font-size: 25px;
@@ -62,7 +59,6 @@ body {
 }
 
 .subtitle {
-
     text-align: center;
 
     color: #697480;
@@ -71,11 +67,9 @@ body {
 }
 
 label {
-
     display: block;
 
     margin-top: 15px;
-
     margin-bottom: 6px;
 
     font-weight: bold;
@@ -84,7 +78,6 @@ label {
 }
 
 input {
-
     width: 100%;
 
     padding: 13px;
@@ -99,12 +92,37 @@ input {
 }
 
 input:focus {
-
     border-color: #087443;
 }
 
-.login-btn {
+.password-row {
+    position: relative;
+}
 
+.password-row input {
+    padding-right: 75px;
+}
+
+.show-password {
+    position: absolute;
+
+    right: 10px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    color: #087443;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.login-btn {
     width: 100%;
 
     margin-top: 25px;
@@ -127,12 +145,15 @@ input:focus {
 }
 
 .login-btn:hover {
-
     opacity: 0.9;
 }
 
-.register-link {
+.login-btn:disabled {
+    background: #8aa99a;
+    cursor: not-allowed;
+}
 
+.register-link {
     text-align: center;
 
     margin-top: 20px;
@@ -141,7 +162,6 @@ input:focus {
 }
 
 .register-link a {
-
     color: #087443;
 
     font-weight: bold;
@@ -150,7 +170,6 @@ input:focus {
 }
 
 .home-link {
-
     display: block;
 
     text-align: center;
@@ -165,7 +184,6 @@ input:focus {
 }
 
 .error {
-
     color: #c0392b;
 
     font-size: 13px;
@@ -182,7 +200,6 @@ input:focus {
 }
 
 .success {
-
     color: #087443;
 
     font-size: 13px;
@@ -199,7 +216,6 @@ input:focus {
 }
 
 .notice {
-
     margin-top: 18px;
 
     padding: 10px;
@@ -215,153 +231,127 @@ input:focus {
     text-align: center;
 }
 
-.password-row {
-
-    position: relative;
-}
-
-.password-row input {
-
-    padding-right: 80px;
-}
-
-.show-password {
-
-    position: absolute;
-
-    right: 10px;
-
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    border: none;
-
-    background: transparent;
-
-    color: #087443;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
 </style>
 
 </head>
 
+
 <body>
+
 
 <div class="login-box">
 
-```
-<div class="logo">
-    🇵🇰 PakReward
-</div>
+
+    <div class="logo">
+        🇵🇰 PakReward
+    </div>
 
 
-<div class="subtitle">
-    Login to your account
-</div>
+    <div class="subtitle">
+        Login to your account
+    </div>
 
 
-<form onsubmit="loginUser(event)">
+    <form onsubmit="loginUser(event)">
 
 
-    <label>
-        Email
-    </label>
+        <label>
+            Email
+        </label>
 
-
-    <input
-        type="email"
-        id="email"
-        placeholder="Enter your email"
-        autocomplete="email"
-        required
-    >
-
-
-    <label>
-        Password
-    </label>
-
-
-    <div class="password-row">
 
         <input
-            type="password"
-            id="password"
-            placeholder="Enter your password"
-            autocomplete="current-password"
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            autocomplete="email"
             required
         >
 
-        <button
-            type="button"
-            class="show-password"
-            onclick="togglePassword()">
 
-            Show
+        <label>
+            Password
+        </label>
+
+
+        <div class="password-row">
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+            >
+
+
+            <button
+                type="button"
+                class="show-password"
+                onclick="togglePassword()">
+
+                Show
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="error"
+            id="error">
+        </div>
+
+
+        <div
+            class="success"
+            id="success">
+        </div>
+
+
+        <button
+            type="submit"
+            class="login-btn"
+            id="loginButton">
+
+            Login
 
         </button>
 
+
+    </form>
+
+
+    <div class="register-link">
+
+        Don't have an account?
+
+        <a href="register.html">
+            Create Account
+        </a>
+
     </div>
 
 
-    <div
-        class="error"
-        id="error">
-    </div>
+    <a
+        href="index.html"
+        class="home-link">
 
+        ← Back to Home
 
-    <div
-        class="success"
-        id="success">
-    </div>
-
-
-    <button
-        type="submit"
-        class="login-btn">
-
-        Login
-
-    </button>
-
-
-</form>
-
-
-<div class="register-link">
-
-    Don't have an account?
-
-    <a href="register.html">
-        Create Account
     </a>
 
+
+    <div class="notice">
+
+        Demo login system.
+        Account data is stored locally in this browser.
+
+    </div>
+
+
 </div>
 
-
-<a
-    href="index.html"
-    class="home-link">
-
-    ← Back to Home
-
-</a>
-
-
-<div class="notice">
-
-    Demo login system.
-    Account data is stored locally in this browser.
-
-</div>
-```
-
-</div>
 
 <script>
 
@@ -373,8 +363,7 @@ input:focus {
 async function hashPassword(password) {
 
     const data =
-        new TextEncoder()
-            .encode(password);
+        new TextEncoder().encode(password);
 
 
     const hash =
@@ -406,11 +395,9 @@ function showError(message) {
     const error =
         document.getElementById("error");
 
-    error.innerText =
-        message;
+    error.innerText = message;
 
-    error.style.display =
-        "block";
+    error.style.display = "block";
 
 }
 
@@ -424,17 +411,15 @@ function showSuccess(message) {
     const success =
         document.getElementById("success");
 
-    success.innerText =
-        message;
+    success.innerText = message;
 
-    success.style.display =
-        "block";
+    success.style.display = "block";
 
 }
 
 
 /* =========================
-   LOGIN
+   LOGIN USER
 ========================= */
 
 async function loginUser(event) {
@@ -462,11 +447,13 @@ async function loginUser(event) {
         document.getElementById("success");
 
 
-    error.style.display =
-        "none";
+    const loginButton =
+        document.getElementById("loginButton");
 
-    success.style.display =
-        "none";
+
+    error.style.display = "none";
+
+    success.style.display = "none";
 
 
     /* Get users */
@@ -479,7 +466,7 @@ async function loginUser(event) {
         );
 
 
-    /* Find user */
+    /* Check account */
 
     const user =
         users.find(
@@ -499,19 +486,16 @@ async function loginUser(event) {
     }
 
 
-    /* Hash entered password */
+    /* Hash password */
 
     const passwordHash =
-        await hashPassword(
-            password
-        );
+        await hashPassword(password);
 
 
     /* Check password */
 
     if (
-        user.password !==
-        passwordHash
+        user.password !== passwordHash
     ) {
 
         showError(
@@ -531,7 +515,7 @@ async function loginUser(event) {
     );
 
 
-    /* Keep current user values */
+    /* Save current user values */
 
     localStorage.setItem(
         "balance",
@@ -574,15 +558,18 @@ async function loginUser(event) {
     );
 
 
-    setTimeout(
-        function() {
+    loginButton.disabled = true;
 
-            window.location.href =
-                "dashboard.html";
+    loginButton.innerText =
+        "Opening Dashboard...";
 
-        },
-        700
-    );
+
+    setTimeout(function() {
+
+        window.location.href =
+            "dashboard.html";
+
+    }, 700);
 
 }
 
@@ -594,42 +581,33 @@ async function loginUser(event) {
 function togglePassword() {
 
     const password =
-        document.getElementById(
-            "password"
-        );
+        document.getElementById("password");
+
 
     const button =
-        document.querySelector(
-            ".show-password"
-        );
+        document.querySelector(".show-password");
 
 
-    if (
-        password.type ===
-        "password"
-    ) {
+    if (password.type === "password") {
 
-        password.type =
-            "text";
+        password.type = "text";
 
-        button.innerText =
-            "Hide";
+        button.innerText = "Hide";
 
     }
 
     else {
 
-        password.type =
-            "password";
+        password.type = "password";
 
-        button.innerText =
-            "Show";
+        button.innerText = "Show";
 
     }
 
 }
 
 </script>
+
 
 </body>
 
