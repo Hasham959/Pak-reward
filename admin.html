@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel - PakReward</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #17202a;
+}
+
+/* HEADER */
+
+header {
+    background: #087443;
+    color: white;
+    padding: 18px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.admin-title {
+    font-size: 14px;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* STATS */
+
+.stats {
+    display: grid;
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+.stat-card {
+    background: white;
+    padding: 22px;
+
+    border-radius: 12px;
+
+    border: 1px solid #e2e7ec;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,0.05);
+}
+
+.stat-card h3 {
+    margin: 0;
+
+    color: #697480;
+
+    font-size: 14px;
+}
+
+.stat-card strong {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 26px;
+
+    color: #087443;
+}
+
+/* SECTION */
+
+.section {
+    background: white;
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    border: 1px solid #e2e7ec;
+}
+
+.section h2 {
+    margin-top: 0;
+}
+
+/* SEARCH */
+
+.search-box {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #d8dde4;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    margin-bottom: 20px;
+
+    outline: none;
+}
+
+.search-box:focus {
+    border-color: #087443;
+}
+
+/* TABLE */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 800px;
+}
+
+th,
+td {
+    padding: 12px;
+
+    text-align: left;
+
+    border-bottom:
+        1px solid #e5e8ec;
+
+    font-size: 14px;
+}
+
+th {
+    background: #f5f7fb;
+}
+
+/* BUTTONS */
+
+button {
+    border: none;
+
+    border-radius: 7px;
+
+    padding: 8px 12px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.add-btn {
+    background: #087443;
+    color: white;
+}
+
+.remove-btn {
+    background: #c0392b;
+    color: white;
+}
+
+.refresh-btn {
+    background: #17202a;
+    color: white;
+
+    margin-bottom: 15px;
+}
+
+.home-btn {
+    background: white;
+    color: #087443;
+
+    text-decoration: none;
+
+    padding: 9px 14px;
+
+    border-radius: 7px;
+
+    font-weight: bold;
+}
+
+/* EMPTY */
+
+.empty {
+    text-align: center;
+
+    color: #697480;
+
+    padding: 25px;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    header {
+        flex-direction: column;
+
+        gap: 12px;
+
+        text-align: center;
+    }
+
+    .stats {
+        grid-template-columns:
+            1fr;
+    }
+
+    .container {
+        padding: 0 12px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        🇵🇰 PakReward
+    </div>
+
+    <div class="admin-title">
+        Admin Panel
+    </div>
+
+    <a
+        href="index.html"
+        class="home-btn">
+
+        Home
+
+    </a>
+
+</header>
+
+
+
+<div class="container">
+
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <h3>
+                Total Users
+            </h3>
+
+            <strong id="totalUsers">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>
+                Total Balance
+            </h3>
+
+            <strong id="totalBalance">
+                Rs. 0
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>
+                Today's Rewards
+            </h3>
+
+            <strong id="todayRewards">
+                Rs. 0
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>
+                Total Rewards
+            </h3>
+
+            <strong id="totalRewards">
+                Rs. 0
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- USERS -->
+
+    <div class="section">
+
+        <h2>
+            Registered Users
+        </h2>
+
+
+        <button
+            class="refresh-btn"
+            onclick="loadUsers()">
+
+            Refresh Users
+
+        </button>
+
+
+        <input
+            type="text"
+            id="search"
+            class="search-box"
+            placeholder="Search by name or email..."
+            oninput="displayUsers()"
+        >
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Balance
+                        </th>
+
+                        <th>
+                            Today Reward
+                        </th>
+
+                        <th>
+                            Total Reward
+                        </th>
+
+                        <th>
+                            Plan
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="userTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =========================================
+   USERS
+========================================= */
+
+let users = [];
+
+
+/* =========================================
+   MONEY
+========================================= */
+
+function money(amount) {
+
+    return "Rs. " +
+        Number(amount || 0)
+            .toLocaleString("en-PK");
+
+}
+
+
+/* =========================================
+   LOAD USERS
+========================================= */
+
+function loadUsers() {
+
+    try {
+
+        users =
+            JSON.parse(
+                localStorage.getItem(
+                    "pakrewardUsers"
+                ) || "[]"
+            );
+
+        if (!Array.isArray(users)) {
+
+            users = [];
+
+        }
+
+    } catch (error) {
+
+        users = [];
+
+    }
+
+
+    updateStats();
+
+    displayUsers();
+
+}
+
+
+/* =========================================
+   UPDATE STATISTICS
+========================================= */
+
+function updateStats() {
+
+    let totalBalance = 0;
+
+    let todayRewards = 0;
+
+    let totalRewards = 0;
+
+
+    users.forEach(function(user) {
+
+        totalBalance +=
+            Number(
+                user.balance || 0
+            );
+
+
+        todayRewards +=
+            Number(
+                user.todayReward || 0
+            );
+
+
+        totalRewards +=
+            Number(
+                user.totalReward || 0
+            );
+
+    });
+
+
+    document.getElementById(
+        "totalUsers"
+    ).innerText =
+        users.length;
+
+
+    document.getElementById(
+        "totalBalance"
+    ).innerText =
+        money(totalBalance);
+
+
+    document.getElementById(
+        "todayRewards"
+    ).innerText =
+        money(todayRewards);
+
+
+    document.getElementById(
+        "totalRewards"
+    ).innerText =
+        money(totalRewards);
+
+}
+
+
+/* =========================================
+   DISPLAY USERS
+========================================= */
+
+function displayUsers() {
+
+    const table =
+        document.getElementById(
+            "userTable"
+        );
+
+
+    const search =
+        document.getElementById(
+            "search"
+        )
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    table.innerHTML = "";
+
+
+    const filteredUsers =
+        users.filter(function(user) {
+
+            const name =
+                String(
+                    user.name || ""
+                )
+                .toLowerCase();
+
+
+            const email =
+                String(
+                    user.email || ""
+                )
+                .toLowerCase();
+
+
+            return (
+                name.includes(search) ||
+                email.includes(search)
+            );
+
+        });
+
+
+    if (
+        filteredUsers.length === 0
+    ) {
+
+        table.innerHTML =
+            '<tr><td colspan="8" class="empty">No users found.</td></tr>';
+
+        return;
+
+    }
+
+
+    filteredUsers.forEach(function(user) {
+
+
+        const row =
+            document.createElement("tr");
+
+
+        const plan =
+            user.plan ||
+            user.selectedPlan ||
+            "None";
+
+
+        row.innerHTML = `
+
+            <td>
+                ${escapeHTML(user.id || "-")}
+            </td>
+
+            <td>
+                ${escapeHTML(user.name || "User")}
+            </td>
+
+            <td>
+                ${escapeHTML(user.email || "-")}
+            </td>
+
+            <td>
+                ${money(user.balance)}
+            </td>
+
+            <td>
+                ${money(user.todayReward)}
+            </td>
+
+            <td>
+                ${money(user.totalReward)}
+            </td>
+
+            <td>
+                ${escapeHTML(plan)}
+            </td>
+
+            <td>
+
+                <button
+                    class="add-btn"
+                    onclick="addReward('${escapeJS(user.id)}')">
+
+                    +Rs.10
+
+                </button>
+
+
+                <button
+                    class="remove-btn"
+                    onclick="removeReward('${escapeJS(user.id)}')">
+
+                    -Rs.10
+
+                </button>
+
+            </td>
+
+        `;
+
+
+        table.appendChild(row);
+
+    });
+
+}
+
+
+/* =========================================
+   ADD REWARD
+========================================= */
+
+function addReward(id) {
+
+    const user =
+        users.find(function(item) {
+
+            return String(item.id) ===
+                   String(id);
+
+        });
+
+
+    if (!user) {
+
+        alert(
+            "User not found."
+        );
+
+        return;
+
+    }
+
+
+    user.balance =
+        Number(user.balance || 0) +
+        10;
+
+
+    user.todayReward =
+        Number(user.todayReward || 0) +
+        10;
+
+
+    user.totalReward =
+        Number(user.totalReward || 0) +
+        10;
+
+
+    saveUsers();
+
+
+    alert(
+        "Rs. 10 reward added."
+    );
+
+}
+
+
+/* =========================================
+   REMOVE REWARD
+========================================= */
+
+function removeReward(id) {
+
+    const user =
+        users.find(function(item) {
+
+            return String(item.id) ===
+                   String(id);
+
+        });
+
+
+    if (!user) {
+
+        alert(
+            "User not found."
+        );
+
+        return;
+
+    }
+
+
+    const currentBalance =
+        Number(
+            user.balance || 0
+        );
+
+
+    if (currentBalance < 10) {
+
+        alert(
+            "User balance is less than Rs. 10."
+        );
+
+        return;
+
+    }
+
+
+    user.balance =
+        currentBalance - 10;
+
+
+    saveUsers();
+
+
+    alert(
+        "Rs. 10 removed from balance."
+    );
+
+}
+
+
+/* =========================================
+   SAVE USERS
+========================================= */
+
+function saveUsers() {
+
+    localStorage.setItem(
+        "pakrewardUsers",
+        JSON.stringify(users)
+    );
+
+
+    updateStats();
+
+    displayUsers();
+
+}
+
+
+/* =========================================
+   SECURITY HELPERS
+========================================= */
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+function escapeJS(value) {
+
+    return String(value)
+        .replace(/\\/g, "\\\\")
+        .replace(/'/g, "\\'");
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+loadUsers();
+
+
+</script>
+
+
+</body>
+
+</html>
