@@ -1,1773 +1,1168 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Admin Panel - PakReward</title>
 
 <style>
 
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f7fb;
+    color:#17202a
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f7fb;
-    color: #17202a;
+.login-screen{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px
 }
 
-/* =========================
-   ADMIN LOGIN
-========================= */
-
-.login-screen {
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
+.login-box{
+    width:100%;
+    max-width:420px;
+    background:white;
+    padding:32px;
+    border-radius:16px;
+    border:1px solid #e1e6eb;
+    box-shadow:0 10px 35px rgba(0,0,0,.08)
 }
 
-.login-box {
-    width: 100%;
-    max-width: 420px;
-
-    background: white;
-
-    padding: 32px;
-
-    border-radius: 16px;
-
-    border: 1px solid #e1e6eb;
-
-    box-shadow:
-        0 10px 35px rgba(0,0,0,0.08);
+.admin-logo{
+    text-align:center;
+    font-size:25px;
+    font-weight:bold;
+    color:#087443;
+    margin-bottom:8px
 }
 
-.admin-logo {
-    text-align: center;
-
-    font-size: 25px;
-
-    font-weight: bold;
-
-    color: #087443;
-
-    margin-bottom: 8px;
+.login-subtitle{
+    text-align:center;
+    color:#697480;
+    margin-bottom:25px
 }
 
-.login-subtitle {
-    text-align: center;
-
-    color: #697480;
-
-    margin-bottom: 25px;
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:6px;
+    font-weight:bold;
+    font-size:14px
 }
 
-label {
-    display: block;
-
-    margin-top: 15px;
-    margin-bottom: 6px;
-
-    font-weight: bold;
-
-    font-size: 14px;
+input{
+    width:100%;
+    padding:13px;
+    border:1px solid #d8dde4;
+    border-radius:8px;
+    font-size:15px
 }
 
-input {
-    width: 100%;
-
-    padding: 13px;
-
-    border: 1px solid #d8dde4;
-
-    border-radius: 8px;
-
-    font-size: 15px;
-
-    outline: none;
+.admin-login-btn{
+    width:100%;
+    margin-top:22px;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    background:#087443;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer
 }
 
-input:focus {
-    border-color: #087443;
+.login-error{
+    display:none;
+    margin-top:12px;
+    padding:10px;
+    border-radius:7px;
+    background:#fff1ef;
+    color:#c0392b;
+    font-size:13px
 }
 
-.admin-login-btn {
-    width: 100%;
+#adminPanel{display:none}
 
-    margin-top: 22px;
-
-    padding: 13px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: #087443;
-
-    color: white;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
+header{
+    background:#087443;
+    color:white;
+    padding:18px 25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px
 }
 
-.admin-login-btn:hover {
-    opacity: 0.9;
+.logo{
+    font-size:22px;
+    font-weight:bold
 }
 
-.login-error {
-    display: none;
-
-    margin-top: 12px;
-
-    padding: 10px;
-
-    border-radius: 7px;
-
-    background: #fff1ef;
-
-    color: #c0392b;
-
-    font-size: 13px;
+.header-buttons{
+    display:flex;
+    gap:8px
 }
 
-
-/* =========================
-   ADMIN PANEL
-========================= */
-
-#adminPanel {
-    display: none;
+.header-btn{
+    border:none;
+    padding:9px 14px;
+    border-radius:7px;
+    background:white;
+    color:#087443;
+    font-weight:bold;
+    cursor:pointer
 }
 
-header {
-    background: #087443;
-
-    color: white;
-
-    padding: 18px 25px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 15px;
+.container{
+    max-width:1250px;
+    margin:25px auto;
+    padding:0 18px
 }
 
-.logo {
-    font-size: 22px;
-
-    font-weight: bold;
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px
 }
 
-.header-buttons {
-    display: flex;
-
-    gap: 8px;
+.stat{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    border:1px solid #e1e6eb
 }
 
-.header-btn {
-    border: none;
-
-    padding: 9px 14px;
-
-    border-radius: 7px;
-
-    background: white;
-
-    color: #087443;
-
-    font-weight: bold;
-
-    cursor: pointer;
+.stat span{
+    color:#697480;
+    font-size:14px
 }
 
-.container {
-    max-width: 1200px;
-
-    margin: 25px auto;
-
-    padding: 0 18px;
+.stat strong{
+    display:block;
+    margin-top:8px;
+    font-size:24px;
+    color:#087443
 }
 
-
-/* =========================
-   STATISTICS
-========================= */
-
-.stats {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 15px;
+.section{
+    background:white;
+    margin-top:22px;
+    padding:22px;
+    border-radius:12px;
+    border:1px solid #e1e6eb
 }
 
-.stat {
-    background: white;
-
-    padding: 20px;
-
-    border-radius: 12px;
-
-    border: 1px solid #e1e6eb;
+.section h2{
+    margin-top:0
 }
 
-.stat span {
-    color: #697480;
-
-    font-size: 14px;
+.search{
+    width:100%;
+    padding:12px;
+    border:1px solid #d5dce3;
+    border-radius:8px;
+    margin-bottom:15px
 }
 
-.stat strong {
-    display: block;
-
-    margin-top: 8px;
-
-    font-size: 24px;
-
-    color: #087443;
+.table-wrap{
+    overflow-x:auto
 }
 
-
-/* =========================
-   SECTION
-========================= */
-
-.section {
-    background: white;
-
-    margin-top: 22px;
-
-    padding: 22px;
-
-    border-radius: 12px;
-
-    border: 1px solid #e1e6eb;
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:1050px
 }
 
-.section h2 {
-    margin-top: 0;
+th,td{
+    padding:12px;
+    border-bottom:1px solid #e5e8ec;
+    text-align:left;
+    font-size:14px;
+    vertical-align:top
 }
 
-
-/* =========================
-   SEARCH
-========================= */
-
-.search {
-    width: 100%;
-
-    padding: 12px;
-
-    border: 1px solid #d5dce3;
-
-    border-radius: 8px;
-
-    margin-bottom: 15px;
-
-    outline: none;
+th{
+    background:#f5f7fb
 }
 
-
-/* =========================
-   TABLE
-========================= */
-
-.table-wrap {
-    overflow-x: auto;
+.tabs{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:18px
 }
 
-table {
-    width: 100%;
-
-    border-collapse: collapse;
-
-    min-width: 850px;
+.tab{
+    background:#eef2f5;
+    color:#17202a;
+    border:none;
+    padding:10px 14px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:bold
 }
 
-th,
-td {
-    padding: 12px;
-
-    border-bottom:
-        1px solid #e5e8ec;
-
-    text-align: left;
-
-    font-size: 14px;
+.tab.active{
+    background:#087443;
+    color:white
 }
 
-th {
-    background: #f5f7fb;
+button{
+    cursor:pointer;
+    border:none;
+    border-radius:6px;
+    padding:8px 11px;
+    font-weight:bold
 }
 
-
-/* =========================
-   TABS
-========================= */
-
-.tabs {
-    display: flex;
-
-    gap: 8px;
-
-    flex-wrap: wrap;
-
-    margin-bottom: 18px;
+.approve{
+    background:#087443;
+    color:white
 }
 
-.tab {
-    background: #eef2f5;
-
-    color: #17202a;
-
-    border: none;
-
-    padding: 10px 14px;
-
-    border-radius: 7px;
-
-    cursor: pointer;
-
-    font-weight: bold;
+.reject{
+    background:#c0392b;
+    color:white
 }
 
-.tab.active {
-    background: #087443;
-
-    color: white;
+.add{
+    background:#087443;
+    color:white
 }
 
-
-/* =========================
-   ACTION BUTTONS
-========================= */
-
-button {
-    cursor: pointer;
-
-    border: none;
-
-    border-radius: 6px;
-
-    padding: 8px 11px;
-
-    font-weight: bold;
+.deduct{
+    background:#c0392b;
+    color:white
 }
 
-.approve {
-    background: #087443;
-
-    color: white;
+.badge{
+    padding:5px 8px;
+    border-radius:5px;
+    font-size:12px;
+    font-weight:bold
 }
 
-.reject {
-    background: #c0392b;
-
-    color: white;
+.pending{
+    background:#fff3cd;
+    color:#856404
 }
 
-.add {
-    background: #087443;
-
-    color: white;
+.empty{
+    text-align:center;
+    padding:25px;
+    color:#697480
 }
 
-.deduct {
-    background: #c0392b;
-
-    color: white;
+.view-btn{
+    background:#eaf7f0;
+    color:#087443;
+    margin-top:5px
 }
 
-
-/* =========================
-   STATUS
-========================= */
-
-.badge {
-    padding: 5px 8px;
-
-    border-radius: 5px;
-
-    font-size: 12px;
-
-    font-weight: bold;
+.details{
+    line-height:1.7
 }
 
-.pending {
-    background: #fff3cd;
-
-    color: #856404;
+.screenshot{
+    width:180px;
+    max-height:150px;
+    object-fit:contain;
+    border:1px solid #ddd;
+    border-radius:8px;
+    margin-top:5px;
+    display:block;
+    cursor:pointer
 }
 
+@media(max-width:800px){
 
-/* =========================
-   EMPTY
-========================= */
-
-.empty {
-    text-align: center;
-
-    padding: 25px;
-
-    color: #697480;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 800px) {
-
-    .stats {
-        grid-template-columns:
-            repeat(2, 1fr);
+    .stats{
+        grid-template-columns:repeat(2,1fr)
     }
 
-    header {
-        flex-wrap: wrap;
+    header{
+        flex-wrap:wrap
     }
-
 }
 
-@media (max-width: 500px) {
+@media(max-width:500px){
 
-    .stats {
-        grid-template-columns: 1fr;
+    .stats{
+        grid-template-columns:1fr
     }
 
-    .container {
-        padding: 0 12px;
+    header{
+        flex-direction:column;
+        text-align:center
     }
-
-    header {
-        flex-direction: column;
-
-        text-align: center;
-    }
-
 }
 
 </style>
-
 </head>
-
 
 <body>
 
 
-<!-- =====================================
-     ADMIN LOGIN SCREEN
-===================================== -->
+<!-- ADMIN LOGIN -->
 
-<div
-    class="login-screen"
-    id="loginScreen">
+<div class="login-screen" id="loginScreen">
 
+<div class="login-box">
 
-    <div class="login-box">
+<div class="admin-logo">
+🇵🇰 PakReward
+</div>
 
+<div class="login-subtitle">
+Administrator Login
+</div>
 
-        <div class="admin-logo">
-            🇵🇰 PakReward
-        </div>
+<form id="adminLoginForm">
 
+<label>Admin Email</label>
 
-        <div class="login-subtitle">
-            Administrator Login
-        </div>
+<input
+type="email"
+id="adminEmail"
+placeholder="Enter admin email"
+required
+>
 
+<label>Admin Password</label>
 
-        <form id="adminLoginForm">
+<input
+type="password"
+id="adminPassword"
+placeholder="Enter admin password"
+required
+>
 
+<div class="login-error" id="loginError">
+Invalid admin email or password.
+</div>
 
-            <label for="adminEmail">
-                Admin Email
-            </label>
+<button class="admin-login-btn">
+Admin Login
+</button>
 
+</form>
 
-            <input
-                type="email"
-                id="adminEmail"
-                placeholder="Enter admin email"
-                required
-            >
-
-
-            <label for="adminPassword">
-                Admin Password
-            </label>
-
-
-            <input
-                type="password"
-                id="adminPassword"
-                placeholder="Enter admin password"
-                required
-            >
-
-
-            <div
-                class="login-error"
-                id="loginError">
-
-                Invalid admin email or password.
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="admin-login-btn">
-
-                Admin Login
-
-            </button>
-
-
-        </form>
-
-
-    </div>
-
+</div>
 </div>
 
 
-
-<!-- =====================================
-     ADMIN PANEL
-===================================== -->
+<!-- ADMIN PANEL -->
 
 <div id="adminPanel">
 
-
 <header>
 
+<div class="logo">
+🇵🇰 PakReward
+</div>
 
-    <div class="logo">
-        🇵🇰 PakReward
-    </div>
+<strong>Admin Panel</strong>
 
+<div class="header-buttons">
 
-    <strong>
-        Admin Panel
-    </strong>
+<button class="header-btn" onclick="goHome()">
+Home
+</button>
 
+<button class="header-btn" onclick="logoutAdmin()">
+Logout
+</button>
 
-    <div class="header-buttons">
-
-
-        <button
-            class="header-btn"
-            onclick="goHome()">
-
-            Home
-
-        </button>
-
-
-        <button
-            class="header-btn"
-            onclick="logoutAdmin()">
-
-            Logout
-
-        </button>
-
-
-    </div>
-
+</div>
 
 </header>
-
 
 
 <div class="container">
 
 
-    <!-- STATISTICS -->
-
-    <div class="stats">
-
-
-        <div class="stat">
-
-            <span>
-                Total Accounts
-            </span>
-
-            <strong id="totalAccounts">
-                0
-            </strong>
-
-        </div>
-
-
-        <div class="stat">
-
-            <span>
-                Pending Deposits
-            </span>
-
-            <strong id="pendingDeposits">
-                0
-            </strong>
-
-        </div>
-
-
-        <div class="stat">
-
-            <span>
-                Pending Withdrawals
-            </span>
-
-            <strong id="pendingWithdrawals">
-                0
-            </strong>
-
-        </div>
-
-
-        <div class="stat">
-
-            <span>
-                Total Balance
-            </span>
-
-            <strong id="totalBalance">
-                Rs. 0
-            </strong>
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- ACCOUNTS -->
-
-    <div class="section">
-
-
-        <h2>
-            Accounts & Balances
-        </h2>
-
-
-        <input
-            class="search"
-            id="userSearch"
-            placeholder="Search name or email..."
-            oninput="showUsers()"
-        >
-
-
-        <div class="table-wrap">
-
-
-            <table>
-
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            ID
-                        </th>
-
-                        <th>
-                            Name
-                        </th>
-
-                        <th>
-                            Email
-                        </th>
-
-                        <th>
-                            Balance
-                        </th>
-
-                        <th>
-                            Today Reward
-                        </th>
-
-                        <th>
-                            Total Reward
-                        </th>
-
-                        <th>
-                            Action
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody
-                    id="usersTable">
-                </tbody>
-
-
-            </table>
-
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- TRANSACTIONS -->
-
-    <div class="section">
-
-
-        <h2>
-            Transactions
-        </h2>
-
-
-        <div class="tabs">
-
-
-            <button
-                class="tab active"
-                onclick="showTransaction('deposits', this)">
-
-                Pending Deposits
-
-            </button>
-
-
-            <button
-                class="tab"
-                onclick="showTransaction('withdrawals', this)">
-
-                Pending Withdrawals
-
-            </button>
-
-
-        </div>
-
-
-        <div class="table-wrap">
-
-
-            <table>
-
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            ID
-                        </th>
-
-                        <th>
-                            User
-                        </th>
-
-                        <th>
-                            Amount
-                        </th>
-
-                        <th>
-                            Method
-                        </th>
-
-                        <th>
-                            Account
-                        </th>
-
-                        <th>
-                            Status
-                        </th>
-
-                        <th>
-                            Action
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody
-                    id="transactionTable">
-                </tbody>
-
-
-            </table>
-
-
-        </div>
-
-
-    </div>
-
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat">
+<span>Total Accounts</span>
+<strong id="totalAccounts">0</strong>
+</div>
+
+<div class="stat">
+<span>Pending Deposits</span>
+<strong id="pendingDeposits">0</strong>
+</div>
+
+<div class="stat">
+<span>Pending Withdrawals</span>
+<strong id="pendingWithdrawals">0</strong>
+</div>
+
+<div class="stat">
+<span>Total Balance</span>
+<strong id="totalBalance">Rs. 0</strong>
+</div>
 
 </div>
 
 
+<!-- USERS -->
+
+<div class="section">
+
+<h2>Accounts & Balances</h2>
+
+<input
+class="search"
+id="userSearch"
+placeholder="Search name or email..."
+oninput="showUsers()"
+>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Balance</th>
+<th>Today Reward</th>
+<th>Total Reward</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="usersTable"></tbody>
+
+</table>
+
 </div>
 
+</div>
+
+
+<!-- REQUESTS -->
+
+<div class="section">
+
+<h2>Deposit & Withdrawal Requests</h2>
+
+<div class="tabs">
+
+<button
+class="tab active"
+onclick="showTransaction('deposits',this)"
+>
+Pending Deposits
+</button>
+
+<button
+class="tab"
+onclick="showTransaction('withdrawals',this)"
+>
+Pending Withdrawals
+</button>
+
+</div>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>ID</th>
+<th>User</th>
+<th>Amount</th>
+<th>Method</th>
+<th>Payment Details</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="transactionTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+</div>
 
 
 <script>
 
+/* ADMIN LOGIN */
 
-/* =====================================
-   ADMIN LOGIN
-===================================== */
-
-const ADMIN_EMAIL =
-    "admin@pakreward.com";
-
-const ADMIN_PASSWORD =
-    "Admin123";
-
+const ADMIN_EMAIL="admin@pakreward.com";
+const ADMIN_PASSWORD="Admin123";
 
 document
-    .getElementById("adminLoginForm")
-    .addEventListener(
-        "submit",
-        function(event) {
+.getElementById("adminLoginForm")
+.addEventListener("submit",function(e){
 
-            event.preventDefault();
+    e.preventDefault();
 
+    const email=
+    document.getElementById("adminEmail")
+    .value.trim().toLowerCase();
 
-            const email =
-                document
-                    .getElementById(
-                        "adminEmail"
-                    )
-                    .value
-                    .trim()
-                    .toLowerCase();
+    const password=
+    document.getElementById("adminPassword").value;
 
+    if(
+        email===ADMIN_EMAIL &&
+        password===ADMIN_PASSWORD
+    ){
 
-            const password =
-                document
-                    .getElementById(
-                        "adminPassword"
-                    )
-                    .value;
+        localStorage.setItem(
+            "pakrewardAdminLoggedIn",
+            "true"
+        );
 
+        showAdminPanel();
 
-            if (
-                email === ADMIN_EMAIL &&
-                password === ADMIN_PASSWORD
-            ) {
+    }else{
 
-                localStorage.setItem(
-                    "pakrewardAdminLoggedIn",
-                    "true"
-                );
+        document.getElementById("loginError")
+        .style.display="block";
+    }
+
+});
 
 
-                showAdminPanel();
+/* SHOW PANEL */
 
-            } else {
+function showAdminPanel(){
 
-                document
-                    .getElementById(
-                        "loginError"
-                    )
-                    .style.display =
-                    "block";
+    document.getElementById("loginScreen")
+    .style.display="none";
 
-            }
-
-        }
-    );
-
-
-/* =====================================
-   SHOW ADMIN PANEL
-===================================== */
-
-function showAdminPanel() {
-
-    document
-        .getElementById("loginScreen")
-        .style.display =
-        "none";
-
-
-    document
-        .getElementById("adminPanel")
-        .style.display =
-        "block";
-
+    document.getElementById("adminPanel")
+    .style.display="block";
 
     loadData();
-
 }
 
 
-/* =====================================
-   LOGOUT
-===================================== */
+/* LOGOUT */
 
-function logoutAdmin() {
+function logoutAdmin(){
 
     localStorage.removeItem(
         "pakrewardAdminLoggedIn"
     );
 
-
     location.reload();
-
 }
 
 
-/* =====================================
-   HOME
-===================================== */
+/* HOME */
 
-function goHome() {
+function goHome(){
 
-    window.location.href =
-        "index.html";
-
+    window.location.href="index.html";
 }
 
 
-/* =====================================
-   DATA
-===================================== */
+/* DATA */
 
-let users = [];
-
-let deposits = [];
-
-let withdrawals = [];
+let users=[];
+let deposits=[];
+let withdrawals=[];
 
 
-/* =====================================
-   MONEY
-===================================== */
+/* MONEY */
 
-function money(value) {
+function money(value){
 
-    return "Rs. " +
-        Number(value || 0)
-        .toLocaleString("en-PK");
-
+    return "Rs. "+
+    Number(value||0)
+    .toLocaleString("en-PK");
 }
 
 
-/* =====================================
-   LOAD DATA
-===================================== */
+/* LOAD */
 
-function loadData() {
+function loadData(){
 
-    try {
+    try{
 
-        users = JSON.parse(
-            localStorage.getItem(
-                "pakrewardUsers"
-            ) || "[]"
+        users=
+        JSON.parse(
+            localStorage.getItem("pakrewardUsers")||"[]"
         );
 
-
-        deposits = JSON.parse(
-            localStorage.getItem(
-                "pakrewardDeposits"
-            ) || "[]"
+        deposits=
+        JSON.parse(
+            localStorage.getItem("pakrewardDeposits")||"[]"
         );
 
-
-        withdrawals = JSON.parse(
-            localStorage.getItem(
-                "pakrewardWithdrawals"
-            ) || "[]"
+        withdrawals=
+        JSON.parse(
+            localStorage.getItem("pakrewardWithdrawals")||"[]"
         );
 
-    } catch(error) {
+    }catch(e){
 
-        users = [];
-        deposits = [];
-        withdrawals = [];
-
+        users=[];
+        deposits=[];
+        withdrawals=[];
     }
 
-
-    if (!Array.isArray(users))
-        users = [];
-
-    if (!Array.isArray(deposits))
-        deposits = [];
-
-    if (!Array.isArray(withdrawals))
-        withdrawals = [];
-
+    if(!Array.isArray(users))users=[];
+    if(!Array.isArray(deposits))deposits=[];
+    if(!Array.isArray(withdrawals))withdrawals=[];
 
     updateStats();
-
     showUsers();
-
-    showTransaction(
-        "deposits"
-    );
-
+    showTransaction("deposits");
 }
 
 
-/* =====================================
-   SAVE DATA
-===================================== */
+/* SAVE */
 
-function saveData() {
+function saveData(){
 
     localStorage.setItem(
         "pakrewardUsers",
         JSON.stringify(users)
     );
 
-
     localStorage.setItem(
         "pakrewardDeposits",
         JSON.stringify(deposits)
     );
 
-
     localStorage.setItem(
         "pakrewardWithdrawals",
         JSON.stringify(withdrawals)
     );
-
 }
 
 
-/* =====================================
-   STATISTICS
-===================================== */
+/* STATS */
 
-function updateStats() {
+function updateStats(){
 
-    let totalBalance = 0;
+    let total=0;
 
-
-    users.forEach(function(user) {
-
-        totalBalance +=
-            Number(
-                user.balance || 0
-            );
-
+    users.forEach(user=>{
+        total+=Number(user.balance||0);
     });
 
+    const pd=
+    deposits.filter(x=>x.status==="pending").length;
 
-    const pendingD =
-        deposits.filter(function(item) {
+    const pw=
+    withdrawals.filter(x=>x.status==="pending").length;
 
-            return item.status ===
-                "pending";
+    document.getElementById("totalAccounts").innerText=
+    users.length;
 
-        }).length;
+    document.getElementById("pendingDeposits").innerText=
+    pd;
 
+    document.getElementById("pendingWithdrawals").innerText=
+    pw;
 
-    const pendingW =
-        withdrawals.filter(function(item) {
-
-            return item.status ===
-                "pending";
-
-        }).length;
-
-
-    document.getElementById(
-        "totalAccounts"
-    ).innerText =
-        users.length;
-
-
-    document.getElementById(
-        "pendingDeposits"
-    ).innerText =
-        pendingD;
-
-
-    document.getElementById(
-        "pendingWithdrawals"
-    ).innerText =
-        pendingW;
-
-
-    document.getElementById(
-        "totalBalance"
-    ).innerText =
-        money(totalBalance);
-
+    document.getElementById("totalBalance").innerText=
+    money(total);
 }
 
 
-/* =====================================
-   SHOW USERS
-===================================== */
+/* USERS */
 
-function showUsers() {
+function showUsers(){
 
-    const table =
-        document.getElementById(
-            "usersTable"
+    const table=
+    document.getElementById("usersTable");
+
+    const search=
+    document.getElementById("userSearch")
+    .value.toLowerCase().trim();
+
+    table.innerHTML="";
+
+    const filtered=users.filter(user=>{
+
+        const name=
+        String(user.name||"").toLowerCase();
+
+        const email=
+        String(user.email||"").toLowerCase();
+
+        return(
+            name.includes(search)||
+            email.includes(search)
         );
+    });
 
+    if(!filtered.length){
 
-    const search =
-        document.getElementById(
-            "userSearch"
-        )
-        .value
-        .toLowerCase()
-        .trim();
-
-
-    table.innerHTML = "";
-
-
-    const filtered =
-        users.filter(function(user) {
-
-            const name =
-                String(
-                    user.name || ""
-                )
-                .toLowerCase();
-
-
-            const email =
-                String(
-                    user.email || ""
-                )
-                .toLowerCase();
-
-
-            return (
-                name.includes(search) ||
-                email.includes(search)
-            );
-
-        });
-
-
-    if (
-        filtered.length === 0
-    ) {
-
-        table.innerHTML =
-            `<tr>
-                <td
-                    colspan="7"
-                    class="empty">
-
-                    No accounts found.
-
-                </td>
-            </tr>`;
+        table.innerHTML=`
+        <tr>
+        <td colspan="7" class="empty">
+        No accounts found.
+        </td>
+        </tr>`;
 
         return;
-
     }
 
+    filtered.forEach(user=>{
 
-    filtered.forEach(function(user) {
+        const row=document.createElement("tr");
 
+        row.innerHTML=`
 
-        const row =
-            document.createElement(
-                "tr"
-            );
+        <td>${safe(user.id||"-")}</td>
 
+        <td>${safe(user.name||"User")}</td>
 
-        row.innerHTML = `
+        <td>${safe(user.email||"-")}</td>
 
-            <td>
-                ${safe(user.id || "-")}
-            </td>
+        <td>${money(user.balance)}</td>
 
-            <td>
-                ${safe(user.name || "User")}
-            </td>
+        <td>${money(user.todayReward)}</td>
 
-            <td>
-                ${safe(user.email || "-")}
-            </td>
+        <td>${money(user.totalReward)}</td>
 
-            <td>
-                ${money(user.balance)}
-            </td>
+        <td>
 
-            <td>
-                ${money(user.todayReward)}
-            </td>
+        <button
+        class="add"
+        onclick="addBalance('${js(user.id)}')">
+        +10
+        </button>
 
-            <td>
-                ${money(user.totalReward)}
-            </td>
+        <button
+        class="deduct"
+        onclick="deductBalance('${js(user.id)}')">
+        -10
+        </button>
 
-            <td>
-
-                <button
-                    class="add"
-                    onclick="addBalance('${js(user.id)}')">
-
-                    +10
-
-                </button>
-
-
-                <button
-                    class="deduct"
-                    onclick="deductBalance('${js(user.id)}')">
-
-                    -10
-
-                </button>
-
-            </td>
-
-        `;
-
+        </td>`;
 
         table.appendChild(row);
-
     });
-
 }
 
 
-/* =====================================
-   ADD BALANCE
-===================================== */
+/* FIND USER */
 
-function addBalance(id) {
-
-    const user =
-        findUser(id);
-
-
-    if (!user) return;
-
-
-    user.balance =
-        Number(user.balance || 0) +
-        10;
-
-
-    user.totalReward =
-        Number(user.totalReward || 0) +
-        10;
-
-
-    saveData();
-
-    loadData();
-
-
-    alert(
-        "Rs. 10 added to balance."
-    );
-
-}
-
-
-/* =====================================
-   DEDUCT BALANCE
-===================================== */
-
-function deductBalance(id) {
-
-    const user =
-        findUser(id);
-
-
-    if (!user) return;
-
-
-    if (
-        Number(user.balance || 0)
-        < 10
-    ) {
-
-        alert(
-            "Balance is less than Rs. 10."
-        );
-
-        return;
-
-    }
-
-
-    user.balance =
-        Number(user.balance || 0) -
-        10;
-
-
-    saveData();
-
-    loadData();
-
-
-    alert(
-        "Rs. 10 deducted."
-    );
-
-}
-
-
-/* =====================================
-   FIND USER
-===================================== */
-
-function findUser(id) {
+function findUser(id){
 
     return users.find(
-        function(user) {
-
-            return String(user.id) ===
-                String(id);
-
-        }
+        user=>String(user.id)===String(id)
     );
-
 }
 
 
-/* =====================================
-   TRANSACTIONS
-===================================== */
+/* ADD */
 
-function showTransaction(
-    type,
-    button
-) {
+function addBalance(id){
 
+    const user=findUser(id);
 
-    if (button) {
+    if(!user)return;
 
-        document
-            .querySelectorAll(
-                ".tab"
-            )
-            .forEach(
-                function(tab) {
+    user.balance=
+    Number(user.balance||0)+10;
 
-                    tab.classList.remove(
-                        "active"
-                    );
+    user.totalReward=
+    Number(user.totalReward||0)+10;
 
-                }
-            );
+    saveData();
+    loadData();
+
+    alert("Rs. 10 added to balance.");
+}
 
 
-        button.classList.add(
-            "active"
-        );
+/* DEDUCT */
 
+function deductBalance(id){
+
+    const user=findUser(id);
+
+    if(!user)return;
+
+    if(Number(user.balance||0)<10){
+
+        alert("Balance is less than Rs. 10.");
+        return;
     }
 
+    user.balance=
+    Number(user.balance||0)-10;
 
-    const data =
-        type === "deposits"
-        ? deposits
-        : withdrawals;
+    saveData();
+    loadData();
 
-
-    const table =
-        document.getElementById(
-            "transactionTable"
-        );
+    alert("Rs. 10 deducted.");
+}
 
 
-    table.innerHTML = "";
+/* TRANSACTION TABLE */
 
+function showTransaction(type,button){
 
-    const pending =
-        data.filter(
-            function(item) {
+    if(button){
 
-                return item.status ===
-                    "pending";
+        document.querySelectorAll(".tab")
+        .forEach(tab=>{
+            tab.classList.remove("active");
+        });
 
-            }
-        );
+        button.classList.add("active");
+    }
 
+    const data=
+    type==="deposits"
+    ?deposits
+    :withdrawals;
 
-    if (
-        pending.length === 0
-    ) {
+    const table=
+    document.getElementById("transactionTable");
 
-        table.innerHTML =
-            `<tr>
-                <td
-                    colspan="7"
-                    class="empty">
+    table.innerHTML="";
 
-                    No pending ${type}.
+    const pending=
+    data.filter(item=>item.status==="pending");
 
-                </td>
-            </tr>`;
+    if(!pending.length){
+
+        table.innerHTML=`
+        <tr>
+        <td colspan="7" class="empty">
+        No pending ${type}.
+        </td>
+        </tr>`;
 
         return;
-
     }
 
+    pending.forEach(item=>{
 
-    pending.forEach(
-        function(item) {
+        const row=document.createElement("tr");
 
+        let details="";
 
-            const row =
-                document.createElement(
-                    "tr"
-                );
+        if(type==="deposits"){
 
+            details=`
 
-            row.innerHTML = `
+            <div class="details">
 
-                <td>
-                    ${safe(item.id || "-")}
-                </td>
+            <strong>Method:</strong>
+            ${safe(item.method||"-")}<br>
 
-                <td>
-                    ${safe(
-                        item.email ||
-                        item.user ||
-                        "-"
-                    )}
-                </td>
+            <strong>Transaction ID:</strong>
+            ${safe(item.transactionId||"-")}<br>
 
-                <td>
-                    ${money(item.amount)}
-                </td>
+            ${
+                item.screenshot
+                ?
+                `<img
+                class="screenshot"
+                src="${item.screenshot}"
+                onclick="viewScreenshot(this.src)"
+                title="Click to view"
+                >`
+                :
+                "No screenshot"
+            }
 
-                <td>
-                    ${safe(
-                        item.method ||
-                        "Demo"
-                    )}
-                </td>
-
-                <td>
-                    ${safe(
-                        item.account ||
-                        "-"
-                    )}
-                </td>
-
-                <td>
-                    <span class="badge pending">
-                        Pending
-                    </span>
-                </td>
-
-                <td>
-
-                    <button
-                        class="approve"
-                        onclick="approveTransaction(
-                            '${js(item.id)}',
-                            '${type}'
-                        )">
-
-                        Approve
-
-                    </button>
-
-
-                    <button
-                        class="reject"
-                        onclick="rejectTransaction(
-                            '${js(item.id)}',
-                            '${type}'
-                        )">
-
-                        Reject
-
-                    </button>
-
-                </td>
-
-            `;
-
-
-            table.appendChild(row);
-
+            </div>`;
         }
-    );
 
+        else{
+
+            details=`
+
+            <div class="details">
+
+            <strong>Method:</strong>
+            ${safe(item.method||"-")}<br>
+
+            ${
+                item.bank
+                ?
+                `<strong>Bank:</strong>
+                ${safe(item.bank)}<br>`
+                :""
+            }
+
+            <strong>Account Title:</strong>
+            ${safe(item.accountTitle||"-")}<br>
+
+            <strong>Account:</strong>
+            ${safe(item.account||"-")}<br>
+
+            </div>`;
+        }
+
+        row.innerHTML=`
+
+        <td>
+        ${safe(item.id||"-")}
+        </td>
+
+        <td>
+        <strong>${safe(item.userName||"User")}</strong><br>
+        <small>${safe(item.email||"-")}</small>
+        </td>
+
+        <td>
+        <strong>${money(item.amount)}</strong>
+        </td>
+
+        <td>
+        ${safe(item.method||"-")}
+        </td>
+
+        <td>
+        ${details}
+        </td>
+
+        <td>
+        <span class="badge pending">
+        Pending
+        </span>
+        </td>
+
+        <td>
+
+        <button
+        class="approve"
+        onclick="approveTransaction('${js(item.id)}','${type}')">
+        Approve
+        </button>
+
+        <button
+        class="reject"
+        onclick="rejectTransaction('${js(item.id)}','${type}')">
+        Reject
+        </button>
+
+        </td>`;
+
+        table.appendChild(row);
+    });
 }
 
 
-/* =====================================
-   APPROVE
-===================================== */
+/* APPROVE */
 
-function approveTransaction(
-    id,
-    type
-) {
+function approveTransaction(id,type){
 
+    const list=
+    type==="deposits"
+    ?deposits
+    :withdrawals;
 
-    const list =
-        type === "deposits"
-        ? deposits
-        : withdrawals;
+    const item=
+    list.find(
+        x=>String(x.id)===String(id)
+    );
 
+    if(!item)return;
 
-    const item =
-        list.find(
-            function(transaction) {
+    const user=
+    users.find(
+        u=>String(u.id)===String(item.userId)
+    );
 
-                return String(
-                    transaction.id
-                ) === String(id);
+    if(!user){
 
-            }
-        );
-
-
-    if (!item) return;
+        alert("User account not found.");
+        return;
+    }
 
 
-    const user =
+    /* DEPOSIT */
+
+    if(type==="deposits"){
+
+        user.balance=
+        Number(user.balance||0)+
+        Number(item.amount||0);
+    }
+
+
+    /*
+       WITHDRAWAL
+
+       Dashboard already reserved the amount
+       when request was created.
+
+       Therefore DO NOT deduct again.
+    */
+
+    if(type==="withdrawals"){
+
+        item.approvedAmount=
+        Number(item.amount||0);
+    }
+
+
+    item.status="approved";
+
+    item.approvedDate=
+    new Date().toLocaleString();
+
+    saveData();
+    loadData();
+
+    alert("Transaction approved successfully.");
+}
+
+
+/* REJECT */
+
+function rejectTransaction(id,type){
+
+    const list=
+    type==="deposits"
+    ?deposits
+    :withdrawals;
+
+    const item=
+    list.find(
+        x=>String(x.id)===String(id)
+    );
+
+    if(!item)return;
+
+
+    /*
+       If withdrawal was rejected,
+       return reserved amount to user.
+    */
+
+    if(type==="withdrawals"){
+
+        const user=
         users.find(
-            function(u) {
-
-                return (
-                    String(u.id) ===
-                    String(item.userId)
-
-                    ||
-
-                    String(u.email)
-                        .toLowerCase() ===
-                    String(
-                        item.email || ""
-                    ).toLowerCase()
-                );
-
-            }
+            u=>String(u.id)===String(item.userId)
         );
 
+        if(user){
 
-    if (
-        type === "deposits"
-    ) {
-
-
-        if (user) {
-
-            user.balance =
-                Number(
-                    user.balance || 0
-                ) +
-                Number(
-                    item.amount || 0
-                );
-
+            user.balance=
+            Number(user.balance||0)+
+            Number(item.amount||0);
         }
-
     }
 
 
-    if (
-        type === "withdrawals"
-    ) {
+    item.status="rejected";
+
+    item.rejectedDate=
+    new Date().toLocaleString();
+
+    saveData();
+    loadData();
+
+    alert("Transaction rejected.");
+}
 
 
-        if (user) {
+/* SCREENSHOT VIEW */
 
-            const amount =
-                Number(
-                    item.amount || 0
-                );
+function viewScreenshot(src){
 
+    const win=
+    window.open("","_blank");
 
-            if (
-                Number(
-                    user.balance || 0
-                ) < amount
-            ) {
+    if(win){
 
-                alert(
-                    "User does not have enough balance."
-                );
-
-                return;
-
-            }
-
-
-            user.balance -=
-                amount;
-
+        win.document.write(`
+        <html>
+        <head>
+        <title>Transaction Screenshot</title>
+        <style>
+        body{
+            margin:0;
+            background:#111;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh
         }
+        img{
+            max-width:95%;
+            max-height:95vh;
+            object-fit:contain
+        }
+        </style>
+        </head>
+        <body>
+        <img src="${src}">
+        </body>
+        </html>
+        `);
 
+        win.document.close();
     }
-
-
-    item.status =
-        "approved";
-
-
-    saveData();
-
-    loadData();
-
-
-    alert(
-        "Transaction approved."
-    );
-
 }
 
 
-/* =====================================
-   REJECT
-===================================== */
+/* SECURITY */
 
-function rejectTransaction(
-    id,
-    type
-) {
+function safe(value){
 
-
-    const list =
-        type === "deposits"
-        ? deposits
-        : withdrawals;
-
-
-    const item =
-        list.find(
-            function(transaction) {
-
-                return String(
-                    transaction.id
-                ) === String(id);
-
-            }
-        );
-
-
-    if (!item) return;
-
-
-    item.status =
-        "rejected";
-
-
-    saveData();
-
-    loadData();
-
-
-    alert(
-        "Transaction rejected."
-    );
-
+    return String(value??"")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
 
-/* =====================================
-   SECURITY DISPLAY
-===================================== */
+function js(value){
 
-function safe(value) {
-
-    return String(value)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
+    return String(value??"")
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"\\'");
 }
 
 
-function js(value) {
+/* ADMIN SESSION */
 
-    return String(value)
-
-        .replace(
-            /\\/g,
-            "\\\\"
-        )
-
-        .replace(
-            /'/g,
-            "\\'"
-        );
-
-}
-
-
-/* =====================================
-   CHECK ADMIN SESSION
-===================================== */
-
-if (
+if(
     localStorage.getItem(
         "pakrewardAdminLoggedIn"
-    ) === "true"
-) {
+    )==="true"
+){
 
     showAdminPanel();
-
 }
 
 </script>
 
-
 </body>
-
 </html>
