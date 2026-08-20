@@ -743,44 +743,48 @@ Close
 
 /* ================= ADMIN LOGIN ================= */
 
-const ADMIN_EMAIL="admin@HamEarn.com";
-const ADMIN_PASSWORD="Admin123";
+const ADMIN_EMAIL = "admin@hamearn.com";
+const ADMIN_PASSWORD = "Admin123";
 
 document
 .getElementById("adminLoginForm")
-.addEventListener("submit",function(e){
+.addEventListener("submit", function(e){
 
     e.preventDefault();
 
-    const email=
-    document.getElementById("adminEmail")
-    .value.trim()
-    .toLowerCase();
+    const email = document
+        .getElementById("adminEmail")
+        .value
+        .trim()
+        .toLowerCase();
 
-    const password=
-    document.getElementById("adminPassword").value;
+    const password = document
+        .getElementById("adminPassword")
+        .value;
 
-    if(
-    email==="admin@HamEarn.com" &&
-    password==="Admin123"
-){
+    const error = document.getElementById("loginError");
+
+    if (
+        email === ADMIN_EMAIL &&
+        password === ADMIN_PASSWORD
+    ){
 
         localStorage.setItem(
             "Ham EarnAdminLoggedIn",
             "true"
         );
 
+        error.style.display = "none";
+
         showAdminPanel();
 
     }else{
 
-        document.getElementById("loginError")
-        .style.display="block";
+        error.style.display = "block";
 
     }
 
 });
-
 
 /* ================= SHOW PANEL ================= */
 
