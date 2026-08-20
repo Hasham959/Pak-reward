@@ -10,48 +10,48 @@
 <style>
 
 *{
-    box-sizing:border-box
+    box-sizing:border-box;
 }
 
 body{
     margin:0;
     font-family:Arial,sans-serif;
     background:#f5f7fb;
-    color:#17202a
+    color:#17202a;
 }
 
-/* LOGIN */
+/* ================= LOGIN ================= */
 
 .login-screen{
     min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:20px
+    padding:20px;
 }
 
 .login-box{
     width:100%;
     max-width:420px;
-    background:white;
+    background:#fff;
     padding:32px;
     border-radius:16px;
     border:1px solid #e1e6eb;
-    box-shadow:0 10px 35px rgba(0,0,0,.08)
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
 }
 
 .admin-logo{
     text-align:center;
-    font-size:25px;
+    font-size:28px;
     font-weight:bold;
     color:#087443;
-    margin-bottom:8px
+    margin-bottom:8px;
 }
 
 .login-subtitle{
     text-align:center;
     color:#697480;
-    margin-bottom:25px
+    margin-bottom:25px;
 }
 
 label{
@@ -59,15 +59,22 @@ label{
     margin-top:15px;
     margin-bottom:6px;
     font-weight:bold;
-    font-size:14px
+    font-size:14px;
 }
 
-input,select{
+input,
+select{
     width:100%;
     padding:12px;
     border:1px solid #d8dde4;
     border-radius:8px;
-    font-size:15px
+    font-size:15px;
+    outline:none;
+}
+
+input:focus,
+select:focus{
+    border-color:#087443;
 }
 
 .admin-login-btn{
@@ -77,10 +84,14 @@ input,select{
     border:none;
     border-radius:8px;
     background:#087443;
-    color:white;
+    color:#fff;
     font-size:16px;
     font-weight:bold;
-    cursor:pointer
+    cursor:pointer;
+}
+
+.admin-login-btn:hover{
+    background:#065d35;
 }
 
 .login-error{
@@ -90,92 +101,92 @@ input,select{
     border-radius:7px;
     background:#fff1ef;
     color:#c0392b;
-    font-size:13px
+    font-size:13px;
 }
 
 #adminPanel{
-    display:none
+    display:none;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 header{
     background:#087443;
-    color:white;
+    color:#fff;
     padding:18px 25px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:15px
+    gap:15px;
 }
 
 .logo{
     font-size:22px;
-    font-weight:bold
+    font-weight:bold;
 }
 
 .header-buttons{
     display:flex;
-    gap:8px
+    gap:8px;
 }
 
 .header-btn{
     border:none;
     padding:9px 14px;
     border-radius:7px;
-    background:white;
+    background:#fff;
     color:#087443;
     font-weight:bold;
-    cursor:pointer
+    cursor:pointer;
 }
 
-/* CONTAINER */
+/* ================= CONTAINER ================= */
 
 .container{
     max-width:1300px;
     margin:25px auto;
-    padding:0 18px
+    padding:0 18px;
 }
 
-/* STATS */
+/* ================= STATS ================= */
 
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:15px
+    gap:15px;
 }
 
 .stat{
-    background:white;
+    background:#fff;
     padding:20px;
     border-radius:12px;
-    border:1px solid #e1e6eb
+    border:1px solid #e1e6eb;
 }
 
 .stat span{
     color:#697480;
-    font-size:14px
+    font-size:14px;
 }
 
 .stat strong{
     display:block;
     margin-top:8px;
     font-size:24px;
-    color:#087443
+    color:#087443;
 }
 
-/* SECTION */
+/* ================= SECTION ================= */
 
 .section{
-    background:white;
+    background:#fff;
     margin-top:22px;
     padding:22px;
     border-radius:12px;
-    border:1px solid #e1e6eb
+    border:1px solid #e1e6eb;
 }
 
 .section h2{
-    margin-top:0
+    margin-top:0;
 }
 
 .search{
@@ -183,123 +194,126 @@ header{
     padding:12px;
     border:1px solid #d5dce3;
     border-radius:8px;
-    margin-bottom:15px
+    margin-bottom:15px;
 }
 
-/* TABLE */
+/* ================= TABLE ================= */
 
 .table-wrap{
-    overflow-x:auto
+    overflow-x:auto;
 }
 
 table{
     width:100%;
     border-collapse:collapse;
-    min-width:1100px
+    min-width:1100px;
 }
 
-th,td{
+th,
+td{
     padding:12px;
     border-bottom:1px solid #e5e8ec;
     text-align:left;
     font-size:14px;
-    vertical-align:top
+    vertical-align:top;
 }
 
 th{
-    background:#f5f7fb
+    background:#f5f7fb;
 }
 
-/* BUTTONS */
+/* ================= BUTTONS ================= */
 
 button{
     cursor:pointer;
     border:none;
     border-radius:6px;
     padding:8px 11px;
-    font-weight:bold
+    font-weight:bold;
 }
 
 .approve{
     background:#087443;
-    color:white
+    color:#fff;
 }
 
 .reject{
     background:#c0392b;
-    color:white
+    color:#fff;
 }
 
 .add{
     background:#087443;
-    color:white
+    color:#fff;
+    margin-bottom:5px;
 }
 
 .deduct{
     background:#c0392b;
-    color:white
+    color:#fff;
 }
 
 .view-btn{
     background:#eaf7f0;
     color:#087443;
-    margin-top:5px
+    margin-top:5px;
 }
 
-/* TABS */
+/* ================= TABS ================= */
 
 .tabs{
     display:flex;
     gap:8px;
     flex-wrap:wrap;
-    margin-bottom:18px
+    margin-bottom:18px;
 }
 
 .tab{
     background:#eef2f5;
     color:#17202a;
-    padding:10px 14px
+    padding:10px 14px;
 }
 
 .tab.active{
     background:#087443;
-    color:white
+    color:#fff;
 }
 
-/* BADGES */
+/* ================= BADGES ================= */
 
 .badge{
+    display:inline-block;
     padding:5px 8px;
     border-radius:5px;
     font-size:12px;
-    font-weight:bold
+    font-weight:bold;
 }
 
 .pending{
     background:#fff3cd;
-    color:#856404
+    color:#856404;
 }
 
 .approved{
     background:#eaf7f0;
-    color:#087443
+    color:#087443;
 }
 
 .rejected{
     background:#fff1ef;
-    color:#c0392b
+    color:#c0392b;
 }
 
 .empty{
     text-align:center;
     padding:25px;
-    color:#697480
+    color:#697480;
 }
 
-/* DETAILS */
+/* ================= DETAILS ================= */
 
 .details{
-    line-height:1.7
+    line-height:1.7;
 }
 
 .screenshot{
@@ -310,10 +324,10 @@ button{
     border-radius:8px;
     margin-top:5px;
     display:block;
-    cursor:pointer
+    cursor:pointer;
 }
 
-/* MODAL */
+/* ================= MODAL ================= */
 
 .modal{
     display:none;
@@ -322,57 +336,57 @@ button{
     background:rgba(0,0,0,.55);
     z-index:9999;
     padding:20px;
-    overflow:auto
+    overflow:auto;
 }
 
 .modal-box{
-    background:white;
+    background:#fff;
     width:100%;
-    max-width:500px;
+    max-width:550px;
     margin:40px auto;
     padding:25px;
     border-radius:15px;
-    box-shadow:0 10px 40px rgba(0,0,0,.2)
+    box-shadow:0 10px 40px rgba(0,0,0,.2);
 }
 
 .modal-box h2{
     margin-top:0;
-    color:#087443
+    color:#087443;
 }
 
 .modal-actions{
     display:flex;
     gap:10px;
-    margin-top:20px
+    margin-top:20px;
 }
 
 .modal-actions button{
     flex:1;
-    padding:12px
+    padding:12px;
 }
 
 .cancel{
     background:#eee;
-    color:#333
+    color:#333;
 }
 
 .confirm-add{
     background:#087443;
-    color:white
+    color:#fff;
 }
 
 .confirm-deduct{
     background:#c0392b;
-    color:white
+    color:#fff;
 }
 
-/* USER DETAILS */
+/* ================= USER INFO ================= */
 
 .user-info{
     background:#f7f9fb;
     border-radius:10px;
     padding:15px;
-    margin-top:10px
+    margin-top:10px;
 }
 
 .info-row{
@@ -380,63 +394,81 @@ button{
     justify-content:space-between;
     gap:15px;
     padding:9px 0;
-    border-bottom:1px solid #e5e8ec
+    border-bottom:1px solid #e5e8ec;
 }
 
 .info-row:last-child{
-    border-bottom:none
+    border-bottom:none;
 }
 
 .info-label{
-    color:#697480
+    color:#697480;
 }
 
 .info-value{
-    font-weight:bold
+    font-weight:bold;
+    text-align:right;
 }
 
 .history-box{
     margin-top:18px;
     max-height:300px;
-    overflow:auto
+    overflow:auto;
 }
 
 .history-item{
     padding:12px;
-    border-bottom:1px solid #eee
+    border-bottom:1px solid #eee;
 }
 
 .history-item small{
-    color:#777
+    color:#777;
 }
 
-/* MOBILE */
+/* ================= NOTICE ================= */
+
+.notice{
+    background:#fff8e6;
+    border:1px solid #f0df9a;
+    color:#705c00;
+    border-radius:8px;
+    padding:10px;
+    margin-top:15px;
+    font-size:13px;
+}
+
+/* ================= MOBILE ================= */
 
 @media(max-width:800px){
 
     .stats{
-        grid-template-columns:repeat(2,1fr)
+        grid-template-columns:repeat(2,1fr);
     }
 
     header{
-        flex-wrap:wrap
+        flex-wrap:wrap;
     }
 }
 
 @media(max-width:500px){
 
     .stats{
-        grid-template-columns:1fr
+        grid-template-columns:1fr;
     }
 
     header{
         flex-direction:column;
-        text-align:center
+        text-align:center;
     }
 
     .header-buttons{
         width:100%;
-        justify-content:center
+        justify-content:center;
+    }
+
+    .modal-box{
+        margin:10px auto;
+        padding:20px;
     }
 }
 
@@ -450,47 +482,56 @@ button{
 
 <div class="login-screen" id="loginScreen">
 
-<div class="login-box">
+    <div class="login-box">
 
-<div class="admin-logo">
-Ham Earn
-</div>
+        <div class="admin-logo">
+            Ham Earn
+        </div>
 
-<div class="login-subtitle">
-Administrator Login
-</div>
+        <div class="login-subtitle">
+            Administrator Login
+        </div>
 
-<form id="adminLoginForm">
+        <form id="adminLoginForm">
 
-<label>Admin Email</label>
+            <label>
+                Admin Email
+            </label>
 
-<input
-type="email"
-id="adminEmail"
-placeholder="Enter admin email"
-required
->
+            <input
+                type="email"
+                id="adminEmail"
+                placeholder="Enter admin email"
+                required
+            >
 
-<label>Admin Password</label>
+            <label>
+                Admin Password
+            </label>
 
-<input
-type="password"
-id="adminPassword"
-placeholder="Enter admin password"
-required
->
+            <input
+                type="password"
+                id="adminPassword"
+                placeholder="Enter admin password"
+                required
+            >
 
-<div class="login-error" id="loginError">
-Invalid admin email or password.
-</div>
+            <div
+                class="login-error"
+                id="loginError">
+                Invalid admin email or password.
+            </div>
 
-<button class="admin-login-btn">
-Admin Login
-</button>
+            <button
+                type="submit"
+                class="admin-login-btn">
+                Admin Login
+            </button>
 
-</form>
+        </form>
 
-</div>
+    </div>
+
 </div>
 
 
@@ -500,23 +541,29 @@ Admin Login
 
 <header>
 
-<div class="logo">
-Ham Earn
-</div>
+    <div class="logo">
+        Ham Earn
+    </div>
 
-<strong>Admin Panel</strong>
+    <strong>
+        Admin Panel
+    </strong>
 
-<div class="header-buttons">
+    <div class="header-buttons">
 
-<button class="header-btn" onclick="goHome()">
-🏠 Home
-</button>
+        <button
+            class="header-btn"
+            onclick="goHome()">
+            Home
+        </button>
 
-<button class="header-btn" onclick="logoutAdmin()">
-Logout
-</button>
+        <button
+            class="header-btn"
+            onclick="logoutAdmin()">
+            Logout
+        </button>
 
-</div>
+    </div>
 
 </header>
 
@@ -528,25 +575,25 @@ Logout
 
 <div class="stats">
 
-<div class="stat">
-<span>Total Accounts</span>
-<strong id="totalAccounts">0</strong>
-</div>
+    <div class="stat">
+        <span>Total Accounts</span>
+        <strong id="totalAccounts">0</strong>
+    </div>
 
-<div class="stat">
-<span>Pending Deposits</span>
-<strong id="pendingDeposits">0</strong>
-</div>
+    <div class="stat">
+        <span>Pending Deposits</span>
+        <strong id="pendingDeposits">0</strong>
+    </div>
 
-<div class="stat">
-<span>Pending Withdrawals</span>
-<strong id="pendingWithdrawals">0</strong>
-</div>
+    <div class="stat">
+        <span>Pending Withdrawals</span>
+        <strong id="pendingWithdrawals">0</strong>
+    </div>
 
-<div class="stat">
-<span>Total User Balance</span>
-<strong id="totalBalance">Rs. 0</strong>
-</div>
+    <div class="stat">
+        <span>Total User Balance</span>
+        <strong id="totalBalance">Rs. 0</strong>
+    </div>
 
 </div>
 
@@ -555,41 +602,41 @@ Logout
 
 <div class="section">
 
-<h2>👥 Accounts & Balance Management</h2>
+    <h2>
+        Accounts & Balance Management
+    </h2>
 
-<input
-class="search"
-id="userSearch"
-placeholder="Search user by name or email..."
-oninput="showUsers()"
->
+    <input
+        class="search"
+        id="userSearch"
+        placeholder="Search user by name or email..."
+        oninput="showUsers()"
+    >
 
-<div class="table-wrap">
+    <div class="table-wrap">
 
-<table>
+        <table>
 
-<thead>
+            <thead>
 
-<tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Balance</th>
+                    <th>Today Reward</th>
+                    <th>Total Reward</th>
+                    <th>Balance Management</th>
+                    <th>Details</th>
+                </tr>
 
-<th>ID</th>
-<th>Name</th>
-<th>Email</th>
-<th>Balance</th>
-<th>Today Reward</th>
-<th>Total Reward</th>
-<th>Balance Management</th>
-<th>Details</th>
+            </thead>
 
-</tr>
+            <tbody id="usersTable"></tbody>
 
-</thead>
+        </table>
 
-<tbody id="usersTable"></tbody>
-
-</table>
-
-</div>
+    </div>
 
 </div>
 
@@ -598,51 +645,49 @@ oninput="showUsers()"
 
 <div class="section">
 
-<h2>💳 Deposit & Withdrawal Requests</h2>
+    <h2>
+        Deposit & Withdrawal Requests
+    </h2>
 
-<div class="tabs">
+    <div class="tabs">
 
-<button
-class="tab active"
-onclick="showTransaction('deposits',this)"
->
-Pending Deposits
-</button>
+        <button
+            class="tab active"
+            onclick="showTransaction('deposits',this)">
+            Pending Deposits
+        </button>
 
-<button
-class="tab"
-onclick="showTransaction('withdrawals',this)"
->
-Pending Withdrawals
-</button>
+        <button
+            class="tab"
+            onclick="showTransaction('withdrawals',this)">
+            Pending Withdrawals
+        </button>
 
-</div>
+    </div>
 
-<div class="table-wrap">
+    <div class="table-wrap">
 
-<table>
+        <table>
 
-<thead>
+            <thead>
 
-<tr>
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Payment Details</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
 
-<th>ID</th>
-<th>User</th>
-<th>Amount</th>
-<th>Method</th>
-<th>Payment Details</th>
-<th>Status</th>
-<th>Action</th>
+            </thead>
 
-</tr>
+            <tbody id="transactionTable"></tbody>
 
-</thead>
+        </table>
 
-<tbody id="transactionTable"></tbody>
-
-</table>
-
-</div>
+    </div>
 
 </div>
 
@@ -655,116 +700,130 @@ Pending Withdrawals
 
 <div class="modal" id="balanceModal">
 
-<div class="modal-box">
+    <div class="modal-box">
 
-<h2 id="balanceModalTitle">
-Balance Management
-</h2>
+        <h2 id="balanceModalTitle">
+            Balance Management
+        </h2>
 
-<p>
-User:
-<strong id="balanceUserName"></strong>
-</p>
+        <p>
+            User:
+            <strong id="balanceUserName"></strong>
+        </p>
 
-<p>
-Current Balance:
-<strong id="balanceCurrent">
-Rs. 0
-</strong>
-</p>
+        <p>
+            Current Balance:
+            <strong id="balanceCurrent">
+                Rs. 0
+            </strong>
+        </p>
 
-<label>Amount</label>
+        <label>
+            Amount
+        </label>
 
-<input
-type="number"
-id="balanceAmount"
-min="1"
-placeholder="Enter amount"
->
+        <input
+            type="number"
+            id="balanceAmount"
+            min="1"
+            placeholder="Enter amount"
+        >
 
-<label>Reason</label>
+        <label>
+            Reason
+        </label>
 
-<input
-type="text"
-id="balanceReason"
-placeholder="Enter reason"
->
+        <input
+            type="text"
+            id="balanceReason"
+            placeholder="Enter reason"
+        >
 
-<div class="modal-actions">
+        <div class="modal-actions">
 
-<button
-class="cancel"
-onclick="closeModal()"
->
-Cancel
-</button>
+            <button
+                class="cancel"
+                onclick="closeModal()">
+                Cancel
+            </button>
 
-<button
-id="balanceConfirmBtn"
->
-Confirm
-</button>
+            <button
+                id="balanceConfirmBtn">
+                Confirm
+            </button>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </div>
 
 
 <!-- ================= USER DETAILS MODAL ================= -->
 
-<div class="modal" id="userDetailsModal">
+<div
+    class="modal"
+    id="userDetailsModal">
 
-<div class="modal-box">
+    <div class="modal-box">
 
-<h2>👤 User Details</h2>
+        <h2>
+            User Details
+        </h2>
 
-<div id="userDetailsContent"></div>
+        <div id="userDetailsContent"></div>
 
-<div class="modal-actions">
+        <div class="modal-actions">
 
-<button
-class="cancel"
-onclick="closeUserDetails()"
->
-Close
-</button>
+            <button
+                class="cancel"
+                onclick="closeUserDetails()">
+                Close
+            </button>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </div>
 
 
 <script>
 
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
 
-/* ================= ADMIN LOGIN ================= */
+const ADMIN_EMAIL =
+    "admin@hamearn.com";
 
-const ADMIN_EMAIL = "admin@hamearn.com";
-const ADMIN_PASSWORD = "Admin123";
+const ADMIN_PASSWORD =
+    "Admin123";
+
 
 document
 .getElementById("adminLoginForm")
-.addEventListener("submit", function(e){
+.addEventListener("submit",function(e){
 
     e.preventDefault();
 
-    const email = document
+    const email =
+        document
         .getElementById("adminEmail")
         .value
         .trim()
         .toLowerCase();
 
-    const password = document
+    const password =
+        document
         .getElementById("adminPassword")
         .value;
 
-    const error = document.getElementById("loginError");
+    const error =
+        document.getElementById("loginError");
 
-    if (
+
+    if(
         email === ADMIN_EMAIL &&
         password === ADMIN_PASSWORD
     ){
@@ -774,33 +833,41 @@ document
             "true"
         );
 
-        error.style.display = "none";
+        error.style.display="none";
 
         showAdminPanel();
 
     }else{
 
-        error.style.display = "block";
+        error.style.display="block";
 
     }
 
 });
 
-/* ================= SHOW PANEL ================= */
+
+/* =====================================================
+   SHOW ADMIN
+===================================================== */
 
 function showAdminPanel(){
 
-    document.getElementById("loginScreen")
-    .style.display="none";
+    document.getElementById(
+        "loginScreen"
+    ).style.display="none";
 
-    document.getElementById("adminPanel")
-    .style.display="block";
+    document.getElementById(
+        "adminPanel"
+    ).style.display="block";
 
     loadData();
+
 }
 
 
-/* ================= LOGOUT ================= */
+/* =====================================================
+   LOGOUT
+===================================================== */
 
 function logoutAdmin(){
 
@@ -809,71 +876,87 @@ function logoutAdmin(){
     );
 
     location.reload();
+
 }
 
 
-/* ================= HOME ================= */
+/* =====================================================
+   HOME
+===================================================== */
 
 function goHome(){
 
     window.location.href="index.html";
+
 }
 
 
-/* ================= DATA ================= */
+/* =====================================================
+   DATA
+===================================================== */
 
 let users=[];
 let deposits=[];
 let withdrawals=[];
 
 
-/* ================= MONEY ================= */
+/* =====================================================
+   MONEY
+===================================================== */
 
 function money(value){
 
     return "Rs. "+
-    Number(value||0)
-    .toLocaleString("en-PK");
+        Number(value||0)
+        .toLocaleString("en-PK");
+
 }
 
 
-/* ================= LOAD ================= */
+/* =====================================================
+   LOAD DATA
+===================================================== */
 
 function loadData(){
 
     try{
 
-        users=
-        JSON.parse(
+        users=JSON.parse(
             localStorage.getItem(
                 "Ham EarnUsers"
-            )||"[]"
+            ) || "[]"
         );
 
-        deposits=
-        JSON.parse(
+        deposits=JSON.parse(
             localStorage.getItem(
                 "Ham EarnDeposits"
-            )||"[]"
+            ) || "[]"
         );
 
-        withdrawals=
-        JSON.parse(
+        withdrawals=JSON.parse(
             localStorage.getItem(
                 "Ham EarnWithdrawals"
-            )||"[]"
+            ) || "[]"
         );
 
-    }catch(e){
+    }catch(error){
 
         users=[];
         deposits=[];
         withdrawals=[];
+
     }
 
-    if(!Array.isArray(users)) users=[];
-    if(!Array.isArray(deposits)) deposits=[];
-    if(!Array.isArray(withdrawals)) withdrawals=[];
+
+    if(!Array.isArray(users))
+        users=[];
+
+    if(!Array.isArray(deposits))
+        deposits=[];
+
+    if(!Array.isArray(withdrawals))
+        withdrawals=[];
+
 
     updateStats();
     showUsers();
@@ -882,7 +965,9 @@ function loadData(){
 }
 
 
-/* ================= SAVE ================= */
+/* =====================================================
+   SAVE DATA
+===================================================== */
 
 function saveData(){
 
@@ -904,7 +989,9 @@ function saveData(){
 }
 
 
-/* ================= STATS ================= */
+/* =====================================================
+   STATS
+===================================================== */
 
 function updateStats(){
 
@@ -912,77 +999,95 @@ function updateStats(){
 
     users.forEach(user=>{
 
-        total+=Number(
-            user.balance||0
+        total += Number(
+            user.balance || 0
         );
 
     });
 
-    const pd=
-    deposits.filter(
-        x=>x.status==="pending"
-    ).length;
 
-    const pw=
-    withdrawals.filter(
-        x=>x.status==="pending"
-    ).length;
+    const pendingDepositCount =
+        deposits.filter(
+            x=>x.status==="pending"
+        ).length;
+
+
+    const pendingWithdrawalCount =
+        withdrawals.filter(
+            x=>x.status==="pending"
+        ).length;
+
 
     document.getElementById(
         "totalAccounts"
     ).innerText=users.length;
 
+
     document.getElementById(
         "pendingDeposits"
-    ).innerText=pd;
+    ).innerText=
+        pendingDepositCount;
+
 
     document.getElementById(
         "pendingWithdrawals"
-    ).innerText=pw;
+    ).innerText=
+        pendingWithdrawalCount;
+
 
     document.getElementById(
         "totalBalance"
-    ).innerText=money(total);
+    ).innerText=
+        money(total);
 
 }
 
 
-/* ================= USERS ================= */
+/* =====================================================
+   USERS
+===================================================== */
 
 function showUsers(){
 
-    const table=
-    document.getElementById(
-        "usersTable"
-    );
+    const table =
+        document.getElementById(
+            "usersTable"
+        );
 
-    const search=
-    document.getElementById(
-        "userSearch"
-    )
-    .value
-    .toLowerCase()
-    .trim();
+    const search =
+        document.getElementById(
+            "userSearch"
+        )
+        .value
+        .toLowerCase()
+        .trim();
+
 
     table.innerHTML="";
 
-    const filtered=
-    users.filter(user=>{
 
-        const name=
-        String(user.name||"")
-        .toLowerCase();
+    const filtered =
+        users.filter(user=>{
 
-        const email=
-        String(user.email||"")
-        .toLowerCase();
+            const name =
+                String(
+                    user.name || ""
+                )
+                .toLowerCase();
 
-        return(
-            name.includes(search)||
-            email.includes(search)
-        );
+            const email =
+                String(
+                    user.email || ""
+                )
+                .toLowerCase();
 
-    });
+
+            return(
+                name.includes(search) ||
+                email.includes(search)
+            );
+
+        });
 
 
     if(!filtered.length){
@@ -991,89 +1096,93 @@ function showUsers(){
 
         <tr>
 
-        <td
-        colspan="8"
-        class="empty"
-        >
+            <td
+                colspan="8"
+                class="empty">
 
-        No accounts found.
+                No accounts found.
 
-        </td>
+            </td>
 
         </tr>
 
         `;
 
         return;
+
     }
 
 
     filtered.forEach(user=>{
 
-        const row=
-        document.createElement("tr");
+        const row =
+            document.createElement("tr");
 
 
         row.innerHTML=`
 
         <td>
-        ${safe(user.id||"-")}
+            ${safe(user.id || "-")}
         </td>
 
         <td>
-        <strong>
-        ${safe(user.name||"User")}
-        </strong>
+            <strong>
+                ${safe(user.name || "User")}
+            </strong>
         </td>
 
         <td>
-        ${safe(user.email||"-")}
+            ${safe(user.email || "-")}
         </td>
 
         <td>
-        <strong>
-        ${money(user.balance)}
-        </strong>
+            <strong>
+                ${money(user.balance)}
+            </strong>
         </td>
 
         <td>
-        ${money(user.todayReward)}
+            ${money(user.todayReward)}
         </td>
 
         <td>
-        ${money(user.totalReward)}
-        </td>
-
-        <td>
-
-        <button
-        class="add"
-        onclick="openBalanceModal('${js(user.id)}','add')"
-        >
-        + Add
-        </button>
-
-        <button
-        class="deduct"
-        onclick="openBalanceModal('${js(user.id)}','deduct')"
-        >
-        - Deduct
-        </button>
-
+            ${money(user.totalReward)}
         </td>
 
         <td>
 
-        <button
-        class="view-btn"
-        onclick="viewUser('${js(user.id)}')"
-        >
-        View Details
-        </button>
+            <button
+                class="add"
+                onclick="openBalanceModal('${js(user.id)}','add')">
+
+                + Add
+
+            </button>
+
+            <button
+                class="deduct"
+                onclick="openBalanceModal('${js(user.id)}','deduct')">
+
+                - Deduct
+
+            </button>
+
+        </td>
+
+        <td>
+
+            <button
+                class="view-btn"
+                onclick="viewUser('${js(user.id)}')">
+
+                View Details
+
+            </button>
 
         </td>
 
         `;
+
 
         table.appendChild(row);
 
@@ -1082,84 +1191,100 @@ function showUsers(){
 }
 
 
-/* ================= FIND USER ================= */
+/* =====================================================
+   FIND USER
+===================================================== */
 
 function findUser(id){
 
     return users.find(
-        user=>
-        String(user.id)===String(id)
+        user =>
+        String(user.id) ===
+        String(id)
     );
 
 }
 
 
-/* ================= BALANCE MODAL ================= */
+/* =====================================================
+   BALANCE MODAL
+===================================================== */
 
 let selectedBalanceUser=null;
 let balanceAction="add";
 
 
-function openBalanceModal(id,action){
+function openBalanceModal(
+    id,
+    action
+){
 
-    const user=findUser(id);
+    const user =
+        findUser(id);
 
-    if(!user)return;
+    if(!user)
+        return;
+
 
     selectedBalanceUser=user;
     balanceAction=action;
 
+
     document.getElementById(
         "balanceUserName"
-    ).innerText=
-    user.name||"User";
+    ).innerText =
+        user.name || "User";
+
 
     document.getElementById(
         "balanceCurrent"
-    ).innerText=
-    money(user.balance);
+    ).innerText =
+        money(user.balance);
+
 
     document.getElementById(
         "balanceAmount"
     ).value="";
+
 
     document.getElementById(
         "balanceReason"
     ).value="";
 
 
-    const title=
-    document.getElementById(
-        "balanceModalTitle"
-    );
+    const title =
+        document.getElementById(
+            "balanceModalTitle"
+        );
 
-    const button=
-    document.getElementById(
-        "balanceConfirmBtn"
-    );
+
+    const button =
+        document.getElementById(
+            "balanceConfirmBtn"
+        );
 
 
     if(action==="add"){
 
-        title.innerText=
-        "➕ Add Balance";
+        title.innerText =
+            "Add Balance";
 
-        button.innerText=
-        "Add Balance";
+        button.innerText =
+            "Add Balance";
 
-        button.className=
-        "confirm-add";
+        button.className =
+            "confirm-add";
 
     }else{
 
-        title.innerText=
-        "➖ Deduct Balance";
+        title.innerText =
+            "Deduct Balance";
 
-        button.innerText=
-        "Deduct Balance";
+        button.innerText =
+            "Deduct Balance";
 
-        button.className=
-        "confirm-deduct";
+        button.className =
+            "confirm-deduct";
 
     }
 
@@ -1170,6 +1295,10 @@ function openBalanceModal(id,action){
 
 }
 
+
+/* =====================================================
+   CLOSE BALANCE MODAL
+===================================================== */
 
 function closeModal(){
 
@@ -1182,7 +1311,9 @@ function closeModal(){
 }
 
 
-/* ================= CONFIRM BALANCE ================= */
+/* =====================================================
+   CONFIRM BALANCE
+===================================================== */
 
 document
 .getElementById(
@@ -1192,31 +1323,37 @@ document
     "click",
     function(){
 
-        if(!selectedBalanceUser)return;
+        if(!selectedBalanceUser)
+            return;
 
 
-        const amount=
-        Number(
+        const amount =
+            Number(
+                document.getElementById(
+                    "balanceAmount"
+                ).value
+            );
+
+
+        const reason =
             document.getElementById(
-                "balanceAmount"
-            ).value
-        );
-
-        const reason=
-        document.getElementById(
-            "balanceReason"
-        )
-        .value
-        .trim();
+                "balanceReason"
+            )
+            .value
+            .trim();
 
 
-        if(!amount||amount<=0){
+        if(
+            !amount ||
+            amount<=0
+        ){
 
             alert(
                 "Please enter a valid amount."
             );
 
             return;
+
         }
 
 
@@ -1227,24 +1364,25 @@ document
             );
 
             return;
+
         }
 
 
-        const user=
-        selectedBalanceUser;
+        const user =
+            selectedBalanceUser;
 
 
         if(balanceAction==="add"){
 
-            user.balance=
-            Number(user.balance||0)+
-            amount;
+            user.balance =
+                Number(user.balance||0)
+                + amount;
 
         }else{
 
             if(
                 Number(user.balance||0)
-                <amount
+                < amount
             ){
 
                 alert(
@@ -1252,23 +1390,26 @@ document
                 );
 
                 return;
+
             }
 
-            user.balance=
-            Number(user.balance||0)-
-            amount;
+
+            user.balance =
+                Number(user.balance||0)
+                - amount;
 
         }
 
 
         /* BALANCE HISTORY */
 
-        let history=
-        JSON.parse(
-            localStorage.getItem(
-                "balanceHistory_"+user.id
-            )||"[]"
-        );
+        let history =
+            JSON.parse(
+                localStorage.getItem(
+                    "balanceHistory_"+user.id
+                ) || "[]"
+            );
+
 
         if(!Array.isArray(history))
             history=[];
@@ -1279,69 +1420,37 @@ document
             id:Date.now(),
 
             type:
-            balanceAction==="add"
-            ?"Admin Added"
-            :"Admin Deducted",
+                balanceAction==="add"
+                ? "Admin Added"
+                : "Admin Deducted",
 
             amount:amount,
 
             reason:reason,
 
             date:
-            new Date()
-            .toLocaleString()
+                new Date()
+                .toLocaleString()
 
         });
-
-
-        history=
-        history.slice(0,100);
 
 
         localStorage.setItem(
             "balanceHistory_"+user.id,
-            JSON.stringify(history)
-        );
-
-
-        /* TRANSACTION */
-
-        let transactions=
-        JSON.parse(
-            localStorage.getItem(
-                "transactions_"+user.id
-            )||"[]"
-        );
-
-        if(!Array.isArray(transactions))
-            transactions=[];
-
-
-        transactions.unshift({
-
-            title:
-            balanceAction==="add"
-            ?"Admin Balance Added"
-            :"Admin Balance Deducted",
-
-            amount:amount,
-
-            date:
-            new Date()
-            .toLocaleString(),
-
-            reason:reason,
-
-            type:"admin"
-
-        });
-
-
-        localStorage.setItem(
-            "transactions_"+user.id,
             JSON.stringify(
-                transactions.slice(0,20)
+                history.slice(0,100)
             )
+        );
+
+
+        /* USER TRANSACTION */
+
+        addUserTransaction(
+            user.id,
+            balanceAction==="add"
+            ? "Admin Balance Added"
+            : "Admin Balance Deducted",
+            amount
         );
 
 
@@ -1353,34 +1462,35 @@ document
 
 
         alert(
-
             balanceAction==="add"
-            ?money(amount)+
-              " added successfully."
-            :money(amount)+
-              " deducted successfully."
-
+            ? money(amount)+" added successfully."
+            : money(amount)+" deducted successfully."
         );
 
     }
 );
 
 
-/* ================= USER DETAILS ================= */
+/* =====================================================
+   USER DETAILS
+===================================================== */
 
 function viewUser(id){
 
-    const user=findUser(id);
+    const user =
+        findUser(id);
 
-    if(!user)return;
+    if(!user)
+        return;
 
 
-    let history=
-    JSON.parse(
-        localStorage.getItem(
-            "balanceHistory_"+user.id
-        )||"[]"
-    );
+    let history =
+        JSON.parse(
+            localStorage.getItem(
+                "balanceHistory_"+user.id
+            ) || "[]"
+        );
+
 
     if(!Array.isArray(history))
         history=[];
@@ -1394,7 +1504,7 @@ function viewUser(id){
         historyHTML=`
 
         <div class="empty">
-        No admin balance history.
+            No admin balance history.
         </div>
 
         `;
@@ -1403,35 +1513,35 @@ function viewUser(id){
 
         history.forEach(item=>{
 
-            const positive=
-            item.type==="Admin Added";
+            const positive =
+                item.type==="Admin Added";
 
 
-            historyHTML+=`
+            historyHTML += `
 
             <div class="history-item">
 
-            <strong>
-            ${positive?"➕":"➖"}
-            ${safe(item.type)}
-            </strong>
+                <strong>
+                    ${positive ? "+" : "-"}
+                    ${safe(item.type)}
+                </strong>
 
-            <strong>
-            ${money(item.amount)}
-            </strong>
+                <strong>
+                    ${money(item.amount)}
+                </strong>
 
-            <br>
+                <br>
 
-            <span>
-            Reason:
-            ${safe(item.reason)}
-            </span>
+                <span>
+                    Reason:
+                    ${safe(item.reason)}
+                </span>
 
-            <br>
+                <br>
 
-            <small>
-            ${safe(item.date)}
-            </small>
+                <small>
+                    ${safe(item.date)}
+                </small>
 
             </div>
 
@@ -1449,65 +1559,97 @@ function viewUser(id){
     <div class="user-info">
 
         <div class="info-row">
-        <span class="info-label">User ID</span>
-        <span class="info-value">
-        ${safe(user.id||"-")}
-        </span>
+            <span class="info-label">
+                User ID
+            </span>
+
+            <span class="info-value">
+                ${safe(user.id || "-")}
+            </span>
         </div>
 
         <div class="info-row">
-        <span class="info-label">Name</span>
-        <span class="info-value">
-        ${safe(user.name||"User")}
-        </span>
+            <span class="info-label">
+                Name
+            </span>
+
+            <span class="info-value">
+                ${safe(user.name || "User")}
+            </span>
         </div>
 
         <div class="info-row">
-        <span class="info-label">Email</span>
-        <span class="info-value">
-        ${safe(user.email||"-")}
-        </span>
+            <span class="info-label">
+                Email
+            </span>
+
+            <span class="info-value">
+                ${safe(user.email || "-")}
+            </span>
         </div>
 
         <div class="info-row">
-        <span class="info-label">Current Balance</span>
-        <span class="info-value">
-        ${money(user.balance)}
-        </span>
+            <span class="info-label">
+                Current Balance
+            </span>
+
+            <span class="info-value">
+                ${money(user.balance)}
+            </span>
         </div>
 
         <div class="info-row">
-        <span class="info-label">Today's Reward</span>
-        <span class="info-value">
-        ${money(user.todayReward)}
-        </span>
+            <span class="info-label">
+                Today's Reward
+            </span>
+
+            <span class="info-value">
+                ${money(user.todayReward)}
+            </span>
         </div>
 
         <div class="info-row">
-        <span class="info-label">Total Reward</span>
-        <span class="info-value">
-        ${money(user.totalReward)}
-        </span>
+            <span class="info-label">
+                Total Reward
+            </span>
+
+            <span class="info-value">
+                ${money(user.totalReward)}
+            </span>
         </div>
 
         <div class="info-row">
-        <span class="info-label">Active Plan</span>
-        <span class="info-value">
-        ${safe(user.selectedPlan||"No Plan")}
-        </span>
+            <span class="info-label">
+                Active Plan
+            </span>
+
+            <span class="info-value">
+                ${safe(user.selectedPlan || "No Plan")}
+            </span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">
+                Plan Amount
+            </span>
+
+            <span class="info-value">
+                ${money(user.planAmount)}
+            </span>
         </div>
 
     </div>
 
+    <div class="notice">
+        Deposit approval activates the selected plan automatically.
+    </div>
 
     <h3>
-    Balance Management History
+        Balance Management History
     </h3>
 
     <div class="history-box">
-
-    ${historyHTML}
-
+        ${historyHTML}
     </div>
 
     `;
@@ -1529,18 +1671,21 @@ function closeUserDetails(){
 }
 
 
-/* ================= TRANSACTION TABLE ================= */
+/* =====================================================
+   TRANSACTION TABLE
+===================================================== */
 
-function showTransaction(type,button){
+function showTransaction(
+    type,
+    button
+){
 
     if(button){
 
         document
         .querySelectorAll(".tab")
         .forEach(tab=>{
-            tab.classList.remove(
-                "active"
-            );
+            tab.classList.remove("active");
         });
 
         button.classList.add("active");
@@ -1548,24 +1693,26 @@ function showTransaction(type,button){
     }
 
 
-    const data=
-    type==="deposits"
-    ?deposits
-    :withdrawals;
+    const data =
+        type==="deposits"
+        ? deposits
+        : withdrawals;
 
 
-    const table=
-    document.getElementById(
-        "transactionTable"
-    );
+    const table =
+        document.getElementById(
+            "transactionTable"
+        );
+
 
     table.innerHTML="";
 
 
-    const pending=
-    data.filter(
-        item=>item.status==="pending"
-    );
+    const pending =
+        data.filter(
+            item =>
+            item.status==="pending"
+        );
 
 
     if(!pending.length){
@@ -1574,33 +1721,33 @@ function showTransaction(type,button){
 
         <tr>
 
-        <td
-        colspan="7"
-        class="empty"
-        >
+            <td
+                colspan="7"
+                class="empty">
 
-        No pending ${type}.
+                No pending ${type}.
 
-        </td>
+            </td>
 
         </tr>
 
         `;
 
         return;
+
     }
 
 
     pending.forEach(item=>{
 
-        const row=
-        document.createElement("tr");
+        const row =
+            document.createElement("tr");
 
 
         let details="";
 
 
-        /* DEPOSIT DETAILS */
+        /* ================= DEPOSIT ================= */
 
         if(type==="deposits"){
 
@@ -1608,40 +1755,50 @@ function showTransaction(type,button){
 
             <div class="details">
 
-            <strong>
-            Method:
-            </strong>
+                <strong>
+                    Plan:
+                </strong>
 
-            ${safe(item.method||"-")}
+                ${safe(
+                    item.selectedPlan || "-"
+                )}
 
-            <br>
+                <br>
 
-            <strong>
-            Transaction ID:
-            </strong>
+                <strong>
+                    Method:
+                </strong>
 
-            ${safe(
-                item.transactionId||"-"
-            )}
+                ${safe(
+                    item.method || "-"
+                )}
 
-            <br>
+                <br>
 
-            ${
-                item.screenshot
+                <strong>
+                    Transaction ID:
+                </strong>
 
-                ?
+                ${safe(
+                    item.transactionId || "-"
+                )}
 
-                `<img
-                class="screenshot"
-                src="${item.screenshot}"
-                onclick="viewScreenshot(this.src)"
-                >
-                `
+                <br>
 
-                :
+                ${
+                    item.screenshot
+                    ?
 
-                "No screenshot"
-            }
+                    `<img
+                        class="screenshot"
+                        src="${safe(item.screenshot)}"
+                        onclick="viewScreenshot(this.src)"
+                    >`
+
+                    :
+
+                    "No screenshot"
+                }
 
             </div>
 
@@ -1649,8 +1806,7 @@ function showTransaction(type,button){
 
         }
 
-
-        /* WITHDRAW DETAILS */
+        /* ================= WITHDRAW ================= */
 
         else{
 
@@ -1658,47 +1814,50 @@ function showTransaction(type,button){
 
             <div class="details">
 
-            <strong>
-            Method:
-            </strong>
-
-            ${safe(item.method||"-")}
-
-            <br>
-
-            ${
-                item.bank
-
-                ?
-
-                `<strong>
-                Bank:
+                <strong>
+                    Method:
                 </strong>
 
-                ${safe(item.bank)}
+                ${safe(
+                    item.method || "-"
+                )}
 
-                <br>`
+                <br>
 
-                :""
-            }
+                ${
+                    item.bank
+                    ?
 
-            <strong>
-            Account Title:
-            </strong>
+                    `<strong>
+                        Bank:
+                    </strong>
 
-            ${safe(
-                item.accountTitle||"-"
-            )}
+                    ${safe(item.bank)}
 
-            <br>
+                    <br>`
 
-            <strong>
-            Account:
-            </strong>
+                    :
 
-            ${safe(
-                item.account||"-"
-            )}
+                    ""
+                }
+
+                <strong>
+                    Account Title:
+                </strong>
+
+                ${safe(
+                    item.accountTitle || "-"
+                )}
+
+                <br>
+
+                <strong>
+                    Account:
+                </strong>
+
+                ${safe(
+                    item.account || "-"
+                )}
 
             </div>
 
@@ -1710,72 +1869,68 @@ function showTransaction(type,button){
         row.innerHTML=`
 
         <td>
-        ${safe(item.id||"-")}
+            ${safe(item.id || "-")}
         </td>
 
         <td>
 
-        <strong>
-        ${safe(
-            item.userName||"User"
-        )}
-        </strong>
+            <strong>
+                ${safe(
+                    item.userName || "User"
+                )}
+            </strong>
 
-        <br>
+            <br>
 
-        <small>
-        ${safe(item.email||"-")}
-        </small>
-
-        </td>
-
-        <td>
-
-        <strong>
-        ${money(item.amount)}
-        </strong>
-
-        </td>
-
-        <td>
-        ${safe(item.method||"-")}
-        </td>
-
-        <td>
-        ${details}
-        </td>
-
-        <td>
-
-        <span class="badge pending">
-        Pending
-        </span>
+            <small>
+                ${safe(
+                    item.email || "-"
+                )}
+            </small>
 
         </td>
 
         <td>
 
-        <button
-        class="approve"
-        onclick=
-        "approveTransaction(
-        '${js(item.id)}',
-        '${type}'
-        )"
-        >
-        Approve
-        </button>
+            <strong>
+                ${money(item.amount)}
+            </strong>
 
-        <button
-        class="reject"
-        onclick=
-        "rejectTransaction(
-        '${js(item.id)}',
-        '${type}'
-        )"
-        >
-        Reject
-        </button>
+        </td>
+
+        <td>
+            ${safe(item.method || "-")}
+        </td>
+
+        <td>
+            ${details}
+        </td>
+
+        <td>
+
+            <span class="badge pending">
+                Pending
+            </span>
+
+        </td>
+
+        <td>
+
+            <button
+                class="approve"
+                onclick="approveTransaction('${js(item.id)}','${type}')">
+
+                Approve
+
+            </button>
+
+            <button
+                class="reject"
+                onclick="rejectTransaction('${js(item.id)}','${type}')">
+
+                Reject
+
+            </button>
 
         </td>
 
@@ -1789,33 +1944,50 @@ function showTransaction(type,button){
 }
 
 
-/* ================= APPROVE ================= */
+/* =====================================================
+   APPROVE TRANSACTION
+===================================================== */
 
-function approveTransaction(id,type){
+function approveTransaction(
+    id,
+    type
+){
 
-    const list=
-    type==="deposits"
-    ?deposits
-    :withdrawals;
-
-
-    const item=
-    list.find(
-        x=>
-        String(x.id)===
-        String(id)
-    );
+    const list =
+        type==="deposits"
+        ? deposits
+        : withdrawals;
 
 
-    if(!item)return;
+    const item =
+        list.find(
+            x =>
+            String(x.id) ===
+            String(id)
+        );
 
 
-    const user=
-    users.find(
-        u=>
-        String(u.id)===
-        String(item.userId)
-    );
+    if(!item)
+        return;
+
+
+    if(item.status!=="pending"){
+
+        alert(
+            "This request has already been processed."
+        );
+
+        return;
+
+    }
+
+
+    const user =
+        users.find(
+            u =>
+            String(u.id) ===
+            String(item.userId)
+        );
 
 
     if(!user){
@@ -1825,42 +1997,94 @@ function approveTransaction(id,type){
         );
 
         return;
+
     }
 
 
-    /* DEPOSIT */
+    /* ================= DEPOSIT APPROVAL ================= */
 
     if(type==="deposits"){
 
-        user.balance=
-        Number(user.balance||0)+
-        Number(item.amount||0);
+        const amount =
+            Number(item.amount || 0);
 
 
-        /* Deposit transaction */
+        /*
+           Add deposit amount
+           to wallet.
+        */
+
+        user.balance =
+            Number(user.balance || 0)
+            + amount;
+
+
+        /*
+           IMPORTANT:
+           Activate selected plan
+           only after admin approval.
+        */
+
+        if(item.selectedPlan){
+
+            user.selectedPlan =
+                item.selectedPlan;
+
+        }
+
+
+        if(item.planAmount){
+
+            user.planAmount =
+                Number(item.planAmount);
+
+        }else{
+
+            user.planAmount =
+                amount;
+
+        }
+
+
+        /*
+           Deposit transaction
+        */
 
         addUserTransaction(
             user.id,
-            "Deposit Approved",
-            item.amount
+            "Deposit Approved - "+
+            (item.selectedPlan || "Plan"),
+            amount
         );
+
+
+        /*
+           Mark approved
+        */
+
+        item.status="approved";
+
+        item.approvedDate =
+            new Date()
+            .toLocaleString();
 
     }
 
 
-    /*
-       WITHDRAWAL
-
-       Amount was already reserved
-       when user submitted request.
-
-       DO NOT deduct again.
-    */
+    /* ================= WITHDRAW APPROVAL ================= */
 
     if(type==="withdrawals"){
 
-        item.approvedAmount=
-        Number(item.amount||0);
+        /*
+           Withdrawal amount was already
+           reserved when submitted.
+
+           Therefore do NOT deduct again.
+        */
+
+        item.approvedAmount =
+            Number(item.amount || 0);
+
 
         addUserTransaction(
             user.id,
@@ -1868,16 +2092,18 @@ function approveTransaction(id,type){
             item.amount
         );
 
+
+        item.status="approved";
+
+        item.approvedDate =
+            new Date()
+            .toLocaleString();
+
     }
 
 
-    item.status="approved";
-
-    item.approvedDate=
-    new Date().toLocaleString();
-
-
     saveData();
+
     loadData();
 
 
@@ -1888,49 +2114,64 @@ function approveTransaction(id,type){
 }
 
 
-/* ================= REJECT ================= */
+/* =====================================================
+   REJECT TRANSACTION
+===================================================== */
 
-function rejectTransaction(id,type){
+function rejectTransaction(
+    id,
+    type
+){
 
-    const list=
-    type==="deposits"
-    ?deposits
-    :withdrawals;
-
-
-    const item=
-    list.find(
-        x=>
-        String(x.id)===
-        String(id)
-    );
+    const list =
+        type==="deposits"
+        ? deposits
+        : withdrawals;
 
 
-    if(!item)return;
+    const item =
+        list.find(
+            x =>
+            String(x.id) ===
+            String(id)
+        );
+
+
+    if(!item)
+        return;
+
+
+    if(item.status!=="pending"){
+
+        alert(
+            "This request has already been processed."
+        );
+
+        return;
+
+    }
 
 
     /*
-       Withdrawal amount was reserved
-       from user balance.
-
-       Return it if rejected.
+       WITHDRAWAL:
+       Return reserved amount.
     */
 
     if(type==="withdrawals"){
 
-        const user=
-        users.find(
-            u=>
-            String(u.id)===
-            String(item.userId)
-        );
+        const user =
+            users.find(
+                u =>
+                String(u.id) ===
+                String(item.userId)
+            );
 
 
         if(user){
 
-            user.balance=
-            Number(user.balance||0)+
-            Number(item.amount||0);
+            user.balance =
+                Number(user.balance || 0)
+                + Number(item.amount || 0);
 
 
             addUserTransaction(
@@ -1944,13 +2185,22 @@ function rejectTransaction(id,type){
     }
 
 
+    /*
+       DEPOSIT:
+       Do NOT add money.
+       Plan remains inactive.
+    */
+
+
     item.status="rejected";
 
-    item.rejectedDate=
-    new Date().toLocaleString();
+    item.rejectedDate =
+        new Date()
+        .toLocaleString();
 
 
     saveData();
+
     loadData();
 
 
@@ -1961,7 +2211,9 @@ function rejectTransaction(id,type){
 }
 
 
-/* ================= USER TRANSACTION ================= */
+/* =====================================================
+   USER TRANSACTION
+===================================================== */
 
 function addUserTransaction(
     userId,
@@ -1969,12 +2221,12 @@ function addUserTransaction(
     amount
 ){
 
-    let transactions=
-    JSON.parse(
-        localStorage.getItem(
-            "transactions_"+userId
-        )||"[]"
-    );
+    let transactions =
+        JSON.parse(
+            localStorage.getItem(
+                "transactions_"+userId
+            ) || "[]"
+        );
 
 
     if(!Array.isArray(transactions))
@@ -1985,118 +2237,126 @@ function addUserTransaction(
 
         title:title,
 
-        amount:Number(amount||0),
+        amount:Number(
+            amount || 0
+        ),
 
         date:
-        new Date()
-        .toLocaleString()
+            new Date()
+            .toLocaleString(),
+
+        type:"admin"
 
     });
 
 
     localStorage.setItem(
-
         "transactions_"+userId,
-
         JSON.stringify(
             transactions.slice(0,20)
         )
-
     );
 
 }
 
 
-/* ================= SCREENSHOT ================= */
+/* =====================================================
+   SCREENSHOT
+===================================================== */
 
 function viewScreenshot(src){
 
-    const win=
-    window.open(
-        "",
-        "_blank"
-    );
+    const win =
+        window.open(
+            "",
+            "_blank"
+        );
 
 
-    if(win){
+    if(!win)
+        return;
 
-        win.document.write(`
 
-        <html>
+    win.document.write(`
 
-        <head>
+    <html>
+
+    <head>
 
         <title>
-        Transaction Screenshot
+            Transaction Screenshot
         </title>
 
         <style>
 
-        body{
-            margin:0;
-            background:#111;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            min-height:100vh
-        }
+            body{
+                margin:0;
+                background:#111;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                min-height:100vh;
+            }
 
-        img{
-            max-width:95%;
-            max-height:95vh;
-            object-fit:contain
-        }
+            img{
+                max-width:95%;
+                max-height:95vh;
+                object-fit:contain;
+            }
 
         </style>
 
-        </head>
+    </head>
 
-        <body>
+    <body>
 
         <img src="${src}">
 
-        </body>
+    </body>
 
-        </html>
+    </html>
 
-        `);
+    `);
 
-        win.document.close();
 
-    }
+    win.document.close();
 
 }
 
 
-/* ================= SECURITY ================= */
+/* =====================================================
+   SECURITY
+===================================================== */
 
 function safe(value){
 
-    return String(value??"")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
 
 function js(value){
 
-    return String(value??"")
-    .replace(/\\/g,"\\\\")
-    .replace(/'/g,"\\'");
+    return String(value ?? "")
+        .replace(/\\/g,"\\\\")
+        .replace(/'/g,"\\'");
 
 }
 
 
-/* ================= ADMIN SESSION ================= */
+/* =====================================================
+   ADMIN SESSION
+===================================================== */
 
 if(
     localStorage.getItem(
         "Ham EarnAdminLoggedIn"
-    )==="true"
+    ) === "true"
 ){
 
     showAdminPanel();
