@@ -339,6 +339,64 @@ footer{
     margin-top:5px
 }
 
+/* PAYMENT DETAILS */
+
+.payment-details{
+    display:none;
+    background:#eaf7f0;
+    border:1px solid #b9dfca;
+    border-radius:12px;
+    padding:15px;
+    margin:10px 0 18px;
+}
+
+.payment-details h3{
+    margin:0 0 10px;
+    color:#087443;
+    font-size:16px;
+}
+
+.payment-line{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:7px 0;
+    border-bottom:1px solid #cfe8d9;
+    font-size:14px;
+}
+
+.payment-line:last-child{
+    border-bottom:none;
+}
+
+.payment-value{
+    font-weight:bold;
+    color:#17202a;
+    text-align:right;
+    word-break:break-word;
+}
+
+.copy-btn{
+    background:#087443;
+    color:white;
+    border:none;
+    border-radius:6px;
+    padding:5px 8px;
+    cursor:pointer;
+    font-size:11px;
+    margin-left:5px;
+}
+
+.notice{
+    background:#fff8e6;
+    color:#705c00;
+    border:1px solid #f0df9a;
+    border-radius:8px;
+    padding:10px;
+    font-size:12px;
+    margin-top:10px;
+}
+
 @media(max-width:850px){
     .stats{grid-template-columns:1fr}
     .plans{grid-template-columns:1fr 1fr}
@@ -572,13 +630,97 @@ Demo version — no real money transactions.
 <div class="form-group">
 <label>Payment Method</label>
 
-<select id="depositMethod">
+<select id="depositMethod" onchange="showDepositDetails()">
 <option value="">Select Method</option>
-<option>Easypaisa</option>
-<option>JazzCash</option>
-<option>Bank</option>
+<option value="Easypaisa">Easypaisa</option>
+<option value="JazzCash">JazzCash</option>
+<option value="Bank">Bank</option>
 </select>
 </div>
+
+
+<!-- EASYPAISA -->
+
+<div class="payment-details" id="easypaisaDetails">
+
+<h3>💚 Easypaisa Payment Details</h3>
+
+<div class="payment-line">
+<span>Account Name</span>
+<span class="payment-value">Hasham</span>
+</div>
+
+<div class="payment-line">
+<span>Mobile Number</span>
+<span class="payment-value">
+0307-9226104
+<button class="copy-btn" onclick="copyNumber('0307-9226104')">Copy</button>
+</span>
+</div>
+
+<div class="notice">
+Please send your deposit to the above Easypaisa number and enter the Transaction ID below.
+</div>
+
+</div>
+
+
+<!-- JAZZCASH -->
+
+<div class="payment-details" id="jazzcashDetails">
+
+<h3>❤️ JazzCash Payment Details</h3>
+
+<div class="payment-line">
+<span>Account Name</span>
+<span class="payment-value">Hasham</span>
+</div>
+
+<div class="payment-line">
+<span>Mobile Number</span>
+<span class="payment-value">
+0301-3590069
+<button class="copy-btn" onclick="copyNumber('0301-3590069')">Copy</button>
+</span>
+</div>
+
+<div class="notice">
+Please send your deposit to the above JazzCash number and enter the Transaction ID below.
+</div>
+
+</div>
+
+
+<!-- BANK -->
+
+<div class="payment-details" id="bankDetails">
+
+<h3>🏦 Bank Payment Details</h3>
+
+<div class="payment-line">
+<span>Bank Name</span>
+<span class="payment-value">MCB Bank Limited</span>
+</div>
+
+<div class="payment-line">
+<span>Account Title</span>
+<span class="payment-value">Hasham</span>
+</div>
+
+<div class="payment-line">
+<span>Account Number</span>
+<span class="payment-value">
+1414121311009347
+<button class="copy-btn" onclick="copyNumber('1414121311009347')">Copy</button>
+</span>
+</div>
+
+<div class="notice">
+Please transfer the deposit to the above MCB account and enter the Transaction ID below.
+</div>
+
+</div>
+
 
 <div class="form-group">
 <label>Transaction ID</label>
@@ -1048,6 +1190,55 @@ function closeModal(id){
 }
 
 
+/* DEPOSIT PAYMENT DETAILS */
+
+function showDepositDetails(){
+
+    const method =
+    document.getElementById("depositMethod").value;
+
+    document.getElementById("easypaisaDetails").style.display="none";
+    document.getElementById("jazzcashDetails").style.display="none";
+    document.getElementById("bankDetails").style.display="none";
+
+    if(method==="Easypaisa"){
+
+        document.getElementById("easypaisaDetails").style.display="block";
+
+    }
+
+    if(method==="JazzCash"){
+
+        document.getElementById("jazzcashDetails").style.display="block";
+
+    }
+
+    if(method==="Bank"){
+
+        document.getElementById("bankDetails").style.display="block";
+
+    }
+}
+
+
+/* COPY NUMBER */
+
+function copyNumber(number){
+
+    navigator.clipboard.writeText(number)
+    .then(()=>{
+
+        alert("Number copied: "+number);
+
+    })
+    .catch(()=>{
+
+        alert("Please copy manually: "+number);
+
+    });
+}
+
+
 /* DEPOSIT */
 
 function submitDeposit(){
@@ -1145,6 +1336,8 @@ function submitDeposit(){
         document.getElementById("depositMethod").value="";
         document.getElementById("depositTransactionId").value="";
         document.getElementById("depositScreenshot").value="";
+
+        showDepositDetails();
 
         showRequestHistory();
 
@@ -1294,11 +1487,6 @@ function submitWithdraw(){
         "pakrewardWithdrawals",
         JSON.stringify(withdrawals)
     );
-
-    /*
-       Reserve amount.
-       Admin approval will NOT deduct it again.
-    */
 
     currentUser.balance=balance-amount;
 
