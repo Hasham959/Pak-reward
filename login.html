@@ -531,38 +531,35 @@ form.addEventListener("submit",async function(event){
         }
 
 
-        /*
-           LOGIN SUCCESS
-        */
+/* =========================================
+   LOGIN SUCCESS
+========================================= */
 
-        localStorage.setItem(
-            "loggedInUser",
-            String(user.id)
-        );
+localStorage.setItem(
+    "Ham EarnCurrentUser",
+    String(user.id)
+);
 
+/* Compatibility with other pages */
+localStorage.setItem(
+    "loggedInUser",
+    String(user.id)
+);
 
-        /*
-           Also save current user information
-           for dashboard compatibility
-        */
+localStorage.setItem(
+    "currentUserId",
+    String(user.id)
+);
 
-        localStorage.setItem(
-            "currentUserId",
-            String(user.id)
-        );
+showSuccess(
+    "Login successful! Opening dashboard..."
+);
 
+setTimeout(function(){
 
-        showSuccess(
-            "Login successful! Opening dashboard..."
-        );
+    window.location.href = "dashboard.html";
 
-
-        setTimeout(function(){
-
-            window.location.href =
-                "dashboard.html";
-
-        },500);
+},500);
 
 
     }catch(error){
