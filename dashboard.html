@@ -1504,11 +1504,146 @@ function showTransactions() {
 
 function deposit() {
 
+    const amount = prompt(
+        "Enter Deposit Amount (Rs.):"
+    );
+
+    if (amount === null) {
+        return;
+    }
+
+    const depositAmount =
+        Number(amount);
+
+    if (
+        !depositAmount ||
+        depositAmount <= 0
+    ) {
+
+        alert(
+            "Please enter a valid deposit amount."
+        );
+
+        return;
+    }
+
+
+    const method = prompt(
+        "Enter Payment Method:\n\n" +
+        "Example: Easypaisa / JazzCash / Bank"
+    );
+
+    if (!method) {
+
+        alert(
+            "Please enter payment method."
+        );
+
+        return;
+    }
+
+
+    const account = prompt(
+        "Enter Account Number / Transaction ID:"
+    );
+
+    if (!account) {
+
+        alert(
+            "Please enter account number or transaction ID."
+        );
+
+        return;
+    }
+
+
+    /* GET EXISTING DEPOSITS */
+
+    let deposits =
+        JSON.parse(
+            localStorage.getItem(
+                "pakrewardDeposits"
+            ) || "[]"
+        );
+
+
+    if (!Array.isArray(deposits)) {
+
+        deposits = [];
+
+    }
+
+
+    /* CREATE REQUEST */
+
+    const request = {
+
+        id: Date.now(),
+
+        userId:
+            currentUser.id,
+
+        userName:
+            currentUser.name || "User",
+
+        email:
+            currentUser.email || "",
+
+        amount:
+            depositAmount,
+
+        method:
+            method,
+
+        account:
+            account,
+
+        status:
+            "pending",
+
+        date:
+            new Date().toLocaleString()
+
+    };
+
+
+    deposits.push(request);
+
+
+    /* SAVE REQUEST */
+
+    localStorage.setItem(
+
+        "pakrewardDeposits",
+
+        JSON.stringify(
+            deposits
+        )
+
+    );
+
+
+    /* ADD TRANSACTION */
+
+    addTransaction(
+        "Deposit Request - Pending",
+        depositAmount
+    );
+
+
     alert(
 
-        "Deposit system is not connected yet.\n\n" +
+        "Deposit request submitted successfully!\n\n" +
 
-        "This is currently a demo."
+        "Amount: Rs. " +
+        depositAmount.toLocaleString("en-PK") +
+
+        "\nMethod: " +
+        method +
+
+        "\nStatus: Pending\n\n" +
+
+        "Admin approval is required."
 
     );
 
