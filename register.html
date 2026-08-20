@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Register - Ham Earn</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -86,6 +89,11 @@ input:focus{
     background:#075f37;
 }
 
+.register-btn:disabled{
+    opacity:.7;
+    cursor:not-allowed;
+}
+
 .login-link{
     text-align:center;
     margin-top:20px;
@@ -96,6 +104,19 @@ input:focus{
     color:#087443;
     font-weight:bold;
     text-decoration:none;
+}
+
+.login-link a:hover{
+    text-decoration:underline;
+}
+
+.home-link{
+    display:block;
+    text-align:center;
+    margin-top:12px;
+    color:#68737f;
+    text-decoration:none;
+    font-size:14px;
 }
 
 .notice{
@@ -144,137 +165,225 @@ input:focus{
     }
 
 }
+
 </style>
 
 </head>
 
 <body>
 
+
 <div class="register-box">
 
-```
-<div class="logo">
-    🇵🇰 Ham Earn
-</div>
+    <div class="logo">
+        🇵🇰 Ham Earn
+    </div>
 
-<div class="subtitle">
-    Create your account
-</div>
-
-<form id="registerForm">
-
-    <label>Full Name</label>
-
-    <input
-        type="text"
-        id="name"
-        placeholder="Enter your full name"
-        autocomplete="name"
-        required
-    >
-
-
-    <label>Mobile Number</label>
-
-    <input
-        type="tel"
-        id="mobile"
-        placeholder="03XXXXXXXXX"
-        pattern="03[0-9]{9}"
-        maxlength="11"
-        required
-    >
-
-
-    <label>Email</label>
-
-    <input
-        type="email"
-        id="email"
-        placeholder="Enter your email"
-        autocomplete="email"
-        required
-    >
-
-
-    <label>Password</label>
-
-    <input
-        type="password"
-        id="password"
-        placeholder="Create password"
-        minlength="6"
-        required
-    >
-
-
-    <label>Confirm Password</label>
-
-    <input
-        type="password"
-        id="confirmPassword"
-        placeholder="Confirm password"
-        minlength="6"
-        required
-    >
-
-
-    <label>Referral Code</label>
-
-    <input
-        type="text"
-        id="referralCode"
-        placeholder="Enter referral code (optional)"
-    >
-
-
-    <div class="referral-box">
-        💰 Referral reward: Rs. 100
+    <div class="subtitle">
+        Create your account
     </div>
 
 
-    <div class="error" id="error"></div>
-
-    <div class="success" id="success"></div>
+    <form id="registerForm">
 
 
-    <button
-        type="submit"
-        class="register-btn"
-        id="registerButton"
-    >
-        Create Account
-    </button>
+        <!-- FULL NAME -->
 
-</form>
+        <label>
+            Full Name
+        </label>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter your full name"
+            autocomplete="name"
+            required
+        >
 
 
-<div class="login-link">
+        <!-- MOBILE -->
 
-    Already have an account?
+        <label>
+            Mobile Number
+        </label>
 
-    <a href="login.html">
-        Login
+        <input
+            type="tel"
+            id="mobile"
+            placeholder="03XXXXXXXXX"
+            pattern="03[0-9]{9}"
+            maxlength="11"
+            inputmode="numeric"
+            required
+        >
+
+
+        <!-- EMAIL -->
+
+        <label>
+            Email
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            autocomplete="email"
+            required
+        >
+
+
+        <!-- PASSWORD -->
+
+        <label>
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Create password"
+            minlength="6"
+            autocomplete="new-password"
+            required
+        >
+
+
+        <!-- CONFIRM PASSWORD -->
+
+        <label>
+            Confirm Password
+        </label>
+
+        <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm password"
+            minlength="6"
+            autocomplete="new-password"
+            required
+        >
+
+
+        <!-- REFERRAL -->
+
+        <label>
+            Referral Code
+        </label>
+
+        <input
+            type="text"
+            id="referralCode"
+            placeholder="Enter referral code (optional)"
+        >
+
+
+        <div class="referral-box">
+            💰 Referral reward: Rs. 100
+        </div>
+
+
+        <!-- MESSAGES -->
+
+        <div
+            class="error"
+            id="error">
+        </div>
+
+        <div
+            class="success"
+            id="success">
+        </div>
+
+
+        <!-- BUTTON -->
+
+        <button
+            type="submit"
+            class="register-btn"
+            id="registerButton">
+
+            Create Account
+
+        </button>
+
+    </form>
+
+
+    <div class="login-link">
+
+        Already have an account?
+
+        <a href="login.html">
+            Login
+        </a>
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="home-link">
+
+        ← Back to Home
+
     </a>
 
+
+    <div class="notice">
+
+        Ham Earn Demo System
+
+    </div>
+
 </div>
 
-
-<div class="notice">
-    Ham Earn Demo System
-</div>
-```
-
-</div>
 
 <script>
 
 /* =====================================================
-   HAM EARN DATABASE KEY
+   HAM EARN STORAGE KEYS
 ===================================================== */
 
 const USERS_KEY = "Ham EarnUsers";
-const LOGIN_KEY = "Ham EarnCurrentUser";
+
+const CURRENT_USER_KEY = "Ham EarnCurrentUser";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const registerForm =
+    document.getElementById("registerForm");
+
+const nameInput =
+    document.getElementById("name");
+
+const mobileInput =
+    document.getElementById("mobile");
+
+const emailInput =
+    document.getElementById("email");
+
+const passwordInput =
+    document.getElementById("password");
+
+const confirmPasswordInput =
+    document.getElementById("confirmPassword");
+
+const referralInput =
+    document.getElementById("referralCode");
+
+const registerButton =
+    document.getElementById("registerButton");
+
+const errorBox =
+    document.getElementById("error");
+
+const successBox =
+    document.getElementById("success");
 
 
 /* =====================================================
@@ -283,24 +392,38 @@ const LOGIN_KEY = "Ham EarnCurrentUser";
 
 async function hashPassword(password){
 
-    const data =
-        new TextEncoder().encode(password);
+    if(
+        window.crypto &&
+        window.crypto.subtle
+    ){
 
-    const hash =
-        await crypto.subtle.digest(
-            "SHA-256",
-            data
-        );
+        const data =
+            new TextEncoder()
+            .encode(password);
 
-    return Array.from(
-        new Uint8Array(hash)
-    )
-    .map(byte =>
-        byte
-            .toString(16)
-            .padStart(2,"0")
-    )
-    .join("");
+        const hash =
+            await window.crypto.subtle.digest(
+                "SHA-256",
+                data
+            );
+
+        return Array.from(
+            new Uint8Array(hash)
+        )
+        .map(function(byte){
+
+            return byte
+                .toString(16)
+                .padStart(2,"0");
+
+        })
+        .join("");
+
+    }
+
+    /* Fallback */
+
+    return password;
 
 }
 
@@ -311,17 +434,11 @@ async function hashPassword(password){
 
 function showError(message){
 
-    const error =
-        document.getElementById("error");
+    successBox.style.display = "none";
 
-    const success =
-        document.getElementById("success");
+    errorBox.innerText = message;
 
-    success.style.display="none";
-
-    error.innerText=message;
-
-    error.style.display="block";
+    errorBox.style.display = "block";
 
 }
 
@@ -332,49 +449,13 @@ function showError(message){
 
 function showSuccess(message){
 
-    const error =
-        document.getElementById("error");
+    errorBox.style.display = "none";
 
-    const success =
-        document.getElementById("success");
+    successBox.innerText = message;
 
-    error.style.display="none";
-
-    success.innerText=message;
-
-    success.style.display="block";
+    successBox.style.display = "block";
 
 }
-
-
-/* =====================================================
-   LOAD REFERRAL FROM URL
-===================================================== */
-
-function loadReferralCode(){
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    const code =
-        params.get("ref");
-
-    if(code){
-
-        document.getElementById(
-            "referralCode"
-        ).value =
-            code
-            .toUpperCase()
-            .trim();
-
-    }
-
-}
-
-loadReferralCode();
 
 
 /* =====================================================
@@ -385,18 +466,32 @@ function getUsers(){
 
     try{
 
-        const data =
-            JSON.parse(
-                localStorage.getItem(
-                    USERS_KEY
-                ) || "[]"
-            );
+        const savedUsers =
+            localStorage.getItem(USERS_KEY);
 
-        return Array.isArray(data)
-            ? data
-            : [];
+        if(!savedUsers){
+
+            return [];
+
+        }
+
+        const users =
+            JSON.parse(savedUsers);
+
+        if(!Array.isArray(users)){
+
+            return [];
+
+        }
+
+        return users;
 
     }catch(error){
+
+        console.error(
+            "Get Users Error:",
+            error
+        );
 
         return [];
 
@@ -420,12 +515,38 @@ function saveUsers(users){
 
 
 /* =====================================================
+   LOAD REFERRAL CODE FROM URL
+===================================================== */
+
+function loadReferralCode(){
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const code =
+        params.get("ref");
+
+    if(code){
+
+        referralInput.value =
+            code
+            .trim()
+            .toUpperCase();
+
+    }
+
+}
+
+loadReferralCode();
+
+
+/* =====================================================
    REGISTER
 ===================================================== */
 
-document
-.getElementById("registerForm")
-.addEventListener(
+registerForm.addEventListener(
     "submit",
     registerUser
 );
@@ -436,69 +557,51 @@ async function registerUser(event){
     event.preventDefault();
 
 
-    const button =
-        document.getElementById(
-            "registerButton"
-        );
+    /* CLEAR MESSAGES */
 
+    errorBox.style.display = "none";
+
+    successBox.style.display = "none";
+
+
+    /* GET FORM DATA */
 
     const name =
-        document
-        .getElementById("name")
-        .value
+        nameInput.value
         .trim();
 
 
     const mobile =
-        document
-        .getElementById("mobile")
-        .value
+        mobileInput.value
         .trim();
 
 
     const email =
-        document
-        .getElementById("email")
-        .value
+        emailInput.value
         .trim()
         .toLowerCase();
 
 
     const password =
-        document
-        .getElementById("password")
-        .value;
+        passwordInput.value;
 
 
     const confirmPassword =
-        document
-        .getElementById("confirmPassword")
-        .value;
+        confirmPasswordInput.value;
 
 
     const referralCode =
-        document
-        .getElementById("referralCode")
-        .value
+        referralInput.value
         .trim()
         .toUpperCase();
 
 
-    /* CLEAR OLD MESSAGE */
-
-    document.getElementById(
-        "error"
-    ).style.display="none";
+    /* =================================================
+       VALIDATION
+    ================================================= */
 
 
-    document.getElementById(
-        "success"
-    ).style.display="none";
-
-
-    /* VALIDATION */
-
-    if(name.length<2){
+    if(name.length < 2){
 
         showError(
             "Please enter your full name."
@@ -512,7 +615,7 @@ async function registerUser(event){
     if(!/^03[0-9]{9}$/.test(mobile)){
 
         showError(
-            "Please enter a valid Pakistani mobile number."
+            "Please enter a valid Pakistani mobile number. Example: 03001234567"
         );
 
         return;
@@ -520,7 +623,7 @@ async function registerUser(event){
     }
 
 
-    if(password.length<6){
+    if(password.length < 6){
 
         showError(
             "Password must contain at least 6 characters."
@@ -542,25 +645,34 @@ async function registerUser(event){
     }
 
 
-    /* GET USERS */
+    /* =================================================
+       LOAD USERS
+    ================================================= */
 
     let users = getUsers();
 
 
-    /* EMAIL CHECK */
+    /* =================================================
+       EMAIL CHECK
+    ================================================= */
 
     const emailExists =
-        users.some(
-            user =>
-                String(user.email || "")
-                .toLowerCase() === email
-        );
+        users.some(function(user){
+
+            return String(
+                user.email || ""
+            )
+            .trim()
+            .toLowerCase()
+            === email;
+
+        });
 
 
     if(emailExists){
 
         showError(
-            "An account with this email already exists."
+            "An account with this email already exists. Please login."
         );
 
         return;
@@ -568,13 +680,20 @@ async function registerUser(event){
     }
 
 
-    /* MOBILE CHECK */
+    /* =================================================
+       MOBILE CHECK
+    ================================================= */
 
     const mobileExists =
-        users.some(
-            user =>
-                String(user.mobile || "") === mobile
-        );
+        users.some(function(user){
+
+            return String(
+                user.mobile || ""
+            )
+            .trim()
+            === mobile;
+
+        });
 
 
     if(mobileExists){
@@ -588,7 +707,9 @@ async function registerUser(event){
     }
 
 
-    /* REFERRER */
+    /* =================================================
+       FIND REFERRER
+    ================================================= */
 
     let referrer = null;
 
@@ -596,14 +717,16 @@ async function registerUser(event){
     if(referralCode){
 
         referrer =
-            users.find(
-                user =>
-                    String(
-                        user.referralCode || ""
-                    )
-                    .toUpperCase() ===
-                    referralCode
-            );
+            users.find(function(user){
+
+                return String(
+                    user.referralCode || ""
+                )
+                .trim()
+                .toUpperCase()
+                === referralCode;
+
+            });
 
 
         if(!referrer){
@@ -619,11 +742,19 @@ async function registerUser(event){
     }
 
 
-    /* PASSWORD HASH */
+    /* =================================================
+       DISABLE BUTTON
+    ================================================= */
 
-    button.disabled=true;
-    button.innerText="Creating Account...";
+    registerButton.disabled = true;
 
+    registerButton.innerText =
+        "Creating Account...";
+
+
+    /* =================================================
+       HASH PASSWORD
+    ================================================= */
 
     let passwordHash;
 
@@ -635,8 +766,15 @@ async function registerUser(event){
 
     }catch(error){
 
-        button.disabled=false;
-        button.innerText="Create Account";
+        console.error(
+            "Password Hash Error:",
+            error
+        );
+
+        registerButton.disabled = false;
+
+        registerButton.innerText =
+            "Create Account";
 
         showError(
             "Unable to create account. Please try again."
@@ -647,57 +785,65 @@ async function registerUser(event){
     }
 
 
-    /* UNIQUE USER ID */
+    /* =================================================
+       CREATE UNIQUE USER ID
+    ================================================= */
 
     const userId =
         Date.now().toString();
 
 
-    /* REFERRAL CODE */
+    /* =================================================
+       CREATE REFERRAL CODE
+    ================================================= */
 
     const newReferralCode =
         "HE" +
         userId.slice(-6);
 
 
-    /* NEW USER */
+    /* =================================================
+       CREATE NEW USER
+    ================================================= */
 
     const newUser = {
 
-        id:userId,
+        id: userId,
 
-        name:name,
+        name: name,
 
-        mobile:mobile,
+        mobile: mobile,
 
-        email:email,
+        email: email,
 
-        password:passwordHash,
+        password: passwordHash,
 
-        balance:0,
+        balance: 0,
 
-        todayReward:0,
+        todayReward: 0,
 
-        totalReward:0,
+        totalReward: 0,
 
-        selectedPlan:"",
+        selectedPlan: "",
 
-        planAmount:0,
+        planAmount: 0,
 
-        adsCompleted:0,
+        adsCompleted: 0,
 
-        adsDate:new Date().toDateString(),
+        adsDate:
+            new Date().toDateString(),
 
-        referralCode:newReferralCode,
+        referralCode:
+            newReferralCode,
 
         referredBy:
             referrer
             ? referrer.referralCode
             : "",
 
-        referralCount:0,
+        referralCount: 0,
 
-        referralReward:0,
+        referralReward: 0,
 
         createdAt:
             new Date().toISOString()
@@ -705,7 +851,9 @@ async function registerUser(event){
     };
 
 
-    /* ADD USER */
+    /* =================================================
+       ADD NEW USER
+    ================================================= */
 
     users.push(newUser);
 
@@ -740,9 +888,9 @@ async function registerUser(event){
             ) + 100;
 
 
-        /* REFERRAL TRANSACTION */
+        /* REFERRAL TRANSACTIONS */
 
-        let transactions=[];
+        let transactions = [];
 
 
         try{
@@ -757,13 +905,16 @@ async function registerUser(event){
 
         }catch(error){
 
-            transactions=[];
+            transactions = [];
 
         }
 
 
-        if(!Array.isArray(transactions))
-            transactions=[];
+        if(!Array.isArray(transactions)){
+
+            transactions = [];
+
+        }
 
 
         transactions.unshift({
@@ -774,9 +925,10 @@ async function registerUser(event){
             title:
                 "Referral Reward",
 
-            amount:100,
+            amount: 100,
 
-            type:"referral",
+            type:
+                "referral",
 
             date:
                 new Date()
@@ -799,26 +951,76 @@ async function registerUser(event){
     }
 
 
-    /* SAVE DATABASE */
+    /* =================================================
+       SAVE USER DATABASE
+    ================================================= */
 
     saveUsers(users);
 
-/* LOGIN NEW USER */
 
-localStorage.setItem(
-    "Ham EarnCurrentUser",
-    userId
+    /* =================================================
+       LOGIN NEW USER AUTOMATICALLY
+    ================================================= */
+
+    localStorage.setItem(
+        CURRENT_USER_KEY,
+        userId
+    );
+
+
+    /*
+       Compatibility keys
+       for dashboard / old pages
+    */
+
+    localStorage.setItem(
+        "currentUserId",
+        userId
+    );
+
+
+    localStorage.setItem(
+        "loggedInUser",
+        userId
+    );
+
+
+    /* =================================================
+       SUCCESS
+    ================================================= */
+
+    showSuccess(
+        "Registration successful! Opening dashboard..."
+    );
+
+
+    setTimeout(function(){
+
+        window.location.href =
+            "dashboard.html";
+
+    },700);
+
+}
+
+
+/* =====================================================
+   MOBILE NUMBER ONLY
+===================================================== */
+
+mobileInput.addEventListener(
+    "input",
+    function(){
+
+        this.value =
+            this.value
+            .replace(/\D/g,"")
+            .slice(0,11);
+
+    }
 );
 
-/* COMPATIBILITY WITH LOGIN/DASHBOARD */
+</script>
 
-localStorage.setItem(
-    "loggedInUser",
-    userId
-);
-
-localStorage.setItem(
-    "currentUserId",
-    userId
-);
- 
+</body>
+</html>
