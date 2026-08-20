@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin Panel - PakReward</title>
+<title>Admin Panel - Ham Earn</title>
 
 <style>
 
@@ -453,7 +453,7 @@ button{
 <div class="login-box">
 
 <div class="admin-logo">
-🇵🇰 PakReward
+Ham Earn
 </div>
 
 <div class="login-subtitle">
@@ -501,7 +501,7 @@ Admin Login
 <header>
 
 <div class="logo">
-🇵🇰 PakReward
+Ham Earn
 </div>
 
 <strong>Admin Panel</strong>
@@ -743,7 +743,7 @@ Close
 
 /* ================= ADMIN LOGIN ================= */
 
-const ADMIN_EMAIL="admin@pakreward.com";
+const ADMIN_EMAIL="admin@HamEarn.com";
 const ADMIN_PASSWORD="Admin123";
 
 document
@@ -766,7 +766,7 @@ document
     ){
 
         localStorage.setItem(
-            "pakrewardAdminLoggedIn",
+            "Ham EarnAdminLoggedIn",
             "true"
         );
 
@@ -801,7 +801,7 @@ function showAdminPanel(){
 function logoutAdmin(){
 
     localStorage.removeItem(
-        "pakrewardAdminLoggedIn"
+        "Ham EarnAdminLoggedIn"
     );
 
     location.reload();
@@ -842,21 +842,21 @@ function loadData(){
         users=
         JSON.parse(
             localStorage.getItem(
-                "pakrewardUsers"
+                "Ham EarnUsers"
             )||"[]"
         );
 
         deposits=
         JSON.parse(
             localStorage.getItem(
-                "pakrewardDeposits"
+                "Ham EarnDeposits"
             )||"[]"
         );
 
         withdrawals=
         JSON.parse(
             localStorage.getItem(
-                "pakrewardWithdrawals"
+                "Ham EarnWithdrawals"
             )||"[]"
         );
 
@@ -883,17 +883,17 @@ function loadData(){
 function saveData(){
 
     localStorage.setItem(
-        "pakrewardUsers",
+        "Ham EarnUsers",
         JSON.stringify(users)
     );
 
     localStorage.setItem(
-        "pakrewardDeposits",
+        "Ham EarnDeposits",
         JSON.stringify(deposits)
     );
 
     localStorage.setItem(
-        "pakrewardWithdrawals",
+        "Ham EarnWithdrawals",
         JSON.stringify(withdrawals)
     );
 
@@ -2091,7 +2091,7 @@ function js(value){
 
 if(
     localStorage.getItem(
-        "pakrewardAdminLoggedIn"
+        "Ham EarnAdminLoggedIn"
     )==="true"
 ){
 
