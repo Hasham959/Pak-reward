@@ -1820,25 +1820,197 @@ function deposit() {
 
 function withdraw() {
 
-    if (
-        Number(currentUser.balance || 0)
-        <= 0
-    ) {
+    const balance =
+        Number(currentUser.balance || 0);
+
+
+    /* Check balance */
+
+    if (balance <= 0) {
 
         alert(
             "Your wallet balance is Rs. 0."
         );
 
         return;
+    }
+
+
+    /* Amount */
+
+    const amount =
+        prompt(
+            "Enter Withdrawal Amount (Rs.):\n\n" +
+            "Available Balance: " +
+            money(balance)
+        );
+
+
+    if (amount === null) {
+        return;
+    }
+
+
+    const withdrawalAmount =
+        Number(amount);
+
+
+    if (
+        !withdrawalAmount ||
+        withdrawalAmount <= 0
+    ) {
+
+        alert(
+            "Please enter a valid withdrawal amount."
+        );
+
+        return;
+    }
+
+
+    /* Balance check */
+
+    if (
+        withdrawalAmount > balance
+    ) {
+
+        alert(
+            "Insufficient balance!\n\n" +
+            "Available Balance: " +
+            money(balance)
+        );
+
+        return;
+    }
+
+
+    /* Payment Method */
+
+    const method =
+        prompt(
+            "Enter Withdrawal Method:\n\n" +
+            "Easypaisa\n" +
+            "JazzCash\n" +
+            "Bank"
+        );
+
+
+    if (!method) {
+
+        alert(
+            "Please enter a withdrawal method."
+        );
+
+        return;
+    }
+
+
+    /* Account */
+
+    const account =
+        prompt(
+            "Enter your Account Number:"
+        );
+
+
+    if (!account) {
+
+        alert(
+            "Please enter your account number."
+        );
+
+        return;
+    }
+
+
+    /* Get existing withdrawals */
+
+    let withdrawals =
+        JSON.parse(
+            localStorage.getItem(
+                "pakrewardWithdrawals"
+            ) || "[]"
+        );
+
+
+    if (!Array.isArray(withdrawals)) {
+
+        withdrawals = [];
 
     }
 
 
+    /* Create withdrawal request */
+
+    const request = {
+
+        id:
+            Date.now(),
+
+        userId:
+            currentUser.id,
+
+        userName:
+            currentUser.name || "User",
+
+        email:
+            currentUser.email || "",
+
+        amount:
+            withdrawalAmount,
+
+        method:
+            method,
+
+        account:
+            account,
+
+        status:
+            "pending",
+
+        date:
+            new Date().toLocaleString()
+
+    };
+
+
+    withdrawals.push(request);
+
+
+    /* Save request */
+
+    localStorage.setItem(
+
+        "pakrewardWithdrawals",
+
+        JSON.stringify(
+            withdrawals
+        )
+
+    );
+
+
+    /* Add transaction */
+
+    addTransaction(
+        "Withdrawal Request - Pending",
+        withdrawalAmount
+    );
+
+
     alert(
 
-        "Withdrawal system is not connected yet.\n\n" +
+        "Withdrawal request submitted successfully!\n\n" +
 
-        "This is currently a demo."
+        "Amount: " +
+        money(withdrawalAmount) +
+
+        "\nMethod: " +
+        method +
+
+        "\nStatus: Pending\n\n" +
+
+        "Admin approval is required."
 
     );
 
