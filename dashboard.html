@@ -1109,24 +1109,83 @@ function selectPlan(
     amount
 ) {
 
+    /* Already selected plan */
 
     if (currentUser.selectedPlan) {
 
-        const change =
-            confirm(
-                "You already have the " +
-                currentUser.selectedPlan +
-                " plan.\n\n" +
-                "Do you want to change your plan?"
-            );
+        alert(
+            "You already have the " +
+            currentUser.selectedPlan +
+            " plan."
+        );
 
-
-        if (!change) {
-            return;
-        }
+        return;
 
     }
 
+
+    /* Check wallet balance */
+
+    const balance =
+        Number(
+            currentUser.balance || 0
+        );
+
+
+    if (balance < amount) {
+
+        alert(
+            "Insufficient balance!\n\n" +
+
+            "Plan Amount: " +
+            money(amount) +
+
+            "\nYour Balance: " +
+            money(balance) +
+
+            "\n\nPlease deposit funds first."
+        );
+
+        return;
+
+    }
+
+
+    /* Confirm purchase */
+
+    const confirmPlan =
+        confirm(
+
+            "Select " +
+            planName +
+            " Plan?\n\n" +
+
+            "Plan Amount: " +
+            money(amount) +
+
+            "\nCurrent Balance: " +
+            money(balance) +
+
+            "\n\nAfter selection your balance will be: " +
+            money(balance - amount)
+
+        );
+
+
+    if (!confirmPlan) {
+
+        return;
+
+    }
+
+
+    /* Deduct plan amount */
+
+    currentUser.balance =
+        balance - amount;
+
+
+    /* Save selected plan */
 
     currentUser.selectedPlan =
         planName;
@@ -1136,14 +1195,35 @@ function selectPlan(
         amount;
 
 
+    /* Save user */
+
     saveUser();
+
+
+    /* Add transaction */
+
+    addTransaction(
+        "Plan Selected - " + planName,
+        amount
+    );
+
+
+    /* Update dashboard */
 
     updateDashboard();
 
 
     alert(
+
         planName +
-        " plan selected successfully!"
+        " plan selected successfully!\n\n" +
+
+        "Plan Amount: " +
+        money(amount) +
+
+        "\nRemaining Balance: " +
+        money(currentUser.balance)
+
     );
 
 }
