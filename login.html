@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -182,6 +183,10 @@ input:focus {
     font-size: 14px;
 }
 
+.home-link:hover {
+    color: #087443;
+}
+
 .error {
     color: #c0392b;
 
@@ -251,12 +256,8 @@ input:focus {
     </div>
 
 
-    <!-- LOGIN FORM -->
-
     <form id="loginForm">
 
-
-        <!-- EMAIL -->
 
         <label for="email">
             Email
@@ -270,8 +271,6 @@ input:focus {
             required
         >
 
-
-        <!-- PASSWORD -->
 
         <label for="password">
             Password
@@ -288,7 +287,6 @@ input:focus {
                 required
             >
 
-
             <button
                 type="button"
                 class="show-password"
@@ -301,23 +299,17 @@ input:focus {
         </div>
 
 
-        <!-- ERROR -->
-
         <div
             class="error"
             id="error">
         </div>
 
 
-        <!-- SUCCESS -->
-
         <div
             class="success"
             id="success">
         </div>
 
-
-        <!-- LOGIN BUTTON -->
 
         <button
             type="submit"
@@ -332,8 +324,6 @@ input:focus {
     </form>
 
 
-    <!-- REGISTER -->
-
     <div class="register-link">
 
         Don't have an account?
@@ -344,8 +334,6 @@ input:focus {
 
     </div>
 
-
-    <!-- HOME -->
 
     <a
         href="index.html"
@@ -379,13 +367,11 @@ async function hashPassword(password) {
     const data =
         new TextEncoder().encode(password);
 
-
     const hash =
         await crypto.subtle.digest(
             "SHA-256",
             data
         );
-
 
     return Array
         .from(
@@ -414,7 +400,6 @@ function showError(message) {
     const success =
         document.getElementById("success");
 
-
     error.innerText =
         message;
 
@@ -438,7 +423,6 @@ function showSuccess(message) {
 
     const success =
         document.getElementById("success");
-
 
     success.innerText =
         message;
@@ -481,8 +465,6 @@ async function loginUser(event) {
         );
 
 
-    /* Clear old messages */
-
     document.getElementById(
         "error"
     ).style.display = "none";
@@ -493,7 +475,7 @@ async function loginUser(event) {
     ).style.display = "none";
 
 
-    /* Validate */
+    /* VALIDATION */
 
     if (!email) {
 
@@ -517,8 +499,6 @@ async function loginUser(event) {
     }
 
 
-    /* Button loading */
-
     loginButton.disabled =
         true;
 
@@ -529,9 +509,7 @@ async function loginUser(event) {
     try {
 
 
-        /* =================================
-           GET USERS
-        ================================= */
+        /* GET USERS */
 
         let users =
             JSON.parse(
@@ -541,8 +519,6 @@ async function loginUser(event) {
             );
 
 
-        /* Make sure users is an array */
-
         if (!Array.isArray(users)) {
 
             users = [];
@@ -550,9 +526,7 @@ async function loginUser(event) {
         }
 
 
-        /* =================================
-           FIND USER
-        ================================= */
+        /* FIND USER */
 
         const user =
             users.find(
@@ -564,7 +538,6 @@ async function loginUser(event) {
                         )
                         .trim()
                         .toLowerCase();
-
 
                     return (
                         userEmail === email
@@ -582,22 +555,18 @@ async function loginUser(event) {
                 "No account found with this email. Please create an account first."
             );
 
-
             loginButton.disabled =
                 false;
 
             loginButton.innerText =
                 "Login";
 
-
             return;
 
         }
 
 
-        /* =================================
-           HASH PASSWORD
-        ================================= */
+        /* HASH PASSWORD */
 
         const passwordHash =
             await hashPassword(
@@ -605,9 +574,7 @@ async function loginUser(event) {
             );
 
 
-        /* =================================
-           CHECK PASSWORD
-        ================================= */
+        /* CHECK PASSWORD */
 
         if (
             String(user.password || "") !==
@@ -618,13 +585,11 @@ async function loginUser(event) {
                 "Incorrect password. Please try again."
             );
 
-
             loginButton.disabled =
                 false;
 
             loginButton.innerText =
                 "Login";
-
 
             return;
 
@@ -636,19 +601,11 @@ async function loginUser(event) {
         ================================= */
 
 
-        /*
-           Save logged-in user ID
-        */
-
         localStorage.setItem(
             "loggedInUser",
             String(user.id)
         );
 
-
-        /*
-           Save user values
-        */
 
         localStorage.setItem(
             "balance",
@@ -665,9 +622,14 @@ async function loginUser(event) {
             )
         );
 
-        /* =================================
-           LOGIN SUCCESS
-        ================================= */
+
+        localStorage.setItem(
+            "totalReward",
+            String(
+                user.totalReward || 0
+            )
+        );
+
 
         showSuccess(
             "Login successful! Redirecting..."
@@ -678,7 +640,7 @@ async function loginUser(event) {
             "Success";
 
 
-        /* Redirect to Dashboard */
+        /* GO TO DASHBOARD */
 
         setTimeout(function () {
 
@@ -695,11 +657,9 @@ async function loginUser(event) {
             error
         );
 
-
         showError(
             "Something went wrong. Please try again."
         );
-
 
         loginButton.disabled =
             false;
@@ -764,13 +724,10 @@ document
         loginUser
     );
 
+
 </script>
 
+
 </body>
+
 </html>
-        localStorage.setItem(
-            "totalReward",
-            String(
-                user.totalReward || 0
-            )
-        );
