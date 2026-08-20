@@ -803,46 +803,22 @@ async function registerUser(event){
 
     saveUsers(users);
 
+/* LOGIN NEW USER */
 
-    /* LOGIN NEW USER */
+localStorage.setItem(
+    "Ham EarnCurrentUser",
+    userId
+);
 
-    localStorage.setItem(
-        LOGIN_KEY,
-        userId
-    );
+/* COMPATIBILITY WITH LOGIN/DASHBOARD */
 
+localStorage.setItem(
+    "loggedInUser",
+    userId
+);
 
-    /* COMPATIBILITY */
-
-    localStorage.setItem(
-        "loggedInUser",
-        userId
-    );
-
-
-    showSuccess(
-        "Registration successful! Redirecting..."
-    );
-
-
-    setTimeout(function(){
-
-        alert(
-            "Registration successful!\n\n" +
-            "Welcome, " +
-            name +
-            "!"
-        );
-
-
-        window.location.href =
-            "dashboard.html";
-
-    },500);
-
-}
-
-</script>
-
-</body>
-</html>
+localStorage.setItem(
+    "currentUserId",
+    userId
+);
+ 
