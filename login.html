@@ -1,13 +1,15 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Login - Ham Earn</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -67,6 +69,7 @@ input{
 
 input:focus{
     border-color:#087443;
+    box-shadow:0 0 0 2px rgba(8,116,67,.08);
 }
 
 .password-row{
@@ -74,7 +77,7 @@ input:focus{
 }
 
 .password-row input{
-    padding-right:70px;
+    padding-right:75px;
 }
 
 .show-btn{
@@ -89,6 +92,10 @@ input:focus{
     color:#087443;
     font-weight:bold;
     cursor:pointer;
+}
+
+.show-btn:hover{
+    background:#e2e8eb;
 }
 
 .login-submit{
@@ -145,6 +152,10 @@ input:focus{
     text-decoration:none;
 }
 
+.register-link a:hover{
+    text-decoration:underline;
+}
+
 .home-link{
     display:block;
     text-align:center;
@@ -152,6 +163,10 @@ input:focus{
     color:#68737f;
     text-decoration:none;
     font-size:14px;
+}
+
+.home-link:hover{
+    color:#087443;
 }
 
 .notice{
@@ -173,25 +188,41 @@ input:focus{
     .logo{
         font-size:25px;
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
+
 <div class="login-box">
+
+
+    <!-- LOGO -->
 
     <div class="logo">
         🇵🇰 Ham Earn
     </div>
 
+
     <div class="subtitle">
         Login to your account
     </div>
 
+
+    <!-- LOGIN FORM -->
+
     <form id="loginForm">
 
-        <label>Email</label>
+
+        <!-- EMAIL -->
+
+        <label>
+            Email
+        </label>
 
         <input
             type="email"
@@ -201,7 +232,12 @@ input:focus{
             required
         >
 
-        <label>Password</label>
+
+        <!-- PASSWORD -->
+
+        <label>
+            Password
+        </label>
 
         <div class="password-row">
 
@@ -216,31 +252,47 @@ input:focus{
             <button
                 type="button"
                 class="show-btn"
-                id="showBtn"
-            >
+                id="showBtn">
+
                 Show
+
             </button>
 
         </div>
+
+
+        <!-- ERROR -->
 
         <div
             class="error"
             id="error">
         </div>
 
+
+        <!-- SUCCESS -->
+
         <div
             class="success"
             id="success">
         </div>
 
+
+        <!-- LOGIN BUTTON -->
+
         <button
             type="submit"
             class="login-submit"
             id="loginButton">
+
             Login
+
         </button>
 
+
     </form>
+
+
+    <!-- REGISTER -->
 
     <div class="register-link">
 
@@ -252,6 +304,9 @@ input:focus{
 
     </div>
 
+
+    <!-- HOME -->
+
     <a
         href="index.html"
         class="home-link">
@@ -260,20 +315,36 @@ input:focus{
 
     </a>
 
+
     <div class="notice">
-        Demo system — account data is stored locally in this browser.
+
+        Demo system — account data is stored locally
+        in this browser.
+
     </div>
+
 
 </div>
 
 
 <script>
 
-/* =========================================
-   ELEMENTS
-========================================= */
+/* =====================================================
+   HAM EARN STORAGE KEYS
+===================================================== */
 
-const form =
+const USERS_KEY =
+    "Ham EarnUsers";
+
+const CURRENT_USER_KEY =
+    "Ham EarnCurrentUser";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const loginForm =
     document.getElementById("loginForm");
 
 const emailInput =
@@ -295,30 +366,42 @@ const showBtn =
     document.getElementById("showBtn");
 
 
-/* =========================================
+/* =====================================================
    SHOW / HIDE PASSWORD
-========================================= */
+===================================================== */
 
-showBtn.addEventListener("click",function(){
+showBtn.addEventListener(
+    "click",
+    function(){
 
-    if(passwordInput.type === "password"){
+        if(
+            passwordInput.type ===
+            "password"
+        ){
 
-        passwordInput.type = "text";
-        showBtn.innerText = "Hide";
+            passwordInput.type =
+                "text";
 
-    }else{
+            showBtn.innerText =
+                "Hide";
 
-        passwordInput.type = "password";
-        showBtn.innerText = "Show";
+        }else{
+
+            passwordInput.type =
+                "password";
+
+            showBtn.innerText =
+                "Show";
+
+        }
 
     }
+);
 
-});
 
-
-/* =========================================
-   SHA-256
-========================================= */
+/* =====================================================
+   PASSWORD HASH
+===================================================== */
 
 async function hashPassword(password){
 
@@ -331,11 +414,13 @@ async function hashPassword(password){
             new TextEncoder()
             .encode(password);
 
+
         const hash =
-            await crypto.subtle.digest(
+            await window.crypto.subtle.digest(
                 "SHA-256",
                 data
             );
+
 
         return Array.from(
             new Uint8Array(hash)
@@ -351,65 +436,135 @@ async function hashPassword(password){
 
     }
 
-    /*
-       Fallback for browsers where
-       crypto.subtle is unavailable.
-    */
+
+    /* Fallback */
 
     return password;
 
 }
 
 
-/* =========================================
-   ERROR
-========================================= */
+/* =====================================================
+   GET USERS
+===================================================== */
+
+function getUsers(){
+
+    try{
+
+        const savedUsers =
+            localStorage.getItem(
+                USERS_KEY
+            );
+
+
+        if(!savedUsers){
+
+            return [];
+
+        }
+
+
+        const users =
+            JSON.parse(savedUsers);
+
+
+        if(!Array.isArray(users)){
+
+            return [];
+
+        }
+
+
+        return users;
+
+    }catch(error){
+
+        console.error(
+            "Get Users Error:",
+            error
+        );
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================================
+   SHOW ERROR
+===================================================== */
 
 function showError(message){
 
-    successBox.style.display = "none";
+    successBox.style.display =
+        "none";
 
-    errorBox.innerText = message;
+    errorBox.innerText =
+        message;
 
-    errorBox.style.display = "block";
+    errorBox.style.display =
+        "block";
 
 }
 
 
-/* =========================================
-   SUCCESS
-========================================= */
+/* =====================================================
+   SHOW SUCCESS
+===================================================== */
 
 function showSuccess(message){
 
-    errorBox.style.display = "none";
+    errorBox.style.display =
+        "none";
 
-    successBox.innerText = message;
+    successBox.innerText =
+        message;
 
-    successBox.style.display = "block";
+    successBox.style.display =
+        "block";
 
 }
 
 
-/* =========================================
+/* =====================================================
    LOGIN
-========================================= */
+===================================================== */
 
-form.addEventListener("submit",async function(event){
+loginForm.addEventListener(
+    "submit",
+    loginUser
+);
+
+
+async function loginUser(event){
 
     event.preventDefault();
 
-    errorBox.style.display = "none";
-    successBox.style.display = "none";
+
+    /* CLEAR MESSAGES */
+
+    errorBox.style.display =
+        "none";
+
+    successBox.style.display =
+        "none";
+
+
+    /* GET INPUT */
 
     const email =
         emailInput.value
         .trim()
         .toLowerCase();
 
+
     const password =
         passwordInput.value;
 
+
+    /* VALIDATION */
 
     if(!email || !password){
 
@@ -418,47 +573,53 @@ form.addEventListener("submit",async function(event){
         );
 
         return;
+
     }
 
 
-    loginButton.disabled = true;
-    loginButton.innerText = "Checking...";
+    /* DISABLE BUTTON */
+
+    loginButton.disabled =
+        true;
+
+    loginButton.innerText =
+        "Checking...";
 
 
     try{
 
-        /*
+        /* =============================================
            GET REGISTERED USERS
-        */
+        ============================================= */
 
-        let users = [];
+        const users =
+            getUsers();
 
-        try{
 
-            users =
-                JSON.parse(
-                    localStorage.getItem(
-                        "Ham EarnUsers"
-                    ) || "[]"
-                );
+        /* =============================================
+           NO USERS
+        ============================================= */
 
-        }catch(e){
+        if(users.length === 0){
 
-            users = [];
+            showError(
+                "No registered account found. Please register first."
+            );
+
+            loginButton.disabled =
+                false;
+
+            loginButton.innerText =
+                "Login";
+
+            return;
 
         }
 
 
-        if(!Array.isArray(users)){
-
-            users = [];
-
-        }
-
-
-        /*
+        /* =============================================
            FIND USER
-        */
+        ============================================= */
 
         const user =
             users.find(function(item){
@@ -473,50 +634,63 @@ form.addEventListener("submit",async function(event){
             });
 
 
+        /* =============================================
+           USER NOT FOUND
+        ============================================= */
+
         if(!user){
 
             showError(
                 "No account found with this email. Please register first."
             );
 
-            loginButton.disabled = false;
-            loginButton.innerText = "Login";
+            loginButton.disabled =
+                false;
+
+            loginButton.innerText =
+                "Login";
 
             return;
+
         }
 
 
-        /*
+        /* =============================================
            CHECK PASSWORD
-        */
+        ============================================= */
 
         const enteredHash =
             await hashPassword(password);
 
+
         const savedPassword =
-            String(user.password || "");
+            String(
+                user.password || ""
+            );
 
-
-        /*
-           Normal hashed password
-        */
 
         let passwordCorrect =
-            savedPassword === enteredHash;
+            savedPassword ===
+            enteredHash;
 
 
         /*
-           Compatibility with accounts
-           created using plain password
+           Compatibility with
+           older plain-password accounts
         */
 
         if(!passwordCorrect){
 
             passwordCorrect =
-                savedPassword === password;
+                savedPassword ===
+                password;
 
         }
 
+
+        /* =============================================
+           WRONG PASSWORD
+        ============================================= */
 
         if(!passwordCorrect){
 
@@ -524,42 +698,70 @@ form.addEventListener("submit",async function(event){
                 "Incorrect password. Please try again."
             );
 
-            loginButton.disabled = false;
-            loginButton.innerText = "Login";
+            loginButton.disabled =
+                false;
+
+            loginButton.innerText =
+                "Login";
 
             return;
+
         }
 
 
-/* =========================================
-   LOGIN SUCCESS
-========================================= */
+        /* =============================================
+           LOGIN SUCCESS
+        ============================================= */
 
-localStorage.setItem(
-    "Ham EarnCurrentUser",
-    String(user.id)
-);
+        const userId =
+            String(user.id);
 
-/* Compatibility with other pages */
-localStorage.setItem(
-    "loggedInUser",
-    String(user.id)
-);
 
-localStorage.setItem(
-    "currentUserId",
-    String(user.id)
-);
+        /*
+           MAIN CURRENT USER KEY
+        */
 
-showSuccess(
-    "Login successful! Opening dashboard..."
-);
+        localStorage.setItem(
+            CURRENT_USER_KEY,
+            userId
+        );
 
-setTimeout(function(){
 
-    window.location.href = "dashboard.html";
+        /*
+           COMPATIBILITY KEYS
+        */
 
-},500);
+        localStorage.setItem(
+            "currentUserId",
+            userId
+        );
+
+
+        localStorage.setItem(
+            "loggedInUser",
+            userId
+        );
+
+
+        /* =============================================
+           SUCCESS MESSAGE
+        ============================================= */
+
+        showSuccess(
+            "Login successful! Opening dashboard..."
+        );
+
+
+        /* =============================================
+           REDIRECT
+        ============================================= */
+
+        setTimeout(function(){
+
+            window.location.href =
+                "dashboard.html";
+
+        },700);
 
 
     }catch(error){
@@ -569,21 +771,26 @@ setTimeout(function(){
             error
         );
 
+
         showError(
             "Unable to login. Please try again."
         );
 
-        loginButton.disabled = false;
-        loginButton.innerText = "Login";
+
+        loginButton.disabled =
+            false;
+
+        loginButton.innerText =
+            "Login";
 
     }
 
-});
+}
 
 
-/* =========================================
+/* =====================================================
    ENTER KEY
-========================================= */
+===================================================== */
 
 passwordInput.addEventListener(
     "keydown",
@@ -593,7 +800,7 @@ passwordInput.addEventListener(
 
             event.preventDefault();
 
-            form.requestSubmit();
+            loginForm.requestSubmit();
 
         }
 
@@ -604,4 +811,3 @@ passwordInput.addEventListener(
 
 </body>
 </html>
-```
