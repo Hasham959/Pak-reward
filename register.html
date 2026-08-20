@@ -212,9 +212,9 @@ input:focus{
             type="tel"
             id="mobile"
             placeholder="03XXXXXXXXX"
-            pattern="03[0-9]{9}"
             maxlength="11"
             inputmode="numeric"
+            autocomplete="tel"
             required
         >
 
@@ -284,12 +284,15 @@ input:focus{
         </div>
 
 
-        <!-- MESSAGES -->
+        <!-- ERROR -->
 
         <div
             class="error"
             id="error">
         </div>
+
+
+        <!-- SUCCESS -->
 
         <div
             class="success"
@@ -340,10 +343,11 @@ input:focus{
 </div>
 
 
+
 <script>
 
 /* =====================================================
-   HAM EARN STORAGE KEYS
+   HAM EARN DATABASE KEYS
 ===================================================== */
 
 const USERS_KEY = "Ham EarnUsers";
@@ -352,7 +356,7 @@ const CURRENT_USER_KEY = "Ham EarnCurrentUser";
 
 
 /* =====================================================
-   ELEMENTS
+   GET ELEMENTS
 ===================================================== */
 
 const registerForm =
@@ -387,6 +391,73 @@ const successBox =
 
 
 /* =====================================================
+   GET USERS
+===================================================== */
+
+function getUsers(){
+
+    try{
+
+        const saved =
+            localStorage.getItem(USERS_KEY);
+
+        if(!saved){
+            return [];
+        }
+
+        const parsed =
+            JSON.parse(saved);
+
+        if(!Array.isArray(parsed)){
+            return [];
+        }
+
+        return parsed;
+
+    }catch(error){
+
+        console.error(
+            "Users loading error:",
+            error
+        );
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================================
+   SAVE USERS
+===================================================== */
+
+function saveUsers(users){
+
+    try{
+
+        localStorage.setItem(
+            USERS_KEY,
+            JSON.stringify(users)
+        );
+
+        return true;
+
+    }catch(error){
+
+        console.error(
+            "Users saving error:",
+            error
+        );
+
+        return false;
+
+    }
+
+}
+
+
+/* =====================================================
    PASSWORD HASH
 ===================================================== */
 
@@ -407,21 +478,18 @@ async function hashPassword(password){
                 data
             );
 
-        return Array.from(
-            new Uint8Array(hash)
-        )
-        .map(function(byte){
+        return Array
+            .from(new Uint8Array(hash))
+            .map(function(byte){
 
-            return byte
-                .toString(16)
-                .padStart(2,"0");
+                return byte
+                    .toString(16)
+                    .padStart(2,"0");
 
-        })
-        .join("");
+            })
+            .join("");
 
     }
-
-    /* Fallback */
 
     return password;
 
@@ -429,93 +497,43 @@ async function hashPassword(password){
 
 
 /* =====================================================
-   SHOW ERROR
+   ERROR
 ===================================================== */
 
 function showError(message){
 
-    successBox.style.display = "none";
+    successBox.style.display =
+        "none";
 
-    errorBox.innerText = message;
+    errorBox.innerText =
+        message;
 
-    errorBox.style.display = "block";
+    errorBox.style.display =
+        "block";
 
 }
 
 
 /* =====================================================
-   SHOW SUCCESS
+   SUCCESS
 ===================================================== */
 
 function showSuccess(message){
 
-    errorBox.style.display = "none";
+    errorBox.style.display =
+        "none";
 
-    successBox.innerText = message;
+    successBox.innerText =
+        message;
 
-    successBox.style.display = "block";
-
-}
-
-
-/* =====================================================
-   GET USERS
-===================================================== */
-
-function getUsers(){
-
-    try{
-
-        const savedUsers =
-            localStorage.getItem(USERS_KEY);
-
-        if(!savedUsers){
-
-            return [];
-
-        }
-
-        const users =
-            JSON.parse(savedUsers);
-
-        if(!Array.isArray(users)){
-
-            return [];
-
-        }
-
-        return users;
-
-    }catch(error){
-
-        console.error(
-            "Get Users Error:",
-            error
-        );
-
-        return [];
-
-    }
+    successBox.style.display =
+        "block";
 
 }
 
 
 /* =====================================================
-   SAVE USERS
-===================================================== */
-
-function saveUsers(users){
-
-    localStorage.setItem(
-        USERS_KEY,
-        JSON.stringify(users)
-    );
-
-}
-
-
-/* =====================================================
-   LOAD REFERRAL CODE FROM URL
+   REFERRAL FROM URL
 ===================================================== */
 
 function loadReferralCode(){
@@ -543,469 +561,563 @@ loadReferralCode();
 
 
 /* =====================================================
-   REGISTER
+   REGISTER FORM
 ===================================================== */
 
 registerForm.addEventListener(
     "submit",
-    registerUser
-);
+    async function(event){
+
+        event.preventDefault();
 
 
-async function registerUser(event){
+        errorBox.style.display =
+            "none";
 
-    event.preventDefault();
-
-
-    /* CLEAR MESSAGES */
-
-    errorBox.style.display = "none";
-
-    successBox.style.display = "none";
+        successBox.style.display =
+            "none";
 
 
-    /* GET FORM DATA */
+        /* =========================
+           FORM DATA
+        ========================= */
 
-    const name =
-        nameInput.value
-        .trim();
+        const name =
+            nameInput.value
+            .trim();
 
+        const mobile =
+            mobileInput.value
+            .trim();
 
-    const mobile =
-        mobileInput.value
-        .trim();
-
-
-    const email =
-        emailInput.value
-        .trim()
-        .toLowerCase();
-
-
-    const password =
-        passwordInput.value;
-
-
-    const confirmPassword =
-        confirmPasswordInput.value;
-
-
-    const referralCode =
-        referralInput.value
-        .trim()
-        .toUpperCase();
-
-
-    /* =================================================
-       VALIDATION
-    ================================================= */
-
-
-    if(name.length < 2){
-
-        showError(
-            "Please enter your full name."
-        );
-
-        return;
-
-    }
-
-
-    if(!/^03[0-9]{9}$/.test(mobile)){
-
-        showError(
-            "Please enter a valid Pakistani mobile number. Example: 03001234567"
-        );
-
-        return;
-
-    }
-
-
-    if(password.length < 6){
-
-        showError(
-            "Password must contain at least 6 characters."
-        );
-
-        return;
-
-    }
-
-
-    if(password !== confirmPassword){
-
-        showError(
-            "Passwords do not match."
-        );
-
-        return;
-
-    }
-
-
-    /* =================================================
-       LOAD USERS
-    ================================================= */
-
-    let users = getUsers();
-
-
-    /* =================================================
-       EMAIL CHECK
-    ================================================= */
-
-    const emailExists =
-        users.some(function(user){
-
-            return String(
-                user.email || ""
-            )
+        const email =
+            emailInput.value
             .trim()
-            .toLowerCase()
-            === email;
+            .toLowerCase();
 
-        });
+        const password =
+            passwordInput.value;
 
+        const confirmPassword =
+            confirmPasswordInput.value;
 
-    if(emailExists){
-
-        showError(
-            "An account with this email already exists. Please login."
-        );
-
-        return;
-
-    }
-
-
-    /* =================================================
-       MOBILE CHECK
-    ================================================= */
-
-    const mobileExists =
-        users.some(function(user){
-
-            return String(
-                user.mobile || ""
-            )
+        const referralCode =
+            referralInput.value
             .trim()
-            === mobile;
-
-        });
+            .toUpperCase();
 
 
-    if(mobileExists){
+        /* =========================
+           VALIDATION
+        ========================= */
 
-        showError(
-            "This mobile number is already registered."
-        );
-
-        return;
-
-    }
-
-
-    /* =================================================
-       FIND REFERRER
-    ================================================= */
-
-    let referrer = null;
-
-
-    if(referralCode){
-
-        referrer =
-            users.find(function(user){
-
-                return String(
-                    user.referralCode || ""
-                )
-                .trim()
-                .toUpperCase()
-                === referralCode;
-
-            });
-
-
-        if(!referrer){
+        if(name.length < 2){
 
             showError(
-                "Invalid referral code."
+                "Please enter your full name."
             );
 
             return;
 
         }
 
-    }
+
+        if(!/^03[0-9]{9}$/.test(mobile)){
+
+            showError(
+                "Please enter a valid Pakistani mobile number. Example: 03001234567"
+            );
+
+            return;
+
+        }
 
 
-    /* =================================================
-       DISABLE BUTTON
-    ================================================= */
+        if(password.length < 6){
 
-    registerButton.disabled = true;
+            showError(
+                "Password must contain at least 6 characters."
+            );
 
-    registerButton.innerText =
-        "Creating Account...";
+            return;
 
-
-    /* =================================================
-       HASH PASSWORD
-    ================================================= */
-
-    let passwordHash;
+        }
 
 
-    try{
+        if(password !== confirmPassword){
 
-        passwordHash =
-            await hashPassword(password);
+            showError(
+                "Passwords do not match."
+            );
 
-    }catch(error){
+            return;
 
-        console.error(
-            "Password Hash Error:",
-            error
-        );
+        }
 
-        registerButton.disabled = false;
+
+        /* =========================
+           LOAD DATABASE
+        ========================= */
+
+        let users =
+            getUsers();
+
+
+        /* =========================
+           EMAIL DUPLICATE
+        ========================= */
+
+        const emailExists =
+            users.some(function(user){
+
+                return String(
+                    user.email || ""
+                )
+                .trim()
+                .toLowerCase()
+                === email;
+
+            });
+
+
+        if(emailExists){
+
+            showError(
+                "This email is already registered. Please login."
+            );
+
+            return;
+
+        }
+
+
+        /* =========================
+           MOBILE DUPLICATE
+        ========================= */
+
+        const mobileExists =
+            users.some(function(user){
+
+                return String(
+                    user.mobile || ""
+                )
+                .trim()
+                === mobile;
+
+            });
+
+
+        if(mobileExists){
+
+            showError(
+                "This mobile number is already registered."
+            );
+
+            return;
+
+        }
+
+
+        /* =========================
+           REFERRER
+        ========================= */
+
+        let referrer = null;
+
+
+        if(referralCode){
+
+            referrer =
+                users.find(function(user){
+
+                    return String(
+                        user.referralCode || ""
+                    )
+                    .trim()
+                    .toUpperCase()
+                    === referralCode;
+
+                });
+
+
+            if(!referrer){
+
+                showError(
+                    "Invalid referral code."
+                );
+
+                return;
+
+            }
+
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        registerButton.disabled =
+            true;
 
         registerButton.innerText =
-            "Create Account";
-
-        showError(
-            "Unable to create account. Please try again."
-        );
-
-        return;
-
-    }
+            "Creating Account...";
 
 
-    /* =================================================
-       CREATE UNIQUE USER ID
-    ================================================= */
+        /* =========================
+           PASSWORD HASH
+        ========================= */
 
-    const userId =
-        Date.now().toString();
-
-
-    /* =================================================
-       CREATE REFERRAL CODE
-    ================================================= */
-
-    const newReferralCode =
-        "HE" +
-        userId.slice(-6);
-
-
-    /* =================================================
-       CREATE NEW USER
-    ================================================= */
-
-    const newUser = {
-
-        id: userId,
-
-        name: name,
-
-        mobile: mobile,
-
-        email: email,
-
-        password: passwordHash,
-
-        balance: 0,
-
-        todayReward: 0,
-
-        totalReward: 0,
-
-        selectedPlan: "",
-
-        planAmount: 0,
-
-        adsCompleted: 0,
-
-        adsDate:
-            new Date().toDateString(),
-
-        referralCode:
-            newReferralCode,
-
-        referredBy:
-            referrer
-            ? referrer.referralCode
-            : "",
-
-        referralCount: 0,
-
-        referralReward: 0,
-
-        createdAt:
-            new Date().toISOString()
-
-    };
-
-
-    /* =================================================
-       ADD NEW USER
-    ================================================= */
-
-    users.push(newUser);
-
-
-    /* =================================================
-       REFERRAL REWARD
-    ================================================= */
-
-    if(referrer){
-
-        referrer.balance =
-            Number(
-                referrer.balance || 0
-            ) + 100;
-
-
-        referrer.totalReward =
-            Number(
-                referrer.totalReward || 0
-            ) + 100;
-
-
-        referrer.referralCount =
-            Number(
-                referrer.referralCount || 0
-            ) + 1;
-
-
-        referrer.referralReward =
-            Number(
-                referrer.referralReward || 0
-            ) + 100;
-
-
-        /* REFERRAL TRANSACTIONS */
-
-        let transactions = [];
-
+        let passwordHash;
 
         try{
 
-            transactions =
-                JSON.parse(
-                    localStorage.getItem(
-                        "transactions_" +
-                        referrer.id
-                    ) || "[]"
+            passwordHash =
+                await hashPassword(
+                    password
                 );
 
         }catch(error){
 
-            transactions = [];
+            console.error(error);
+
+            registerButton.disabled =
+                false;
+
+            registerButton.innerText =
+                "Create Account";
+
+            showError(
+                "Unable to create account. Please try again."
+            );
+
+            return;
 
         }
 
 
-        if(!Array.isArray(transactions)){
+        /* =========================
+           UNIQUE USER ID
+        ========================= */
 
-            transactions = [];
+        const userId =
+            Date.now().toString();
 
-        }
+
+        /* =========================
+           REFERRAL CODE
+        ========================= */
+
+        const newReferralCode =
+            "HE" +
+            userId.slice(-6);
 
 
-        transactions.unshift({
+        /* =========================
+           NEW USER
+        ========================= */
 
-            id:
-                Date.now().toString(),
+        const newUser = {
 
-            title:
-                "Referral Reward",
+            id: userId,
 
-            amount: 100,
+            name: name,
 
-            type:
-                "referral",
+            mobile: mobile,
 
-            date:
+            email: email,
+
+            password: passwordHash,
+
+            /* WALLET */
+
+            balance: 0,
+
+            todayReward: 0,
+
+            totalReward: 0,
+
+            /* PLAN */
+
+            selectedPlan: "",
+
+            planAmount: 0,
+
+            /* TASKS */
+
+            adsCompleted: 0,
+
+            adsDate:
                 new Date()
-                .toLocaleString()
+                .toDateString(),
 
-        });
+            /* REFERRAL */
 
+            referralCode:
+                newReferralCode,
+
+            referredBy:
+                referrer
+                ? referrer.referralCode
+                : "",
+
+            referralCount: 0,
+
+            referralReward: 0,
+
+            /* ACCOUNT */
+
+            createdAt:
+                new Date()
+                .toISOString()
+
+        };
+
+
+        /* =========================
+           ADD USER
+        ========================= */
+
+        users.push(newUser);
+
+
+        /* =========================
+           REFERRAL REWARD
+        ========================= */
+
+        if(referrer){
+
+            referrer.balance =
+                Number(
+                    referrer.balance || 0
+                ) + 100;
+
+
+            referrer.totalReward =
+                Number(
+                    referrer.totalReward || 0
+                ) + 100;
+
+
+            referrer.referralCount =
+                Number(
+                    referrer.referralCount || 0
+                ) + 1;
+
+
+            referrer.referralReward =
+                Number(
+                    referrer.referralReward || 0
+                ) + 100;
+
+
+            /* REFERRER TRANSACTION */
+
+            let transactions = [];
+
+            try{
+
+                transactions =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "transactions_" +
+                            referrer.id
+                        ) || "[]"
+                    );
+
+            }catch(error){
+
+                transactions = [];
+
+            }
+
+
+            if(!Array.isArray(transactions)){
+                transactions = [];
+            }
+
+
+            transactions.unshift({
+
+                id:
+                    Date.now()
+                    .toString(),
+
+                title:
+                    "Referral Reward",
+
+                amount:100,
+
+                type:
+                    "referral",
+
+                date:
+                    new Date()
+                    .toLocaleString()
+
+            });
+
+
+            localStorage.setItem(
+
+                "transactions_" +
+                referrer.id,
+
+                JSON.stringify(
+                    transactions.slice(
+                        0,
+                        20
+                    )
+                )
+
+            );
+
+        }
+
+
+        /* =================================================
+           IMPORTANT
+           SAVE TO EXACT ADMIN PANEL DATABASE
+        ================================================= */
+
+        const saved =
+            saveUsers(users);
+
+
+        if(!saved){
+
+            registerButton.disabled =
+                false;
+
+            registerButton.innerText =
+                "Create Account";
+
+            showError(
+                "Account could not be saved. Please check browser storage."
+            );
+
+            return;
+
+        }
+
+
+        /* =================================================
+           VERIFY DATABASE SAVE
+        ================================================= */
+
+        const verifyUsers =
+            getUsers();
+
+
+        const savedUser =
+            verifyUsers.find(function(user){
+
+                return String(user.id) ===
+                    String(userId);
+
+            });
+
+
+        if(!savedUser){
+
+            registerButton.disabled =
+                false;
+
+            registerButton.innerText =
+                "Create Account";
+
+            showError(
+                "Account was not saved correctly. Please try again."
+            );
+
+            return;
+
+        }
+
+
+        /* =================================================
+           CURRENT USER
+        ================================================= */
+
+        localStorage.setItem(
+            CURRENT_USER_KEY,
+            userId
+        );
+
+
+        /* =================================================
+           OLD COMPATIBILITY KEYS
+        ================================================= */
+
+        localStorage.setItem(
+            "currentUserId",
+            userId
+        );
+
+        localStorage.setItem(
+            "loggedInUser",
+            userId
+        );
+
+
+        /* =================================================
+           CREATE EMPTY TRANSACTION HISTORY
+        ================================================= */
 
         localStorage.setItem(
 
             "transactions_" +
-            referrer.id,
+            userId,
 
-            JSON.stringify(
-                transactions.slice(0,20)
-            )
+            JSON.stringify([])
 
         );
 
+
+        /* =================================================
+           CREATE EMPTY BALANCE HISTORY
+        ================================================= */
+
+        localStorage.setItem(
+
+            "balanceHistory_" +
+            userId,
+
+            JSON.stringify([])
+
+        );
+
+
+        /* =================================================
+           SUCCESS
+        ================================================= */
+
+        showSuccess(
+            "Registration successful! Opening dashboard..."
+        );
+
+
+        registerButton.innerText =
+            "Account Created ✓";
+
+
+        /* =================================================
+           GO DASHBOARD
+        ================================================= */
+
+        setTimeout(function(){
+
+            window.location.href =
+                "dashboard.html";
+
+        },700);
+
     }
-
-
-    /* =================================================
-       SAVE USER DATABASE
-    ================================================= */
-
-    saveUsers(users);
-
-
-    /* =================================================
-       LOGIN NEW USER AUTOMATICALLY
-    ================================================= */
-
-    localStorage.setItem(
-        CURRENT_USER_KEY,
-        userId
-    );
-
-
-    /*
-       Compatibility keys
-       for dashboard / old pages
-    */
-
-    localStorage.setItem(
-        "currentUserId",
-        userId
-    );
-
-
-    localStorage.setItem(
-        "loggedInUser",
-        userId
-    );
-
-
-    /* =================================================
-       SUCCESS
-    ================================================= */
-
-    showSuccess(
-        "Registration successful! Opening dashboard..."
-    );
-
-
-    setTimeout(function(){
-
-        window.location.href =
-            "dashboard.html";
-
-    },700);
-
-}
+);
 
 
 /* =====================================================
-   MOBILE NUMBER ONLY
+   MOBILE INPUT
 ===================================================== */
 
 mobileInput.addEventListener(
@@ -1016,6 +1128,23 @@ mobileInput.addEventListener(
             this.value
             .replace(/\D/g,"")
             .slice(0,11);
+
+    }
+);
+
+
+/* =====================================================
+   EMAIL NORMALIZATION
+===================================================== */
+
+emailInput.addEventListener(
+    "blur",
+    function(){
+
+        this.value =
+            this.value
+            .trim()
+            .toLowerCase();
 
     }
 );
