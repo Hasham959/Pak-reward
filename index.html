@@ -1,67 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PakReward - Earn Rewards</title>
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>PakReward - Earn Rewards</title>
+
+<link rel="stylesheet"
+      href="style.css">
+
 </head>
+
 
 <body>
 
+
+<!-- HEADER -->
+
 <header>
-    <div class="logo">🇵🇰 PakReward</div>
+
+    <div class="logo">
+        🇵🇰 PakReward
+    </div>
+
 
     <nav>
-        <a href="#home">Home</a>
-        <a href="#plans">Plans</a>
-        <a href="#tasks">Tasks</a>
-        <a href="#how">How It Works</a>
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#plans">
+            Plans
+        </a>
+
+        <a href="#tasks">
+            Tasks
+        </a>
+
+        <a href="#how">
+            How It Works
+        </a>
+
     </nav>
 
-    <div>
-        <a href="register.html" class="login-btn">Register</a>
 
-        <a href="login.html" class="login-btn">Login</a>
+    <div class="header-buttons">
 
-        <a href="dashboard.html" class="login-btn">Dashboard</a>
+        <a href="register.html"
+           class="login-btn">
+            Register
+        </a>
+
+
+        <a href="login.html"
+           class="login-btn">
+            Login
+        </a>
+
+
+        <a href="dashboard.html"
+           class="login-btn">
+            Dashboard
+        </a>
+
     </div>
+
 </header>
 
 
-<section id="home" class="hero">
+
+<!-- HERO -->
+
+<section id="home"
+         class="hero">
+
 
     <div class="hero-text">
-        <span class="badge">PAKISTAN • REWARD PLATFORM</span>
 
-        <h1>Complete Tasks.<br>
-        <span>Earn Rewards.</span></h1>
+        <span class="badge">
+            PAKISTAN • REWARD PLATFORM
+        </span>
+
+
+        <h1>
+
+            Complete Tasks.<br>
+
+            <span>
+                Earn Rewards.
+            </span>
+
+        </h1>
+
 
         <p>
-            Complete eligible advertising and online tasks
-            and receive rewards according to platform rules.
+
+            Complete eligible advertising and
+            online tasks and receive rewards
+            according to platform rules.
+
         </p>
 
-        <button class="main-btn" onclick="showPlans()">
+
+        <button
+            class="main-btn"
+            onclick="showPlans()">
+
             View Plans
+
         </button>
+
     </div>
 
 
+
+    <!-- WALLET CARD -->
+
     <div class="wallet-card">
 
-        <p>Demo Wallet Balance</p>
+        <p>
+            Demo Wallet Balance
+        </p>
 
-        <h2 id="balance">Rs. 0</h2>
+
+        <h2 id="balance">
+            Rs. 0
+        </h2>
+
 
         <div class="wallet-row">
-            <span>Today's Reward</span>
-            <strong id="today">Rs. 0</strong>
+
+            <span>
+                Today's Reward
+            </span>
+
+            <strong id="today">
+                Rs. 0
+            </strong>
+
         </div>
 
-        <button class="main-btn full"
-                onclick="completeTask()">
+
+        <button
+            class="main-btn full"
+            onclick="completeTask()">
+
             Complete Demo Task +Rs. 10
+
         </button>
 
     </div>
@@ -69,134 +159,468 @@
 </section>
 
 
+
+<!-- PLANS -->
+
 <section id="plans">
 
-    <h2>Reward Plans</h2>
+    <h2>
+        Reward Plans
+    </h2>
+
 
     <p class="section-text">
-        Plans organize access to eligible tasks.
-        They do not represent guaranteed investment returns.
+
+        Plans organize access to eligible
+        tasks. They do not represent
+        guaranteed investment returns.
+
     </p>
+
 
 
     <div class="plans">
 
-        <div class="plan-card">
-            <h3>Starter</h3>
-            <h4>Rs. 1,000</h4>
-            <p>Basic task access</p>
 
-            <button onclick="selectPlan('Starter',1000)">
+        <!-- STARTER -->
+
+        <div class="plan-card">
+
+            <h3>
+                Starter
+            </h3>
+
+
+            <h4>
+                Rs. 1,000
+            </h4>
+
+
+            <p>
+                Basic task access
+            </p>
+
+
+            <button
+                onclick="selectPlan('Starter',1000)">
+
                 Select Plan
+
             </button>
+
         </div>
 
 
-        <div class="plan-card">
-            <h3>Basic</h3>
-            <h4>Rs. 5,000</h4>
-            <p>More eligible tasks</p>
 
-            <button onclick="selectPlan('Basic',5000)">
+        <!-- BASIC -->
+
+        <div class="plan-card">
+
+            <h3>
+                Basic
+            </h3>
+
+
+            <h4>
+                Rs. 5,000
+            </h4>
+
+
+            <p>
+                More eligible tasks
+            </p>
+
+
+            <button
+                onclick="selectPlan('Basic',5000)">
+
                 Select Plan
+
             </button>
+
         </div>
 
+
+
+        <!-- PREMIUM -->
 
         <div class="plan-card featured">
-            <span class="popular">POPULAR</span>
 
-            <h3>Premium</h3>
-            <h4>Rs. 10,000</h4>
-            <p>Higher task limits</p>
+            <span class="popular">
+                POPULAR
+            </span>
 
-            <button onclick="selectPlan('Premium',10000)">
+
+            <h3>
+                Premium
+            </h3>
+
+
+            <h4>
+                Rs. 10,000
+            </h4>
+
+
+            <p>
+                Higher task limits
+            </p>
+
+
+            <button
+                onclick="selectPlan('Premium',10000)">
+
                 Select Plan
+
             </button>
+
         </div>
 
+
+
+        <!-- PRO -->
 
         <div class="plan-card">
-            <h3>Pro</h3>
-            <h4>Rs. 25,000</h4>
-            <p>Highest task limits</p>
 
-            <button onclick="selectPlan('Pro',25000)">
+            <h3>
+                Pro
+            </h3>
+
+
+            <h4>
+                Rs. 25,000
+            </h4>
+
+
+            <p>
+                Highest task limits
+            </p>
+
+
+            <button
+                onclick="selectPlan('Pro',25000)">
+
                 Select Plan
+
             </button>
+
         </div>
+
 
     </div>
 
 </section>
 
+
+
+<!-- TASKS -->
 
 <section id="tasks">
 
-    <h2>Daily Tasks</h2>
+    <h2>
+        Daily Tasks
+    </h2>
+
 
     <div class="task-card">
 
+
         <div>
-            <h3>Advertising Task</h3>
+
+            <h3>
+                Advertising Task
+            </h3>
+
 
             <p>
-                Complete the demo task to test
-                the reward wallet.
+
+                Complete the demo task
+                to test the reward wallet.
+
             </p>
+
         </div>
 
-        <button class="main-btn"
-                onclick="completeTask()">
+
+        <button
+            class="main-btn"
+            onclick="completeTask()">
+
             Complete +Rs. 10
+
         </button>
+
 
     </div>
 
 </section>
 
+
+
+<!-- HOW IT WORKS -->
 
 <section id="how">
 
-    <h2>How It Works</h2>
+    <h2>
+        How It Works
+    </h2>
+
 
     <div class="steps">
 
-        <div>
-            <b>01</b>
-            <h3>Create Account</h3>
-            <p>Register and access your dashboard.</p>
-        </div>
 
         <div>
-            <b>02</b>
-            <h3>Complete Tasks</h3>
-            <p>Complete eligible advertising tasks.</p>
+
+            <b>
+                01
+            </b>
+
+
+            <h3>
+                Create Account
+            </h3>
+
+
+            <p>
+                Register and access
+                your dashboard.
+            </p>
+
         </div>
 
+
+
         <div>
-            <b>03</b>
-            <h3>Receive Rewards</h3>
-            <p>Eligible rewards are added according to platform rules.</p>
+
+            <b>
+                02
+            </b>
+
+
+            <h3>
+                Complete Tasks
+            </h3>
+
+
+            <p>
+                Complete eligible
+                advertising tasks.
+            </p>
+
         </div>
+
+
+
+        <div>
+
+            <b>
+                03
+            </b>
+
+
+            <h3>
+                Receive Rewards
+            </h3>
+
+
+            <p>
+                Eligible rewards are added
+                according to platform rules.
+            </p>
+
+        </div>
+
 
     </div>
 
 </section>
 
 
+
+<!-- FOOTER -->
+
 <footer>
 
-    <strong>🇵🇰 PakReward</strong>
+    <strong>
+        🇵🇰 PakReward
+    </strong>
+
 
     <p>
-        Demo website • No investment or guaranteed-return promise
+        Demo website • No investment
+        or guaranteed-return promise
     </p>
 
 </footer>
 
 
-<script src="script.js"></script>
+
+<script>
+
+/* =========================
+   LOAD WALLET
+========================= */
+
+let balance =
+    Number(
+        localStorage.getItem("balance") || 0
+    );
+
+
+let today =
+    Number(
+        localStorage.getItem("todayReward") || 0
+    );
+
+
+
+/* =========================
+   MONEY FORMAT
+========================= */
+
+function money(amount) {
+
+    return "Rs. " +
+        Number(amount).toLocaleString("en-PK");
+
+}
+
+
+
+/* =========================
+   UPDATE WALLET
+========================= */
+
+function updateWallet() {
+
+    document.getElementById(
+        "balance"
+    ).innerText =
+        money(balance);
+
+
+    document.getElementById(
+        "today"
+    ).innerText =
+        money(today);
+
+}
+
+
+
+/* =========================
+   SAVE WALLET
+========================= */
+
+function saveWallet() {
+
+    localStorage.setItem(
+        "balance",
+        balance
+    );
+
+
+    localStorage.setItem(
+        "todayReward",
+        today
+    );
+
+}
+
+
+
+/* =========================
+   COMPLETE DEMO TASK
+========================= */
+
+function completeTask() {
+
+    balance += 10;
+
+    today += 10;
+
+
+    saveWallet();
+
+    updateWallet();
+
+
+    alert(
+        "Demo task completed!\n\n" +
+        "+Rs. 10 reward added."
+    );
+
+}
+
+
+
+/* =========================
+   SELECT PLAN
+========================= */
+
+function selectPlan(
+    planName,
+    amount
+) {
+
+    localStorage.setItem(
+        "selectedPlan",
+        planName
+    );
+
+
+    localStorage.setItem(
+        "planAmount",
+        amount
+    );
+
+
+    alert(
+        planName +
+        " plan selected.\n\n" +
+
+        "Plan Amount: " +
+        money(amount) +
+
+        "\n\n" +
+
+        "Open Dashboard to view your plan."
+    );
+
+
+    window.location.href =
+        "dashboard.html";
+
+}
+
+
+
+/* =========================
+   SHOW PLANS
+========================= */
+
+function showPlans() {
+
+    document.getElementById(
+        "plans"
+    ).scrollIntoView({
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+
+/* =========================
+   INITIAL LOAD
+========================= */
+
+updateWallet();
+
+</script>
+
 
 </body>
+
 </html>
