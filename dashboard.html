@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Dashboard - Ham Earn</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -18,8 +21,6 @@ body{
     background:#f5f7fb;
     color:#17202a;
 }
-
-/* HEADER */
 
 header{
     background:#087443;
@@ -61,8 +62,6 @@ header{
     color:#087443;
 }
 
-/* MAIN */
-
 main{
     max-width:1100px;
     margin:auto;
@@ -73,8 +72,6 @@ main{
     color:#68737f;
     margin:7px 0 30px;
 }
-
-/* STATS */
 
 .stats{
     display:grid;
@@ -101,8 +98,6 @@ main{
     color:#087443;
 }
 
-/* SECTIONS */
-
 .section{
     margin-top:35px;
 }
@@ -110,8 +105,6 @@ main{
 .section h2{
     margin-bottom:15px;
 }
-
-/* PLAN */
 
 .plan{
     display:flex;
@@ -139,8 +132,6 @@ main{
     color:#856404;
 }
 
-/* BUTTON */
-
 .btn{
     border:none;
     background:#087443;
@@ -160,8 +151,6 @@ main{
     cursor:not-allowed;
 }
 
-/* TRANSACTION */
-
 .transaction{
     display:flex;
     justify-content:space-between;
@@ -179,8 +168,6 @@ main{
     color:#087443;
     font-weight:bold;
 }
-
-/* ACTIONS */
 
 .actions{
     display:grid;
@@ -203,8 +190,6 @@ main{
     border-color:#087443;
     background:#f7fcf9;
 }
-
-/* HISTORY */
 
 .history-table{
     width:100%;
@@ -255,8 +240,6 @@ main{
     padding:20px;
 }
 
-/* INFO */
-
 .info-box{
     background:#f5f7fb;
     border-radius:10px;
@@ -265,8 +248,6 @@ main{
     font-size:13px;
     color:#68737f;
 }
-
-/* MODAL */
 
 .modal{
     display:none;
@@ -291,8 +272,6 @@ main{
     margin-bottom:15px;
     color:#087443;
 }
-
-/* FORM */
 
 .form-group{
     margin-bottom:15px;
@@ -319,8 +298,6 @@ main{
 .form-group select:focus{
     border-color:#087443;
 }
-
-/* PLANS */
 
 .plan-title{
     font-weight:bold;
@@ -378,8 +355,6 @@ main{
     color:#087443;
     font-weight:bold;
 }
-
-/* PAYMENT */
 
 .payment-details{
     display:none;
@@ -467,7 +442,32 @@ main{
     margin-top:5px;
 }
 
-/* FOOTER */
+.firebase-loading{
+    position:fixed;
+    inset:0;
+    background:#f5f7fb;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:5000;
+}
+
+.loading-box{
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+
+.loading-box h2{
+    color:#087443;
+    margin-bottom:10px;
+}
+
+.loading-box p{
+    color:#68737f;
+}
 
 footer{
     text-align:center;
@@ -477,8 +477,6 @@ footer{
     border-top:1px solid #e4e8ed;
     margin-top:40px;
 }
-
-/* MOBILE */
 
 @media(max-width:850px){
 
@@ -521,10 +519,27 @@ footer{
     }
 
 }
+
 </style>
+
 </head>
 
 <body>
+
+<div class="firebase-loading" id="loadingScreen">
+
+    <div class="loading-box">
+
+        <h2>🇵🇰 Ham Earn</h2>
+
+        <p id="loadingText">
+            Loading your account...
+        </p>
+
+    </div>
+
+</div>
+
 
 <header>
 
@@ -556,8 +571,6 @@ Welcome, <strong id="userName">User</strong> 👋
 </p>
 
 
-<!-- STATS -->
-
 <div class="stats">
 
     <div class="card">
@@ -577,8 +590,6 @@ Welcome, <strong id="userName">User</strong> 👋
 
 </div>
 
-
-<!-- ACTIVE PLAN -->
 
 <div class="section">
 
@@ -606,8 +617,6 @@ Welcome, <strong id="userName">User</strong> 👋
 
 </div>
 
-
-<!-- DAILY ADS -->
 
 <div class="section">
 
@@ -667,8 +676,6 @@ Today's Ads:
 </div>
 
 
-<!-- WALLET -->
-
 <div class="section">
 
 <h2>Wallet</h2>
@@ -687,8 +694,6 @@ Today's Ads:
 
 </div>
 
-
-<!-- REQUEST HISTORY -->
 
 <div class="section">
 
@@ -714,8 +719,6 @@ Today's Ads:
 
 </div>
 
-
-<!-- TRANSACTIONS -->
 
 <div class="section">
 
@@ -746,7 +749,6 @@ Demo version — no real money transactions.
 <div class="info-box">
 Select a plan and submit your payment details. Your plan will become active after admin approval.
 </div>
-
 
 <div class="plan-title">
 Select Your Plan
@@ -785,7 +787,7 @@ onclick="selectDepositPlan('Premium',10000)">
 
 <h3>Premium</h3>
 <strong>Rs. 10,000</strong>
-<small>Higher task limits</small>
+<small>Higher eligible tasks</small>
 
 </button>
 
@@ -836,8 +838,6 @@ placeholder="Select a plan first">
 </div>
 
 
-<!-- EASYPAISA -->
-
 <div class="payment-details" id="easypaisaDetails">
 
 <h3>💚 Easypaisa Payment Details</h3>
@@ -870,8 +870,6 @@ Send exactly the selected plan amount, then enter your Transaction ID.
 
 </div>
 
-
-<!-- JAZZCASH -->
 
 <div class="payment-details" id="jazzcashDetails">
 
@@ -906,8 +904,6 @@ Send exactly the selected plan amount, then enter your Transaction ID.
 
 </div>
 
-
-<!-- BANK -->
 
 <div class="payment-details" id="bankDetails">
 
@@ -1097,637 +1093,410 @@ Submit Withdrawal
 </div>
 
 
-<script>
+<script type="module">
 
-/* =========================================
-   AUTHENTICATION
-========================================= */
+/* =====================================================
+   FIREBASE
+===================================================== */
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getDatabase,
+    ref,
+    get,
+    set
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyD4pjKrlopXvk4peRnyid4DEItpPmU993Y",
+
+    authDomain:
+        "ham-earn.firebaseapp.com",
+
+    databaseURL:
+        "https://ham-earn-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+    projectId:
+        "ham-earn",
+
+    storageBucket:
+        "ham-earn.firebasestorage.app",
+
+    messagingSenderId:
+        "411688505536",
+
+    appId:
+        "1:411688505536:web:c97f891314ee6f0dd65d25",
+
+    measurementId:
+        "G-J75NF5T10H"
+
+};
+
+
+const app =
+    initializeApp(firebaseConfig);
+
+const db =
+    getDatabase(app);
+
+
+/* =====================================================
+   CURRENT USER ID
+===================================================== */
 
 const loggedInUserId =
-localStorage.getItem("loggedInUser") ||
-localStorage.getItem("Ham EarnCurrentUser") ||
-localStorage.getItem("currentUserId");
+    localStorage.getItem("loggedInUser") ||
+    localStorage.getItem("Ham EarnCurrentUser") ||
+    localStorage.getItem("currentUserId");
 
 
-if(!loggedInUserId){
-
-    window.location.href="login.html";
-
-}
+let currentUser = null;
 
 
-/* =========================================
-   DATABASE
-========================================= */
-
-let users = [];
-
-try{
-
-    users =
-    JSON.parse(
-        localStorage.getItem("Ham EarnUsers") || "[]"
-    );
-
-}catch(error){
-
-    users=[];
-
-}
-
-
-if(!Array.isArray(users)){
-    users=[];
-}
-
-
-let currentUser =
-users.find(user =>
-    String(user.id) === String(loggedInUserId)
-);
-
-
-if(!currentUser){
-
-    localStorage.removeItem("loggedInUser");
-    localStorage.removeItem("Ham EarnCurrentUser");
-    localStorage.removeItem("currentUserId");
-
-    window.location.href="login.html";
-
-}
-
-
-/* =========================================
-   SAVE USER
-========================================= */
-
-function saveUser(){
-
-    const index =
-    users.findIndex(user =>
-        String(user.id) === String(currentUser.id)
-    );
-
-    if(index !== -1){
-        users[index]=currentUser;
-    }
-
-    localStorage.setItem(
-        "Ham EarnUsers",
-        JSON.stringify(users)
-    );
-}
-
-
-/* =========================================
+/* =====================================================
    MONEY
-========================================= */
+===================================================== */
 
 function money(amount){
 
     return "Rs. " +
-    Number(amount || 0).toLocaleString("en-PK");
+        Number(amount || 0)
+        .toLocaleString("en-PK");
 
 }
 
 
-/* =========================================
-   DAILY RESET
-========================================= */
+/* =====================================================
+   LOAD CURRENT USER
+===================================================== */
 
-const todayDate =
-new Date().toDateString();
+async function loadCurrentUser(){
+
+    if(!loggedInUserId){
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
 
 
-if(currentUser.adsDate !== todayDate){
+    try{
 
-    currentUser.adsCompleted=0;
-    currentUser.todayReward=0;
-    currentUser.adsDate=todayDate;
+        const userRef =
+            ref(
+                db,
+                "users/" + loggedInUserId
+            );
 
-    saveUser();
+
+        const snapshot =
+            await get(userRef);
+
+
+        if(!snapshot.exists()){
+
+            localStorage.removeItem("loggedInUser");
+            localStorage.removeItem("Ham EarnCurrentUser");
+            localStorage.removeItem("currentUserId");
+
+            window.location.href =
+                "login.html";
+
+            return false;
+
+        }
+
+
+        currentUser =
+            snapshot.val();
+
+
+        currentUser.id =
+            currentUser.id ||
+            loggedInUserId;
+
+
+        return true;
+
+
+    }catch(error){
+
+        console.error(
+            "Firebase User Error:",
+            error
+        );
+
+        document.getElementById(
+            "loadingText"
+        ).innerText =
+            "Unable to connect with Firebase. Please refresh.";
+
+        return false;
+
+    }
 
 }
 
 
-/* =========================================
-   DASHBOARD
-========================================= */
+/* =====================================================
+   SAVE CURRENT USER
+===================================================== */
+
+async function saveUser(){
+
+    if(!currentUser || !currentUser.id){
+        return;
+    }
+
+
+    try{
+
+        await set(
+            ref(
+                db,
+                "users/" + currentUser.id
+            ),
+            currentUser
+        );
+
+
+    }catch(error){
+
+        console.error(
+            "Save User Error:",
+            error
+        );
+
+        alert(
+            "Unable to save data. Please check your internet connection."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   UPDATE DASHBOARD
+===================================================== */
 
 function updateDashboard(){
 
-    document.getElementById("userName").innerText =
+    document.getElementById(
+        "userName"
+    ).innerText =
         currentUser.name || "User";
 
-    document.getElementById("balance").innerText =
+
+    document.getElementById(
+        "balance"
+    ).innerText =
         money(currentUser.balance);
 
-    document.getElementById("today").innerText =
+
+    document.getElementById(
+        "today"
+    ).innerText =
         money(currentUser.todayReward);
 
-    document.getElementById("total").innerText =
+
+    document.getElementById(
+        "total"
+    ).innerText =
         money(currentUser.totalReward);
 
-    document.getElementById("adsCompleted").innerText =
-        Number(currentUser.adsCompleted || 0);
+
+    document.getElementById(
+        "adsCompleted"
+    ).innerText =
+        Number(
+            currentUser.adsCompleted || 0
+        );
 
 
     if(currentUser.selectedPlan){
 
-        document.getElementById("planName").innerText =
+        document.getElementById(
+            "planName"
+        ).innerText =
             currentUser.selectedPlan;
 
-        document.getElementById("planAmount").innerText =
+
+        document.getElementById(
+            "planAmount"
+        ).innerText =
             "Plan Amount: " +
             money(currentUser.planAmount);
 
-        document.getElementById("planStatus").innerText =
+
+        document.getElementById(
+            "planStatus"
+        ).innerText =
             "ACTIVE";
 
-        document.getElementById("planStatus").className =
+
+        document.getElementById(
+            "planStatus"
+        ).className =
             "badge";
 
-        document.getElementById("adNotice").innerText =
+
+        document.getElementById(
+            "adNotice"
+        ).innerText =
             "Your plan is active. You can complete today's eligible ads.";
 
     }else{
 
-        document.getElementById("planName").innerText =
+        document.getElementById(
+            "planName"
+        ).innerText =
             "No Active Plan";
 
-        document.getElementById("planAmount").innerText =
+
+        document.getElementById(
+            "planAmount"
+        ).innerText =
             "Make a deposit and wait for admin approval.";
 
-        document.getElementById("planStatus").innerText =
+
+        document.getElementById(
+            "planStatus"
+        ).innerText =
             "NO PLAN";
 
-        document.getElementById("planStatus").className =
+
+        document.getElementById(
+            "planStatus"
+        ).className =
             "badge no-plan";
 
-        document.getElementById("adNotice").innerText =
+
+        document.getElementById(
+            "adNotice"
+        ).innerText =
             "Please select a plan and wait for Admin approval before watching ads.";
 
     }
+
 
     updateAdButtons();
 
 }
 
 
-/* =========================================
-   PLAN SELECTOR
-========================================= */
+/* =====================================================
+   DAILY RESET
+===================================================== */
 
-let selectedDepositPlan="";
-let selectedDepositAmount=0;
+async function dailyReset(){
 
-
-function selectDepositPlan(planName,amount){
-
-    selectedDepositPlan=planName;
-    selectedDepositAmount=amount;
-
-    document.getElementById("depositAmount").value=amount;
+    const todayDate =
+        new Date().toDateString();
 
 
-    [
-        "Starter",
-        "Basic",
-        "Premium",
-        "Pro"
-    ].forEach(plan=>{
+    if(currentUser.adsDate !== todayDate){
 
-        const button =
-        document.getElementById("depositPlan"+plan);
+        currentUser.adsCompleted = 0;
 
-        if(button){
-            button.classList.remove("selected");
-        }
+        currentUser.todayReward = 0;
 
-    });
+        currentUser.adsDate =
+            todayDate;
 
 
-    const selectedButton =
-    document.getElementById(
-        "depositPlan"+planName
-    );
-
-    if(selectedButton){
-        selectedButton.classList.add("selected");
-    }
-
-
-    const box =
-    document.getElementById("selectedPlanBox");
-
-    box.style.display="block";
-
-    box.innerText =
-        "Selected Plan: " +
-        planName +
-        " — " +
-        money(amount);
-
-}
-
-
-/* =========================================
-   OPEN DEPOSIT
-========================================= */
-
-function openDeposit(){
-
-    if(currentUser.selectedPlan){
-
-        alert(
-            "You already have an active " +
-            currentUser.selectedPlan +
-            " plan."
-        );
-
-        return;
-    }
-
-    selectedDepositPlan="";
-    selectedDepositAmount=0;
-
-    resetDepositForm();
-
-    document.getElementById("depositModal")
-        .style.display="block";
-
-}
-
-
-/* =========================================
-   RESET DEPOSIT
-========================================= */
-
-function resetDepositForm(){
-
-    document.getElementById("depositAmount").value="";
-    document.getElementById("depositMethod").value="";
-    document.getElementById("depositTransactionId").value="";
-    document.getElementById("depositScreenshot").value="";
-
-    document.getElementById("selectedPlanBox")
-        .style.display="none";
-
-    document.getElementById("easypaisaDetails")
-        .style.display="none";
-
-    document.getElementById("jazzcashDetails")
-        .style.display="none";
-
-    document.getElementById("bankDetails")
-        .style.display="none";
-
-
-    [
-        "Starter",
-        "Basic",
-        "Premium",
-        "Pro"
-    ].forEach(plan=>{
-
-        const button =
-        document.getElementById("depositPlan"+plan);
-
-        if(button){
-            button.classList.remove("selected");
-        }
-
-    });
-
-}
-
-
-/* =========================================
-   PAYMENT DETAILS
-========================================= */
-
-function showDepositDetails(){
-
-    const method =
-    document.getElementById("depositMethod").value;
-
-    document.getElementById("easypaisaDetails")
-        .style.display="none";
-
-    document.getElementById("jazzcashDetails")
-        .style.display="none";
-
-    document.getElementById("bankDetails")
-        .style.display="none";
-
-
-    if(method==="Easypaisa"){
-
-        document.getElementById("easypaisaDetails")
-            .style.display="block";
-
-    }
-
-    if(method==="JazzCash"){
-
-        document.getElementById("jazzcashDetails")
-            .style.display="block";
-
-    }
-
-    if(method==="Bank"){
-
-        document.getElementById("bankDetails")
-            .style.display="block";
+        await saveUser();
 
     }
 
 }
 
 
-/* =========================================
-   COPY
-========================================= */
-
-function copyNumber(number){
-
-    if(navigator.clipboard){
-
-        navigator.clipboard.writeText(number)
-        .then(()=>{
-            alert("Copied: "+number);
-        })
-        .catch(()=>{
-            alert("Please copy manually: "+number);
-        });
-
-    }else{
-
-        alert("Please copy manually: "+number);
-
-    }
-
-}
-
-
-/* =========================================
-   SUBMIT DEPOSIT
-========================================= */
-
-function submitDeposit(){
-
-    const amount =
-    Number(
-        document.getElementById("depositAmount").value
-    );
-
-    const method =
-    document.getElementById("depositMethod").value;
-
-    const transactionId =
-    document.getElementById("depositTransactionId")
-    .value.trim();
-
-    const file =
-    document.getElementById("depositScreenshot")
-    .files[0];
-
-
-    if(!selectedDepositPlan){
-
-        alert("Please select a plan first.");
-        return;
-
-    }
-
-
-    if(
-        !amount ||
-        amount !== selectedDepositAmount
-    ){
-
-        alert(
-            "Deposit amount must be " +
-            money(selectedDepositAmount)
-        );
-
-        return;
-    }
-
-
-    if(!method){
-
-        alert("Please select payment method.");
-        return;
-
-    }
-
-
-    if(!transactionId){
-
-        alert("Please enter Transaction ID.");
-        return;
-
-    }
-
-
-    if(!file){
-
-        alert("Please upload transaction screenshot.");
-        return;
-
-    }
-
-
-    if(file.size > 2 * 1024 * 1024){
-
-        alert("Screenshot must be less than 2 MB.");
-        return;
-
-    }
-
-
-    const reader = new FileReader();
-
-
-    reader.onload=function(event){
-
-        let deposits=[];
-
-        try{
-
-            deposits =
-            JSON.parse(
-                localStorage.getItem(
-                    "Ham EarnDeposits"
-                ) || "[]"
-            );
-
-        }catch(error){
-
-            deposits=[];
-
-        }
-
-
-        if(!Array.isArray(deposits)){
-            deposits=[];
-        }
-
-
-        const duplicate =
-        deposits.some(item =>
-            String(item.transactionId || "")
-            .toLowerCase() ===
-            transactionId.toLowerCase()
-        );
-
-
-        if(duplicate){
-
-            alert(
-                "This Transaction ID has already been submitted."
-            );
-
-            return;
-
-        }
-
-
-        deposits.push({
-
-            id:Date.now(),
-
-            userId:currentUser.id,
-
-            userName:currentUser.name || "User",
-
-            email:currentUser.email || "",
-
-            amount:amount,
-
-            method:method,
-
-            transactionId:transactionId,
-
-            screenshot:event.target.result,
-
-            selectedPlan:selectedDepositPlan,
-
-            planAmount:selectedDepositAmount,
-
-            status:"pending",
-
-            date:new Date().toLocaleString()
-
-        });
-
-
-        localStorage.setItem(
-            "Ham EarnDeposits",
-            JSON.stringify(deposits)
-        );
-
-
-        addTransaction(
-            "Deposit Request - " +
-            selectedDepositPlan +
-            " - Pending",
-            amount
-        );
-
-
-        const submittedPlan =
-        selectedDepositPlan;
-
-        closeModal("depositModal");
-
-        resetDepositForm();
-
-        showRequestHistory();
-
-
-        alert(
-            "Deposit request submitted successfully.\n\n" +
-            "Plan: " +
-            submittedPlan +
-            "\nAmount: " +
-            money(amount) +
-            "\nStatus: Pending\n\n" +
-            "Admin approval is required."
-        );
-
-    };
-
-
-    reader.readAsDataURL(file);
-
-}
-
-
-/* =========================================
-   DAILY ADS
-========================================= */
-
-function watchAd(adNumber){
+/* =====================================================
+   ADS
+===================================================== */
+
+async function watchAd(adNumber){
 
     if(!currentUser.selectedPlan){
 
         alert(
-            "Your plan is not active yet.\n\n" +
-            "Please select a plan and wait for Admin approval."
+            "Your plan is not active yet.\n\nPlease select a plan and wait for Admin approval."
         );
 
         return;
+
     }
 
 
     const completed =
-    Number(currentUser.adsCompleted || 0);
+        Number(
+            currentUser.adsCompleted || 0
+        );
 
 
     if(completed >= 5){
 
-        alert("Today's 5 ads are already completed.");
+        alert(
+            "Today's 5 ads are already completed."
+        );
+
         return;
 
     }
 
 
-    let reward=10;
+    let reward = 10;
 
 
-    if(currentUser.selectedPlan==="Basic"){
-        reward=50;
+    if(currentUser.selectedPlan === "Basic"){
+        reward = 50;
     }
 
-    if(currentUser.selectedPlan==="Premium"){
-        reward=100;
+    if(currentUser.selectedPlan === "Premium"){
+        reward = 100;
     }
 
-    if(currentUser.selectedPlan==="Pro"){
-        reward=200;
+    if(currentUser.selectedPlan === "Pro"){
+        reward = 200;
     }
 
 
     currentUser.adsCompleted =
         completed + 1;
 
+
     currentUser.balance =
-        Number(currentUser.balance || 0) + reward;
+        Number(
+            currentUser.balance || 0
+        ) + reward;
+
 
     currentUser.todayReward =
-        Number(currentUser.todayReward || 0) + reward;
+        Number(
+            currentUser.todayReward || 0
+        ) + reward;
+
 
     currentUser.totalReward =
-        Number(currentUser.totalReward || 0) + reward;
+        Number(
+            currentUser.totalReward || 0
+        ) + reward;
 
 
-    saveUser();
+    await saveUser();
 
 
-    addTransaction(
+    await addTransaction(
         "Advertising Ad " + adNumber,
         reward
     );
@@ -1747,38 +1516,51 @@ function watchAd(adNumber){
 }
 
 
-/* =========================================
+/* =====================================================
    AD BUTTONS
-========================================= */
+===================================================== */
 
 function updateAdButtons(){
 
     const completed =
-    Number(currentUser.adsCompleted || 0);
+        Number(
+            currentUser.adsCompleted || 0
+        );
 
 
     for(let i=1;i<=5;i++){
 
         const button =
-        document.getElementById("ad"+i);
+            document.getElementById(
+                "ad" + i
+            );
 
-        if(!button) continue;
+
+        if(!button){
+            continue;
+        }
 
 
         if(!currentUser.selectedPlan){
 
-            button.innerText="Plan Required";
-            button.disabled=true;
+            button.innerText =
+                "Plan Required";
 
-        }else if(i<=completed){
+            button.disabled = true;
 
-            button.innerText="Completed";
-            button.disabled=true;
+        }else if(i <= completed){
+
+            button.innerText =
+                "Completed";
+
+            button.disabled = true;
 
         }else{
 
-            button.innerText="Watch Ad";
-            button.disabled=false;
+            button.innerText =
+                "Watch Ad";
+
+            button.disabled = false;
 
         }
 
@@ -1787,192 +1569,798 @@ function updateAdButtons(){
 }
 
 
-/* =========================================
+/* =====================================================
    TRANSACTIONS
-========================================= */
+===================================================== */
 
-function addTransaction(title,amount){
+async function addTransaction(
+    title,
+    amount
+){
 
-    let transactions=[];
-
-    try{
-
-        transactions =
-        JSON.parse(
-            localStorage.getItem(
-                "transactions_"+currentUser.id
-            ) || "[]"
-        );
-
-    }catch(error){
-
-        transactions=[];
-
-    }
+    const transactionId =
+        Date.now().toString();
 
 
-    if(!Array.isArray(transactions)){
-        transactions=[];
-    }
-
-
-    transactions.unshift({
+    const transaction = {
 
         title:title,
 
-        amount:amount,
+        amount:Number(amount || 0),
 
-        date:new Date().toLocaleString()
+        date:
+            new Date()
+            .toLocaleString()
 
-    });
-
-
-    transactions =
-    transactions.slice(0,20);
+    };
 
 
-    localStorage.setItem(
-        "transactions_"+currentUser.id,
-        JSON.stringify(transactions)
-    );
+    try{
+
+        await set(
+
+            ref(
+                db,
+                "transactions/" +
+                currentUser.id +
+                "/" +
+                transactionId
+            ),
+
+            transaction
+
+        );
 
 
-    showTransactions();
+        showTransactions();
+
+    }catch(error){
+
+        console.error(
+            "Transaction Error:",
+            error
+        );
+
+    }
 
 }
 
 
-/* =========================================
+/* =====================================================
    SHOW TRANSACTIONS
-========================================= */
+===================================================== */
 
-function showTransactions(){
+async function showTransactions(){
 
     const container =
-    document.getElementById("transactionList");
+        document.getElementById(
+            "transactionList"
+        );
 
-
-    let transactions=[];
 
     try{
 
-        transactions =
-        JSON.parse(
-            localStorage.getItem(
-                "transactions_"+currentUser.id
-            ) || "[]"
-        );
+        const snapshot =
+            await get(
+                ref(
+                    db,
+                    "transactions/" +
+                    currentUser.id
+                )
+            );
+
+
+        if(!snapshot.exists()){
+
+            container.innerHTML = `
+                <div class="transaction">
+                    <span>Account Created</span>
+                    <span>Rs. 0</span>
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        const data =
+            snapshot.val() || {};
+
+
+        const transactions =
+            Object.values(data)
+            .reverse()
+            .slice(0,20);
+
+
+        if(!transactions.length){
+
+            container.innerHTML = `
+                <div class="transaction">
+                    <span>Account Created</span>
+                    <span>Rs. 0</span>
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        container.innerHTML = "";
+
+
+        transactions.forEach(t => {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+            row.className =
+                "transaction";
+
+
+            const title =
+                document.createElement(
+                    "span"
+                );
+
+            title.innerText =
+                t.title || "Transaction";
+
+
+            const date =
+                document.createElement(
+                    "small"
+                );
+
+            date.style.display =
+                "block";
+
+            date.style.color =
+                "#888";
+
+            date.style.marginTop =
+                "4px";
+
+            date.innerText =
+                t.date || "";
+
+
+            title.appendChild(date);
+
+
+            const amount =
+                document.createElement(
+                    "span"
+                );
+
+            amount.className =
+                "green";
+
+            amount.innerText =
+                "+" +
+                money(t.amount);
+
+
+            row.appendChild(title);
+
+            row.appendChild(amount);
+
+            container.appendChild(row);
+
+        });
+
 
     }catch(error){
 
-        transactions=[];
+        console.error(
+            "Transaction Load Error:",
+            error
+        );
+
+        container.innerHTML = `
+            <div class="history-empty">
+                Unable to load transactions.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   DEPOSIT PLAN
+===================================================== */
+
+let selectedDepositPlan = "";
+
+let selectedDepositAmount = 0;
+
+
+function selectDepositPlan(
+    planName,
+    amount
+){
+
+    selectedDepositPlan =
+        planName;
+
+    selectedDepositAmount =
+        amount;
+
+
+    document.getElementById(
+        "depositAmount"
+    ).value =
+        amount;
+
+
+    [
+        "Starter",
+        "Basic",
+        "Premium",
+        "Pro"
+    ].forEach(plan => {
+
+        const button =
+            document.getElementById(
+                "depositPlan" + plan
+            );
+
+
+        if(button){
+
+            button.classList.remove(
+                "selected"
+            );
+
+        }
+
+    });
+
+
+    const selectedButton =
+        document.getElementById(
+            "depositPlan" + planName
+        );
+
+
+    if(selectedButton){
+
+        selectedButton.classList.add(
+            "selected"
+        );
 
     }
 
 
-    if(!Array.isArray(transactions) ||
-       transactions.length===0){
+    const box =
+        document.getElementById(
+            "selectedPlanBox"
+        );
 
-        container.innerHTML=`
-        <div class="transaction">
-            <span>Account Created</span>
-            <span>Rs. 0</span>
-        </div>`;
+
+    box.style.display =
+        "block";
+
+
+    box.innerText =
+        "Selected Plan: " +
+        planName +
+        " — " +
+        money(amount);
+
+}
+
+
+/* =====================================================
+   OPEN DEPOSIT
+===================================================== */
+
+function openDeposit(){
+
+    if(currentUser.selectedPlan){
+
+        alert(
+            "You already have an active " +
+            currentUser.selectedPlan +
+            " plan."
+        );
 
         return;
 
     }
 
 
-    container.innerHTML="";
+    resetDepositForm();
 
 
-    transactions.forEach(t=>{
+    document.getElementById(
+        "depositModal"
+    ).style.display =
+        "block";
 
-        const row =
-        document.createElement("div");
-
-        row.className="transaction";
-
-
-        const title =
-        document.createElement("span");
-
-        title.innerText=t.title || "Transaction";
+}
 
 
-        const date =
-        document.createElement("small");
+/* =====================================================
+   RESET DEPOSIT
+===================================================== */
 
-        date.style.display="block";
-        date.style.color="#888";
-        date.style.marginTop="4px";
-        date.innerText=t.date || "";
+function resetDepositForm(){
 
+    selectedDepositPlan = "";
 
-        title.appendChild(date);
-
-
-        const amount =
-        document.createElement("span");
-
-        amount.className="green";
-
-        amount.innerText =
-        "+" + money(t.amount);
+    selectedDepositAmount = 0;
 
 
-        row.appendChild(title);
-        row.appendChild(amount);
+    document.getElementById(
+        "depositAmount"
+    ).value = "";
 
-        container.appendChild(row);
+
+    document.getElementById(
+        "depositMethod"
+    ).value = "";
+
+
+    document.getElementById(
+        "depositTransactionId"
+    ).value = "";
+
+
+    document.getElementById(
+        "depositScreenshot"
+    ).value = "";
+
+
+    document.getElementById(
+        "selectedPlanBox"
+    ).style.display =
+        "none";
+
+
+    [
+        "easypaisaDetails",
+        "jazzcashDetails",
+        "bankDetails"
+    ].forEach(id => {
+
+        document.getElementById(id)
+            .style.display =
+            "none";
+
+    });
+
+
+    [
+        "Starter",
+        "Basic",
+        "Premium",
+        "Pro"
+    ].forEach(plan => {
+
+        const button =
+            document.getElementById(
+                "depositPlan" + plan
+            );
+
+
+        if(button){
+
+            button.classList.remove(
+                "selected"
+            );
+
+        }
 
     });
 
 }
 
 
-/* =========================================
-   MODALS
-========================================= */
+/* =====================================================
+   PAYMENT DETAILS
+===================================================== */
 
-function closeModal(id){
+function showDepositDetails(){
 
-    const modal =
-    document.getElementById(id);
+    const method =
+        document.getElementById(
+            "depositMethod"
+        ).value;
 
-    if(modal){
-        modal.style.display="none";
+
+    document.getElementById(
+        "easypaisaDetails"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "jazzcashDetails"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "bankDetails"
+    ).style.display =
+        "none";
+
+
+    if(method === "Easypaisa"){
+
+        document.getElementById(
+            "easypaisaDetails"
+        ).style.display =
+            "block";
+
+    }
+
+
+    if(method === "JazzCash"){
+
+        document.getElementById(
+            "jazzcashDetails"
+        ).style.display =
+            "block";
+
+    }
+
+
+    if(method === "Bank"){
+
+        document.getElementById(
+            "bankDetails"
+        ).style.display =
+            "block";
+
     }
 
 }
 
+
+/* =====================================================
+   COPY
+===================================================== */
+
+function copyNumber(number){
+
+    if(navigator.clipboard){
+
+        navigator.clipboard
+        .writeText(number)
+        .then(() => {
+
+            alert(
+                "Copied: " + number
+            );
+
+        });
+
+    }else{
+
+        alert(
+            "Please copy manually: " +
+            number
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   SUBMIT DEPOSIT
+===================================================== */
+
+async function submitDeposit(){
+
+    const amount =
+        Number(
+            document.getElementById(
+                "depositAmount"
+            ).value
+        );
+
+
+    const method =
+        document.getElementById(
+            "depositMethod"
+        ).value;
+
+
+    const transactionId =
+        document.getElementById(
+            "depositTransactionId"
+        ).value.trim();
+
+
+    const file =
+        document.getElementById(
+            "depositScreenshot"
+        ).files[0];
+
+
+    if(!selectedDepositPlan){
+
+        alert(
+            "Please select a plan first."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !amount ||
+        amount !== selectedDepositAmount
+    ){
+
+        alert(
+            "Deposit amount must be " +
+            money(selectedDepositAmount)
+        );
+
+        return;
+
+    }
+
+
+    if(!method){
+
+        alert(
+            "Please select payment method."
+        );
+
+        return;
+
+    }
+
+
+    if(!transactionId){
+
+        alert(
+            "Please enter Transaction ID."
+        );
+
+        return;
+
+    }
+
+
+    if(!file){
+
+        alert(
+            "Please upload transaction screenshot."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        file.size >
+        2 * 1024 * 1024
+    ){
+
+        alert(
+            "Screenshot must be less than 2 MB."
+        );
+
+        return;
+
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload = async function(event){
+
+        try{
+
+            const depositsRef =
+                ref(
+                    db,
+                    "deposits"
+                );
+
+
+            const snapshot =
+                await get(
+                    depositsRef
+                );
+
+
+            const deposits =
+                snapshot.exists()
+                ? snapshot.val()
+                : {};
+
+
+            for(
+                const id in deposits
+            ){
+
+                if(
+                    String(
+                        deposits[id]
+                        .transactionId || ""
+                    )
+                    .toLowerCase()
+                    ===
+                    transactionId.toLowerCase()
+                ){
+
+                    alert(
+                        "This Transaction ID has already been submitted."
+                    );
+
+                    return;
+
+                }
+
+            }
+
+
+            const requestId =
+                Date.now().toString();
+
+
+            const deposit = {
+
+                id:requestId,
+
+                userId:
+                    currentUser.id,
+
+                userName:
+                    currentUser.name || "User",
+
+                email:
+                    currentUser.email || "",
+
+                amount:amount,
+
+                method:method,
+
+                transactionId:
+                    transactionId,
+
+                screenshot:
+                    event.target.result,
+
+                selectedPlan:
+                    selectedDepositPlan,
+
+                planAmount:
+                    selectedDepositAmount,
+
+                status:"pending",
+
+                date:
+                    new Date()
+                    .toLocaleString()
+
+            };
+
+
+            await set(
+
+                ref(
+                    db,
+                    "deposits/" +
+                    requestId
+                ),
+
+                deposit
+
+            );
+
+
+            await addTransaction(
+
+                "Deposit Request - " +
+                selectedDepositPlan +
+                " - Pending",
+
+                amount
+
+            );
+
+
+            const submittedPlan =
+                selectedDepositPlan;
+
+
+            closeModal(
+                "depositModal"
+            );
+
+
+            resetDepositForm();
+
+            showRequestHistory();
+
+
+            alert(
+                "Deposit request submitted successfully.\n\n" +
+                "Plan: " +
+                submittedPlan +
+                "\nAmount: " +
+                money(amount) +
+                "\nStatus: Pending\n\n" +
+                "Admin approval is required."
+            );
+
+
+        }catch(error){
+
+            console.error(
+                "Deposit Error:",
+                error
+            );
+
+
+            alert(
+                "Unable to submit deposit. Please try again."
+            );
+
+        }
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* =====================================================
+   WITHDRAW
+===================================================== */
 
 function openWithdraw(){
 
     const balance =
-    Number(currentUser.balance || 0);
+        Number(
+            currentUser.balance || 0
+        );
 
 
-    if(balance<=0){
+    if(balance <= 0){
 
-        alert("Your wallet balance is Rs. 0.");
+        alert(
+            "Your wallet balance is Rs. 0."
+        );
+
         return;
 
     }
 
 
-    document.getElementById("withdrawModal")
-        .style.display="block";
+    document.getElementById(
+        "withdrawModal"
+    ).style.display =
+        "block";
 
 }
 
 
-/* =========================================
+/* =====================================================
    BANK LIST
-========================================= */
+===================================================== */
 
-const pakistanBanks=[
+const pakistanBanks = [
 
 "Allied Bank Limited (ABL)",
 "Askari Bank Limited",
@@ -2004,59 +2392,77 @@ const pakistanBanks=[
 
 
 const bankSelect =
-document.getElementById("withdrawBank");
+document.getElementById(
+    "withdrawBank"
+);
 
 
-pakistanBanks.forEach(bank=>{
+pakistanBanks.forEach(bank => {
 
     const option =
-    document.createElement("option");
+        document.createElement(
+            "option"
+        );
 
-    option.value=bank;
-    option.textContent=bank;
+    option.value = bank;
+
+    option.textContent = bank;
 
     bankSelect.appendChild(option);
 
 });
 
 
-/* =========================================
+/* =====================================================
    WITHDRAW METHOD
-========================================= */
+===================================================== */
 
 function changeWithdrawMethod(){
 
     const method =
-    document.getElementById("withdrawMethod").value;
+        document.getElementById(
+            "withdrawMethod"
+        ).value;
+
 
     const bankGroup =
-    document.getElementById("bankGroup");
+        document.getElementById(
+            "bankGroup"
+        );
+
 
     const label =
-    document.getElementById("accountNumberLabel");
+        document.getElementById(
+            "accountNumberLabel"
+        );
+
 
     const input =
-    document.getElementById("withdrawAccount");
+        document.getElementById(
+            "withdrawAccount"
+        );
 
 
-    if(method==="Bank"){
+    if(method === "Bank"){
 
-        bankGroup.style.display="block";
+        bankGroup.style.display =
+            "block";
 
-        label.innerText=
+        label.innerText =
             "Account Number / IBAN";
 
-        input.placeholder=
+        input.placeholder =
             "Enter account number or IBAN";
 
     }else{
 
-        bankGroup.style.display="none";
+        bankGroup.style.display =
+            "none";
 
-        label.innerText=
+        label.innerText =
             "Mobile Account Number";
 
-        input.placeholder=
+        input.placeholder =
             "Enter Easypaisa/JazzCash number";
 
     }
@@ -2064,44 +2470,62 @@ function changeWithdrawMethod(){
 }
 
 
-/* =========================================
-   WITHDRAW
-========================================= */
+/* =====================================================
+   SUBMIT WITHDRAW
+===================================================== */
 
-function submitWithdraw(){
+async function submitWithdraw(){
 
     const balance =
-    Number(currentUser.balance || 0);
+        Number(
+            currentUser.balance || 0
+        );
+
 
     const amount =
-    Number(
-        document.getElementById("withdrawAmount").value
-    );
+        Number(
+            document.getElementById(
+                "withdrawAmount"
+            ).value
+        );
+
 
     const method =
-    document.getElementById("withdrawMethod").value;
+        document.getElementById(
+            "withdrawMethod"
+        ).value;
+
 
     const bank =
-    document.getElementById("withdrawBank").value;
+        document.getElementById(
+            "withdrawBank"
+        ).value;
+
 
     const title =
-    document.getElementById("withdrawTitle")
-    .value.trim();
+        document.getElementById(
+            "withdrawTitle"
+        ).value.trim();
+
 
     const account =
-    document.getElementById("withdrawAccount")
-    .value.trim();
+        document.getElementById(
+            "withdrawAccount"
+        ).value.trim();
 
 
-    if(!amount || amount<=0){
+    if(!amount || amount <= 0){
 
-        alert("Please enter a valid withdrawal amount.");
+        alert(
+            "Please enter a valid withdrawal amount."
+        );
+
         return;
 
     }
 
 
-    if(amount>balance){
+    if(amount > balance){
 
         alert(
             "Insufficient balance!\n\n" +
@@ -2116,15 +2540,24 @@ function submitWithdraw(){
 
     if(!method){
 
-        alert("Please select withdrawal method.");
+        alert(
+            "Please select withdrawal method."
+        );
+
         return;
 
     }
 
 
-    if(method==="Bank" && !bank){
+    if(
+        method === "Bank" &&
+        !bank
+    ){
 
-        alert("Please select your bank.");
+        alert(
+            "Please select your bank."
+        );
+
         return;
 
     }
@@ -2132,7 +2565,10 @@ function submitWithdraw(){
 
     if(!title){
 
-        alert("Please enter Account Title.");
+        alert(
+            "Please enter Account Title."
+        );
+
         return;
 
     }
@@ -2140,362 +2576,525 @@ function submitWithdraw(){
 
     if(!account){
 
-        alert("Please enter account number.");
+        alert(
+            "Please enter account number."
+        );
+
         return;
 
     }
 
 
-    let withdrawals=[];
-
     try{
 
-        withdrawals =
-        JSON.parse(
-            localStorage.getItem(
-                "Ham EarnWithdrawals"
-            ) || "[]"
+        const requestId =
+            Date.now().toString();
+
+
+        const withdrawal = {
+
+            id:requestId,
+
+            userId:
+                currentUser.id,
+
+            userName:
+                currentUser.name || "User",
+
+            email:
+                currentUser.email || "",
+
+            amount:amount,
+
+            method:method,
+
+            bank:
+                method === "Bank"
+                ? bank
+                : "",
+
+            accountTitle:title,
+
+            account:account,
+
+            status:"pending",
+
+            date:
+                new Date()
+                .toLocaleString()
+
+        };
+
+
+        await set(
+
+            ref(
+                db,
+                "withdrawals/" +
+                requestId
+            ),
+
+            withdrawal
+
         );
+
+
+        /*
+           Reserve amount
+        */
+
+        currentUser.balance =
+            balance - amount;
+
+
+        await saveUser();
+
+
+        await addTransaction(
+            "Withdrawal Request - Pending",
+            amount
+        );
+
+
+        closeModal(
+            "withdrawModal"
+        );
+
+
+        document.getElementById(
+            "withdrawAmount"
+        ).value = "";
+
+
+        document.getElementById(
+            "withdrawMethod"
+        ).value = "";
+
+
+        document.getElementById(
+            "withdrawBank"
+        ).value = "";
+
+
+        document.getElementById(
+            "withdrawTitle"
+        ).value = "";
+
+
+        document.getElementById(
+            "withdrawAccount"
+        ).value = "";
+
+
+        document.getElementById(
+            "bankGroup"
+        ).style.display =
+            "none";
+
+
+        updateDashboard();
+
+        showRequestHistory();
+
+
+        alert(
+            "Withdrawal request submitted successfully.\n\n" +
+            "Amount: " +
+            money(amount) +
+            "\nMethod: " +
+            method +
+            "\nStatus: Pending\n\n" +
+            "Admin approval is required."
+        );
+
 
     }catch(error){
 
-        withdrawals=[];
+        console.error(
+            "Withdrawal Error:",
+            error
+        );
+
+
+        alert(
+            "Unable to submit withdrawal. Please try again."
+        );
 
     }
-
-
-    if(!Array.isArray(withdrawals)){
-        withdrawals=[];
-    }
-
-
-    withdrawals.push({
-
-        id:Date.now(),
-
-        userId:currentUser.id,
-
-        userName:currentUser.name || "User",
-
-        email:currentUser.email || "",
-
-        amount:amount,
-
-        method:method,
-
-        bank:method==="Bank" ? bank : "",
-
-        accountTitle:title,
-
-        account:account,
-
-        status:"pending",
-
-        date:new Date().toLocaleString()
-
-    });
-
-
-    localStorage.setItem(
-        "Ham EarnWithdrawals",
-        JSON.stringify(withdrawals)
-    );
-
-
-    /*
-       Reserve the amount while request
-       is pending.
-    */
-
-    currentUser.balance =
-        balance - amount;
-
-
-    saveUser();
-
-
-    addTransaction(
-        "Withdrawal Request - Pending",
-        amount
-    );
-
-
-    closeModal("withdrawModal");
-
-
-    document.getElementById("withdrawAmount").value="";
-    document.getElementById("withdrawMethod").value="";
-    document.getElementById("withdrawBank").value="";
-    document.getElementById("withdrawTitle").value="";
-    document.getElementById("withdrawAccount").value="";
-
-    document.getElementById("bankGroup")
-        .style.display="none";
-
-
-    showRequestHistory();
-    updateDashboard();
-
-
-    alert(
-        "Withdrawal request submitted successfully.\n\n" +
-        "Amount: " +
-        money(amount) +
-        "\nMethod: " +
-        method +
-        "\nStatus: Pending\n\n" +
-        "Admin approval is required."
-    );
 
 }
 
 
-/* =========================================
+/* =====================================================
    REQUEST HISTORY
-========================================= */
+===================================================== */
 
-function showRequestHistory(){
+async function showRequestHistory(){
 
     const container =
-    document.getElementById("requestHistory");
-
-
-    let deposits=[];
-    let withdrawals=[];
+        document.getElementById(
+            "requestHistory"
+        );
 
 
     try{
 
-        deposits =
-        JSON.parse(
-            localStorage.getItem(
-                "Ham EarnDeposits"
-            ) || "[]"
+        const depositSnapshot =
+            await get(
+                ref(
+                    db,
+                    "deposits"
+                )
+            );
+
+
+        const withdrawalSnapshot =
+            await get(
+                ref(
+                    db,
+                    "withdrawals"
+                )
+            );
+
+
+        const deposits =
+            depositSnapshot.exists()
+            ? Object.values(
+                depositSnapshot.val()
+            )
+            : [];
+
+
+        const withdrawals =
+            withdrawalSnapshot.exists()
+            ? Object.values(
+                withdrawalSnapshot.val()
+            )
+            : [];
+
+
+        const userDeposits =
+            deposits.filter(
+                x =>
+                String(x.userId)
+                ===
+                String(currentUser.id)
+            );
+
+
+        const userWithdrawals =
+            withdrawals.filter(
+                x =>
+                String(x.userId)
+                ===
+                String(currentUser.id)
+            );
+
+
+        const all = [
+
+            ...userDeposits.map(x => ({
+                ...x,
+                type:"Deposit"
+            })),
+
+            ...userWithdrawals.map(x => ({
+                ...x,
+                type:"Withdrawal"
+            }))
+
+        ];
+
+
+        all.sort(
+            (a,b) =>
+            Number(b.id || 0) -
+            Number(a.id || 0)
         );
+
+
+        if(!all.length){
+
+            container.innerHTML = `
+                <div class="history-empty">
+                    No deposit or withdrawal requests yet.
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        container.innerHTML = "";
+
+
+        all.forEach(request => {
+
+            let cls =
+                "status-pending";
+
+            let status =
+                "Pending";
+
+
+            if(
+                request.status ===
+                "approved"
+            ){
+
+                cls =
+                    "status-approved";
+
+                status =
+                    "Approved";
+
+            }
+
+
+            if(
+                request.status ===
+                "rejected"
+            ){
+
+                cls =
+                    "status-rejected";
+
+                status =
+                    "Rejected";
+
+            }
+
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+            row.className =
+                "history-row";
+
+
+            const type =
+                document.createElement(
+                    "span"
+                );
+
+            type.innerText =
+                request.type;
+
+
+            if(request.selectedPlan){
+
+                const plan =
+                    document.createElement(
+                        "small"
+                    );
+
+                plan.style.display =
+                    "block";
+
+                plan.style.color =
+                    "#68737f";
+
+                plan.innerText =
+                    request.selectedPlan;
+
+                type.appendChild(plan);
+
+            }
+
+
+            const amount =
+                document.createElement(
+                    "strong"
+                );
+
+            amount.innerText =
+                money(request.amount);
+
+
+            const method =
+                document.createElement(
+                    "span"
+                );
+
+            method.innerText =
+                request.method || "-";
+
+
+            const statusBox =
+                document.createElement(
+                    "span"
+                );
+
+
+            const badge =
+                document.createElement(
+                    "span"
+                );
+
+            badge.className =
+                "status " + cls;
+
+            badge.innerText =
+                status;
+
+
+            statusBox.appendChild(
+                badge
+            );
+
+
+            const date =
+                document.createElement(
+                    "small"
+                );
+
+            date.innerText =
+                request.date || "-";
+
+
+            row.appendChild(type);
+
+            row.appendChild(amount);
+
+            row.appendChild(method);
+
+            row.appendChild(statusBox);
+
+            row.appendChild(date);
+
+
+            container.appendChild(row);
+
+        });
+
 
     }catch(error){
 
-        deposits=[];
-
-    }
-
-
-    try{
-
-        withdrawals =
-        JSON.parse(
-            localStorage.getItem(
-                "Ham EarnWithdrawals"
-            ) || "[]"
+        console.error(
+            "History Error:",
+            error
         );
 
-    }catch(error){
 
-        withdrawals=[];
-
-    }
-
-
-    if(!Array.isArray(deposits)){
-        deposits=[];
-    }
-
-    if(!Array.isArray(withdrawals)){
-        withdrawals=[];
-    }
-
-
-    deposits =
-    deposits.filter(x =>
-        String(x.userId) ===
-        String(currentUser.id)
-    );
-
-
-    withdrawals =
-    withdrawals.filter(x =>
-        String(x.userId) ===
-        String(currentUser.id)
-    );
-
-
-    const all=[
-
-        ...deposits.map(x=>({
-            ...x,
-            type:"Deposit"
-        })),
-
-        ...withdrawals.map(x=>({
-            ...x,
-            type:"Withdrawal"
-        }))
-
-    ];
-
-
-    all.sort((a,b)=>
-        Number(b.id)-Number(a.id)
-    );
-
-
-    if(!all.length){
-
-        container.innerHTML=`
-        <div class="history-empty">
-            No deposit or withdrawal requests yet.
-        </div>`;
-
-        return;
+        container.innerHTML = `
+            <div class="history-empty">
+                Unable to load request history.
+            </div>
+        `;
 
     }
-
-
-    container.innerHTML="";
-
-
-    all.forEach(request=>{
-
-        let cls="status-pending";
-        let status="Pending";
-
-
-        if(request.status==="approved"){
-
-            cls="status-approved";
-            status="Approved";
-
-        }
-
-
-        if(request.status==="rejected"){
-
-            cls="status-rejected";
-            status="Rejected";
-
-        }
-
-
-        const row =
-        document.createElement("div");
-
-        row.className="history-row";
-
-
-        const type =
-        document.createElement("span");
-
-        type.innerText=request.type;
-
-
-        if(request.selectedPlan){
-
-            const plan =
-            document.createElement("small");
-
-            plan.style.display="block";
-            plan.style.color="#68737f";
-            plan.innerText=request.selectedPlan;
-
-            type.appendChild(plan);
-
-        }
-
-
-        const amount =
-        document.createElement("strong");
-
-        amount.innerText=
-            money(request.amount);
-
-
-        const method =
-        document.createElement("span");
-
-        method.innerText=
-            request.method || "-";
-
-
-        const statusBox =
-        document.createElement("span");
-
-
-        const badge =
-        document.createElement("span");
-
-        badge.className=
-            "status " + cls;
-
-        badge.innerText=status;
-
-
-        statusBox.appendChild(badge);
-
-
-        const date =
-        document.createElement("small");
-
-        date.innerText=
-            request.date || "-";
-
-
-        row.appendChild(type);
-        row.appendChild(amount);
-        row.appendChild(method);
-        row.appendChild(statusBox);
-        row.appendChild(date);
-
-
-        container.appendChild(row);
-
-    });
 
 }
 
 
-/* =========================================
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+function closeModal(id){
+
+    const modal =
+        document.getElementById(id);
+
+
+    if(modal){
+
+        modal.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* =====================================================
    LOGOUT
-========================================= */
+===================================================== */
 
 function logout(){
 
-    saveUser();
+    localStorage.removeItem(
+        "loggedInUser"
+    );
 
-    localStorage.removeItem("loggedInUser");
-    localStorage.removeItem("Ham EarnCurrentUser");
-    localStorage.removeItem("currentUserId");
+    localStorage.removeItem(
+        "Ham EarnCurrentUser"
+    );
 
-    window.location.href="login.html";
+    localStorage.removeItem(
+        "currentUserId"
+    );
+
+
+    window.location.href =
+        "login.html";
 
 }
 
 
-/* =========================================
-   CLOSE MODAL ON BACKGROUND CLICK
-========================================= */
+/* =====================================================
+   BACKGROUND MODAL CLOSE
+===================================================== */
 
-window.addEventListener("click",function(event){
+window.addEventListener(
+    "click",
+    function(event){
 
-    if(event.target.classList.contains("modal")){
+        if(
+            event.target.classList
+            .contains("modal")
+        ){
 
-        event.target.style.display="none";
+            event.target.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   START DASHBOARD
+===================================================== */
+
+async function startDashboard(){
+
+    const loaded =
+        await loadCurrentUser();
+
+
+    if(!loaded){
+
+        return;
 
     }
 
-});
+
+    await dailyReset();
 
 
-/* =========================================
-   START
-========================================= */
+    updateDashboard();
 
-saveUser();
 
-updateDashboard();
+    await showTransactions();
 
-showTransactions();
 
-showRequestHistory();
+    await showRequestHistory();
+
+
+    document.getElementById(
+        "loadingScreen"
+    ).style.display =
+        "none";
+
+}
+
+
+startDashboard();
 
 </script>
 
