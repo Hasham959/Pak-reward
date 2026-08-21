@@ -94,10 +94,6 @@ input:focus{
     cursor:pointer;
 }
 
-.show-btn:hover{
-    background:#e2e8eb;
-}
-
 .login-submit{
     width:100%;
     margin-top:25px;
@@ -152,10 +148,6 @@ input:focus{
     text-decoration:none;
 }
 
-.register-link a:hover{
-    text-decoration:underline;
-}
-
 .home-link{
     display:block;
     text-align:center;
@@ -165,18 +157,21 @@ input:focus{
     font-size:14px;
 }
 
-.home-link:hover{
-    color:#087443;
-}
-
 .notice{
     margin-top:20px;
     padding:10px;
-    background:#fff8e6;
+    background:#eaf7f0;
     border-radius:8px;
-    color:#806500;
+    color:#087443;
     font-size:12px;
     text-align:center;
+}
+
+.firebase-status{
+    text-align:center;
+    font-size:12px;
+    margin-top:12px;
+    color:#697480;
 }
 
 @media(max-width:450px){
@@ -197,28 +192,18 @@ input:focus{
 
 <body>
 
-
 <div class="login-box">
-
-
-    <!-- LOGO -->
 
     <div class="logo">
         🇵🇰 Ham Earn
     </div>
-
 
     <div class="subtitle">
         Login to your account
     </div>
 
 
-    <!-- LOGIN FORM -->
-
     <form id="loginForm">
-
-
-        <!-- EMAIL -->
 
         <label>
             Email
@@ -232,8 +217,6 @@ input:focus{
             required
         >
 
-
-        <!-- PASSWORD -->
 
         <label>
             Password
@@ -261,23 +244,17 @@ input:focus{
         </div>
 
 
-        <!-- ERROR -->
-
         <div
             class="error"
             id="error">
         </div>
 
 
-        <!-- SUCCESS -->
-
         <div
             class="success"
             id="success">
         </div>
 
-
-        <!-- LOGIN BUTTON -->
 
         <button
             type="submit"
@@ -288,11 +265,17 @@ input:focus{
 
         </button>
 
-
     </form>
 
 
-    <!-- REGISTER -->
+    <div
+        class="firebase-status"
+        id="firebaseStatus">
+
+        Connecting to Firebase...
+
+    </div>
+
 
     <div class="register-link">
 
@@ -305,8 +288,6 @@ input:focus{
     </div>
 
 
-    <!-- HOME -->
-
     <a
         href="index.html"
         class="home-link">
@@ -318,26 +299,72 @@ input:focus{
 
     <div class="notice">
 
-        Demo system — account data is stored locally
-        in this browser.
+        ✓ Account data is connected with Firebase
 
     </div>
-
 
 </div>
 
 
-<script>
+<script type="module">
 
 /* =====================================================
-   HAM EARN STORAGE KEYS
+   FIREBASE IMPORT
 ===================================================== */
 
-const USERS_KEY =
-    "Ham EarnUsers";
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-const CURRENT_USER_KEY =
-    "Ham EarnCurrentUser";
+import {
+    getDatabase,
+    ref,
+    get
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyD4pjKrlopXvk4peRnyid4DEItpPmU993Y",
+
+    authDomain:
+        "ham-earn.firebaseapp.com",
+
+    databaseURL:
+        "https://ham-earn-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+    projectId:
+        "ham-earn",
+
+    storageBucket:
+        "ham-earn.firebasestorage.app",
+
+    messagingSenderId:
+        "411688505536",
+
+    appId:
+        "1:411688505536:web:c97f891314ee6f0dd65d25",
+
+    measurementId:
+        "G-J75NF5T10H"
+
+};
+
+
+/* =====================================================
+   INITIALIZE FIREBASE
+===================================================== */
+
+const app =
+    initializeApp(firebaseConfig);
+
+const db =
+    getDatabase(app);
 
 
 /* =====================================================
@@ -365,6 +392,20 @@ const successBox =
 const showBtn =
     document.getElementById("showBtn");
 
+const firebaseStatus =
+    document.getElementById("firebaseStatus");
+
+
+/* =====================================================
+   FIREBASE STATUS
+===================================================== */
+
+firebaseStatus.innerText =
+    "✓ Firebase database connected";
+
+firebaseStatus.style.color =
+    "#087443";
+
 
 /* =====================================================
    SHOW / HIDE PASSWORD
@@ -374,24 +415,17 @@ showBtn.addEventListener(
     "click",
     function(){
 
-        if(
-            passwordInput.type ===
-            "password"
-        ){
+        if(passwordInput.type === "password"){
 
-            passwordInput.type =
-                "text";
+            passwordInput.type = "text";
 
-            showBtn.innerText =
-                "Hide";
+            showBtn.innerText = "Hide";
 
         }else{
 
-            passwordInput.type =
-                "password";
+            passwordInput.type = "password";
 
-            showBtn.innerText =
-                "Show";
+            showBtn.innerText = "Show";
 
         }
 
@@ -400,94 +434,32 @@ showBtn.addEventListener(
 
 
 /* =====================================================
-   PASSWORD HASH
+   HASH PASSWORD
 ===================================================== */
 
 async function hashPassword(password){
 
-    if(
-        window.crypto &&
-        window.crypto.subtle
-    ){
+    const data =
+        new TextEncoder()
+        .encode(password);
 
-        const data =
-            new TextEncoder()
-            .encode(password);
-
-
-        const hash =
-            await window.crypto.subtle.digest(
-                "SHA-256",
-                data
-            );
-
-
-        return Array.from(
-            new Uint8Array(hash)
-        )
-        .map(function(byte){
-
-            return byte
-                .toString(16)
-                .padStart(2,"0");
-
-        })
-        .join("");
-
-    }
-
-
-    /* Fallback */
-
-    return password;
-
-}
-
-
-/* =====================================================
-   GET USERS
-===================================================== */
-
-function getUsers(){
-
-    try{
-
-        const savedUsers =
-            localStorage.getItem(
-                USERS_KEY
-            );
-
-
-        if(!savedUsers){
-
-            return [];
-
-        }
-
-
-        const users =
-            JSON.parse(savedUsers);
-
-
-        if(!Array.isArray(users)){
-
-            return [];
-
-        }
-
-
-        return users;
-
-    }catch(error){
-
-        console.error(
-            "Get Users Error:",
-            error
+    const hash =
+        await crypto.subtle.digest(
+            "SHA-256",
+            data
         );
 
-        return [];
+    return Array.from(
+        new Uint8Array(hash)
+    )
+    .map(function(byte){
 
-    }
+        return byte
+            .toString(16)
+            .padStart(2,"0");
+
+    })
+    .join("");
 
 }
 
@@ -534,273 +506,238 @@ function showSuccess(message){
 
 loginForm.addEventListener(
     "submit",
-    loginUser
-);
+    async function(event){
+
+        event.preventDefault();
 
 
-async function loginUser(event){
+        errorBox.style.display =
+            "none";
 
-    event.preventDefault();
-
-
-    /* CLEAR MESSAGES */
-
-    errorBox.style.display =
-        "none";
-
-    successBox.style.display =
-        "none";
+        successBox.style.display =
+            "none";
 
 
-    /* GET INPUT */
-
-    const email =
-        emailInput.value
-        .trim()
-        .toLowerCase();
+        const email =
+            emailInput.value
+            .trim()
+            .toLowerCase();
 
 
-    const password =
-        passwordInput.value;
+        const password =
+            passwordInput.value;
 
 
-    /* VALIDATION */
-
-    if(!email || !password){
-
-        showError(
-            "Please enter your email and password."
-        );
-
-        return;
-
-    }
-
-
-    /* DISABLE BUTTON */
-
-    loginButton.disabled =
-        true;
-
-    loginButton.innerText =
-        "Checking...";
-
-
-    try{
-
-        /* =============================================
-           GET REGISTERED USERS
-        ============================================= */
-
-        const users =
-            getUsers();
-
-
-        /* =============================================
-           NO USERS
-        ============================================= */
-
-        if(users.length === 0){
+        if(!email || !password){
 
             showError(
-                "No registered account found. Please register first."
+                "Please enter your email and password."
             );
-
-            loginButton.disabled =
-                false;
-
-            loginButton.innerText =
-                "Login";
 
             return;
 
         }
-
-
-        /* =============================================
-           FIND USER
-        ============================================= */
-
-        const user =
-            users.find(function(item){
-
-                return String(
-                    item.email || ""
-                )
-                .trim()
-                .toLowerCase()
-                === email;
-
-            });
-
-
-        /* =============================================
-           USER NOT FOUND
-        ============================================= */
-
-        if(!user){
-
-            showError(
-                "No account found with this email. Please register first."
-            );
-
-            loginButton.disabled =
-                false;
-
-            loginButton.innerText =
-                "Login";
-
-            return;
-
-        }
-
-
-        /* =============================================
-           CHECK PASSWORD
-        ============================================= */
-
-        const enteredHash =
-            await hashPassword(password);
-
-
-        const savedPassword =
-            String(
-                user.password || ""
-            );
-
-
-        let passwordCorrect =
-            savedPassword ===
-            enteredHash;
-
-
-        /*
-           Compatibility with
-           older plain-password accounts
-        */
-
-        if(!passwordCorrect){
-
-            passwordCorrect =
-                savedPassword ===
-                password;
-
-        }
-
-
-        /* =============================================
-           WRONG PASSWORD
-        ============================================= */
-
-        if(!passwordCorrect){
-
-            showError(
-                "Incorrect password. Please try again."
-            );
-
-            loginButton.disabled =
-                false;
-
-            loginButton.innerText =
-                "Login";
-
-            return;
-
-        }
-
-
-        /* =============================================
-           LOGIN SUCCESS
-        ============================================= */
-
-        const userId =
-            String(user.id);
-
-
-        /*
-           MAIN CURRENT USER KEY
-        */
-
-        localStorage.setItem(
-            CURRENT_USER_KEY,
-            userId
-        );
-
-
-        /*
-           COMPATIBILITY KEYS
-        */
-
-        localStorage.setItem(
-            "currentUserId",
-            userId
-        );
-
-
-        localStorage.setItem(
-            "loggedInUser",
-            userId
-        );
-
-
-        /* =============================================
-           SUCCESS MESSAGE
-        ============================================= */
-
-        showSuccess(
-            "Login successful! Opening dashboard..."
-        );
-
-
-        /* =============================================
-           REDIRECT
-        ============================================= */
-
-        setTimeout(function(){
-
-            window.location.href =
-                "dashboard.html";
-
-        },700);
-
-
-    }catch(error){
-
-        console.error(
-            "Login Error:",
-            error
-        );
-
-
-        showError(
-            "Unable to login. Please try again."
-        );
 
 
         loginButton.disabled =
-            false;
+            true;
 
         loginButton.innerText =
-            "Login";
-
-    }
-
-}
+            "Checking...";
 
 
-/* =====================================================
-   ENTER KEY
-===================================================== */
+        try{
 
-passwordInput.addEventListener(
-    "keydown",
-    function(event){
+            /* =========================================
+               GET USERS FROM FIREBASE
+            ========================================= */
 
-        if(event.key === "Enter"){
+            const usersRef =
+                ref(db,"users");
 
-            event.preventDefault();
+            const snapshot =
+                await get(usersRef);
 
-            loginForm.requestSubmit();
+
+            if(!snapshot.exists()){
+
+                showError(
+                    "No account found. Please register first."
+                );
+
+                loginButton.disabled =
+                    false;
+
+                loginButton.innerText =
+                    "Login";
+
+                return;
+
+            }
+
+
+            const users =
+                snapshot.val() || {};
+
+
+            /* =========================================
+               FIND USER
+            ========================================= */
+
+            let foundUser = null;
+            let foundUserId = null;
+
+
+            for(
+                const userId in users
+            ){
+
+                const user =
+                    users[userId];
+
+
+                const savedEmail =
+                    String(
+                        user.email || ""
+                    )
+                    .trim()
+                    .toLowerCase();
+
+
+                if(savedEmail === email){
+
+                    foundUser =
+                        user;
+
+                    foundUserId =
+                        userId;
+
+                    break;
+
+                }
+
+            }
+
+
+            /* =========================================
+               ACCOUNT NOT FOUND
+            ========================================= */
+
+            if(!foundUser){
+
+                showError(
+                    "No account found with this email. Please register first."
+                );
+
+                loginButton.disabled =
+                    false;
+
+                loginButton.innerText =
+                    "Login";
+
+                return;
+
+            }
+
+
+            /* =========================================
+               PASSWORD CHECK
+            ========================================= */
+
+            const enteredHash =
+                await hashPassword(
+                    password
+                );
+
+
+            const savedPassword =
+                String(
+                    foundUser.password || ""
+                );
+
+
+            if(savedPassword !== enteredHash){
+
+                showError(
+                    "Incorrect password. Please try again."
+                );
+
+                loginButton.disabled =
+                    false;
+
+                loginButton.innerText =
+                    "Login";
+
+                return;
+
+            }
+
+
+            /* =========================================
+               SAVE CURRENT USER
+            ========================================= */
+
+            localStorage.setItem(
+                "Ham EarnCurrentUser",
+                foundUserId
+            );
+
+
+            localStorage.setItem(
+                "currentUserId",
+                foundUserId
+            );
+
+
+            localStorage.setItem(
+                "loggedInUser",
+                foundUserId
+            );
+
+
+            /* =========================================
+               SUCCESS
+            ========================================= */
+
+            showSuccess(
+                "Login successful! Opening dashboard..."
+            );
+
+
+            loginButton.innerText =
+                "Login Successful ✓";
+
+
+            /* =========================================
+               DASHBOARD
+            ========================================= */
+
+            setTimeout(function(){
+
+                window.location.href =
+                    "dashboard.html";
+
+            },800);
+
+
+        }catch(error){
+
+            console.error(
+                "Firebase Login Error:",
+                error
+            );
+
+
+            showError(
+                "Unable to connect with Firebase. Please check your internet connection."
+            );
+
+
+            loginButton.disabled =
+                false;
+
+            loginButton.innerText =
+                "Login";
 
         }
 
