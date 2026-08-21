@@ -158,7 +158,7 @@ input:focus{
     text-align:center;
     font-size:12px;
     margin-top:10px;
-    color:#087443;
+    color:#697480;
 }
 
 @media(max-width:500px){
@@ -188,7 +188,6 @@ input:focus{
 
 
     <form id="registerForm">
-
 
         <label>Full Name</label>
 
@@ -279,8 +278,12 @@ input:focus{
     </form>
 
 
-    <div class="firebase-status" id="firebaseStatus">
+    <div
+        class="firebase-status"
+        id="firebaseStatus">
+
         Connecting to Firebase...
+
     </div>
 
 
@@ -305,7 +308,9 @@ input:focus{
 
 
     <div class="notice">
-        Ham Earn Secure Registration
+
+        Secure Firebase Registration
+
     </div>
 
 </div>
@@ -321,10 +326,13 @@ import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
+
 import {
     getAuth,
-    createUserWithEmailAndPassword
+    createUserWithEmailAndPassword,
+    updateProfile
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
 
 import {
     getDatabase,
@@ -369,7 +377,7 @@ const firebaseConfig = {
 
 
 /* =====================================================
-   INITIALIZE
+   INITIALIZE FIREBASE
 ===================================================== */
 
 const app =
@@ -416,18 +424,14 @@ const errorBox =
 const successBox =
     document.getElementById("success");
 
-const statusBox =
+const firebaseStatus =
     document.getElementById("firebaseStatus");
 
 
-/* =====================================================
-   FIREBASE STATUS
-===================================================== */
-
-statusBox.innerText =
+firebaseStatus.innerText =
     "✓ Firebase connected";
 
-statusBox.style.color =
+firebaseStatus.style.color =
     "#087443";
 
 
@@ -464,7 +468,29 @@ function showSuccess(message){
 
 
 /* =====================================================
-   REFERRAL FROM URL
+   GET USERS
+===================================================== */
+
+async function getUsers(){
+
+    const snapshot =
+        await get(
+            ref(db,"users")
+        );
+
+    if(!snapshot.exists()){
+
+        return {};
+
+    }
+
+    return snapshot.val() || {};
+
+}
+
+
+/* =====================================================
+   REFERRAL URL
 ===================================================== */
 
 const params =
@@ -486,31 +512,14 @@ if(urlReferral){
 
 
 /* =====================================================
-   MOBILE INPUT
-===================================================== */
-
-mobileInput.addEventListener(
-    "input",
-    function(){
-
-        this.value =
-            this.value
-            .replace(/\D/g,"")
-            .slice(0,11);
-
-    }
-);
-
-
-/* =====================================================
    REGISTER
 ===================================================== */
 
 form.addEventListener(
     "submit",
-    async function(e){
+    async function(event){
 
-        e.preventDefault();
+        event.preventDefault();
 
 
         errorBox.style.display =
@@ -543,9 +552,7 @@ form.addEventListener(
             .toUpperCase();
 
 
-        /* =========================================
-           VALIDATION
-        ========================================= */
+        /* VALIDATION */
 
         if(name.length < 2){
 
@@ -561,7 +568,7 @@ form.addEventListener(
         if(!/^03[0-9]{9}$/.test(mobile)){
 
             showError(
-                "Please enter a valid Pakistani mobile number. Example: 03001234567"
+                "Please enter a valid Pakistani mobile number."
             );
 
             return;
@@ -595,32 +602,24 @@ form.addEventListener(
             true;
 
         button.innerText =
-            "Checking...";
+            "Checking account...";
 
 
         try{
 
 
             /* =========================================
-               CHECK MOBILE
+               CHECK EXISTING DATABASE USERS
             ========================================= */
 
-            const usersSnapshot =
-                await get(
-                    ref(db,"users")
-                );
-
-
-            let users =
-                usersSnapshot.exists()
-                ? usersSnapshot.val()
-                : {};
+            const users =
+                await getUsers();
 
 
             let referrerId =
                 "";
 
-            let referrerUser =
+            let referrer =
                 null;
 
 
@@ -657,7 +656,7 @@ form.addEventListener(
                     referrerId =
                         id;
 
-                    referrerUser =
+                    referrer =
                         user;
 
                 }
@@ -665,13 +664,9 @@ form.addEventListener(
             }
 
 
-            /* =========================================
-               CHECK REFERRAL
-            ========================================= */
-
             if(
                 referralCode &&
-                !referrerUser
+                !referrer
             ){
 
                 throw new Error(
@@ -682,14 +677,14 @@ form.addEventListener(
 
 
             /* =========================================
-               CREATE FIREBASE AUTH USER
+               FIREBASE AUTH ACCOUNT
             ========================================= */
 
             button.innerText =
                 "Creating account...";
 
 
-            const userCredential =
+            const credential =
                 await createUserWithEmailAndPassword(
                     auth,
                     email,
@@ -698,34 +693,46 @@ form.addEventListener(
 
 
             const firebaseUser =
-                userCredential.user;
-
-
-            const uid =
-                firebaseUser.uid;
+                credential.user;
 
 
             /* =========================================
-               USER REFERRAL CODE
+               UPDATE AUTH PROFILE
             ========================================= */
+
+            await updateProfile(
+                firebaseUser,
+                {
+                    displayName:name
+                }
+            );
+
+
+            /* =========================================
+               USER ID = FIREBASE UID
+            ========================================= */
+
+            const userId =
+                firebaseUser.uid;
+
 
             const newReferralCode =
                 "HE" +
-                uid
+                userId
                 .replace(/[^a-zA-Z0-9]/g,"")
                 .slice(-8)
                 .toUpperCase();
 
 
             /* =========================================
-               USER DATA
+               CREATE USER DATABASE RECORD
             ========================================= */
 
             const newUser = {
 
-                id:uid,
+                id:userId,
 
-                uid:uid,
+                uid:userId,
 
                 name:name,
 
@@ -754,14 +761,12 @@ form.addEventListener(
 
                 referredBy:
                     referrerId
-                    ? referralCode
+                    ? referrerCodeSafe(referrer)
                     : "",
 
                 referralCount:0,
 
                 referralReward:0,
-
-                status:"active",
 
                 createdAt:
                     new Date()
@@ -770,19 +775,12 @@ form.addEventListener(
             };
 
 
-            /* =========================================
-               SAVE USER
-            ========================================= */
-
             await set(
-
                 ref(
                     db,
-                    "users/" + uid
+                    "users/" + userId
                 ),
-
                 newUser
-
             );
 
 
@@ -792,30 +790,30 @@ form.addEventListener(
 
             if(
                 referrerId &&
-                referrerUser
+                referrer
             ){
 
-                const newBalance =
+                const updatedBalance =
                     Number(
-                        referrerUser.balance || 0
+                        referrer.balance || 0
                     ) + 100;
 
 
-                const newTotalReward =
+                const updatedTotalReward =
                     Number(
-                        referrerUser.totalReward || 0
+                        referrer.totalReward || 0
                     ) + 100;
 
 
-                const newReferralCount =
+                const updatedReferralCount =
                     Number(
-                        referrerUser.referralCount || 0
+                        referrer.referralCount || 0
                     ) + 1;
 
 
-                const newReferralReward =
+                const updatedReferralReward =
                     Number(
-                        referrerUser.referralReward || 0
+                        referrer.referralReward || 0
                     ) + 100;
 
 
@@ -830,25 +828,25 @@ form.addEventListener(
                     {
 
                         balance:
-                            newBalance,
+                            updatedBalance,
 
                         totalReward:
-                            newTotalReward,
+                            updatedTotalReward,
 
                         referralCount:
-                            newReferralCount,
+                            updatedReferralCount,
 
                         referralReward:
-                            newReferralReward
+                            updatedReferralReward
 
                     }
 
                 );
 
 
-                /* =====================================
-                   REFERRAL TRANSACTION
-                ===================================== */
+                const transactionId =
+                    Date.now();
+
 
                 await set(
 
@@ -857,7 +855,7 @@ form.addEventListener(
                         "transactions/" +
                         referrerId +
                         "/" +
-                        Date.now()
+                        transactionId
                     ),
 
                     {
@@ -882,22 +880,22 @@ form.addEventListener(
 
 
             /* =========================================
-               SAVE CURRENT USER
+               LOCAL STORAGE COMPATIBILITY
             ========================================= */
 
             localStorage.setItem(
                 "Ham EarnCurrentUser",
-                uid
+                userId
             );
 
             localStorage.setItem(
                 "currentUserId",
-                uid
+                userId
             );
 
             localStorage.setItem(
                 "loggedInUser",
-                uid
+                userId
             );
 
 
@@ -906,7 +904,7 @@ form.addEventListener(
             ========================================= */
 
             showSuccess(
-                "Registration successful! Opening dashboard..."
+                "Account created successfully! Opening dashboard..."
             );
 
 
@@ -919,13 +917,13 @@ form.addEventListener(
                 window.location.href =
                     "dashboard.html";
 
-            },1000);
+            },1200);
 
 
         }catch(error){
 
             console.error(
-                "Registration Error:",
+                "Firebase Registration Error:",
                 error
             );
 
@@ -960,7 +958,7 @@ form.addEventListener(
             ){
 
                 message =
-                    "Password is too weak. Use at least 6 characters.";
+                    "Password must contain at least 6 characters.";
 
             }
 
@@ -970,7 +968,17 @@ form.addEventListener(
             ){
 
                 message =
-                    "Network error. Please check your internet connection.";
+                    "Internet connection problem. Please try again.";
+
+            }
+
+            else if(
+                error.code ===
+                "auth/operation-not-allowed"
+            ){
+
+                message =
+                    "Email/Password Authentication is not enabled in Firebase.";
 
             }
 
@@ -992,6 +1000,42 @@ form.addEventListener(
                 "Create Account";
 
         }
+
+    }
+);
+
+
+/* =====================================================
+   REFERRER CODE
+===================================================== */
+
+function referrerCodeSafe(user){
+
+    if(!user){
+
+        return "";
+
+    }
+
+    return String(
+        user.referralCode || ""
+    );
+
+}
+
+
+/* =====================================================
+   MOBILE INPUT
+===================================================== */
+
+mobileInput.addEventListener(
+    "input",
+    function(){
+
+        this.value =
+            this.value
+            .replace(/\D/g,"")
+            .slice(0,11);
 
     }
 );
